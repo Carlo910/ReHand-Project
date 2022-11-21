@@ -15,35 +15,34 @@
 
 //variable declaretion
 int32 value_digit;
+int32 value_read[4];
 /*
 int32 value_mv[2];
 int32 valuekR[2];
 int32 valuemI[2];
 */
-int8 i=0;
+int8 i=0, j=0, k=0;
 CY_ISR(Custom_ISR_ADC)
 {
     //Read timer status register to bring interrupt line low
     Timer_ReadStatusRegister();
-    
-    for(i=0; i<2; i++){
+  for(j=0; j<10; j++){
+    for(i=0; i<4; i++){
     AMux_Select(i);
     value_digit = ADC_DelSig_Read32();
     if (value_digit < 0)  value_digit = 0;
     if (value_digit > 65535) value_digit = 65535;
-   /* value_mv[i] = ADC_DelSig_CountsTo_mVolts(value_digit[i]);
-    valuemI[i] = (int32) (value_mv[i]/2);
-    valuekR[i] = (int32)((5000-value_mv[i])/valuemI[i]);
-    sprintf(DataBuffer[i], "Sample %d: %ld kOhm\r\n\n ", i+1, valuekR[i]);
-    }
-    */
-    DataBuffer[2*i+1] = value_digit >> 8;
-    DataBuffer[2*i+2] = value_digit & 0xFF;
-    
-    // format ADC result for transmission
+  
+    value_read[i]= value_read[i] + value_digit;
 
     PacketReadyFlag  = 1;
 }
 }
+for(k=0; k<4; k++){
+    value_read[k]=value_read[k]/10;
+    DataBuffer[2*k+1] = value_read[k] >> 8;
+    DataBuffer[2*k+2] = value_read[k] & 0xFF;
+  }
+ }
     
 /* [] END OF FILE */

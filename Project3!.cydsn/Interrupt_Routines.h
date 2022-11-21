@@ -14,7 +14,7 @@
     #define __INTERRUPT_ROUTINES_H
     #include  "cytypes.h"
     #include  "stdio.h"
-    #define  BYTE_TO_SEND 4
+    #define  BYTE_TO_SEND 8
     #define  TRANSMIT_BUFFER_SIZE 1+BYTE_TO_SEND+1
     
     
