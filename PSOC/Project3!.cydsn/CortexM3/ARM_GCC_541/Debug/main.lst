@@ -1,0 +1,876 @@
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include "stdio.h"
+  14:main.c        **** #include "Interrupt_Routines.h"
+  15:main.c        **** 
+  16:main.c        **** int main(void)
+  17:main.c        **** {
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  18:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  36              		.loc 1 18 0
+  37              		.syntax unified
+  38              	@ 18 "main.c" 1
+  39 0002 62B6     		CPSIE   i
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 2
+
+
+  40              	@ 0 "" 2
+  19:main.c        **** 
+  20:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  21:main.c        ****     ADC_DelSig_Start();
+  41              		.loc 1 21 0
+  42              		.thumb
+  43              		.syntax unified
+  44 0004 FFF7FEFF 		bl	ADC_DelSig_Start
+  45              	.LVL0:
+  22:main.c        ****     UART_Start();
+  46              		.loc 1 22 0
+  47 0008 FFF7FEFF 		bl	UART_Start
+  48              	.LVL1:
+  23:main.c        ****     Timer_Start();
+  49              		.loc 1 23 0
+  50 000c FFF7FEFF 		bl	Timer_Start
+  51              	.LVL2:
+  24:main.c        ****     isr_ADC_StartEx(Custom_ISR_ADC);
+  52              		.loc 1 24 0
+  53 0010 1148     		ldr	r0, .L8
+  54 0012 FFF7FEFF 		bl	isr_ADC_StartEx
+  55              	.LVL3:
+  25:main.c        ****     //Initialize send flag
+  26:main.c        ****     PacketReadyFlag = 0;
+  56              		.loc 1 26 0
+  57 0016 0022     		movs	r2, #0
+  58 0018 104B     		ldr	r3, .L8+4
+  59 001a 1A70     		strb	r2, [r3]
+  27:main.c        ****     //Start the ADC conversion
+  28:main.c        ****     ADC_DelSig_StartConvert();
+  60              		.loc 1 28 0
+  61 001c FFF7FEFF 		bl	ADC_DelSig_StartConvert
+  62              	.LVL4:
+  29:main.c        ****     
+  30:main.c        ****     //Mux Start
+  31:main.c        ****     AMux_Start();
+  63              		.loc 1 31 0
+  64 0020 FFF7FEFF 		bl	AMux_Start
+  65              	.LVL5:
+  32:main.c        ****     
+  33:main.c        ****     DataBuffer[0] = 0xA0;
+  66              		.loc 1 33 0
+  67 0024 0E4B     		ldr	r3, .L8+8
+  68 0026 A022     		movs	r2, #160
+  69 0028 1A70     		strb	r2, [r3]
+  34:main.c        ****     DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0;
+  70              		.loc 1 34 0
+  71 002a C022     		movs	r2, #192
+  72 002c 9A70     		strb	r2, [r3, #2]
+  73              	.L3:
+  35:main.c        ****     
+  36:main.c        ****     for(;;)
+  37:main.c        ****     {
+  38:main.c        ****         /* Place your application code here. */
+  39:main.c        ****        if ( PacketReadyFlag==1){
+  74              		.loc 1 39 0
+  75 002e 0B4B     		ldr	r3, .L8+4
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 3
+
+
+  76 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  77 0032 DBB2     		uxtb	r3, r3
+  78 0034 012B     		cmp	r3, #1
+  79 0036 FAD1     		bne	.L3
+  80 0038 06E0     		b	.L6
+  81              	.LVL6:
+  82              	.L4:
+  83              	.LBB2:
+  40:main.c        ****         //Send data
+  41:main.c        ****         for(int8 i=0; i<2; i++){
+  42:main.c        ****         UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+  84              		.loc 1 42 0 discriminator 3
+  85 003a 0321     		movs	r1, #3
+  86 003c 0848     		ldr	r0, .L8+8
+  87 003e FFF7FEFF 		bl	UART_PutArray
+  88              	.LVL7:
+  41:main.c        ****         UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+  89              		.loc 1 41 0 discriminator 3
+  90 0042 0134     		adds	r4, r4, #1
+  91              	.LVL8:
+  92 0044 64B2     		sxtb	r4, r4
+  93              	.LVL9:
+  94 0046 00E0     		b	.L2
+  95              	.LVL10:
+  96              	.L6:
+  97              	.LBE2:
+  98 0048 0024     		movs	r4, #0
+  99              	.L2:
+ 100              	.LVL11:
+ 101              	.LBB3:
+  41:main.c        ****         UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+ 102              		.loc 1 41 0 is_stmt 0 discriminator 1
+ 103 004a 012C     		cmp	r4, #1
+ 104 004c F5DD     		ble	.L4
+ 105              	.LBE3:
+  43:main.c        ****         }
+  44:main.c        ****         PacketReadyFlag=0;
+ 106              		.loc 1 44 0 is_stmt 1
+ 107 004e 0022     		movs	r2, #0
+ 108 0050 024B     		ldr	r3, .L8+4
+ 109 0052 1A70     		strb	r2, [r3]
+ 110 0054 EBE7     		b	.L3
+ 111              	.L9:
+ 112 0056 00BF     		.align	2
+ 113              	.L8:
+ 114 0058 00000000 		.word	Custom_ISR_ADC
+ 115 005c 00000000 		.word	PacketReadyFlag
+ 116 0060 00000000 		.word	DataBuffer
+ 117              		.cfi_endproc
+ 118              	.LFE64:
+ 119              		.size	main, .-main
+ 120              		.comm	PacketReadyFlag,1,1
+ 121              		.comm	DataBuffer,3,4
+ 122              		.text
+ 123              	.Letext0:
+ 124              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 125              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 4
+
+
+ 126              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 127              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 128              		.file 6 "Interrupt_Routines.h"
+ 129              		.file 7 "Generated_Source\\PSoC5/UART.h"
+ 130              		.file 8 "Generated_Source\\PSoC5/ADC_DelSig.h"
+ 131              		.file 9 "Generated_Source\\PSoC5/Timer.h"
+ 132              		.file 10 "Generated_Source\\PSoC5/isr_ADC.h"
+ 133              		.file 11 "Generated_Source\\PSoC5/AMux.h"
+ 134              		.section	.debug_info,"",%progbits
+ 135              	.Ldebug_info0:
+ 136 0000 CD010000 		.4byte	0x1cd
+ 137 0004 0400     		.2byte	0x4
+ 138 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 139 000a 04       		.byte	0x4
+ 140 000b 01       		.uleb128 0x1
+ 141 000c 1E000000 		.4byte	.LASF28
+ 142 0010 0C       		.byte	0xc
+ 143 0011 7A010000 		.4byte	.LASF29
+ 144 0015 F3010000 		.4byte	.LASF30
+ 145 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 146 001d 00000000 		.4byte	0
+ 147 0021 00000000 		.4byte	.Ldebug_line0
+ 148 0025 02       		.uleb128 0x2
+ 149 0026 01       		.byte	0x1
+ 150 0027 06       		.byte	0x6
+ 151 0028 D7010000 		.4byte	.LASF0
+ 152 002c 02       		.uleb128 0x2
+ 153 002d 01       		.byte	0x1
+ 154 002e 08       		.byte	0x8
+ 155 002f 10000000 		.4byte	.LASF1
+ 156 0033 02       		.uleb128 0x2
+ 157 0034 02       		.byte	0x2
+ 158 0035 05       		.byte	0x5
+ 159 0036 86010000 		.4byte	.LASF2
+ 160 003a 02       		.uleb128 0x2
+ 161 003b 02       		.byte	0x2
+ 162 003c 07       		.byte	0x7
+ 163 003d C9000000 		.4byte	.LASF3
+ 164 0041 03       		.uleb128 0x3
+ 165 0042 00000000 		.4byte	.LASF9
+ 166 0046 02       		.byte	0x2
+ 167 0047 3F       		.byte	0x3f
+ 168 0048 4C000000 		.4byte	0x4c
+ 169 004c 02       		.uleb128 0x2
+ 170 004d 04       		.byte	0x4
+ 171 004e 05       		.byte	0x5
+ 172 004f B7010000 		.4byte	.LASF4
+ 173 0053 02       		.uleb128 0x2
+ 174 0054 04       		.byte	0x4
+ 175 0055 07       		.byte	0x7
+ 176 0056 B7000000 		.4byte	.LASF5
+ 177 005a 02       		.uleb128 0x2
+ 178 005b 08       		.byte	0x8
+ 179 005c 05       		.byte	0x5
+ 180 005d 6C010000 		.4byte	.LASF6
+ 181 0061 02       		.uleb128 0x2
+ 182 0062 08       		.byte	0x8
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 5
+
+
+ 183 0063 07       		.byte	0x7
+ 184 0064 2C010000 		.4byte	.LASF7
+ 185 0068 04       		.uleb128 0x4
+ 186 0069 04       		.byte	0x4
+ 187 006a 05       		.byte	0x5
+ 188 006b 696E7400 		.ascii	"int\000"
+ 189 006f 02       		.uleb128 0x2
+ 190 0070 04       		.byte	0x4
+ 191 0071 07       		.byte	0x7
+ 192 0072 1F010000 		.4byte	.LASF8
+ 193 0076 03       		.uleb128 0x3
+ 194 0077 5B010000 		.4byte	.LASF10
+ 195 007b 03       		.byte	0x3
+ 196 007c 2C       		.byte	0x2c
+ 197 007d 41000000 		.4byte	0x41
+ 198 0081 05       		.uleb128 0x5
+ 199 0082 A0010000 		.4byte	.LASF11
+ 200 0086 04       		.byte	0x4
+ 201 0087 E801     		.2byte	0x1e8
+ 202 0089 2C000000 		.4byte	0x2c
+ 203 008d 05       		.uleb128 0x5
+ 204 008e 0E010000 		.4byte	.LASF12
+ 205 0092 04       		.byte	0x4
+ 206 0093 EB01     		.2byte	0x1eb
+ 207 0095 25000000 		.4byte	0x25
+ 208 0099 02       		.uleb128 0x2
+ 209 009a 04       		.byte	0x4
+ 210 009b 04       		.byte	0x4
+ 211 009c 0A000000 		.4byte	.LASF13
+ 212 00a0 02       		.uleb128 0x2
+ 213 00a1 08       		.byte	0x8
+ 214 00a2 04       		.byte	0x4
+ 215 00a3 02010000 		.4byte	.LASF14
+ 216 00a7 02       		.uleb128 0x2
+ 217 00a8 01       		.byte	0x1
+ 218 00a9 08       		.byte	0x8
+ 219 00aa 81010000 		.4byte	.LASF15
+ 220 00ae 06       		.uleb128 0x6
+ 221 00af 81000000 		.4byte	0x81
+ 222 00b3 02       		.uleb128 0x2
+ 223 00b4 08       		.byte	0x8
+ 224 00b5 04       		.byte	0x4
+ 225 00b6 CB010000 		.4byte	.LASF16
+ 226 00ba 02       		.uleb128 0x2
+ 227 00bb 04       		.byte	0x4
+ 228 00bc 07       		.byte	0x7
+ 229 00bd 63010000 		.4byte	.LASF17
+ 230 00c1 07       		.uleb128 0x7
+ 231 00c2 09010000 		.4byte	.LASF31
+ 232 00c6 01       		.byte	0x1
+ 233 00c7 10       		.byte	0x10
+ 234 00c8 68000000 		.4byte	0x68
+ 235 00cc 00000000 		.4byte	.LFB64
+ 236 00d0 64000000 		.4byte	.LFE64-.LFB64
+ 237 00d4 01       		.uleb128 0x1
+ 238 00d5 9C       		.byte	0x9c
+ 239 00d6 40010000 		.4byte	0x140
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 6
+
+
+ 240 00da 08       		.uleb128 0x8
+ 241 00db 00000000 		.4byte	.Ldebug_ranges0+0
+ 242 00df 09010000 		.4byte	0x109
+ 243 00e3 09       		.uleb128 0x9
+ 244 00e4 6900     		.ascii	"i\000"
+ 245 00e6 01       		.byte	0x1
+ 246 00e7 29       		.byte	0x29
+ 247 00e8 8D000000 		.4byte	0x8d
+ 248 00ec 00000000 		.4byte	.LLST0
+ 249 00f0 0A       		.uleb128 0xa
+ 250 00f1 42000000 		.4byte	.LVL7
+ 251 00f5 83010000 		.4byte	0x183
+ 252 00f9 0B       		.uleb128 0xb
+ 253 00fa 01       		.uleb128 0x1
+ 254 00fb 50       		.byte	0x50
+ 255 00fc 05       		.uleb128 0x5
+ 256 00fd 03       		.byte	0x3
+ 257 00fe 00000000 		.4byte	DataBuffer
+ 258 0102 0B       		.uleb128 0xb
+ 259 0103 01       		.uleb128 0x1
+ 260 0104 51       		.byte	0x51
+ 261 0105 01       		.uleb128 0x1
+ 262 0106 33       		.byte	0x33
+ 263 0107 00       		.byte	0
+ 264 0108 00       		.byte	0
+ 265 0109 0C       		.uleb128 0xc
+ 266 010a 08000000 		.4byte	.LVL0
+ 267 010e 8E010000 		.4byte	0x18e
+ 268 0112 0C       		.uleb128 0xc
+ 269 0113 0C000000 		.4byte	.LVL1
+ 270 0117 99010000 		.4byte	0x199
+ 271 011b 0C       		.uleb128 0xc
+ 272 011c 10000000 		.4byte	.LVL2
+ 273 0120 A4010000 		.4byte	0x1a4
+ 274 0124 0C       		.uleb128 0xc
+ 275 0125 16000000 		.4byte	.LVL3
+ 276 0129 AF010000 		.4byte	0x1af
+ 277 012d 0C       		.uleb128 0xc
+ 278 012e 20000000 		.4byte	.LVL4
+ 279 0132 BA010000 		.4byte	0x1ba
+ 280 0136 0C       		.uleb128 0xc
+ 281 0137 24000000 		.4byte	.LVL5
+ 282 013b C5010000 		.4byte	0x1c5
+ 283 013f 00       		.byte	0
+ 284 0140 0D       		.uleb128 0xd
+ 285 0141 F5000000 		.4byte	.LASF18
+ 286 0145 05       		.byte	0x5
+ 287 0146 1207     		.2byte	0x712
+ 288 0148 4C010000 		.4byte	0x14c
+ 289 014c 06       		.uleb128 0x6
+ 290 014d 76000000 		.4byte	0x76
+ 291 0151 0E       		.uleb128 0xe
+ 292 0152 81000000 		.4byte	0x81
+ 293 0156 61010000 		.4byte	0x161
+ 294 015a 0F       		.uleb128 0xf
+ 295 015b BA000000 		.4byte	0xba
+ 296 015f 02       		.byte	0x2
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 7
+
+
+ 297 0160 00       		.byte	0
+ 298 0161 10       		.uleb128 0x10
+ 299 0162 C0010000 		.4byte	.LASF19
+ 300 0166 06       		.byte	0x6
+ 301 0167 17       		.byte	0x17
+ 302 0168 51010000 		.4byte	0x151
+ 303 016c 05       		.uleb128 0x5
+ 304 016d 03       		.byte	0x3
+ 305 016e 00000000 		.4byte	DataBuffer
+ 306 0172 10       		.uleb128 0x10
+ 307 0173 90010000 		.4byte	.LASF20
+ 308 0177 06       		.byte	0x6
+ 309 0178 19       		.byte	0x19
+ 310 0179 AE000000 		.4byte	0xae
+ 311 017d 05       		.uleb128 0x5
+ 312 017e 03       		.byte	0x3
+ 313 017f 00000000 		.4byte	PacketReadyFlag
+ 314 0183 11       		.uleb128 0x11
+ 315 0184 E7000000 		.4byte	.LASF21
+ 316 0188 E7000000 		.4byte	.LASF21
+ 317 018c 07       		.byte	0x7
+ 318 018d 8C       		.byte	0x8c
+ 319 018e 11       		.uleb128 0x11
+ 320 018f A6010000 		.4byte	.LASF22
+ 321 0193 A6010000 		.4byte	.LASF22
+ 322 0197 08       		.byte	0x8
+ 323 0198 3A       		.byte	0x3a
+ 324 0199 11       		.uleb128 0x11
+ 325 019a DC000000 		.4byte	.LASF23
+ 326 019e DC000000 		.4byte	.LASF23
+ 327 01a2 07       		.byte	0x7
+ 328 01a3 54       		.byte	0x54
+ 329 01a4 11       		.uleb128 0x11
+ 330 01a5 13010000 		.4byte	.LASF24
+ 331 01a9 13010000 		.4byte	.LASF24
+ 332 01ad 09       		.byte	0x9
+ 333 01ae 5A       		.byte	0x5a
+ 334 01af 11       		.uleb128 0x11
+ 335 01b0 E3010000 		.4byte	.LASF25
+ 336 01b4 E3010000 		.4byte	.LASF25
+ 337 01b8 0A       		.byte	0xa
+ 338 01b9 18       		.byte	0x18
+ 339 01ba 11       		.uleb128 0x11
+ 340 01bb 43010000 		.4byte	.LASF26
+ 341 01bf 43010000 		.4byte	.LASF26
+ 342 01c3 08       		.byte	0x8
+ 343 01c4 3D       		.byte	0x3d
+ 344 01c5 11       		.uleb128 0x11
+ 345 01c6 AC000000 		.4byte	.LASF27
+ 346 01ca AC000000 		.4byte	.LASF27
+ 347 01ce 0B       		.byte	0xb
+ 348 01cf 25       		.byte	0x25
+ 349 01d0 00       		.byte	0
+ 350              		.section	.debug_abbrev,"",%progbits
+ 351              	.Ldebug_abbrev0:
+ 352 0000 01       		.uleb128 0x1
+ 353 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 8
+
+
+ 354 0002 01       		.byte	0x1
+ 355 0003 25       		.uleb128 0x25
+ 356 0004 0E       		.uleb128 0xe
+ 357 0005 13       		.uleb128 0x13
+ 358 0006 0B       		.uleb128 0xb
+ 359 0007 03       		.uleb128 0x3
+ 360 0008 0E       		.uleb128 0xe
+ 361 0009 1B       		.uleb128 0x1b
+ 362 000a 0E       		.uleb128 0xe
+ 363 000b 55       		.uleb128 0x55
+ 364 000c 17       		.uleb128 0x17
+ 365 000d 11       		.uleb128 0x11
+ 366 000e 01       		.uleb128 0x1
+ 367 000f 10       		.uleb128 0x10
+ 368 0010 17       		.uleb128 0x17
+ 369 0011 00       		.byte	0
+ 370 0012 00       		.byte	0
+ 371 0013 02       		.uleb128 0x2
+ 372 0014 24       		.uleb128 0x24
+ 373 0015 00       		.byte	0
+ 374 0016 0B       		.uleb128 0xb
+ 375 0017 0B       		.uleb128 0xb
+ 376 0018 3E       		.uleb128 0x3e
+ 377 0019 0B       		.uleb128 0xb
+ 378 001a 03       		.uleb128 0x3
+ 379 001b 0E       		.uleb128 0xe
+ 380 001c 00       		.byte	0
+ 381 001d 00       		.byte	0
+ 382 001e 03       		.uleb128 0x3
+ 383 001f 16       		.uleb128 0x16
+ 384 0020 00       		.byte	0
+ 385 0021 03       		.uleb128 0x3
+ 386 0022 0E       		.uleb128 0xe
+ 387 0023 3A       		.uleb128 0x3a
+ 388 0024 0B       		.uleb128 0xb
+ 389 0025 3B       		.uleb128 0x3b
+ 390 0026 0B       		.uleb128 0xb
+ 391 0027 49       		.uleb128 0x49
+ 392 0028 13       		.uleb128 0x13
+ 393 0029 00       		.byte	0
+ 394 002a 00       		.byte	0
+ 395 002b 04       		.uleb128 0x4
+ 396 002c 24       		.uleb128 0x24
+ 397 002d 00       		.byte	0
+ 398 002e 0B       		.uleb128 0xb
+ 399 002f 0B       		.uleb128 0xb
+ 400 0030 3E       		.uleb128 0x3e
+ 401 0031 0B       		.uleb128 0xb
+ 402 0032 03       		.uleb128 0x3
+ 403 0033 08       		.uleb128 0x8
+ 404 0034 00       		.byte	0
+ 405 0035 00       		.byte	0
+ 406 0036 05       		.uleb128 0x5
+ 407 0037 16       		.uleb128 0x16
+ 408 0038 00       		.byte	0
+ 409 0039 03       		.uleb128 0x3
+ 410 003a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 9
+
+
+ 411 003b 3A       		.uleb128 0x3a
+ 412 003c 0B       		.uleb128 0xb
+ 413 003d 3B       		.uleb128 0x3b
+ 414 003e 05       		.uleb128 0x5
+ 415 003f 49       		.uleb128 0x49
+ 416 0040 13       		.uleb128 0x13
+ 417 0041 00       		.byte	0
+ 418 0042 00       		.byte	0
+ 419 0043 06       		.uleb128 0x6
+ 420 0044 35       		.uleb128 0x35
+ 421 0045 00       		.byte	0
+ 422 0046 49       		.uleb128 0x49
+ 423 0047 13       		.uleb128 0x13
+ 424 0048 00       		.byte	0
+ 425 0049 00       		.byte	0
+ 426 004a 07       		.uleb128 0x7
+ 427 004b 2E       		.uleb128 0x2e
+ 428 004c 01       		.byte	0x1
+ 429 004d 3F       		.uleb128 0x3f
+ 430 004e 19       		.uleb128 0x19
+ 431 004f 03       		.uleb128 0x3
+ 432 0050 0E       		.uleb128 0xe
+ 433 0051 3A       		.uleb128 0x3a
+ 434 0052 0B       		.uleb128 0xb
+ 435 0053 3B       		.uleb128 0x3b
+ 436 0054 0B       		.uleb128 0xb
+ 437 0055 27       		.uleb128 0x27
+ 438 0056 19       		.uleb128 0x19
+ 439 0057 49       		.uleb128 0x49
+ 440 0058 13       		.uleb128 0x13
+ 441 0059 8701     		.uleb128 0x87
+ 442 005b 19       		.uleb128 0x19
+ 443 005c 11       		.uleb128 0x11
+ 444 005d 01       		.uleb128 0x1
+ 445 005e 12       		.uleb128 0x12
+ 446 005f 06       		.uleb128 0x6
+ 447 0060 40       		.uleb128 0x40
+ 448 0061 18       		.uleb128 0x18
+ 449 0062 9742     		.uleb128 0x2117
+ 450 0064 19       		.uleb128 0x19
+ 451 0065 01       		.uleb128 0x1
+ 452 0066 13       		.uleb128 0x13
+ 453 0067 00       		.byte	0
+ 454 0068 00       		.byte	0
+ 455 0069 08       		.uleb128 0x8
+ 456 006a 0B       		.uleb128 0xb
+ 457 006b 01       		.byte	0x1
+ 458 006c 55       		.uleb128 0x55
+ 459 006d 17       		.uleb128 0x17
+ 460 006e 01       		.uleb128 0x1
+ 461 006f 13       		.uleb128 0x13
+ 462 0070 00       		.byte	0
+ 463 0071 00       		.byte	0
+ 464 0072 09       		.uleb128 0x9
+ 465 0073 34       		.uleb128 0x34
+ 466 0074 00       		.byte	0
+ 467 0075 03       		.uleb128 0x3
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 10
+
+
+ 468 0076 08       		.uleb128 0x8
+ 469 0077 3A       		.uleb128 0x3a
+ 470 0078 0B       		.uleb128 0xb
+ 471 0079 3B       		.uleb128 0x3b
+ 472 007a 0B       		.uleb128 0xb
+ 473 007b 49       		.uleb128 0x49
+ 474 007c 13       		.uleb128 0x13
+ 475 007d 02       		.uleb128 0x2
+ 476 007e 17       		.uleb128 0x17
+ 477 007f 00       		.byte	0
+ 478 0080 00       		.byte	0
+ 479 0081 0A       		.uleb128 0xa
+ 480 0082 898201   		.uleb128 0x4109
+ 481 0085 01       		.byte	0x1
+ 482 0086 11       		.uleb128 0x11
+ 483 0087 01       		.uleb128 0x1
+ 484 0088 31       		.uleb128 0x31
+ 485 0089 13       		.uleb128 0x13
+ 486 008a 00       		.byte	0
+ 487 008b 00       		.byte	0
+ 488 008c 0B       		.uleb128 0xb
+ 489 008d 8A8201   		.uleb128 0x410a
+ 490 0090 00       		.byte	0
+ 491 0091 02       		.uleb128 0x2
+ 492 0092 18       		.uleb128 0x18
+ 493 0093 9142     		.uleb128 0x2111
+ 494 0095 18       		.uleb128 0x18
+ 495 0096 00       		.byte	0
+ 496 0097 00       		.byte	0
+ 497 0098 0C       		.uleb128 0xc
+ 498 0099 898201   		.uleb128 0x4109
+ 499 009c 00       		.byte	0
+ 500 009d 11       		.uleb128 0x11
+ 501 009e 01       		.uleb128 0x1
+ 502 009f 31       		.uleb128 0x31
+ 503 00a0 13       		.uleb128 0x13
+ 504 00a1 00       		.byte	0
+ 505 00a2 00       		.byte	0
+ 506 00a3 0D       		.uleb128 0xd
+ 507 00a4 34       		.uleb128 0x34
+ 508 00a5 00       		.byte	0
+ 509 00a6 03       		.uleb128 0x3
+ 510 00a7 0E       		.uleb128 0xe
+ 511 00a8 3A       		.uleb128 0x3a
+ 512 00a9 0B       		.uleb128 0xb
+ 513 00aa 3B       		.uleb128 0x3b
+ 514 00ab 05       		.uleb128 0x5
+ 515 00ac 49       		.uleb128 0x49
+ 516 00ad 13       		.uleb128 0x13
+ 517 00ae 3F       		.uleb128 0x3f
+ 518 00af 19       		.uleb128 0x19
+ 519 00b0 3C       		.uleb128 0x3c
+ 520 00b1 19       		.uleb128 0x19
+ 521 00b2 00       		.byte	0
+ 522 00b3 00       		.byte	0
+ 523 00b4 0E       		.uleb128 0xe
+ 524 00b5 01       		.uleb128 0x1
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 11
+
+
+ 525 00b6 01       		.byte	0x1
+ 526 00b7 49       		.uleb128 0x49
+ 527 00b8 13       		.uleb128 0x13
+ 528 00b9 01       		.uleb128 0x1
+ 529 00ba 13       		.uleb128 0x13
+ 530 00bb 00       		.byte	0
+ 531 00bc 00       		.byte	0
+ 532 00bd 0F       		.uleb128 0xf
+ 533 00be 21       		.uleb128 0x21
+ 534 00bf 00       		.byte	0
+ 535 00c0 49       		.uleb128 0x49
+ 536 00c1 13       		.uleb128 0x13
+ 537 00c2 2F       		.uleb128 0x2f
+ 538 00c3 0B       		.uleb128 0xb
+ 539 00c4 00       		.byte	0
+ 540 00c5 00       		.byte	0
+ 541 00c6 10       		.uleb128 0x10
+ 542 00c7 34       		.uleb128 0x34
+ 543 00c8 00       		.byte	0
+ 544 00c9 03       		.uleb128 0x3
+ 545 00ca 0E       		.uleb128 0xe
+ 546 00cb 3A       		.uleb128 0x3a
+ 547 00cc 0B       		.uleb128 0xb
+ 548 00cd 3B       		.uleb128 0x3b
+ 549 00ce 0B       		.uleb128 0xb
+ 550 00cf 49       		.uleb128 0x49
+ 551 00d0 13       		.uleb128 0x13
+ 552 00d1 3F       		.uleb128 0x3f
+ 553 00d2 19       		.uleb128 0x19
+ 554 00d3 02       		.uleb128 0x2
+ 555 00d4 18       		.uleb128 0x18
+ 556 00d5 00       		.byte	0
+ 557 00d6 00       		.byte	0
+ 558 00d7 11       		.uleb128 0x11
+ 559 00d8 2E       		.uleb128 0x2e
+ 560 00d9 00       		.byte	0
+ 561 00da 3F       		.uleb128 0x3f
+ 562 00db 19       		.uleb128 0x19
+ 563 00dc 3C       		.uleb128 0x3c
+ 564 00dd 19       		.uleb128 0x19
+ 565 00de 6E       		.uleb128 0x6e
+ 566 00df 0E       		.uleb128 0xe
+ 567 00e0 03       		.uleb128 0x3
+ 568 00e1 0E       		.uleb128 0xe
+ 569 00e2 3A       		.uleb128 0x3a
+ 570 00e3 0B       		.uleb128 0xb
+ 571 00e4 3B       		.uleb128 0x3b
+ 572 00e5 0B       		.uleb128 0xb
+ 573 00e6 00       		.byte	0
+ 574 00e7 00       		.byte	0
+ 575 00e8 00       		.byte	0
+ 576              		.section	.debug_loc,"",%progbits
+ 577              	.Ldebug_loc0:
+ 578              	.LLST0:
+ 579 0000 3A000000 		.4byte	.LVL6
+ 580 0004 44000000 		.4byte	.LVL8
+ 581 0008 0100     		.2byte	0x1
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 12
+
+
+ 582 000a 54       		.byte	0x54
+ 583 000b 46000000 		.4byte	.LVL9
+ 584 000f 48000000 		.4byte	.LVL10
+ 585 0013 0100     		.2byte	0x1
+ 586 0015 54       		.byte	0x54
+ 587 0016 4A000000 		.4byte	.LVL11
+ 588 001a 64000000 		.4byte	.LFE64
+ 589 001e 0100     		.2byte	0x1
+ 590 0020 54       		.byte	0x54
+ 591 0021 00000000 		.4byte	0
+ 592 0025 00000000 		.4byte	0
+ 593              		.section	.debug_aranges,"",%progbits
+ 594 0000 1C000000 		.4byte	0x1c
+ 595 0004 0200     		.2byte	0x2
+ 596 0006 00000000 		.4byte	.Ldebug_info0
+ 597 000a 04       		.byte	0x4
+ 598 000b 00       		.byte	0
+ 599 000c 0000     		.2byte	0
+ 600 000e 0000     		.2byte	0
+ 601 0010 00000000 		.4byte	.LFB64
+ 602 0014 64000000 		.4byte	.LFE64-.LFB64
+ 603 0018 00000000 		.4byte	0
+ 604 001c 00000000 		.4byte	0
+ 605              		.section	.debug_ranges,"",%progbits
+ 606              	.Ldebug_ranges0:
+ 607 0000 3A000000 		.4byte	.LBB2
+ 608 0004 48000000 		.4byte	.LBE2
+ 609 0008 4A000000 		.4byte	.LBB3
+ 610 000c 4E000000 		.4byte	.LBE3
+ 611 0010 00000000 		.4byte	0
+ 612 0014 00000000 		.4byte	0
+ 613 0018 00000000 		.4byte	.LFB64
+ 614 001c 64000000 		.4byte	.LFE64
+ 615 0020 00000000 		.4byte	0
+ 616 0024 00000000 		.4byte	0
+ 617              		.section	.debug_line,"",%progbits
+ 618              	.Ldebug_line0:
+ 619 0000 D2010000 		.section	.debug_str,"MS",%progbits,1
+ 619      0200A001 
+ 619      00000201 
+ 619      FB0E0D00 
+ 619      01010101 
+ 620              	.LASF9:
+ 621 0000 5F5F696E 		.ascii	"__int32_t\000"
+ 621      7433325F 
+ 621      7400
+ 622              	.LASF13:
+ 623 000a 666C6F61 		.ascii	"float\000"
+ 623      7400
+ 624              	.LASF1:
+ 625 0010 756E7369 		.ascii	"unsigned char\000"
+ 625      676E6564 
+ 625      20636861 
+ 625      7200
+ 626              	.LASF28:
+ 627 001e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 627      43313120 
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 13
+
+
+ 627      352E342E 
+ 627      31203230 
+ 627      31363036 
+ 628 0051 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 628      20726576 
+ 628      6973696F 
+ 628      6E203233 
+ 628      37373135 
+ 629 0084 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 629      66756E63 
+ 629      74696F6E 
+ 629      2D736563 
+ 629      74696F6E 
+ 630              	.LASF27:
+ 631 00ac 414D7578 		.ascii	"AMux_Start\000"
+ 631      5F537461 
+ 631      727400
+ 632              	.LASF5:
+ 633 00b7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 633      20756E73 
+ 633      69676E65 
+ 633      6420696E 
+ 633      7400
+ 634              	.LASF3:
+ 635 00c9 73686F72 		.ascii	"short unsigned int\000"
+ 635      7420756E 
+ 635      7369676E 
+ 635      65642069 
+ 635      6E7400
+ 636              	.LASF23:
+ 637 00dc 55415254 		.ascii	"UART_Start\000"
+ 637      5F537461 
+ 637      727400
+ 638              	.LASF21:
+ 639 00e7 55415254 		.ascii	"UART_PutArray\000"
+ 639      5F507574 
+ 639      41727261 
+ 639      7900
+ 640              	.LASF18:
+ 641 00f5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 641      52784275 
+ 641      66666572 
+ 641      00
+ 642              	.LASF14:
+ 643 0102 646F7562 		.ascii	"double\000"
+ 643      6C6500
+ 644              	.LASF31:
+ 645 0109 6D61696E 		.ascii	"main\000"
+ 645      00
+ 646              	.LASF12:
+ 647 010e 696E7438 		.ascii	"int8\000"
+ 647      00
+ 648              	.LASF24:
+ 649 0113 54696D65 		.ascii	"Timer_Start\000"
+ 649      725F5374 
+ 649      61727400 
+ 650              	.LASF8:
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 14
+
+
+ 651 011f 756E7369 		.ascii	"unsigned int\000"
+ 651      676E6564 
+ 651      20696E74 
+ 651      00
+ 652              	.LASF7:
+ 653 012c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 653      206C6F6E 
+ 653      6720756E 
+ 653      7369676E 
+ 653      65642069 
+ 654              	.LASF26:
+ 655 0143 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
+ 655      44656C53 
+ 655      69675F53 
+ 655      74617274 
+ 655      436F6E76 
+ 656              	.LASF10:
+ 657 015b 696E7433 		.ascii	"int32_t\000"
+ 657      325F7400 
+ 658              	.LASF17:
+ 659 0163 73697A65 		.ascii	"sizetype\000"
+ 659      74797065 
+ 659      00
+ 660              	.LASF6:
+ 661 016c 6C6F6E67 		.ascii	"long long int\000"
+ 661      206C6F6E 
+ 661      6720696E 
+ 661      7400
+ 662              	.LASF29:
+ 663 017a 6D61696E 		.ascii	"main.c\000"
+ 663      2E6300
+ 664              	.LASF15:
+ 665 0181 63686172 		.ascii	"char\000"
+ 665      00
+ 666              	.LASF2:
+ 667 0186 73686F72 		.ascii	"short int\000"
+ 667      7420696E 
+ 667      7400
+ 668              	.LASF20:
+ 669 0190 5061636B 		.ascii	"PacketReadyFlag\000"
+ 669      65745265 
+ 669      61647946 
+ 669      6C616700 
+ 670              	.LASF11:
+ 671 01a0 75696E74 		.ascii	"uint8\000"
+ 671      3800
+ 672              	.LASF22:
+ 673 01a6 4144435F 		.ascii	"ADC_DelSig_Start\000"
+ 673      44656C53 
+ 673      69675F53 
+ 673      74617274 
+ 673      00
+ 674              	.LASF4:
+ 675 01b7 6C6F6E67 		.ascii	"long int\000"
+ 675      20696E74 
+ 675      00
+ 676              	.LASF19:
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccDPSbm7.s 			page 15
+
+
+ 677 01c0 44617461 		.ascii	"DataBuffer\000"
+ 677      42756666 
+ 677      657200
+ 678              	.LASF16:
+ 679 01cb 6C6F6E67 		.ascii	"long double\000"
+ 679      20646F75 
+ 679      626C6500 
+ 680              	.LASF0:
+ 681 01d7 7369676E 		.ascii	"signed char\000"
+ 681      65642063 
+ 681      68617200 
+ 682              	.LASF25:
+ 683 01e3 6973725F 		.ascii	"isr_ADC_StartEx\000"
+ 683      4144435F 
+ 683      53746172 
+ 683      74457800 
+ 684              	.LASF30:
+ 685 01f3 433A5C55 		.ascii	"C:\\Users\\Windows\\Desktop\\Magistrale\\II_primo_s"
+ 685      73657273 
+ 685      5C57696E 
+ 685      646F7773 
+ 685      5C446573 
+ 686 0221 656D6573 		.ascii	"emestre\\Project  Lab Sens\\AY2223_I_Project-3\\PSO"
+ 686      7472655C 
+ 686      50726F6A 
+ 686      65637420 
+ 686      204C6162 
+ 687 0251 435C5072 		.ascii	"C\\Project3!.cydsn\000"
+ 687      6F6A6563 
+ 687      7433212E 
+ 687      63796473 
+ 687      6E00
+ 688              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

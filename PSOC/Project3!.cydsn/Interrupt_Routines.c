@@ -16,6 +16,7 @@
 //variable declaretion
 int32 value_digit;
 int32 value_read[4];
+int32 threshold[4] = {7000, 100, 6000, 7000};
 /*
 int32 value_mv[2];
 int32 valuekR[2];
@@ -40,9 +41,14 @@ CY_ISR(Custom_ISR_ADC)
 }
 for(k=0; k<4; k++){
     value_read[k]=value_read[k]/10;
-    DataBuffer[2*k+1] = value_read[k] >> 8;
-    DataBuffer[2*k+2] = value_read[k] & 0xFF;
-  }
+    //DataBuffer[2*k+1] = value_read[k] >> 8;
+    //DataBuffer[2*k+2] = value_read[k] & 0xFF;
+    if(value_read[k] > threshold[k]){
+        DataBuffer[k+1] = 0xFF;
+    }else{
+        DataBuffer[k+1] = 0x00;
+    }
  }
+}
     
 /* [] END OF FILE */
