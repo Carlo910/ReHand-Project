@@ -17,6 +17,7 @@
 int32 value_digit;
 int32 value_read[4];
 int32 threshold[4] = {7000, 100, 6000, 7000};
+int8 codifica[4];
 /*
 int32 value_mv[2];
 int32 valuekR[2];
@@ -36,7 +37,6 @@ CY_ISR(Custom_ISR_ADC)
   
     value_read[i]= value_read[i] + value_digit;
 
-    PacketReadyFlag  = 1;
 }
 }
 for(k=0; k<4; k++){
@@ -44,11 +44,23 @@ for(k=0; k<4; k++){
     //DataBuffer[2*k+1] = value_read[k] >> 8;
     //DataBuffer[2*k+2] = value_read[k] & 0xFF;
     if(value_read[k] > threshold[k]){
-        DataBuffer[k+1] = 0xFF;
+        codifica[k] = 0xFF;
     }else{
-        DataBuffer[k+1] = 0x00;
+        codifica[k] = 0x00;
     }
  }
+
+//GESTURE  
+if(codifica[0]==0 && codifica[1]==0 && codifica[2]==0 && codifica[3]==0){ //MANO APERTA
+    DataBuffer[1] = 0x00;
+}else if (codifica[0]==1 && codifica[1]==1 && codifica[2]==1 && codifica[3]==1){  //MANO CHIUSA
+    DataBuffer[1] = 0x01;  
+}else if(codifica[0]==1 && codifica[1]==1 && codifica[2]==0 && codifica[3]==0){   //POLLICE-INDICE
+    DataBuffer[1] = 0x02;
+}
+
+
+PacketReadyFlag  = 1;
 }
     
 /* [] END OF FILE */

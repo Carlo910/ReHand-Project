@@ -60,7 +60,7 @@ ADC_DelSig_CountsPerVolt
                     0x4               .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig.o)
 value_read          0x10              .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
 value_digit         0x4               .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
-DataBuffer          0x3               .\CortexM3\ARM_GCC_541\Debug\main.o
+DataBuffer          0x6               .\CortexM3\ARM_GCC_541\Debug\main.o
 PacketReadyFlag     0x1               .\CortexM3\ARM_GCC_541\Debug\main.o
 dieTemperature      0x2               .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyFlash.o)
 
@@ -909,7 +909,7 @@ END GROUP
                 0x00001090        0x4 LONG 0x10a0 __cy_region_init_ram
                 0x00001094        0x4 LONG 0x1fff80c8 __cy_region_start_data
                 0x00001098        0x4 LONG 0x90 __cy_region_init_size_ram
-                0x0000109c        0x4 LONG 0x50 __cy_region_zero_size_ram
+                0x0000109c        0x4 LONG 0x58 __cy_region_zero_size_ram
                 0x000010a0                __cy_regions_end = .
                 0x000010a0                . = ALIGN (0x8)
                 0x000010a0                _etext = .
@@ -963,7 +963,7 @@ END GROUP
 .igot.plt       0x1fff8158        0x0 load address 0x00001130
  .igot.plt      0x1fff8158        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff8158       0x50 load address 0x00001130
+.bss            0x1fff8158       0x58 load address 0x00001130
                 0x1fff8158                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -985,29 +985,31 @@ END GROUP
                 0x1fff8188                Timer_initVar
  *(COMMON)
  *fill*         0x1fff8189        0x3 
- COMMON         0x1fff818c        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+ COMMON         0x1fff818c        0x7 .\CortexM3\ARM_GCC_541\Debug\main.o
                 0x1fff818c                DataBuffer
-                0x1fff818f                PacketReadyFlag
- COMMON         0x1fff8190       0x14 .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
-                0x1fff8190                value_read
-                0x1fff81a0                value_digit
- COMMON         0x1fff81a4        0x4 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig.o)
-                0x1fff81a4                ADC_DelSig_CountsPerVolt
-                0x1fff81a8                . = ALIGN (0x8)
+                0x1fff8192                PacketReadyFlag
+ *fill*         0x1fff8193        0x1 
+ COMMON         0x1fff8194       0x14 .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
+                0x1fff8194                value_read
+                0x1fff81a4                value_digit
+ COMMON         0x1fff81a8        0x4 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig.o)
+                0x1fff81a8                ADC_DelSig_CountsPerVolt
+                0x1fff81b0                . = ALIGN (0x8)
+ *fill*         0x1fff81ac        0x4 
  *(.ram.b)
-                0x1fff81a8                _end = .
-                0x1fff81a8                __end = .
-                0x1fff81a8                PROVIDE (end, .)
-                0x1fff81a8                PROVIDE (__bss_end__, .)
+                0x1fff81b0                _end = .
+                0x1fff81b0                __end = .
+                0x1fff81b0                PROVIDE (end, .)
+                0x1fff81b0                PROVIDE (__bss_end__, .)
                 0x000010a0                __cy_region_init_ram = LOADADDR (.data)
                 0x00000090                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x00000050                __cy_region_zero_size_ram = (_end - _edata)
+                0x00000058                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff81a8       0x80 load address 0x00001130
-                0x1fff81a8                . = _end
-                0x1fff8228                . = (. + 0x80)
- *fill*         0x1fff81a8       0x80 
-                0x1fff8228                __cy_heap_limit = .
+.heap           0x1fff81b0       0x80 load address 0x00001130
+                0x1fff81b0                . = _end
+                0x1fff8230                . = (. + 0x80)
+ *fill*         0x1fff81b0       0x80 
+                0x1fff8230                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1167,28 +1169,28 @@ END GROUP
  .debug_abbrev  0x00001561      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyFlash.o)
  .debug_abbrev  0x00001708      0x194 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CySpc.o)
 
-.debug_line     0x00000000     0x2867
+.debug_line     0x00000000     0x2862
  *(.debug_line)
  .debug_line    0x00000000      0x1d6 .\CortexM3\ARM_GCC_541\Debug\main.o
- .debug_line    0x000001d6      0x201 .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
- .debug_line    0x000003d7      0x24e .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00000625      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x00000766      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x0000099a      0x1f0 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(UART.o)
- .debug_line    0x00000b8a      0x373 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig.o)
- .debug_line    0x00000efd       0x87 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_INT.o)
- .debug_line    0x00000f84      0x153 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(Timer.o)
- .debug_line    0x000010d7      0x134 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(isr_ADC.o)
- .debug_line    0x0000120b       0xa8 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(AMux.o)
- .debug_line    0x000012b3      0x17c .\CortexM3\ARM_GCC_541\Debug\Project3!.a(UART_IntClock.o)
- .debug_line    0x0000142f       0xb3 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_AMux.o)
- .debug_line    0x000014e2      0x184 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_Ext_CP_Clk.o)
- .debug_line    0x00001666      0x1a4 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_theACLK.o)
- .debug_line    0x0000180a      0x816 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyLib.o)
- .debug_line    0x00002020      0x367 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(cyPm.o)
- .debug_line    0x00002387       0x66 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyBootAsmGnu.o)
- .debug_line    0x000023ed      0x21a .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyFlash.o)
- .debug_line    0x00002607      0x260 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CySpc.o)
+ .debug_line    0x000001d6      0x1fc .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
+ .debug_line    0x000003d2      0x24e .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000620      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000761      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00000995      0x1f0 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(UART.o)
+ .debug_line    0x00000b85      0x373 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig.o)
+ .debug_line    0x00000ef8       0x87 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_INT.o)
+ .debug_line    0x00000f7f      0x153 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(Timer.o)
+ .debug_line    0x000010d2      0x134 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(isr_ADC.o)
+ .debug_line    0x00001206       0xa8 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(AMux.o)
+ .debug_line    0x000012ae      0x17c .\CortexM3\ARM_GCC_541\Debug\Project3!.a(UART_IntClock.o)
+ .debug_line    0x0000142a       0xb3 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_AMux.o)
+ .debug_line    0x000014dd      0x184 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_Ext_CP_Clk.o)
+ .debug_line    0x00001661      0x1a4 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(ADC_DelSig_theACLK.o)
+ .debug_line    0x00001805      0x816 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyLib.o)
+ .debug_line    0x0000201b      0x367 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(cyPm.o)
+ .debug_line    0x00002382       0x66 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyBootAsmGnu.o)
+ .debug_line    0x000023e8      0x21a .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CyFlash.o)
+ .debug_line    0x00002602      0x260 .\CortexM3\ARM_GCC_541\Debug\Project3!.a(CySpc.o)
 
 .debug_frame    0x00000000     0x194c
  *(.debug_frame)
