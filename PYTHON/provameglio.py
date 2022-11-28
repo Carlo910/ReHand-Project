@@ -3,6 +3,7 @@ import sys
 import time
 
 import logging
+import numpy as np
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import (
@@ -27,6 +28,7 @@ import serial
 import serial.tools.list_ports
 
 CONN_STATUS = False
+
 
 logging.basicConfig(format="%(message)s", level=logging.INFO)
 
@@ -58,27 +60,41 @@ class SerialWorker(QRunnable):
                 if self.port.is_open:
                     CONN_STATUS = True
                     self.signals.status.emit(self.port_name, 1)
-                    time.sleep(0.01)     
+                    time.sleep(0.01)
+                    while(CONN_STATUS == True):
+                     self.Packet()     
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
                 time.sleep(0.01)
 
     @pyqtSlot()
-    def Read(self, byte):
-                                          
-        while(self.port.is_open()):
-            try:
-                dato = self.port.read(10)
-                print(dato, type(dato))
-                logging.info(" Reading {} on port {}.".format(byte, self.port_name))
+    def Packet(self):
+       dato = self.Read()
+       '''
+       if(dato == 0xa0):
+        while(dato != 0xc0):
+            valore = dato
+       '''
+       print(dato)
+       '''
+       if(dato[1:9]):
+            print("Mano Aperta")    
+       else:
+            print("NO GESTURE")
+        '''
+
+
+
+
+    @pyqtSlot()
+    def Read(self):                           
+            try: 
+                pacchetto= self.port.read()
+                logging.info(" Reading {} on port {}.".format(self.port.read() , self.port_name))
             except:
-                logging.info("Could not read {} on port {}.".format(byte, self.port_name))
-              
-
-
-        
-
+                logging.info("Could not read {} on port {}.".format( self.port.read(), self.port_name))
+            return pacchetto
    
     @pyqtSlot()
     def killed(self):
@@ -110,6 +126,7 @@ class MainWindow(QMainWindow):
         self.connected = CONN_STATUS
         self.serialscan()
         self.initUI()
+      
 
     def initUI(self):
         
@@ -154,7 +171,8 @@ class MainWindow(QMainWindow):
         """
         self.port_text = self.com_list_widget.currentText()
         self.conn_btn.setText("Connect to port {}".format(self.port_text))
-    
+       
+
     @pyqtSlot(bool)
     def on_toggle(self, checked):
         """!
@@ -176,6 +194,7 @@ class MainWindow(QMainWindow):
             self.conn_btn.setText(
                 "Connect to port {}".format(self.port_text)
             )
+            
 
 
     def check_serialport_status(self, port_name, status):
@@ -202,6 +221,11 @@ class MainWindow(QMainWindow):
         """
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
+'''
+    def packet(self):
+        self.serial_worker.Read()
+'''   
+      
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
