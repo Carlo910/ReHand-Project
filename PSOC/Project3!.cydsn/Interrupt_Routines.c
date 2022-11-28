@@ -41,26 +41,11 @@ CY_ISR(Custom_ISR_ADC)
 }
 for(k=0; k<4; k++){
     value_read[k]=value_read[k]/10;
-    //DataBuffer[2*k+1] = value_read[k] >> 8;
-    //DataBuffer[2*k+2] = value_read[k] & 0xFF;
-    if(value_read[k] > threshold[k]){
-        codifica[k] = 0xFF;
-    }else{
-        codifica[k] = 0x00;
-    }
- }
-
-//GESTURE  
-if(codifica[0]==0 && codifica[1]==0 && codifica[2]==0 && codifica[3]==0){ //MANO APERTA
-    DataBuffer[1] = 0x00;
-}else if (codifica[0]==1 && codifica[1]==1 && codifica[2]==1 && codifica[3]==1){  //MANO CHIUSA
-    DataBuffer[1] = 0x01;  
-}else if(codifica[0]==1 && codifica[1]==1 && codifica[2]==0 && codifica[3]==0){   //POLLICE-INDICE
-    DataBuffer[1] = 0x02;
+    DataBuffer[2*k+1] = value_read[k] >> 8;
+    DataBuffer[2*k+2] = value_read[k] & 0xFF;
 }
-
-
 PacketReadyFlag  = 1;
 }
+
     
 /* [] END OF FILE */

@@ -1,3 +1,3 @@
-# Component constraints for C:\Users\Windows\Desktop\Magistrale\II_primo_semestre\Project  Lab Sens\AY2223_I_Project-3\PSOC\Project3!.cydsn\TopDesign\TopDesign.cysch
-# Project: C:\Users\Windows\Desktop\Magistrale\II_primo_semestre\Project  Lab Sens\AY2223_I_Project-3\PSOC\Project3!.cydsn\Project3!.cyprj
-# Date: Wed, 23 Nov 2022 14:26:52 GMT
+# Component constraints for C:\Users\Virginia\Desktop\UNI\LABORATORIO DI TECNOLOGIE ELETTRONICHE E BIOSENSORI\PROGETTO\CODICE\AY2223_I_Project-3\PSOC\Project3!.cydsn\TopDesign\TopDesign.cysch
+# Project: C:\Users\Virginia\Desktop\UNI\LABORATORIO DI TECNOLOGIE ELETTRONICHE E BIOSENSORI\PROGETTO\CODICE\AY2223_I_Project-3\PSOC\Project3!.cydsn\Project3!.cyprj
+# Date: Fri, 25 Nov 2022 16:27:39 GMT
