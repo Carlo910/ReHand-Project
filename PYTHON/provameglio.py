@@ -62,40 +62,55 @@ class SerialWorker(QRunnable):
                     self.signals.status.emit(self.port_name, 1)
                     time.sleep(0.01)
                     while(CONN_STATUS == True):
-                     self.Packet()     
+                     self.read_packet()     
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
                 time.sleep(0.01)
 
     @pyqtSlot()
-    def Packet(self):
-       dato = self.Read()
-       '''
-       if(dato == 0xa0):
-        while(dato != 0xc0):
-            valore = dato
-       '''
-       print(dato)
-       '''
-       if(dato[1:9]):
+    def read_packet(self):
+        try: 
+            pacchetto = self.port.read(10)
+            print(pacchetto, type(pacchetto))
+            logging.info("Reading {} on port {}.".format(pacchetto , self.port_name))
+        except:
+            logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
+        #se runnate fino qui almeno legge solo 10 byte
+
+        #dato = self.leggere()
+        #questa cosa dovrebbe ricostrure il pacchetto ma non funziona.
+        valore = list(pacchetto)[1:9]
+        final = []
+        i = 0
+        while(i < len(valore) - 1):
+            final.append(valore[i] << 1 + valore[i+1])#secondo me è sbagliato qui
+            i += 2
+
+        
+        print(final)
+        '''
+        #print(dato, type(dato))
+        
+        if(dato[1:9]):
             print("Mano Aperta")    
-       else:
+        else:
             print("NO GESTURE")
         '''
 
 
-
-
+    '''
     @pyqtSlot()
-    def Read(self):                           
+    def leggere(self): 
+                                  
             try: 
-                pacchetto= self.port.read()
-                logging.info(" Reading {} on port {}.".format(self.port.read() , self.port_name))
+                pacchetto= np.array(self.port.read())
+                logging.info("Reading {} on port {}.".format(pacchetto , self.port_name))
             except:
-                logging.info("Could not read {} on port {}.".format( self.port.read(), self.port_name))
-            return pacchetto
-   
+                logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
+    '''        
+
+
     @pyqtSlot()
     def killed(self):
         
