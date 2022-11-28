@@ -3265,8 +3265,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="D1" library="SparkFun-LED" deviceset="LED-RED" device="0603" value="RED"/>
 <part name="R1" library="SparkFun-Resistors" deviceset="RESISTOR" device="AXIAL-0.3" value=" "/>
 <part name="PIN_123-124" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="BLUETOOTH" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
 <part name="J1" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
+<part name="BLUETOOTH" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3333,17 +3333,17 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="R1" gate="G$1" x="-10.16" y="63.5" smashed="yes" rot="R180">
 <attribute name="NAME" x="-10.16" y="61.976" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
 </instance>
-<instance part="PIN_123-124" gate="G$1" x="-55.88" y="48.26" smashed="yes">
-<attribute name="VALUE" x="-58.42" y="43.434" size="1.778" layer="96" font="vector"/>
-<attribute name="NAME" x="-61.468" y="43.18" size="1.778" layer="95" font="vector" rot="R90"/>
-</instance>
-<instance part="BLUETOOTH" gate="G$1" x="-25.4" y="50.8" smashed="yes" rot="R180">
-<attribute name="VALUE" x="-22.86" y="55.626" size="1.778" layer="96" font="vector" rot="R180"/>
-<attribute name="NAME" x="-22.352" y="53.34" size="1.778" layer="95" font="vector" rot="R270"/>
+<instance part="PIN_123-124" gate="G$1" x="-55.88" y="45.72" smashed="yes">
+<attribute name="VALUE" x="-58.42" y="40.894" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="-61.468" y="40.64" size="1.778" layer="95" font="vector" rot="R90"/>
 </instance>
 <instance part="J1" gate="G$1" x="5.08" y="96.52" smashed="yes" rot="R270">
 <attribute name="VALUE" x="0.254" y="99.06" size="1.778" layer="96" font="vector" rot="R270"/>
 <attribute name="NAME" x="10.668" y="99.06" size="1.778" layer="95" font="vector" rot="R270"/>
+</instance>
+<instance part="BLUETOOTH" gate="G$1" x="17.78" y="50.8" smashed="yes" rot="R180">
+<attribute name="VALUE" x="22.86" y="58.166" size="1.778" layer="96" font="vector" rot="R180"/>
+<attribute name="NAME" x="23.368" y="55.88" size="1.778" layer="95" font="vector" rot="R270"/>
 </instance>
 </instances>
 <busses>
@@ -3391,8 +3391,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="ON/OFF" gate="G$1" pin="1"/>
 <wire x1="-48.26" y1="76.2" x2="5.08" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="FLEX2" gate="G$1" pin="1"/>
-<wire x1="30.48" y1="76.2" x2="33.02" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="76.2" x2="45.72" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="20.32" x2="45.72" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="76.2" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
 <junction x="45.72" y="76.2"/>
@@ -3402,10 +3400,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="FLEX3" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="7.62" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
 <junction x="60.96" y="76.2"/>
+<wire x1="5.08" y1="76.2" x2="12.7" y2="76.2" width="0.1524" layer="91"/>
+<junction x="5.08" y="76.2"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="1"/>
+<wire x1="12.7" y1="76.2" x2="30.48" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="76.2" x2="45.72" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="53.34" x2="12.7" y2="76.2" width="0.1524" layer="91"/>
+<junction x="12.7" y="76.2"/>
 <pinref part="FLEX1" gate="G$1" pin="1"/>
 <wire x1="30.48" y1="35.56" x2="30.48" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="5.08" y1="76.2" x2="30.48" y2="76.2" width="0.1524" layer="91"/>
-<junction x="5.08" y="76.2"/>
+<junction x="30.48" y="76.2"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -3420,20 +3424,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="-22.86" y1="63.5" x2="-15.24" y2="63.5" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<pinref part="PIN_123-124" gate="G$1" pin="2"/>
-<pinref part="BLUETOOTH" gate="G$1" pin="1"/>
-<wire x1="-48.26" y1="50.8" x2="-33.02" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="PIN_123-124" gate="G$1" pin="1"/>
-<pinref part="BLUETOOTH" gate="G$1" pin="2"/>
-<wire x1="-48.26" y1="48.26" x2="-33.02" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -3476,15 +3466,34 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="R6" gate="G$1" pin="2"/>
 <pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="27.94" y1="73.66" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="73.66" x2="27.94" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="73.66" x2="10.16" y2="73.66" width="0.1524" layer="91"/>
 <junction x="27.94" y="73.66"/>
 <pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="10.16" y1="73.66" x2="27.94" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="63.5" x2="-5.08" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="-48.26" y1="73.66" x2="-5.08" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="PSOC_AL" gate="G$1" pin="1"/>
 <wire x1="7.62" y1="73.66" x2="-5.08" y2="73.66" width="0.1524" layer="91"/>
 <junction x="7.62" y="73.66"/>
 <junction x="-5.08" y="73.66"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="2"/>
+<wire x1="12.7" y1="50.8" x2="10.16" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="50.8" x2="10.16" y2="73.66" width="0.1524" layer="91"/>
+<junction x="10.16" y="73.66"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="PIN_123-124" gate="G$1" pin="1"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="4"/>
+<wire x1="-48.26" y1="45.72" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="PIN_123-124" gate="G$1" pin="2"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="3"/>
+<wire x1="-48.26" y1="48.26" x2="12.7" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

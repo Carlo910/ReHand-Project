@@ -21,7 +21,7 @@ def main():
     # initialization
     ser = serial.Serial()
     ser.baudrate = 9600
-    ser.port = 'COM7'
+    ser.port = 'COM9'
     while(not ser.is_open):
         try:
             ser.open()
