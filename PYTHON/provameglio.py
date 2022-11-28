@@ -84,11 +84,10 @@ class SerialWorker(QRunnable):
         final = []
         i = 0
         while(i < len(valore) - 1):
-            final.append(valore[i] << 1 + valore[i+1])#secondo me è sbagliato qui
+            final.append((valore[i] << 8) + valore[i+1]) #secondo me è sbagliato qui
             i += 2
-
-        
         print(final)
+
         '''
         #print(dato, type(dato))
         
