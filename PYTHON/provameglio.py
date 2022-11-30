@@ -87,7 +87,12 @@ class SerialWorker(QRunnable):
         while(i < len(valore) - 1):
             final.append((valore[i] << 8) + valore[i+1]) #secondo me è sbagliato qui
             i += 2
-        
+        print(final)
+
+        if(final[0]>5500):
+                print("Dito 1 piegato")
+        else:
+                print("Dito 1 non piegato")
 
         '''
         #print(dato, type(dato))
