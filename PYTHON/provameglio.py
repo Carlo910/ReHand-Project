@@ -24,6 +24,10 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 
+# We import library dedicated to data plot
+import pyqtgraph as pg
+from pyqtgraph import PlotWidget
+
 import serial
 import serial.tools.list_ports
 
@@ -61,8 +65,10 @@ class SerialWorker(QRunnable):
                     CONN_STATUS = True
                     self.signals.status.emit(self.port_name, 1)
                     time.sleep(0.01)
+                    self.sample=0
                     while(CONN_STATUS == True):
-                     self.read_packet()     
+                     self.read_packet()   
+                     self.check_gesture()  
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
@@ -80,35 +86,27 @@ class SerialWorker(QRunnable):
 
         #dato = self.leggere()
         #questa cosa dovrebbe ricostrure il pacchetto ma non funziona.
-        valore = list(pacchetto)[1:9]
-        final = []
-        i = 0
-        while(i < len(valore) - 1):
-            final.append((valore[i] << 8) + valore[i+1]) #secondo me è sbagliato qui
-            i += 2
-        print(final)
+        valore = list(pacchetto)
+        #self.sample=0
+        if(pacchetto[0]==160 and pacchetto[9]==192):
+            valore=list(pacchetto[1:9])
+            self.final = []
+            i = 0
+            while(i < len(valore) - 1):
+                self.final.append((valore[i] << 8) + valore[i+1])
+                i += 2
+            print(self.final)
+            self.sample += 1
+            print(self.sample)
 
-        '''
-        #print(dato, type(dato))
-        
-        if(dato[1:9]):
-            print("Mano Aperta")    
-        else:
-            print("NO GESTURE")
-        '''
+    def check_gesture(self):
+            if(self.final[0]>5500):
+                print("Dito 1 piegato")
+            else:
+                print("Dito 1 non piegato")
 
 
-    '''
-    @pyqtSlot()
-    def leggere(self): 
-                                  
-            try: 
-                pacchetto= np.array(self.port.read())
-                logging.info("Reading {} on port {}.".format(pacchetto , self.port_name))
-            except:
-                logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
-    '''        
-
+ 
 
     @pyqtSlot()
     def killed(self):
@@ -144,19 +142,77 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
         
+        #Create the plot widget
+        self.graphWidget = PlotWidget()
+
+        self.plot_btn = QPushButton(
+            text="View Plot", 
+            clicked=self.draw
+        )
+        self.clear_btn = QPushButton(
+            text="Clear",
+            clicked=self.graphWidget.clear # .clear() is a method of the PlotWidget class
+        )
         # layout
         button_hlay = QHBoxLayout()
         button_hlay.addWidget(self.com_list_widget)
         button_hlay.addWidget(self.conn_btn)
         #led_hlay = QHBoxLayout()
-        #led_hlay.addWidget(self.on_btn)
+        button_hlay.addWidget(self.plot_btn)
         #led_hlay.addWidget(self.off_btn)
         vlay = QVBoxLayout()
         vlay.addLayout(button_hlay)
-      # vlay.addLayout(led_hlay)
+        #vlay.addLayout(led_hlay)
         widget = QWidget()
         widget.setLayout(vlay)
         self.setCentralWidget(widget)
+
+
+       #layout graph
+        button_hlay = QHBoxLayout()
+        button_hlay.addWidget(self.clear_btn)
+        button_hlay.addWidget(self.plot_btn)
+        vlay = QVBoxLayout()
+        vlay.addLayout(button_hlay)
+        vlay.addWidget(self.graphWidget)
+        widget = QWidget()
+        widget.setLayout(vlay)
+        self.setCentralWidget(widget)
+
+        # Plot settings
+        # Add grid
+        self.graphWidget.showGrid(x=True, y=True)
+        # Set background color
+        self.graphWidget.setBackground('w')
+        # Add title
+        self.graphWidget.setTitle("Finger Movements")
+        # Add axis labels
+        styles = {'color':'g', 'font-size':'15px'}
+        self.graphWidget.setLabel('left', 'Value [digits]', **styles)
+        self.graphWidget.setLabel('bottom', 'Samples []', **styles)
+        # Add legend
+        self.graphWidget.addLegend()
+
+        # Plot data: x, y values
+        self.draw()
+        
+
+    def draw(self):
+        """!
+        @brief Draw the plots.
+        """
+        self.Flex1line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[0], 'Flex 1', 'r')
+        self.Forceline = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[1], 'Force', 'b')
+        self.Flex2line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[2], 'Flex 2', 'g')
+        self.Flex3line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[3], 'Flex 3', 'c')
+
+    def plot(self, graph, x, y, curve_name, color):
+        """!
+        @brief Draw graph.
+        """
+        pen = pg.mkPen(color=color)
+        line = graph.plot(x, y, name=curve_name, pen=pen)
+        return line
 
     def serialscan(self):
         
