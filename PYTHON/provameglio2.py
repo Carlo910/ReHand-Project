@@ -61,9 +61,10 @@ class SerialWorker(QRunnable):
                     CONN_STATUS = True
                     self.signals.status.emit(self.port_name, 1)
                     time.sleep(0.01)
+                    self.sample = 0
                     while(CONN_STATUS == True):
                         self.read_packet()
-                            
+                        self.check_gesture()   
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
@@ -78,52 +79,24 @@ class SerialWorker(QRunnable):
         except:
             logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
 
-        #dato = self.leggere()
         valore = list(pacchetto)
-        if(pacchetto[0]==[160] and pacchetto[9]==[192]):
+        #self.sample=0
+        if(pacchetto[0]==160 and pacchetto[9]==192):
             valore=list(pacchetto[1:9])
-            final = []
+            self.final = []
             i = 0
             while(i < len(valore) - 1):
-                final.append((valore[i] << 8) + valore[i+1])
+                self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
-            print(final)
+            print(self.final)
+            self.sample += 1
+            print(self.sample)
 
-            if(final[0]>[5500]):
+    def check_gesture(self):
+            if(self.final[0]>5500):
                 print("Dito 1 piegato")
             else:
                 print("Dito 1 non piegato")
-
-            
-
-    '''
-    @pyqtSlot()
-    def check_gesture(self,final):
-        if(self.final[0]>5000):
-            print("Dito 1 piegato")
-        else:
-            print("Non funzia")
-     '''
-    '''
-        #print(dato, type(dato))
-        
-        if(dato[1:9]):
-            print("Mano Aperta")    
-        else:
-            print("NO GESTURE")
-        '''
-
-
-    '''
-    @pyqtSlot()
-    def leggere(self): 
-                                  
-            try: 
-                pacchetto= np.array(self.port.read())
-                logging.info("Reading {} on port {}.".format(pacchetto , self.port_name))
-            except:
-                logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
-    '''        
 
 
     @pyqtSlot()
