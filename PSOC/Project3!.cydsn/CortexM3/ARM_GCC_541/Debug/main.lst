@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
   37              		.syntax unified
   38              	@ 18 "main.c" 1
   39 0002 62B6     		CPSIE   i
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 2
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 2
 
 
   40              	@ 0 "" 2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
   39:main.c        ****        if ( PacketReadyFlag==1){
   74              		.loc 1 39 0
   75 002e 0B4B     		ldr	r3, .L8+4
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 3
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 3
 
 
   76 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  123              	.Letext0:
  124              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
  125              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 4
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 4
 
 
  126              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
@@ -196,53 +196,53 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  138 0006 00000000 		.4byte	.Ldebug_abbrev0
  139 000a 04       		.byte	0x4
  140 000b 01       		.uleb128 0x1
- 141 000c A8000000 		.4byte	.LASF28
+ 141 000c 26000000 		.4byte	.LASF28
  142 0010 0C       		.byte	0xc
- 143 0011 04020000 		.4byte	.LASF29
- 144 0015 00000000 		.4byte	.LASF30
+ 143 0011 86010000 		.4byte	.LASF29
+ 144 0015 D7010000 		.4byte	.LASF30
  145 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
  146 001d 00000000 		.4byte	0
  147 0021 00000000 		.4byte	.Ldebug_line0
  148 0025 02       		.uleb128 0x2
  149 0026 01       		.byte	0x1
  150 0027 06       		.byte	0x6
- 151 0028 61020000 		.4byte	.LASF0
+ 151 0028 2F020000 		.4byte	.LASF0
  152 002c 02       		.uleb128 0x2
  153 002d 01       		.byte	0x1
  154 002e 08       		.byte	0x8
- 155 002f 9A000000 		.4byte	.LASF1
+ 155 002f 18000000 		.4byte	.LASF1
  156 0033 02       		.uleb128 0x2
  157 0034 02       		.byte	0x2
  158 0035 05       		.byte	0x5
- 159 0036 10020000 		.4byte	.LASF2
+ 159 0036 92010000 		.4byte	.LASF2
  160 003a 02       		.uleb128 0x2
  161 003b 02       		.byte	0x2
  162 003c 07       		.byte	0x7
- 163 003d 53010000 		.4byte	.LASF3
+ 163 003d D1000000 		.4byte	.LASF3
  164 0041 03       		.uleb128 0x3
- 165 0042 8A000000 		.4byte	.LASF9
+ 165 0042 00000000 		.4byte	.LASF9
  166 0046 02       		.byte	0x2
  167 0047 3F       		.byte	0x3f
  168 0048 4C000000 		.4byte	0x4c
  169 004c 02       		.uleb128 0x2
  170 004d 04       		.byte	0x4
  171 004e 05       		.byte	0x5
- 172 004f 41020000 		.4byte	.LASF4
+ 172 004f C3010000 		.4byte	.LASF4
  173 0053 02       		.uleb128 0x2
  174 0054 04       		.byte	0x4
  175 0055 07       		.byte	0x7
- 176 0056 41010000 		.4byte	.LASF5
+ 176 0056 BF000000 		.4byte	.LASF5
  177 005a 02       		.uleb128 0x2
  178 005b 08       		.byte	0x8
  179 005c 05       		.byte	0x5
- 180 005d F6010000 		.4byte	.LASF6
+ 180 005d 78010000 		.4byte	.LASF6
  181 0061 02       		.uleb128 0x2
  182 0062 08       		.byte	0x8
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 5
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 5
 
 
  183 0063 07       		.byte	0x7
- 184 0064 B6010000 		.4byte	.LASF7
+ 184 0064 34010000 		.4byte	.LASF7
  185 0068 04       		.uleb128 0x4
  186 0069 04       		.byte	0x4
  187 006a 05       		.byte	0x5
@@ -250,46 +250,46 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  189 006f 02       		.uleb128 0x2
  190 0070 04       		.byte	0x4
  191 0071 07       		.byte	0x7
- 192 0072 A9010000 		.4byte	.LASF8
+ 192 0072 27010000 		.4byte	.LASF8
  193 0076 03       		.uleb128 0x3
- 194 0077 E5010000 		.4byte	.LASF10
+ 194 0077 0A000000 		.4byte	.LASF10
  195 007b 03       		.byte	0x3
  196 007c 2C       		.byte	0x2c
  197 007d 41000000 		.4byte	0x41
  198 0081 05       		.uleb128 0x5
- 199 0082 2A020000 		.4byte	.LASF11
+ 199 0082 AC010000 		.4byte	.LASF11
  200 0086 04       		.byte	0x4
  201 0087 E801     		.2byte	0x1e8
  202 0089 2C000000 		.4byte	0x2c
  203 008d 05       		.uleb128 0x5
- 204 008e 98010000 		.4byte	.LASF12
+ 204 008e 16010000 		.4byte	.LASF12
  205 0092 04       		.byte	0x4
  206 0093 EB01     		.2byte	0x1eb
  207 0095 25000000 		.4byte	0x25
  208 0099 02       		.uleb128 0x2
  209 009a 04       		.byte	0x4
  210 009b 04       		.byte	0x4
- 211 009c 94000000 		.4byte	.LASF13
+ 211 009c 12000000 		.4byte	.LASF13
  212 00a0 02       		.uleb128 0x2
  213 00a1 08       		.byte	0x8
  214 00a2 04       		.byte	0x4
- 215 00a3 8C010000 		.4byte	.LASF14
+ 215 00a3 0A010000 		.4byte	.LASF14
  216 00a7 02       		.uleb128 0x2
  217 00a8 01       		.byte	0x1
  218 00a9 08       		.byte	0x8
- 219 00aa 0B020000 		.4byte	.LASF15
+ 219 00aa 8D010000 		.4byte	.LASF15
  220 00ae 06       		.uleb128 0x6
  221 00af 81000000 		.4byte	0x81
  222 00b3 02       		.uleb128 0x2
  223 00b4 08       		.byte	0x8
  224 00b5 04       		.byte	0x4
- 225 00b6 55020000 		.4byte	.LASF16
+ 225 00b6 63010000 		.4byte	.LASF16
  226 00ba 02       		.uleb128 0x2
  227 00bb 04       		.byte	0x4
  228 00bc 07       		.byte	0x7
- 229 00bd ED010000 		.4byte	.LASF17
+ 229 00bd 6F010000 		.4byte	.LASF17
  230 00c1 07       		.uleb128 0x7
- 231 00c2 93010000 		.4byte	.LASF31
+ 231 00c2 11010000 		.4byte	.LASF31
  232 00c6 01       		.byte	0x1
  233 00c7 10       		.byte	0x10
  234 00c8 68000000 		.4byte	0x68
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  237 00d4 01       		.uleb128 0x1
  238 00d5 9C       		.byte	0x9c
  239 00d6 40010000 		.4byte	0x140
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 6
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 6
 
 
  240 00da 08       		.uleb128 0x8
@@ -346,7 +346,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  282 013b C5010000 		.4byte	0x1c5
  283 013f 00       		.byte	0
  284 0140 0D       		.uleb128 0xd
- 285 0141 7F010000 		.4byte	.LASF18
+ 285 0141 FD000000 		.4byte	.LASF18
  286 0145 05       		.byte	0x5
  287 0146 1207     		.2byte	0x712
  288 0148 4C010000 		.4byte	0x14c
@@ -358,12 +358,12 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  294 015a 0F       		.uleb128 0xf
  295 015b BA000000 		.4byte	0xba
  296 015f 09       		.byte	0x9
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 7
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 7
 
 
  297 0160 00       		.byte	0
  298 0161 10       		.uleb128 0x10
- 299 0162 4A020000 		.4byte	.LASF19
+ 299 0162 CC010000 		.4byte	.LASF19
  300 0166 06       		.byte	0x6
  301 0167 17       		.byte	0x17
  302 0168 51010000 		.4byte	0x151
@@ -371,7 +371,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  304 016d 03       		.byte	0x3
  305 016e 00000000 		.4byte	DataBuffer
  306 0172 10       		.uleb128 0x10
- 307 0173 1A020000 		.4byte	.LASF20
+ 307 0173 9C010000 		.4byte	.LASF20
  308 0177 06       		.byte	0x6
  309 0178 19       		.byte	0x19
  310 0179 AE000000 		.4byte	0xae
@@ -379,38 +379,38 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  312 017e 03       		.byte	0x3
  313 017f 00000000 		.4byte	PacketReadyFlag
  314 0183 11       		.uleb128 0x11
- 315 0184 71010000 		.4byte	.LASF21
- 316 0188 71010000 		.4byte	.LASF21
+ 315 0184 EF000000 		.4byte	.LASF21
+ 316 0188 EF000000 		.4byte	.LASF21
  317 018c 07       		.byte	0x7
  318 018d 8C       		.byte	0x8c
  319 018e 11       		.uleb128 0x11
- 320 018f 30020000 		.4byte	.LASF22
- 321 0193 30020000 		.4byte	.LASF22
+ 320 018f B2010000 		.4byte	.LASF22
+ 321 0193 B2010000 		.4byte	.LASF22
  322 0197 08       		.byte	0x8
  323 0198 3A       		.byte	0x3a
  324 0199 11       		.uleb128 0x11
- 325 019a 66010000 		.4byte	.LASF23
- 326 019e 66010000 		.4byte	.LASF23
+ 325 019a E4000000 		.4byte	.LASF23
+ 326 019e E4000000 		.4byte	.LASF23
  327 01a2 07       		.byte	0x7
  328 01a3 54       		.byte	0x54
  329 01a4 11       		.uleb128 0x11
- 330 01a5 9D010000 		.4byte	.LASF24
- 331 01a9 9D010000 		.4byte	.LASF24
+ 330 01a5 1B010000 		.4byte	.LASF24
+ 331 01a9 1B010000 		.4byte	.LASF24
  332 01ad 09       		.byte	0x9
  333 01ae 5A       		.byte	0x5a
  334 01af 11       		.uleb128 0x11
- 335 01b0 6D020000 		.4byte	.LASF25
- 336 01b4 6D020000 		.4byte	.LASF25
+ 335 01b0 3B020000 		.4byte	.LASF25
+ 336 01b4 3B020000 		.4byte	.LASF25
  337 01b8 0A       		.byte	0xa
  338 01b9 18       		.byte	0x18
  339 01ba 11       		.uleb128 0x11
- 340 01bb CD010000 		.4byte	.LASF26
- 341 01bf CD010000 		.4byte	.LASF26
+ 340 01bb 4B010000 		.4byte	.LASF26
+ 341 01bf 4B010000 		.4byte	.LASF26
  342 01c3 08       		.byte	0x8
  343 01c4 3D       		.byte	0x3d
  344 01c5 11       		.uleb128 0x11
- 345 01c6 36010000 		.4byte	.LASF27
- 346 01ca 36010000 		.4byte	.LASF27
+ 345 01c6 B4000000 		.4byte	.LASF27
+ 346 01ca B4000000 		.4byte	.LASF27
  347 01ce 0B       		.byte	0xb
  348 01cf 25       		.byte	0x25
  349 01d0 00       		.byte	0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  351              	.Ldebug_abbrev0:
  352 0000 01       		.uleb128 0x1
  353 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 8
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 8
 
 
  354 0002 01       		.byte	0x1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  408 0038 00       		.byte	0
  409 0039 03       		.uleb128 0x3
  410 003a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 9
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 9
 
 
  411 003b 3A       		.uleb128 0x3a
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  465 0073 34       		.uleb128 0x34
  466 0074 00       		.byte	0
  467 0075 03       		.uleb128 0x3
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 10
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 10
 
 
  468 0076 08       		.uleb128 0x8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  522 00b3 00       		.byte	0
  523 00b4 0E       		.uleb128 0xe
  524 00b5 01       		.uleb128 0x1
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 11
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 11
 
 
  525 00b6 01       		.byte	0x1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  579 0000 3A000000 		.4byte	.LVL6
  580 0004 44000000 		.4byte	.LVL8
  581 0008 0100     		.2byte	0x1
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 12
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 12
 
 
  582 000a 54       		.byte	0x54
@@ -703,174 +703,169 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 1
  619      00000201 
  619      FB0E0D00 
  619      01010101 
- 620              	.LASF30:
- 621 0000 433A5C55 		.ascii	"C:\\Users\\Virginia\\Desktop\\UNI\\LABORATORIO DI T"
- 621      73657273 
- 621      5C566972 
- 621      67696E69 
- 621      615C4465 
- 622 002e 45434E4F 		.ascii	"ECNOLOGIE ELETTRONICHE E BIOSENSORI\\PROGETTO\\CODI"
- 622      4C4F4749 
- 622      4520454C 
- 622      45545452 
- 622      4F4E4943 
- 623 005f 43455C41 		.ascii	"CE\\AY2223_I_Project-3\\PSOC\\Project3!.cydsn\000"
- 623      59323232 
- 623      335F495F 
- 623      50726F6A 
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 13
-
-
- 623      6563742D 
- 624              	.LASF9:
- 625 008a 5F5F696E 		.ascii	"__int32_t\000"
- 625      7433325F 
+ 620              	.LASF9:
+ 621 0000 5F5F696E 		.ascii	"__int32_t\000"
+ 621      7433325F 
+ 621      7400
+ 622              	.LASF10:
+ 623 000a 696E7433 		.ascii	"int32_t\000"
+ 623      325F7400 
+ 624              	.LASF13:
+ 625 0012 666C6F61 		.ascii	"float\000"
  625      7400
- 626              	.LASF13:
- 627 0094 666C6F61 		.ascii	"float\000"
- 627      7400
- 628              	.LASF1:
- 629 009a 756E7369 		.ascii	"unsigned char\000"
- 629      676E6564 
- 629      20636861 
- 629      7200
- 630              	.LASF28:
- 631 00a8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 631      43313120 
- 631      352E342E 
- 631      31203230 
- 631      31363036 
- 632 00db 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 632      20726576 
- 632      6973696F 
- 632      6E203233 
- 632      37373135 
- 633 010e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 633      66756E63 
- 633      74696F6E 
- 633      2D736563 
- 633      74696F6E 
- 634              	.LASF27:
- 635 0136 414D7578 		.ascii	"AMux_Start\000"
- 635      5F537461 
- 635      727400
- 636              	.LASF5:
- 637 0141 6C6F6E67 		.ascii	"long unsigned int\000"
- 637      20756E73 
- 637      69676E65 
- 637      6420696E 
- 637      7400
- 638              	.LASF3:
- 639 0153 73686F72 		.ascii	"short unsigned int\000"
- 639      7420756E 
- 639      7369676E 
- 639      65642069 
- 639      6E7400
- 640              	.LASF23:
- 641 0166 55415254 		.ascii	"UART_Start\000"
- 641      5F537461 
- 641      727400
- 642              	.LASF21:
- 643 0171 55415254 		.ascii	"UART_PutArray\000"
- 643      5F507574 
- 643      41727261 
- 643      7900
- 644              	.LASF18:
- 645 017f 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 645      52784275 
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 14
+ 626              	.LASF1:
+ 627 0018 756E7369 		.ascii	"unsigned char\000"
+ 627      676E6564 
+ 627      20636861 
+ 627      7200
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 13
 
 
- 645      66666572 
- 645      00
- 646              	.LASF14:
- 647 018c 646F7562 		.ascii	"double\000"
- 647      6C6500
- 648              	.LASF31:
- 649 0193 6D61696E 		.ascii	"main\000"
+ 628              	.LASF28:
+ 629 0026 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 629      43313120 
+ 629      352E342E 
+ 629      31203230 
+ 629      31363036 
+ 630 0059 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 630      20726576 
+ 630      6973696F 
+ 630      6E203233 
+ 630      37373135 
+ 631 008c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 631      66756E63 
+ 631      74696F6E 
+ 631      2D736563 
+ 631      74696F6E 
+ 632              	.LASF27:
+ 633 00b4 414D7578 		.ascii	"AMux_Start\000"
+ 633      5F537461 
+ 633      727400
+ 634              	.LASF5:
+ 635 00bf 6C6F6E67 		.ascii	"long unsigned int\000"
+ 635      20756E73 
+ 635      69676E65 
+ 635      6420696E 
+ 635      7400
+ 636              	.LASF3:
+ 637 00d1 73686F72 		.ascii	"short unsigned int\000"
+ 637      7420756E 
+ 637      7369676E 
+ 637      65642069 
+ 637      6E7400
+ 638              	.LASF23:
+ 639 00e4 55415254 		.ascii	"UART_Start\000"
+ 639      5F537461 
+ 639      727400
+ 640              	.LASF21:
+ 641 00ef 55415254 		.ascii	"UART_PutArray\000"
+ 641      5F507574 
+ 641      41727261 
+ 641      7900
+ 642              	.LASF18:
+ 643 00fd 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 643      52784275 
+ 643      66666572 
+ 643      00
+ 644              	.LASF14:
+ 645 010a 646F7562 		.ascii	"double\000"
+ 645      6C6500
+ 646              	.LASF31:
+ 647 0111 6D61696E 		.ascii	"main\000"
+ 647      00
+ 648              	.LASF12:
+ 649 0116 696E7438 		.ascii	"int8\000"
  649      00
- 650              	.LASF12:
- 651 0198 696E7438 		.ascii	"int8\000"
- 651      00
- 652              	.LASF24:
- 653 019d 54696D65 		.ascii	"Timer_Start\000"
- 653      725F5374 
- 653      61727400 
- 654              	.LASF8:
- 655 01a9 756E7369 		.ascii	"unsigned int\000"
- 655      676E6564 
- 655      20696E74 
- 655      00
- 656              	.LASF7:
- 657 01b6 6C6F6E67 		.ascii	"long long unsigned int\000"
- 657      206C6F6E 
- 657      6720756E 
- 657      7369676E 
- 657      65642069 
- 658              	.LASF26:
- 659 01cd 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
- 659      44656C53 
- 659      69675F53 
- 659      74617274 
- 659      436F6E76 
- 660              	.LASF10:
- 661 01e5 696E7433 		.ascii	"int32_t\000"
- 661      325F7400 
- 662              	.LASF17:
- 663 01ed 73697A65 		.ascii	"sizetype\000"
- 663      74797065 
- 663      00
- 664              	.LASF6:
- 665 01f6 6C6F6E67 		.ascii	"long long int\000"
- 665      206C6F6E 
- 665      6720696E 
- 665      7400
- 666              	.LASF29:
- 667 0204 6D61696E 		.ascii	"main.c\000"
- 667      2E6300
- 668              	.LASF15:
- 669 020b 63686172 		.ascii	"char\000"
- 669      00
- 670              	.LASF2:
- 671 0210 73686F72 		.ascii	"short int\000"
- 671      7420696E 
- 671      7400
- 672              	.LASF20:
- 673 021a 5061636B 		.ascii	"PacketReadyFlag\000"
- 673      65745265 
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc25rLtp.s 			page 15
+ 650              	.LASF24:
+ 651 011b 54696D65 		.ascii	"Timer_Start\000"
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 14
 
 
- 673      61647946 
- 673      6C616700 
- 674              	.LASF11:
- 675 022a 75696E74 		.ascii	"uint8\000"
- 675      3800
- 676              	.LASF22:
- 677 0230 4144435F 		.ascii	"ADC_DelSig_Start\000"
- 677      44656C53 
- 677      69675F53 
- 677      74617274 
+ 651      725F5374 
+ 651      61727400 
+ 652              	.LASF8:
+ 653 0127 756E7369 		.ascii	"unsigned int\000"
+ 653      676E6564 
+ 653      20696E74 
+ 653      00
+ 654              	.LASF7:
+ 655 0134 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 655      206C6F6E 
+ 655      6720756E 
+ 655      7369676E 
+ 655      65642069 
+ 656              	.LASF26:
+ 657 014b 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
+ 657      44656C53 
+ 657      69675F53 
+ 657      74617274 
+ 657      436F6E76 
+ 658              	.LASF16:
+ 659 0163 6C6F6E67 		.ascii	"long double\000"
+ 659      20646F75 
+ 659      626C6500 
+ 660              	.LASF17:
+ 661 016f 73697A65 		.ascii	"sizetype\000"
+ 661      74797065 
+ 661      00
+ 662              	.LASF6:
+ 663 0178 6C6F6E67 		.ascii	"long long int\000"
+ 663      206C6F6E 
+ 663      6720696E 
+ 663      7400
+ 664              	.LASF29:
+ 665 0186 6D61696E 		.ascii	"main.c\000"
+ 665      2E6300
+ 666              	.LASF15:
+ 667 018d 63686172 		.ascii	"char\000"
+ 667      00
+ 668              	.LASF2:
+ 669 0192 73686F72 		.ascii	"short int\000"
+ 669      7420696E 
+ 669      7400
+ 670              	.LASF20:
+ 671 019c 5061636B 		.ascii	"PacketReadyFlag\000"
+ 671      65745265 
+ 671      61647946 
+ 671      6C616700 
+ 672              	.LASF11:
+ 673 01ac 75696E74 		.ascii	"uint8\000"
+ 673      3800
+ 674              	.LASF22:
+ 675 01b2 4144435F 		.ascii	"ADC_DelSig_Start\000"
+ 675      44656C53 
+ 675      69675F53 
+ 675      74617274 
+ 675      00
+ 676              	.LASF4:
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccD9D2ef.s 			page 15
+
+
+ 677 01c3 6C6F6E67 		.ascii	"long int\000"
+ 677      20696E74 
  677      00
- 678              	.LASF4:
- 679 0241 6C6F6E67 		.ascii	"long int\000"
- 679      20696E74 
- 679      00
- 680              	.LASF19:
- 681 024a 44617461 		.ascii	"DataBuffer\000"
- 681      42756666 
- 681      657200
- 682              	.LASF16:
- 683 0255 6C6F6E67 		.ascii	"long double\000"
- 683      20646F75 
- 683      626C6500 
- 684              	.LASF0:
- 685 0261 7369676E 		.ascii	"signed char\000"
- 685      65642063 
- 685      68617200 
- 686              	.LASF25:
- 687 026d 6973725F 		.ascii	"isr_ADC_StartEx\000"
- 687      4144435F 
- 687      53746172 
- 687      74457800 
- 688              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 678              	.LASF19:
+ 679 01cc 44617461 		.ascii	"DataBuffer\000"
+ 679      42756666 
+ 679      657200
+ 680              	.LASF30:
+ 681 01d7 433A5C55 		.ascii	"C:\\Users\\feder\\Desktop\\Poli\\Anno V\\PROGETTO L"
+ 681      73657273 
+ 681      5C666564 
+ 681      65725C44 
+ 681      65736B74 
+ 682 0204 41425C41 		.ascii	"AB\\AY2223_I_Project-3\\PSOC\\Project3!.cydsn\000"
+ 682      59323232 
+ 682      335F495F 
+ 682      50726F6A 
+ 682      6563742D 
+ 683              	.LASF0:
+ 684 022f 7369676E 		.ascii	"signed char\000"
+ 684      65642063 
+ 684      68617200 
+ 685              	.LASF25:
+ 686 023b 6973725F 		.ascii	"isr_ADC_StartEx\000"
+ 686      4144435F 
+ 686      53746172 
+ 686      74457800 
+ 687              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
