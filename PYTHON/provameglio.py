@@ -62,7 +62,8 @@ class SerialWorker(QRunnable):
                     self.signals.status.emit(self.port_name, 1)
                     time.sleep(0.01)
                     while(CONN_STATUS == True):
-                     self.read_packet()     
+                        self.read_packet()
+                            
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
@@ -86,7 +87,7 @@ class SerialWorker(QRunnable):
         while(i < len(valore) - 1):
             final.append((valore[i] << 8) + valore[i+1]) #secondo me è sbagliato qui
             i += 2
-        print(final)
+        
 
         '''
         #print(dato, type(dato))
