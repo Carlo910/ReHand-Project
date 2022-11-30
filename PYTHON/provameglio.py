@@ -39,6 +39,7 @@ logging.basicConfig(format="%(message)s", level=logging.INFO)
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
     status = pyqtSignal(str, int)
+    packet = pyqtSignal(list, int)
 
 class SerialWorker(QRunnable):
     
@@ -196,14 +197,14 @@ class MainWindow(QMainWindow):
         self.draw()
         
 
-    def draw(self):
+    def draw(self, final, sample_number):
         """!
         @brief Draw the plots.
         """
-        self.Flex1line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[0], 'Flex 1', 'r')
-        self.Forceline = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[1], 'Force', 'b')
-        self.Flex2line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[2], 'Flex 2', 'g')
-        self.Flex3line = self.plot(self.graphWidget, self.serial_worker.sample, self.serial_worker.final[3], 'Flex 3', 'c')
+        self.Flex1line = self.plot(self.graphWidget, sample_number, final[0], 'Flex 1', 'r')
+        self.Forceline = self.plot(self.graphWidget, sample_number, final[1], 'Force', 'b')
+        self.Flex2line = self.plot(self.graphWidget, sample_number, final[2], 'Flex 2', 'g')
+        self.Flex3line = self.plot(self.graphWidget, sample_number, final[3], 'Flex 3', 'c')
 
     def plot(self, graph, x, y, curve_name, color):
         """!
@@ -253,6 +254,7 @@ class MainWindow(QMainWindow):
             # connect worker signals to functions
             self.serial_worker.signals.status.connect(self.check_serialport_status)
             self.serial_worker.signals.device_port.connect(self.connected_device)
+            self.serial_worker.signals.packet.connect(self.handle_packet)
             # execute the worker
             self.threadpool.start(self.serial_worker)
         else:
@@ -290,10 +292,9 @@ class MainWindow(QMainWindow):
         """
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
-'''
-    def packet(self):
-        self.serial_worker.Read()
-'''   
+
+    def handle_packet(self, lista, samp_number):
+        self.draw(samp_number, lista)
       
 
 if __name__ == '__main__':
