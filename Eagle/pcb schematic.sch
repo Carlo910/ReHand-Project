@@ -5628,7 +5628,6 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <part name="FLEX3" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
 <part name="FSR" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
 <part name="PSOC_AL" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="PIN_26-23" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="R5" library="SparkFun-Resistors" deviceset="RESISTOR" device="AXIAL-0.3" value=" "/>
 <part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="AXIAL-0.3" value=" "/>
 <part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="AXIAL-0.3" value=" "/>
@@ -5640,8 +5639,11 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <part name="BLUETOOTH" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="5MM" package3d_urn="urn:adsk.eagle:package:15799/2"/>
 <part name="SWITCH" library="con-garry" library_urn="urn:adsk.eagle:library:147" deviceset="332-02" device="" package3d_urn="urn:adsk.eagle:package:6810/1"/>
-<part name="SOSTEGNOPSOC1" library="SparkFun-Connectors" deviceset="CONN_01" device=""/>
 <part name="STABILIZZATORE" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND"/>
+<part name="PIN_10" library="SparkFun-Connectors" deviceset="CONN_01" device=""/>
+<part name="PIN_123" library="SparkFun-Connectors" deviceset="CONN_01" device=""/>
+<part name="PIN_27" library="SparkFun-Connectors" deviceset="CONN_01" device=""/>
+<part name="PIN_22" library="SparkFun-Connectors" deviceset="CONN_01" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5673,10 +5675,6 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <instance part="PSOC_AL" gate="G$1" x="-55.88" y="73.66" smashed="yes">
 <attribute name="VALUE" x="-58.42" y="68.834" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="-61.468" y="71.12" size="1.778" layer="95" font="vector" rot="R90"/>
-</instance>
-<instance part="PIN_26-23" gate="G$1" x="-53.34" y="27.94" smashed="yes">
-<attribute name="VALUE" x="-58.42" y="20.574" size="1.778" layer="96" font="vector"/>
-<attribute name="NAME" x="-61.468" y="22.86" size="1.778" layer="95" font="vector" rot="R90"/>
 </instance>
 <instance part="R5" gate="G$1" x="27.94" y="43.18" smashed="yes" rot="R90">
 <attribute name="NAME" x="26.416" y="43.18" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
@@ -5725,13 +5723,25 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <attribute name="NAME" x="4.318" y="104.14" size="1.524" layer="95" rot="R270"/>
 <attribute name="VALUE" x="6.477" y="107.442" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="SOSTEGNOPSOC1" gate="G$1" x="-106.68" y="114.3" smashed="yes">
-<attribute name="VALUE" x="-109.22" y="109.474" size="1.778" layer="96" font="vector"/>
-<attribute name="NAME" x="-112.268" y="111.76" size="1.778" layer="95" font="vector" rot="R90"/>
-</instance>
 <instance part="STABILIZZATORE" gate="J$1" x="20.32" y="96.52" smashed="yes" rot="R270">
 <attribute name="VALUE" x="12.954" y="99.06" size="1.778" layer="96" font="vector" rot="R270"/>
 <attribute name="NAME" x="25.908" y="99.06" size="1.778" layer="95" font="vector" rot="R270"/>
+</instance>
+<instance part="PIN_10" gate="G$1" x="-55.88" y="33.02" smashed="yes">
+<attribute name="VALUE" x="-58.42" y="28.194" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="-61.468" y="30.48" size="1.778" layer="95" font="vector" rot="R90"/>
+</instance>
+<instance part="PIN_123" gate="G$1" x="-55.88" y="27.94" smashed="yes">
+<attribute name="VALUE" x="-58.42" y="23.114" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="-61.468" y="25.4" size="1.778" layer="95" font="vector" rot="R90"/>
+</instance>
+<instance part="PIN_27" gate="G$1" x="-55.88" y="22.86" smashed="yes">
+<attribute name="VALUE" x="-58.42" y="18.034" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="-61.468" y="20.32" size="1.778" layer="95" font="vector" rot="R90"/>
+</instance>
+<instance part="PIN_22" gate="G$1" x="-55.88" y="17.78" smashed="yes">
+<attribute name="VALUE" x="-58.42" y="12.954" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="-61.468" y="15.24" size="1.778" layer="95" font="vector" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -5739,36 +5749,38 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <nets>
 <net name="N$2" class="0">
 <segment>
-<pinref part="PIN_26-23" gate="G$1" pin="3"/>
-<wire x1="-48.26" y1="30.48" x2="17.78" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="33.02" x2="17.78" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="FLEX2" gate="G$1" pin="2"/>
-<wire x1="17.78" y1="20.32" x2="43.18" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="43.18" y1="20.32" x2="43.18" y2="27.94" width="0.1524" layer="91"/>
 <junction x="43.18" y="20.32"/>
+<wire x1="43.18" y1="20.32" x2="-25.4" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="20.32" x2="-25.4" y2="27.94" width="0.1524" layer="91"/>
+<pinref part="PIN_123" gate="G$1" pin="1"/>
+<wire x1="-25.4" y1="27.94" x2="-48.26" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="PIN_26-23" gate="G$1" pin="2"/>
-<wire x1="-48.26" y1="27.94" x2="10.16" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="FLEX3" gate="G$1" pin="2"/>
-<wire x1="10.16" y1="30.48" x2="10.16" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="7.62" x2="58.42" y2="7.62" width="0.1524" layer="91"/>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="58.42" y1="15.24" x2="58.42" y2="7.62" width="0.1524" layer="91"/>
 <junction x="58.42" y="7.62"/>
+<wire x1="58.42" y1="7.62" x2="-38.1" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="-38.1" y1="7.62" x2="-38.1" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="PIN_27" gate="G$1" pin="1"/>
+<wire x1="-38.1" y1="22.86" x2="-48.26" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="PIN_26-23" gate="G$1" pin="4"/>
 <pinref part="FLEX1" gate="G$1" pin="2"/>
-<wire x1="-48.26" y1="33.02" x2="27.94" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<junction x="27.94" y="35.56"/>
 <wire x1="27.94" y1="38.1" x2="27.94" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="PIN_10" gate="G$1" pin="1"/>
+<wire x1="-48.26" y1="33.02" x2="10.16" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="33.02" x2="10.16" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="38.1" x2="27.94" y2="38.1" width="0.1524" layer="91"/>
+<junction x="27.94" y="38.1"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -5891,14 +5903,14 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="PIN_26-23" gate="G$1" pin="1"/>
-<wire x1="-48.26" y1="25.4" x2="5.08" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="FSR" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="-5.08" x2="5.08" y2="-5.08" width="0.1524" layer="91"/>
-<wire x1="5.08" y1="-5.08" x2="5.08" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="-5.08" x2="-43.18" y2="-5.08" width="0.1524" layer="91"/>
 <pinref part="R8" gate="G$1" pin="1"/>
 <wire x1="73.66" y1="-5.08" x2="73.66" y2="7.62" width="0.1524" layer="91"/>
 <junction x="73.66" y="-5.08"/>
+<wire x1="-43.18" y1="-5.08" x2="-43.18" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="PIN_22" gate="G$1" pin="1"/>
+<wire x1="-43.18" y1="17.78" x2="-48.26" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
