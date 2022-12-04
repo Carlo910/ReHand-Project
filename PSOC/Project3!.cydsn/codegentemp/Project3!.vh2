@@ -2,7 +2,7 @@
 --	Conversion of Project3!.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Nov 29 01:06:02 2022
+--	Sat Dec 03 17:04:27 2022
 --
 
 USE cypress.cypress.all;
@@ -183,11 +183,11 @@ TERMINAL Net_281 : bit;
 TERMINAL Net_282 : bit;
 TERMINAL Net_283 : bit;
 TERMINAL Net_284 : bit;
-TERMINAL Net_285 : bit;
+TERMINAL Net_302 : bit;
 TERMINAL Net_286 : bit;
 TERMINAL Net_287 : bit;
 TERMINAL Net_288 : bit;
-TERMINAL Net_289 : bit;
+TERMINAL Net_301 : bit;
 TERMINAL Net_290 : bit;
 TERMINAL Net_291_1 : bit;
 TERMINAL Net_291_0 : bit;
@@ -686,8 +686,8 @@ KIT_059_1:cy_annotation_universal_v1_0
 			Net_166, Net_271, Net_272, Net_273,
 			Net_274, Net_275, Net_276, Net_277,
 			Net_278, Net_279, Net_280, Net_281,
-			Net_282, Net_283, Net_284, Net_285,
-			Net_286, Net_287, Net_288, Net_289,
+			Net_282, Net_283, Net_284, Net_302,
+			Net_286, Net_287, Net_288, Net_301,
 			Net_290, Net_291_1, Net_291_0));
 \ADC_DelSig:vRef_2\:cy_vref_v1_0
 	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
@@ -1189,6 +1189,11 @@ R_Pin_3:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__R_Pin_3_net_0);
+Bat_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Battery_v1_0",
+		port_names=>"Neg, Pos",
+		width=>2)
+	PORT MAP(connect=>(Net_302, Net_301));
 \UART:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\UART:BUART:clock_op\,

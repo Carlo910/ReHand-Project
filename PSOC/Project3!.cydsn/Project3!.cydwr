@@ -3345,34 +3345,35 @@
   <Group key="Pin2">
     <Group key="4be21e74-552d-48ae-be0e-e55089e3973e">
       <Group key="0">
-        <Data key="Port Format" value="2,6" />
+        <Data key="Port Format" value="1,2" />
       </Group>
     </Group>
     <Group key="1425177d-0d0e-4468-8bcc-e638e5509a9b">
       <Group key="0">
-        <Data key="Port Format" value="12,6" />
+        <Data key="Port Format" value="3,1" />
       </Group>
     </Group>
     <Group key="1779090f-b136-4f02-8c0c-c3fc46643f1f">
       <Group key="0">
-        <Data key="Port Format" value="2,4" />
+        <Data key="Port Format" value="2,5" />
       </Group>
     </Group>
     <Group key="2674704e-2e5d-4518-ace4-8b4ea7641c00">
       <Group key="0">
-        <Data key="Port Format" value="2,3" />
+        <Data key="Port Format" value="2,7" />
       </Group>
     </Group>
     <Group key="77715107-f8d5-47e5-a629-0fb83101ac6b">
       <Group key="0">
-        <Data key="Port Format" value="2,5" />
+        <Data key="Port Format" value="2,2" />
       </Group>
     </Group>
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">
       <Group key="0">
-        <Data key="Port Format" value="12,7" />
+        <Data key="Port Format" value="3,0" />
       </Group>
     </Group>
+    <Group key="UnAssigned Pins" />
   </Group>
   <Group key="PlaceDir">
     <Data key="count" value="0" />
@@ -3393,12 +3394,12 @@
     <Data key="CYDEV_TRACE_ENABLED" value="False" />
     <Data key="CYDEV_USE_BUNDLED_CMSIS" value="True" />
     <Data key="CYDEV_VARIABLE_VDDA" value="False" />
-    <Data key="CYDEV_VDDA" value="5.0" />
-    <Data key="CYDEV_VDDD" value="5.0" />
-    <Data key="CYDEV_VDDIO0" value="5.0" />
-    <Data key="CYDEV_VDDIO1" value="5.0" />
-    <Data key="CYDEV_VDDIO2" value="5.0" />
-    <Data key="CYDEV_VDDIO3" value="5.0" />
+    <Data key="CYDEV_VDDA" value="3.3" />
+    <Data key="CYDEV_VDDD" value="3.3" />
+    <Data key="CYDEV_VDDIO0" value="3.3" />
+    <Data key="CYDEV_VDDIO1" value="3.3" />
+    <Data key="CYDEV_VDDIO2" value="3.3" />
+    <Data key="CYDEV_VDDIO3" value="3.3" />
     <Data key="CYDEV_WO_NVL_ENABLED" value="False" />
   </Group>
 </DesignWideResources>
