@@ -4,6 +4,7 @@ import time
 
 import logging
 import numpy as np
+import csv 
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import (
@@ -91,6 +92,7 @@ class SerialWorker(QRunnable):
             print(self.final)
             self.sample += 1
             print(self.sample)
+            
 
     def check_gesture(self):
             if(self.final[0]>5500):
