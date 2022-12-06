@@ -1,10 +1,7 @@
 import sys
-
 import time
-
 import logging
 import numpy as np
-
 from PyQt5 import QtCore
 from PyQt5.QtCore import (
     QObject,
@@ -13,7 +10,6 @@ from PyQt5.QtCore import (
     pyqtSignal, 
     pyqtSlot
 )
-
 from PyQt5.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -23,23 +19,20 @@ from PyQt5.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-
 # We import library dedicated to data plot
 import pyqtgraph as pg
 from pyqtgraph import PlotWidget
-
 import serial
 import serial.tools.list_ports
 
 CONN_STATUS = False
-
 
 logging.basicConfig(format="%(message)s", level=logging.INFO)
 
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
     status = pyqtSignal(str, int)
-    packet = pyqtSignal(list, int)
+    packet = pyqtSignal(list)
 
 class SerialWorker(QRunnable):
     
@@ -91,9 +84,10 @@ class SerialWorker(QRunnable):
         final = []
         i = 0
         while(i < len(valore) - 1):
-            final.append((valore[i] << 8) + valore[i+1]) #secondo me è sbagliato qui
+            final.append((valore[i] << 8) + valore[i+1]) 
             i += 2
         print(final)
+        self.signals.packet.emit(final)
 
         '''
         #print(dato, type(dato))
@@ -103,10 +97,6 @@ class SerialWorker(QRunnable):
         else:
             print("NO GESTURE")
         '''
-
-
-
- 
 
     @pyqtSlot()
     def killed(self):
@@ -193,18 +183,31 @@ class MainWindow(QMainWindow):
         # Add legend
         self.graphWidget.addLegend()
 
+        self.sec = list(range(100))  # 100 time points
+        self.y1 = []
+        self.y2 = []
+        self.y3 = []
+        self.y4 = []
+                
+        # Timer to update the plot every 50ms
+        self.timer = QtCore.QTimer()
+        self.timer.setInterval(50)
+        self.timer.timeout.connect(self.update_plot_data)
+        self.timer.start()
+
+
         # Plot data: x, y values
         self.draw()
         
 
-    def draw(self, final, sample_number):
+    def draw(self):
         """!
         @brief Draw the plots.
         """
-        self.Flex1line = self.plot(self.graphWidget, sample_number, final[0], 'Flex 1', 'r')
-        self.Forceline = self.plot(self.graphWidget, sample_number, final[1], 'Force', 'b')
-        self.Flex2line = self.plot(self.graphWidget, sample_number, final[2], 'Flex 2', 'g')
-        self.Flex3line = self.plot(self.graphWidget, sample_number, final[3], 'Flex 3', 'c')
+        self.Flex1line = self.plot(self.graphWidget, self.sec, self.y1, 'Flex 1', 'r')
+        self.Forceline = self.plot(self.graphWidget, self.sec, self.y2, 'Force', 'b')
+        self.Flex2line = self.plot(self.graphWidget, self.sec, self.y3, 'Flex 2', 'g')
+        self.Flex3line = self.plot(self.graphWidget, self.sec, self.y4, 'Flex 3', 'c')
 
     def plot(self, graph, x, y, curve_name, color):
         """!
@@ -212,6 +215,7 @@ class MainWindow(QMainWindow):
         """
         pen = pg.mkPen(color=color)
         line = graph.plot(x, y, name=curve_name, pen=pen)
+        self.data_line =  self.graphWidget.plot(x, y, pen=pen)
         return line
 
     def serialscan(self):
@@ -293,8 +297,26 @@ class MainWindow(QMainWindow):
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
 
-    def handle_packet(self, lista, samp_number):
-        self.draw(samp_number, lista)
+    def handle_packet(self, final):
+        self.draw(final)
+    
+    def update_plot_data(self, final):
+
+        print(final)
+        
+        self.sec = self.sec[1:]  # Remove the first y element.
+        self.sec.append(self.sec[-1] + 1)  # Add a new value 1 higher than the last.
+
+        self.y1 = self.y1[1:]  # Remove the first
+        self.y1 = self.y1.append(final[0])
+        self.y2 = self.y2[1:]
+        self.y2 = self.y2.append(final[1])
+        self.y3 = self.y3[1:]
+        self.y3 = self.y3.append(final[2])
+        self.y4 = self.y4[1:]
+        self.y4 = self.y4.append(final[3])
+
+        self.data_line.setData(self.sec, self.y1, self.y2, self.y3, self.y4)  # Update the data.
       
 
 if __name__ == '__main__':

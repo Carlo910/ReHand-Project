@@ -1,6 +1,6 @@
 // ======================================================================
 // Project3!.v generated from TopDesign.cysch
-// 12/03/2022 at 17:04
+// 12/06/2022 at 10:06
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -607,9 +607,122 @@ module Timer_v2_80_2 (
 
 endmodule
 
+// UART_v2_50(Address1=0, Address2=0, BaudRate=9600, BreakBitsRX=13, BreakBitsTX=13, BreakDetect=false, CRCoutputsEn=false, Enable_RX=1, Enable_RXIntInterrupt=0, Enable_TX=1, Enable_TXIntInterrupt=0, EnableHWAddress=0, EnIntRXInterrupt=false, EnIntTXInterrupt=false, FlowControl=0, HalfDuplexEn=false, HwTXEnSignal=true, InternalClock=true, InternalClockToleranceMinus=3.93736842105263, InternalClockTolerancePlus=3.93736842105263, InternalClockUsed=1, InterruptOnAddDetect=0, InterruptOnAddressMatch=0, InterruptOnBreak=0, InterruptOnByteRcvd=1, InterruptOnOverrunError=0, InterruptOnParityError=0, InterruptOnStopError=0, InterruptOnTXComplete=false, InterruptOnTXFifoEmpty=false, InterruptOnTXFifoFull=false, InterruptOnTXFifoNotFull=false, IntOnAddressDetect=false, IntOnAddressMatch=false, IntOnBreak=false, IntOnByteRcvd=true, IntOnOverrunError=false, IntOnParityError=false, IntOnStopError=false, NumDataBits=8, NumStopBits=1, OverSamplingRate=8, ParityType=0, ParityTypeSw=false, RequiredClock=76800, RXAddressMode=0, RXBufferSize=4, RxBuffRegSizeReplacementString=uint8, RXEnable=true, TXBitClkGenDP=true, TXBufferSize=4, TxBuffRegSizeReplacementString=uint8, TXEnable=true, Use23Polling=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=UART_v2_50, CY_CONFIG_TITLE=UART_BT, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART_BT, CY_INSTANCE_SHORT_NAME=UART_BT, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=50, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=UART_BT, )
+module UART_v2_50_3 (
+    clock,
+    cts_n,
+    reset,
+    rts_n,
+    rx,
+    rx_clk,
+    rx_data,
+    rx_interrupt,
+    tx,
+    tx_clk,
+    tx_data,
+    tx_en,
+    tx_interrupt);
+    input       clock;
+    input       cts_n;
+    input       reset;
+    output      rts_n;
+    input       rx;
+    output      rx_clk;
+    output      rx_data;
+    output      rx_interrupt;
+    output      tx;
+    output      tx_clk;
+    output      tx_data;
+    output      tx_en;
+    output      tx_interrupt;
+
+    parameter Address1 = 0;
+    parameter Address2 = 0;
+    parameter EnIntRXInterrupt = 0;
+    parameter EnIntTXInterrupt = 0;
+    parameter FlowControl = 0;
+    parameter HalfDuplexEn = 0;
+    parameter HwTXEnSignal = 1;
+    parameter NumDataBits = 8;
+    parameter NumStopBits = 1;
+    parameter ParityType = 0;
+    parameter RXEnable = 1;
+    parameter TXEnable = 1;
+
+          wire  Net_289;
+          wire  Net_61;
+          wire  Net_9;
+
+
+	cy_clock_v1_0
+		#(.id("eca3a73d-a6e6-48a8-bb9a-47261f5db8db/be0a0e37-ad17-42ca-b5a1-1a654d736358"),
+		  .source_clock_id(""),
+		  .divisor(0),
+		  .period("13020833333.3333"),
+		  .is_direct(0),
+		  .is_digital(1))
+		IntClock
+		 (.clock_out(Net_9));
+
+
+	// VirtualMux_1 (cy_virtualmux_v1_0)
+	assign Net_61 = Net_9;
+
+    B_UART_v2_50 BUART (
+        .clock(Net_61),
+        .cts_n(cts_n),
+        .reset(reset),
+        .rts_n(rts_n),
+        .rx(rx),
+        .rx_clk(rx_clk),
+        .rx_data(rx_data),
+        .rx_interrupt(rx_interrupt),
+        .tx(tx),
+        .tx_clk(tx_clk),
+        .tx_data(tx_data),
+        .tx_en(tx_en),
+        .tx_interrupt(tx_interrupt));
+    defparam BUART.Address1 = 0;
+    defparam BUART.Address2 = 0;
+    defparam BUART.BreakBitsRX = 13;
+    defparam BUART.BreakBitsTX = 13;
+    defparam BUART.BreakDetect = 0;
+    defparam BUART.CRCoutputsEn = 0;
+    defparam BUART.FlowControl = 0;
+    defparam BUART.HalfDuplexEn = 0;
+    defparam BUART.HwTXEnSignal = 1;
+    defparam BUART.NumDataBits = 8;
+    defparam BUART.NumStopBits = 1;
+    defparam BUART.OverSampleCount = 8;
+    defparam BUART.ParityType = 0;
+    defparam BUART.ParityTypeSw = 0;
+    defparam BUART.RXAddressMode = 0;
+    defparam BUART.RXEnable = 1;
+    defparam BUART.RXStatusIntEnable = 1;
+    defparam BUART.TXBitClkGenDP = 1;
+    defparam BUART.TXEnable = 1;
+    defparam BUART.Use23Polling = 1;
+
+
+
+endmodule
+
 // top
 module top ;
 
+          wire  Net_365;
+          wire  Net_364;
+          wire  Net_363;
+          wire  Net_362;
+          wire  Net_361;
+          wire  Net_360;
+          wire  Net_359;
+          wire  Net_358;
+          wire  Net_357;
+          wire  Net_356;
+          wire  Net_355;
+          wire  Net_354;
+          wire  Net_353;
     electrical  Net_299;
     electrical  Net_167;
     electrical  Net_182;
@@ -632,56 +745,56 @@ module top ;
           wire  Net_79;
           wire  Net_76;
           wire  Net_77;
-    electrical [1:0] Net_291;
-    electrical  Net_290;
-    electrical  Net_288;
-    electrical  Net_287;
-    electrical  Net_286;
-    electrical  Net_284;
-    electrical  Net_283;
-    electrical  Net_282;
-    electrical  Net_281;
-    electrical  Net_280;
-    electrical  Net_279;
-    electrical  Net_278;
-    electrical  Net_277;
-    electrical  Net_276;
-    electrical  Net_275;
-    electrical  Net_274;
-    electrical  Net_273;
-    electrical  Net_272;
-    electrical  Net_271;
-    electrical  Net_300;
-    electrical  Net_267;
-    electrical  Net_266;
-    electrical  Net_265;
-    electrical  Net_264;
-    electrical  Net_263;
-    electrical  Net_262;
-    electrical  Net_261;
-    electrical  Net_260;
-    electrical  Net_259;
-    electrical  Net_258;
-    electrical  Net_257;
-    electrical  Net_256;
-    electrical  Net_255;
-    electrical  Net_254;
-    electrical  Net_253;
-    electrical  Net_252;
-    electrical  Net_251;
-    electrical  Net_250;
-    electrical  Net_249;
-    electrical  Net_248;
-    electrical  Net_247;
-    electrical  Net_246;
-    electrical  Net_245;
-    electrical  Net_244;
-    electrical  Net_243;
-    electrical  Net_242;
-    electrical  Net_241;
-    electrical  Net_240;
-    electrical  Net_239;
-    electrical  Net_238;
+    electrical [1:0] Net_352;
+    electrical  Net_351;
+    electrical  Net_350;
+    electrical  Net_349;
+    electrical  Net_348;
+    electrical  Net_347;
+    electrical  Net_346;
+    electrical  Net_345;
+    electrical  Net_344;
+    electrical  Net_343;
+    electrical  Net_342;
+    electrical  Net_341;
+    electrical  Net_340;
+    electrical  Net_339;
+    electrical  Net_338;
+    electrical  Net_337;
+    electrical  Net_336;
+    electrical  Net_335;
+    electrical  Net_334;
+    electrical  Net_333;
+    electrical  Net_332;
+    electrical  Net_331;
+    electrical  Net_330;
+    electrical  Net_329;
+    electrical  Net_328;
+    electrical  Net_327;
+    electrical  Net_326;
+    electrical  Net_325;
+    electrical  Net_324;
+    electrical  Net_323;
+    electrical  Net_322;
+    electrical  Net_321;
+    electrical  Net_320;
+    electrical  Net_319;
+    electrical  Net_318;
+    electrical  Net_317;
+    electrical  Net_316;
+    electrical  Net_315;
+    electrical  Net_314;
+    electrical  Net_313;
+    electrical  Net_312;
+    electrical  Net_311;
+    electrical  Net_310;
+    electrical  Net_309;
+    electrical  Net_308;
+    electrical  Net_307;
+    electrical  Net_306;
+    electrical  Net_305;
+    electrical  Net_304;
+    electrical  Net_303;
           wire  Net_13;
           wire  Net_12;
           wire  Net_11;
@@ -886,64 +999,64 @@ module top ;
 
     cy_annotation_universal_v1_0 KIT_059_1 (
         .connect({
-            Net_238,
-            Net_239,
-            Net_240,
-            Net_241,
-            Net_242,
-            Net_243,
-            Net_244,
-            Net_245,
-            Net_246,
-            Net_247,
-            Net_248,
-            Net_249,
-            Net_250,
-            Net_251,
-            Net_252,
-            Net_253,
-            Net_254,
+            Net_303,
+            Net_304,
+            Net_305,
+            Net_306,
+            Net_307,
+            Net_308,
+            Net_309,
+            Net_310,
+            Net_311,
+            Net_312,
+            Net_313,
+            Net_314,
+            Net_315,
+            Net_316,
+            Net_317,
+            Net_318,
+            Net_319,
             Net_54,
             Net_55,
-            Net_255,
-            Net_256,
-            Net_257,
-            Net_258,
-            Net_259,
-            Net_260,
-            Net_261,
-            Net_262,
-            Net_263,
-            Net_264,
-            Net_265,
-            Net_266,
-            Net_267,
-            Net_300,
+            Net_320,
+            Net_321,
+            Net_322,
+            Net_323,
+            Net_324,
+            Net_325,
+            Net_326,
+            Net_327,
+            Net_328,
+            Net_329,
+            Net_330,
+            Net_331,
+            Net_332,
+            Net_333,
             Net_168,
             Net_293,
             Net_154,
             Net_166,
-            Net_271,
-            Net_272,
-            Net_273,
-            Net_274,
-            Net_275,
-            Net_276,
-            Net_277,
-            Net_278,
-            Net_279,
-            Net_280,
-            Net_281,
-            Net_282,
-            Net_283,
-            Net_284,
+            Net_334,
+            Net_335,
+            Net_336,
+            Net_337,
+            Net_338,
+            Net_339,
+            Net_340,
+            Net_341,
+            Net_342,
+            Net_343,
+            Net_344,
+            Net_345,
+            Net_346,
+            Net_347,
             Net_302,
-            Net_286,
-            Net_287,
-            Net_288,
+            Net_348,
+            Net_349,
+            Net_350,
             Net_301,
-            Net_290,
-            Net_291[1:0]
+            Net_351,
+            Net_352[1:0]
         })
     );
     defparam KIT_059_1.comp_name = "KIT_059_v1_0";
@@ -1487,6 +1600,182 @@ module top ;
     defparam Bat_1.comp_name = "Battery_v1_0";
     defparam Bat_1.port_names = "Neg, Pos";
     defparam Bat_1.width = 2;
+
+    UART_v2_50_3 UART_BT (
+        .clock(1'b0),
+        .cts_n(1'b0),
+        .reset(1'b0),
+        .rts_n(Net_356),
+        .rx(Net_357),
+        .rx_clk(Net_358),
+        .rx_data(Net_359),
+        .rx_interrupt(Net_360),
+        .tx(Net_361),
+        .tx_clk(Net_362),
+        .tx_data(Net_363),
+        .tx_en(Net_364),
+        .tx_interrupt(Net_365));
+    defparam UART_BT.Address1 = 0;
+    defparam UART_BT.Address2 = 0;
+    defparam UART_BT.EnIntRXInterrupt = 0;
+    defparam UART_BT.EnIntTXInterrupt = 0;
+    defparam UART_BT.FlowControl = 0;
+    defparam UART_BT.HalfDuplexEn = 0;
+    defparam UART_BT.HwTXEnSignal = 1;
+    defparam UART_BT.NumDataBits = 8;
+    defparam UART_BT.NumStopBits = 1;
+    defparam UART_BT.ParityType = 0;
+    defparam UART_BT.RXEnable = 1;
+    defparam UART_BT.TXEnable = 1;
+
+	wire [0:0] tmpOE__Rx_2_net;
+	wire [0:0] tmpIO_0__Rx_2_net;
+	wire [0:0] tmpINTERRUPT_0__Rx_2_net;
+	electrical [0:0] tmpSIOVREF__Rx_2_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("6d92eaa7-99d5-4768-8d3a-2b22ca90a4d2"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Rx_2
+		 (.oe(tmpOE__Rx_2_net),
+		  .y({1'b0}),
+		  .fb({Net_357}),
+		  .io({tmpIO_0__Rx_2_net[0:0]}),
+		  .siovref(tmpSIOVREF__Rx_2_net),
+		  .interrupt({tmpINTERRUPT_0__Rx_2_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Rx_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__Tx_2_net;
+	wire [0:0] tmpFB_0__Tx_2_net;
+	wire [0:0] tmpIO_0__Tx_2_net;
+	wire [0:0] tmpINTERRUPT_0__Tx_2_net;
+	electrical [0:0] tmpSIOVREF__Tx_2_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("d74f456b-11c8-4022-ad0d-9b4464299a77"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b1),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Tx_2
+		 (.oe(tmpOE__Tx_2_net),
+		  .y({Net_361}),
+		  .fb({tmpFB_0__Tx_2_net[0:0]}),
+		  .io({tmpIO_0__Tx_2_net[0:0]}),
+		  .siovref(tmpSIOVREF__Tx_2_net),
+		  .interrupt({tmpINTERRUPT_0__Tx_2_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Tx_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 
