@@ -718,17 +718,17 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="XXX-00000" x="69.85" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="68.58" y="20.828" size="0.6096" layer="27" font="vector" ratio="20"/>
 </element>
-<element name="PIN_10" library="SparkFun-Connectors" package="1X01" value="" x="27.94" y="49.53" smashed="yes" rot="R180">
-<attribute name="NAME" x="29.21" y="48.133" size="0.6096" layer="25" font="vector" ratio="20" rot="R180"/>
-<attribute name="VALUE" x="29.21" y="51.054" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-left"/>
-</element>
-<element name="PIN_123" library="SparkFun-Connectors" package="1X01" value="" x="40.64" y="49.53" smashed="yes">
-<attribute name="NAME" x="39.37" y="50.927" size="0.6096" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="39.37" y="48.006" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
+<element name="PIN_12" library="SparkFun-Connectors" package="1X01" value="" x="22.86" y="49.53" smashed="yes" rot="R180">
+<attribute name="NAME" x="24.13" y="48.133" size="0.6096" layer="25" font="vector" ratio="20" rot="R180"/>
+<attribute name="VALUE" x="24.13" y="51.054" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-left"/>
 </element>
 <element name="PIN_27" library="SparkFun-Connectors" package="1X01" value="" x="55.88" y="49.53" smashed="yes">
 <attribute name="NAME" x="54.61" y="50.927" size="0.6096" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="54.61" y="48.006" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
+</element>
+<element name="PIN_25" library="SparkFun-Connectors" package="1X01" value="" x="60.96" y="49.53" smashed="yes">
+<attribute name="NAME" x="59.69" y="50.927" size="0.6096" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="59.69" y="48.006" size="0.6096" layer="27" font="vector" ratio="20" align="top-left"/>
 </element>
 <element name="PIN_22" library="SparkFun-Connectors" package="1X01" value="" x="68.58" y="49.53" smashed="yes">
 <attribute name="NAME" x="67.31" y="50.927" size="0.6096" layer="25" font="vector" ratio="20"/>
@@ -740,24 +740,26 @@ design rules under a new name.</description>
 <contactref element="FLEX2" pad="2"/>
 <contactref element="R6" pad="P$1"/>
 <wire x1="40.64" y1="58.42" x2="40.64" y2="54.61" width="1.016" layer="1"/>
-<contactref element="PIN_123" pad="1"/>
-<wire x1="40.64" y1="54.61" x2="40.64" y2="49.53" width="1.016" layer="1"/>
+<contactref element="PIN_27" pad="1"/>
+<wire x1="55.88" y1="49.53" x2="45.72" y2="49.53" width="1.016" layer="1"/>
+<wire x1="40.64" y1="54.61" x2="45.72" y2="49.53" width="1.016" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="FLEX3" pad="2"/>
 <contactref element="R7" pad="P$1"/>
 <wire x1="53.34" y1="58.42" x2="53.34" y2="54.61" width="1.016" layer="1"/>
-<contactref element="PIN_27" pad="1"/>
-<wire x1="53.34" y1="54.61" x2="55.88" y2="52.07" width="1.016" layer="1"/>
-<wire x1="55.88" y1="52.07" x2="55.88" y2="49.53" width="1.016" layer="1"/>
+<contactref element="PIN_25" pad="1"/>
+<wire x1="53.34" y1="54.61" x2="58.42" y2="54.61" width="1.016" layer="1"/>
+<wire x1="58.42" y1="54.61" x2="60.96" y2="52.07" width="1.016" layer="1"/>
+<wire x1="60.96" y1="52.07" x2="60.96" y2="49.53" width="1.016" layer="1"/>
 </signal>
 <signal name="N$1">
 <contactref element="FLEX1" pad="2"/>
 <contactref element="R5" pad="P$1"/>
 <wire x1="30.48" y1="58.42" x2="30.48" y2="57.15" width="1.016" layer="1"/>
 <wire x1="30.48" y1="57.15" x2="27.94" y2="54.61" width="1.016" layer="1"/>
-<contactref element="PIN_10" pad="1"/>
-<wire x1="27.94" y1="54.61" x2="27.94" y2="49.53" width="1.016" layer="1"/>
+<contactref element="PIN_12" pad="1"/>
+<wire x1="27.94" y1="54.61" x2="22.86" y2="49.53" width="1.016" layer="1"/>
 </signal>
 <signal name="5V">
 <contactref element="BATTERY" pad="1"/>
