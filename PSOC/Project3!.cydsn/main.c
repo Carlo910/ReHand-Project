@@ -40,7 +40,10 @@ int main(void)
        if ( PacketReadyFlag==1){
         //Send data
         for(int8 i=0; i<2; i++){
-        UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+             //comunicazione con BT
+             //UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+             //comunicazione UART
+             UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
         }
         PacketReadyFlag=0;
       }
