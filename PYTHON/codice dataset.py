@@ -10,7 +10,7 @@ def main():
 
     #da usare la prima volta
     '''
-    with open('dataset.csv', mode='w',newline='') as csv_file:
+    with open('dataset_test.csv', mode='w',newline='') as csv_file:
         nomecolonne=['dito1', 'dito2', 'dito3','dito4','target']
         writer = csv.DictWriter(csv_file,fieldnames=nomecolonne)
         writer.writeheader()
@@ -23,7 +23,7 @@ def main():
         except:
             print("Didn't connect, trying again")
             
-    while(ser.is_open and sample<100):
+    while(ser.is_open and sample<500):
         dato = ser.read(10)
         print(dato, type(dato))
         sample += 1
@@ -39,7 +39,7 @@ def main():
             print(sample)
 
             final.append(2)
-            with open('dataset.csv', mode='a', newline='') as f_object: 
+            with open('dataset_test.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             
