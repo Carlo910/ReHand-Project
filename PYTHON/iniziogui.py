@@ -35,7 +35,9 @@ CONN_STATUS=False
 ##Set port##
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
+    giacomo = pyqtSignal(list)
     status = pyqtSignal(str, int)
+    
 
 class SerialWorker(QRunnable):
     
@@ -45,7 +47,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM3'
+        self.port_name = 'COM7'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -88,7 +90,7 @@ class SerialWorker(QRunnable):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
             print(self.final)
-                        
+            self.signals.giacomo.emit(self.final)
 
     @pyqtSlot()
     def killed(self):
@@ -107,8 +109,8 @@ class MainWindow(QMainWindow):
     def __init__(self):
         
         # define worker
-        self.serial_worker = SerialWorker(None)
-        self.port_name = "COM3"
+        self.serial_worker= SerialWorker(None)
+
         super(MainWindow, self).__init__()
         self.w = None
         # title and geometry
@@ -130,9 +132,9 @@ class MainWindow(QMainWindow):
         # layout
         button_hlay = QHBoxLayout()
         button_hlay.addWidget(self.conn_btn)
-        button_hlay.addWidget(self.win_btn)
+        #button_hlay.addWidget(self.win_btn)
         self.conn_btn.setFixedSize(200, 200)
-        self.win_btn.setFixedSize(200, 200)
+        #self.win_btn.setFixedSize(200, 200)
         vlay = QVBoxLayout()
         vlay.addLayout(button_hlay)
       # vlay.addLayout(led_hlay)
@@ -148,39 +150,35 @@ class MainWindow(QMainWindow):
             checkable = True
         )
 
-        self.win_btn = QPushButton(
-            text = "Open New Window"
-        )
-
         self.conn_btn.clicked.connect(self.on_click)
-        self.win_btn.clicked.connect(self.show_new_window)
-
 
     def on_click(self,checked):
         if checked:
-           # self.serial_worker.signals.status.connect(self.check_serialport_status)
             self.serial_worker.signals.device_port.connect(self.connected_device)
             self.serial_worker.signals.status.connect(self.check_serialport_status)
             # execute the worker
             self.threadpool.start(self.serial_worker)
+            ''''
+            if self.w is None:
+                 self.w = AnotherWindow()
+            self.w.show()
+            ''' 
+            self.createButton2()
+            self.initUI2()
+        '''  
         else:
             #kill thread
             self.serial_worker.is_killed = True
             self.serial_worker.killed()
-            self.conn_btn.setText(
-                "Connect to port {}".format(self.port_name)
-            )
+        '''
+           
             
-    
-    
     def check_serialport_status(self, port_name, status):
         if status == 0:
             self.conn_btn.setChecked(False)
         elif status == 1:
             # enable all the widgets on the interface
-            self.conn_btn.setText(
-                "Disconnect from port {}".format(port_name)
-            )
+          
             logging.info("Connected to port {}".format(port_name))
     
 
@@ -198,23 +196,52 @@ class MainWindow(QMainWindow):
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
     
-    def show_new_window(self, checked):
-        if self.w is None:
-            self.w = AnotherWindow()
-        self.w.show()
 
-class AnotherWindow(QWidget):
-    """
-    This "window" is a QWidget. If it has no parent, it
-    will appear as a free-floating window as we want.
-    """
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Altra Finestra")
-        width = 600
-        height = 420
-        self.setMinimumSize(width, height)
+    def initUI2(self):
+         # layout
+        button_hlay = QHBoxLayout()
+        button_hlay.addWidget(self.close_btn)
+        button_hlay.addWidget(self.ciao_btn)
+        self.close_btn.setFixedSize(200, 200)
+        vlay = QVBoxLayout()
+        vlay.addLayout(button_hlay)
+      # vlay.addLayout(led_hlay)
+        self.widget = QWidget()
+        self.widget.setLayout(vlay)
+        self.setCentralWidget(self.widget)
 
+    def createButton2(self):        
+        self.close_btn = QPushButton(
+            text = "Close new window"
+        )
+
+        self.ciao_btn = QPushButton(
+            text = "Receive",
+            
+        )
+
+        self.close_btn.clicked.connect(self.on_click2)
+        self.ciao_btn.clicked.connect(self.ricevuto)
+
+    def on_click2(self):
+
+        self.serial_worker.is_killed = True
+        self.serial_worker.killed()
+        #self.w.show()
+
+    
+    def ricevuto(self):
+            print("tutto bene sono qui")
+            self.serial_worker.signals.giacomo.connect(self.handle_packet)
+            self.threadpool.start(self.serial_worker)
+            
+
+    def handle_packet(self, giacomo):
+        print("got in but lazy", giacomo)
+        if giacomo[0]>0:
+            print("ciao\n\n\n\n\n")
+        else:
+            print("non ciao\n\n\n\n")
 
 
 if __name__ == '__main__':
