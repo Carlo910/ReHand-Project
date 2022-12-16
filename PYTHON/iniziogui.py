@@ -14,8 +14,12 @@ from PyQt5.QtCore import (
     pyqtSignal, 
     pyqtSlot
 )
+from PyQt5 import QtGui
+
+from PyQt5.QtGui import QPixmap
 
 from PyQt5.QtWidgets import (
+    QLabel,
     QApplication,
     QMainWindow,
     QPushButton,
@@ -35,7 +39,7 @@ CONN_STATUS=False
 ##Set port##
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
-    giacomo = pyqtSignal(list)
+    packet = pyqtSignal(list)
     status = pyqtSignal(str, int)
     
 
@@ -47,7 +51,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM7'
+        self.port_name = 'COM4'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -74,6 +78,7 @@ class SerialWorker(QRunnable):
 
     @pyqtSlot()
     def read_packet(self):
+
         try: 
             pacchetto = self.port.read(10)
             print(pacchetto, type(pacchetto))
@@ -90,7 +95,7 @@ class SerialWorker(QRunnable):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
             print(self.final)
-            self.signals.giacomo.emit(self.final)
+            self.signals.packet.emit(self.final)
 
     @pyqtSlot()
     def killed(self):
@@ -125,51 +130,50 @@ class MainWindow(QMainWindow):
         self.connected = CONN_STATUS
         self.createButton()
         self.initUI()
-        
+        self.flag1=0
+        self.flag2=0
 
     def initUI(self):
         
         # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.conn_btn)
+        self.button_hlay = QHBoxLayout()
+        self.button_hlay.addWidget(self.start_btn)
         #button_hlay.addWidget(self.win_btn)
-        self.conn_btn.setFixedSize(200, 200)
+        self.start_btn.setFixedSize(200, 200)
         #self.win_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
+        self.vlay = QVBoxLayout()
+        self.vlay.addLayout(self.button_hlay)
       # vlay.addLayout(led_hlay)
-        widget = QWidget()
-        widget.setLayout(vlay)
-        self.setCentralWidget(widget)
+        self.widget = QWidget()
+        self.widget.setLayout(self.vlay)
+        self.setCentralWidget(self.widget)
 
 
     def createButton(self):
 
-        self.conn_btn = QPushButton(
+        self.start_btn = QPushButton(
             text = "Start",
             checkable = True
         )
 
-        self.conn_btn.clicked.connect(self.on_click)
+        self.start_btn.clicked.connect(self.on_click)
 
     def on_click(self,checked):
         if checked:
             self.serial_worker.signals.device_port.connect(self.connected_device)
             self.serial_worker.signals.status.connect(self.check_serialport_status)
-            # execute the worker
-            self.threadpool.start(self.serial_worker)
             self.createButton2()
             self.initUI2()
-        '''  
+            # execute the worker
+            self.threadpool.start(self.serial_worker)
         else:
             #kill thread
             self.serial_worker.is_killed = True
             self.serial_worker.killed()
-      '''
             
     def check_serialport_status(self, port_name, status):
         if status == 0:
-            self.conn_btn.setChecked(False)
+            self.start_btn.setChecked(False)
         elif status == 1:
             # enable all the widgets on the interface
           
@@ -191,85 +195,95 @@ class MainWindow(QMainWindow):
         self.serial_worker.killed()
     
 
+    ##FINE FINESTRA HOME ##
+    
+    ##INIZIO FINESTRA SCELTA GIOCO##
+
     def initUI2(self):
          # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.close_btn)
-        button_hlay.addWidget(self.ciao_btn)
-        button_hlay.addWidget(self.finestra3_btn)
-        self.close_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
+        button_hlay2 = QHBoxLayout()
+        button_hlay2.addWidget(self.opzione1_btn)
+        button_hlay2.addWidget(self.opzione2_btn)
+        vlay2 = QVBoxLayout()
+        vlay2.addLayout(button_hlay2)
       # vlay.addLayout(led_hlay)
-        self.widget = QWidget()
-        self.widget.setLayout(vlay)
-        self.setCentralWidget(self.widget)
+        self.widget2 = QWidget()
+        self.widget2.setLayout(vlay2)
+        self.setCentralWidget(self.widget2)
 
+        #load immagine
+        self.immagine=QLabel("Immagine")
+        pixmap=QtGui.QPixmap('ossa-della-mano.jpg')
+        self.immagine.setPixmap(pixmap)
+        self.immagine.setScaledContents(True)
+        self.immagine.resize(pixmap.width(),pixmap.height())
+
+        self.immagine2=QLabel("Immagine 2")
+        pixmap2=QtGui.QPixmap('ciao.jpg')
+        self.immagine2.setPixmap(pixmap2)
+        self.immagine2.setScaledContents(True)
+        self.immagine2.resize(pixmap2.width(),pixmap2.height())
+
+        
     def createButton2(self):        
-        self.close_btn = QPushButton(
-            text = "Close new window"
-        )
-
-        self.ciao_btn = QPushButton(
-            text = "Receive",
+        self.opzione1_btn = QPushButton(
+            text = "1",
             
         )
 
-        self.finestra3_btn=QPushButton(
-            text= "Finestra 3"
+        self.opzione2_btn=QPushButton(
+            text= "2",
+            checkable=True
         )
 
-        self.close_btn.clicked.connect(self.on_click2)
-        self.ciao_btn.clicked.connect(self.ricevuto)
-        self.finestra3_btn.clicked.connect(self.aprifinestra3)
-
-    def on_click2(self):
-        
-        self.serial_worker.is_killed = True
-        self.serial_worker.killed()
-        #self.w.show()
-    
+        self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        #self.ricevi_btn.clicked.connect(self.ricevuto)
+        #self.finestra3_btn.clicked.connect(self.aprifinestra3)
+    '''
     def ricevuto(self):
             print("tutto bene sono qui")
-            self.serial_worker.signals.giacomo.connect(self.handle_packet)
+            self.serial_worker.signals.packet.connect(self.handle_packet)
             self.threadpool.start(self.serial_worker)
-            
-    def handle_packet(self, giacomo):
-        print("got in but lazy", giacomo)
-        if giacomo[0]>0:
-            print("ciao\n\n\n\n\n")
+    '''      
+    def handle_packet_option(self, packet):
+        print("voglio andare dal calabrese")  
+        if (packet[0]>5000 and packet[1]<7000 and packet[2]>5000 and packet[3]>5000 and self.flag1==0):
+            #self.createButton3()
+            self.initUI3()
+            self.flag1=1
+            self.flag2=0
+        
+        elif(packet[0]>5000 and packet[1]<5000 and packet[2]<5000 and packet[3]>5000 and self.flag2==0):
+            self.immagine.show()
+            self.flag2=1
+            self.flag1=0
+
+        elif(packet[0]>6000 and packet[1]>6000 and packet[2]>6000 and packet[3]>6000 and (self.flag1==1 or self.flag2==1)):
+            self.flag1=0
+            self.flag2=0
+            self.immagine.hide()
+            self.immagine2.hide()
         else:
-            print("non ciao\n\n\n\n")
-
-    def aprifinestra3(self):
-        self.createButton3()
-        self.initUI3()
-
+            pass
     
-
     def initUI3(self):
-         # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.uscita_btn)
-        self.close_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
-        self.widget = QWidget()
-        self.widget.setLayout(vlay)
-        self.setCentralWidget(self.widget)
+        
+        
+        self.titolo3=QLabel("GIOCO ARCO")
+        #self.layout3=Q
+        #self.layout3.addWidget(self.titolo3)
+        
 
-    def createButton3(self):
-
-        self.uscita_btn = QPushButton(
-            text = "esci"  
-        )
+        
+        #Layout
+        #Vlay.addLayout(led_hlay)
+        self.widget3 = QWidget()
+        self.widget3.setLayout(self.titolo3)
+        self.titolo3.setAlignment(QtCore.Qt.Alignment)
+        self.setCentralWidget(self.widget3)
+        
     
-        self.uscita_btn.clicked.connect(self.tornaindietro)
 
-    def tornaindietro(self):
-        self.createButton2()
-        self.initUI2()
-           
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
