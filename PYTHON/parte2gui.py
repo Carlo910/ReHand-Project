@@ -35,7 +35,7 @@ CONN_STATUS=False
 ##Set port##
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
-    giacomo = pyqtSignal(list)
+    packet = pyqtSignal(list)
     status = pyqtSignal(str, int)
     
 
@@ -47,7 +47,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM7'
+        self.port_name = 'COM4'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -90,7 +90,7 @@ class SerialWorker(QRunnable):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
             print(self.final)
-            self.signals.giacomo.emit(self.final)
+            self.signals.packet.emit(self.final)
 
     @pyqtSlot()
     def killed(self):
@@ -130,17 +130,18 @@ class MainWindow(QMainWindow):
     def initUI(self):
         
         # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.conn_btn)
+        self.button_hlay = QHBoxLayout()
+        self.button_hlay.addWidget(self.conn_btn)
+        self.button_hlay.addWidget(self.camp_btn)
         #button_hlay.addWidget(self.win_btn)
         self.conn_btn.setFixedSize(200, 200)
-        #self.win_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
+        self.camp_btn.setFixedSize(200, 200)
+        self.vlay = QVBoxLayout()
+        self.vlay.addLayout(self.button_hlay)
       # vlay.addLayout(led_hlay)
-        widget = QWidget()
-        widget.setLayout(vlay)
-        self.setCentralWidget(widget)
+        self.widget = QWidget()
+        self.widget.setLayout(self.vlay)
+        self.setCentralWidget(self.widget)
 
 
     def createButton(self):
@@ -149,24 +150,34 @@ class MainWindow(QMainWindow):
             text = "Start",
             checkable = True
         )
+        
+        self.camp_btn=QPushButton(
+            text='campiona qui',
+            checkable=True
+        )
 
         self.conn_btn.clicked.connect(self.on_click)
+        self.camp_btn.clicked.connect(self.campionaqui)
 
     def on_click(self,checked):
+        if checked:
+            
+            #self.hide()
+            if self.w==None:
+                self.w=AnotherWindow()
+                self.w.show()
+
+    def campionaqui(self,checked):
         if checked:
             self.serial_worker.signals.device_port.connect(self.connected_device)
             self.serial_worker.signals.status.connect(self.check_serialport_status)
             # execute the worker
             self.threadpool.start(self.serial_worker)
-            self.createButton2()
-            self.initUI2()
-        '''  
         else:
             #kill thread
             self.serial_worker.is_killed = True
             self.serial_worker.killed()
-      '''
-            
+
     def check_serialport_status(self, port_name, status):
         if status == 0:
             self.conn_btn.setChecked(False)
@@ -180,7 +191,7 @@ class MainWindow(QMainWindow):
         """!
         @brief Checks on the termination of the serial worker.
         """
-        logging.info("Port {} closed.".format(port_name))        
+        logging.info("Port {} closed.".format(port_name))   
 
 
     def ExitHandler(self):
@@ -188,21 +199,41 @@ class MainWindow(QMainWindow):
         @brief Kill every possible running thread upon exiting application.
         """
         self.serial_worker.is_killed = True
-        self.serial_worker.killed()
-    
+        self.serial_worker.killed()   
 
+class AnotherWindow(QMainWindow):
+    def __init__(self):
+        
+        # define worker
+        self.serial_worker= SerialWorker(None)
+
+        super(AnotherWindow, self).__init__()
+        self.w = MainWindow()
+        # title and geometry
+        self.setWindowTitle("Progetto 3")
+        width = 600
+        height = 420
+        self.setMinimumSize(width, height)
+
+        # create thread handler
+        self.threadpool = QThreadPool()
+
+        self.connected = CONN_STATUS
+        self.createButton2()
+        self.initUI2()
+    
     def initUI2(self):
          # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.close_btn)
-        button_hlay.addWidget(self.ciao_btn)
-        button_hlay.addWidget(self.finestra3_btn)
+        self.button_hlay = QHBoxLayout()
+        self.button_hlay.addWidget(self.close_btn)
+        self.button_hlay.addWidget(self.ciao_btn)
+        self.button_hlay.addWidget(self.iniziocamp_btn)
         self.close_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
+        self.vlay = QVBoxLayout()
+        self.vlay.addLayout(self.button_hlay)
       # vlay.addLayout(led_hlay)
         self.widget = QWidget()
-        self.widget.setLayout(vlay)
+        self.widget.setLayout(self.vlay)
         self.setCentralWidget(self.widget)
 
     def createButton2(self):        
@@ -215,66 +246,79 @@ class MainWindow(QMainWindow):
             
         )
 
-        self.finestra3_btn=QPushButton(
-            text= "Finestra 3"
+        self.iniziocamp_btn=QPushButton(
+            text= "Finestra 3",
+            checkable=True
         )
 
         self.close_btn.clicked.connect(self.on_click2)
         self.ciao_btn.clicked.connect(self.ricevuto)
-        self.finestra3_btn.clicked.connect(self.aprifinestra3)
-
+        self.iniziocamp_btn.clicked.connect(self.campiona)
+        
     def on_click2(self):
         
-        self.serial_worker.is_killed = True
-        self.serial_worker.killed()
-        #self.w.show()
+        self.hide()
+        self.w.show()
+
     
     def ricevuto(self):
             print("tutto bene sono qui")
-            self.serial_worker.signals.giacomo.connect(self.handle_packet)
+           # self.threadpool.start(self.serial_worker)
+            self.serial_worker.signals.packet.connect(self.handle_packet)
+    
+    def campiona(self,checked):
+        if checked:
+            self.serial_worker.signals.device_port.connect(self.connected_device)
+            self.serial_worker.signals.status.connect(self.check_serialport_status)
+            # execute the worker
             self.threadpool.start(self.serial_worker)
-            
-    def handle_packet(self, giacomo):
-        print("got in but lazy", giacomo)
-        if giacomo[0]>0:
-            print("ciao\n\n\n\n\n")
         else:
-            print("non ciao\n\n\n\n")
+            #kill thread
+            self.serial_worker.is_killed = True
+            self.serial_worker.killed()
 
-    def aprifinestra3(self):
-        self.createButton3()
-        self.initUI3()
-
+    def check_serialport_status(self, port_name, status):
+        if status == 0:
+            self.iniziocamp_btn.setChecked(False)
+        elif status == 1:
+            # enable all the widgets on the interface
+          
+            logging.info("Connected to port {}".format(port_name))
     
 
-    def initUI3(self):
-         # layout
-        button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.uscita_btn)
-        self.close_btn.setFixedSize(200, 200)
-        vlay = QVBoxLayout()
-        vlay.addLayout(button_hlay)
-        self.widget = QWidget()
-        self.widget.setLayout(vlay)
-        self.setCentralWidget(self.widget)
+    def connected_device(self, port_name):
+        """!
+        @brief Checks on the termination of the serial worker.
+        """
+        logging.info("Port {} closed.".format(port_name))   
 
-    def createButton3(self):
 
-        self.uscita_btn = QPushButton(
-            text = "esci"  
-        )
+    def ExitHandler(self):
+        """!
+        @brief Kill every possible running thread upon exiting application.
+        """
+        self.serial_worker.is_killed = True
+        self.serial_worker.killed()     
     
-        self.uscita_btn.clicked.connect(self.tornaindietro)
+        
+            
+            
+    def handle_packet(self,packet):
+        if packet[0]>0:
+            print("Ho ricevuto\n\n\n\n\n")
+        else:
+            print("Non ho ricevuto\n\n\n\n")
 
-    def tornaindietro(self):
-        self.createButton2()
-        self.initUI2()
+
+        
+
            
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MainWindow()
-    app.aboutToQuit.connect(w.ExitHandler)
+    y=AnotherWindow()
+    app.aboutToQuit.connect(y.ExitHandler)
     w.show()
     sys.exit(app.exec_())
 
