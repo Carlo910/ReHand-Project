@@ -28,23 +28,26 @@ from PyQt5.QtWidgets import (
 import serial
 import serial.tools.list_ports
 
-CONN_STATUS = False
-
 logging.basicConfig(format="%(message)s", level=logging.INFO)
 
+CONN_STATUS=False
+
+##Set port##
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
+    giacomo = pyqtSignal(list)
     status = pyqtSignal(str, int)
+    
 
 class SerialWorker(QRunnable):
     
-    def __init__(self, serial_port_name):
+    def __init__(self,serial_port_name):
       
         self.is_killed = False
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM8'
+        self.port_name = 'COM7'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -63,8 +66,7 @@ class SerialWorker(QRunnable):
                     time.sleep(0.01)
                     self.sample = 0
                     while(CONN_STATUS == True):
-                        self.read_packet()
-                        self.check_gesture()   
+                        self.read_packet() 
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
@@ -80,7 +82,6 @@ class SerialWorker(QRunnable):
             logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
 
         valore = list(pacchetto)
-        #self.sample=0
         if(pacchetto[0]==160 and pacchetto[9]==192):
             valore=list(pacchetto[1:9])
             self.final = []
@@ -89,16 +90,7 @@ class SerialWorker(QRunnable):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
             print(self.final)
-            self.sample += 1
-            print(self.sample)
-            
-
-    def check_gesture(self):
-            if(self.final[0]>5500):
-                print("Dito 1 piegato")
-            else:
-                print("Dito 1 non piegato")
-
+            self.signals.giacomo.emit(self.final)
 
     @pyqtSlot()
     def killed(self):
@@ -110,37 +102,39 @@ class SerialWorker(QRunnable):
 
         logging.info("Killing the process")
 
+
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         
         # define worker
-        self.serial_worker = SerialWorker(None)
+        self.serial_worker= SerialWorker(None)
 
         super(MainWindow, self).__init__()
-
+        self.w = None
         # title and geometry
-        self.setWindowTitle("GUI")
-        width = 400
-        height = 320
+        self.setWindowTitle("Progetto 3")
+        width = 600
+        height = 420
         self.setMinimumSize(width, height)
 
         # create thread handler
         self.threadpool = QThreadPool()
 
         self.connected = CONN_STATUS
-        self.serialscan()
+        self.createButton()
         self.initUI()
-      
+        
 
     def initUI(self):
         
         # layout
         button_hlay = QHBoxLayout()
-        button_hlay.addWidget(self.com_list_widget)
         button_hlay.addWidget(self.conn_btn)
-        #led_hlay = QHBoxLayout()
-        #led_hlay.addWidget(self.on_btn)
-        #led_hlay.addWidget(self.off_btn)
+        #button_hlay.addWidget(self.win_btn)
+        self.conn_btn.setFixedSize(200, 200)
+        #self.win_btn.setFixedSize(200, 200)
         vlay = QVBoxLayout()
         vlay.addLayout(button_hlay)
       # vlay.addLayout(led_hlay)
@@ -148,75 +142,51 @@ class MainWindow(QMainWindow):
         widget.setLayout(vlay)
         self.setCentralWidget(widget)
 
-    def serialscan(self):
-        
-        # create the combo box to host port list
-        self.port_text = ""
-        self.com_list_widget = QComboBox()
-        self.com_list_widget.currentTextChanged.connect(self.port_changed)
-        
-        # create the connection button
+
+    def createButton(self):
+
         self.conn_btn = QPushButton(
-            text=("Connect to port {}".format(self.port_text)), 
-            checkable=True,
-            toggled=self.on_toggle
+            text = "Start",
+            checkable = True
         )
-        
-        serial_ports = [
-                p.name
-                for p in serial.tools.list_ports.comports()
-            ]
-        self.com_list_widget.addItems(serial_ports)
-    
 
-    def port_changed(self):
-        """!
-        @brief Update conn_btn label based on selected port.
-        """
-        self.port_text = self.com_list_widget.currentText()
-        self.conn_btn.setText("Connect to port {}".format(self.port_text))
-       
+        self.conn_btn.clicked.connect(self.on_click)
 
-    @pyqtSlot(bool)
-    def on_toggle(self, checked):
-        """!
-        @brief Allow connection and disconnection from selected serial port.
-        """
+    def on_click(self,checked):
         if checked:
-            # setup reading worker
-            self.serial_worker = SerialWorker(self.port_text) # needs to be re defined
-            # connect worker signals to functions
-            self.serial_worker.signals.status.connect(self.check_serialport_status)
             self.serial_worker.signals.device_port.connect(self.connected_device)
+            self.serial_worker.signals.status.connect(self.check_serialport_status)
             # execute the worker
             self.threadpool.start(self.serial_worker)
+            ''''
+            if self.w is None:
+                 self.w = AnotherWindow()
+            self.w.show()
+            ''' 
+            self.createButton2()
+            self.initUI2()
+        '''  
         else:
-            # kill thread
+            #kill thread
             self.serial_worker.is_killed = True
             self.serial_worker.killed()
-            self.com_list_widget.setDisabled(False) # enable the possibility to change port
-            self.conn_btn.setText(
-                "Connect to port {}".format(self.port_text)
-            )
+        '''
+           
             
-
-
     def check_serialport_status(self, port_name, status):
         if status == 0:
             self.conn_btn.setChecked(False)
         elif status == 1:
             # enable all the widgets on the interface
-            self.com_list_widget.setDisabled(True) # disable the possibility to change COM port when already connected
-            self.conn_btn.setText(
-                "Disconnect from port {}".format(port_name)
-            )
+          
             logging.info("Connected to port {}".format(port_name))
+    
 
     def connected_device(self, port_name):
         """!
         @brief Checks on the termination of the serial worker.
         """
-        logging.info("Port {} closed.".format(port_name))
+        logging.info("Port {} closed.".format(port_name))        
 
 
     def ExitHandler(self):
@@ -225,11 +195,54 @@ class MainWindow(QMainWindow):
         """
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
-'''
-    def packet(self):
-        self.serial_worker.Read()
-'''   
-      
+    
+
+    def initUI2(self):
+         # layout
+        button_hlay = QHBoxLayout()
+        button_hlay.addWidget(self.close_btn)
+        button_hlay.addWidget(self.ciao_btn)
+        self.close_btn.setFixedSize(200, 200)
+        vlay = QVBoxLayout()
+        vlay.addLayout(button_hlay)
+      # vlay.addLayout(led_hlay)
+        self.widget = QWidget()
+        self.widget.setLayout(vlay)
+        self.setCentralWidget(self.widget)
+
+    def createButton2(self):        
+        self.close_btn = QPushButton(
+            text = "Close new window"
+        )
+
+        self.ciao_btn = QPushButton(
+            text = "Receive",
+            
+        )
+
+        self.close_btn.clicked.connect(self.on_click2)
+        self.ciao_btn.clicked.connect(self.ricevuto)
+
+    def on_click2(self):
+
+        self.serial_worker.is_killed = True
+        self.serial_worker.killed()
+        #self.w.show()
+
+    
+    def ricevuto(self):
+            print("tutto bene sono qui")
+            self.serial_worker.signals.giacomo.connect(self.handle_packet)
+            self.threadpool.start(self.serial_worker)
+            
+
+    def handle_packet(self, giacomo):
+        print("got in but lazy", giacomo)
+        if giacomo[0]>0:
+            print("ciao\n\n\n\n\n")
+        else:
+            print("non ciao\n\n\n\n")
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -237,3 +250,4 @@ if __name__ == '__main__':
     app.aboutToQuit.connect(w.ExitHandler)
     w.show()
     sys.exit(app.exec_())
+
