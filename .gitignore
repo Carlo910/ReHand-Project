@@ -239,3 +239,14 @@ eagle.epf
 
 # file locks introduced since 7.x
 *.lck
+
+# GITIGNORE SOLIDWORKS 
+# ignore emacs backup files
+*~
+
+# ignore SolidWorks temporary files
+~$*.SLDPRT
+~$*.SLDASM
+
+# ignore OS X desktops
+.DS_Store
