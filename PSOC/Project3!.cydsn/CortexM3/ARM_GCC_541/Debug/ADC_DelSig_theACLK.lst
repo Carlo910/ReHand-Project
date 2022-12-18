@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
   28:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
   29:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
   30:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 2
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 2
 
 
   31:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_Start
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
   54:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_Stop
   55:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
   56:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 3
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 3
 
 
   57:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
   80:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
   81:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
   82:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 4
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 4
 
 
   83:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_StopBlock
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  115:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_AMASK = 0x00u;
  116:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif /* ADC_DelSig_theACLK__CFG3 */
  117:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 5
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 5
 
 
  118:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Clear mask of bus clock. */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  136:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CY_SET_REG16(ADC_DelSig_theACLK_DIV_PTR, oldDivider);
  148              		.loc 1 136 0
  149 0056 FF33     		adds	r3, r3, #255
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 6
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 6
 
 
  150 0058 1A80     		strh	r2, [r3]	@ movhi
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  160:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
  161:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_CLKSTBY &= (uint8)(~ADC_DelSig_theACLK_CLKSTBY_MASK);
  181              		.loc 1 161 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 7
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 7
 
 
  182 0002 064A     		ldr	r2, .L15
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  189:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
  190:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  None
  191:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 8
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 8
 
 
  192:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  246:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  247:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 9
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 9
 
 
  249:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                     /* Wait for clock to be disabled */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  213              		@ link register save eliminated.
  299:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     return CY_GET_REG16(ADC_DelSig_theACLK_DIV_PTR);
  214              		.loc 1 299 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 10
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 10
 
 
  215 0000 014B     		ldr	r3, .L18
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  235              		.loc 1 333 0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 11
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 11
 
 
  238              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  362:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
  363:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
  364:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  None
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 12
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 12
 
 
  365:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  388:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** uint8 ADC_DelSig_theACLK_GetModeRegister(void) 
  389:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
  295              		.loc 1 389 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 13
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 13
 
 
  296              		.cfi_startproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  419:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_SetSourceRegister(uint8 clkSource) 
  420:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
  421:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint16 currDiv = ADC_DelSig_theACLK_GetDividerRegister();
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 14
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 14
 
 
  422:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint8 oldSrc = ADC_DelSig_theACLK_GetSourceRegister();
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  329              		.loc 1 467 0
  330 0004 00F00700 		and	r0, r0, #7
  331 0008 7047     		bx	lr
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 15
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 15
 
 
  332              	.L31:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  379 001e 00B1     		cbz	r0, .L35
  205:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         {
  380              		.loc 1 205 0 discriminator 2
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 16
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 16
 
 
  381 0020 85B9     		cbnz	r5, .L34
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  425 0056 0839     		subs	r1, r1, #8
  426 0058 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
  427 005a 03F07F03 		and	r3, r3, #127
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 17
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 17
 
 
  428 005e 0B70     		strb	r3, [r1]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  472 00a2 00E0     		b	.L41
  473              	.LVL19:
  474              	.L43:
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 18
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 18
 
 
  475 00a4 0122     		movs	r2, #1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  524              	.LVL23:
  525 0000 38B5     		push	{r3, r4, r5, lr}
  526              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 19
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 19
 
 
  527              		.cfi_offset 3, -16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  569 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  438:Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             (ADC_DelSig_theACLK_MOD_SRC & (uint8)(~ADC_DelSig_theACLK_SRC_SEL_MSK)) | clkSource;
  570              		.loc 1 438 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 20
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 20
 
 
  571 0036 03F0F803 		and	r3, r3, #248
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  485:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
  486:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   produces a 10ns delay.
  487:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 21
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 21
 
 
  488:Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  632              		.loc 1 514 0
  633              		.cfi_startproc
  634              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 22
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 22
 
 
  635              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1288,10 +1288,10 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  657 0006 00000000 		.4byte	.Ldebug_abbrev0
  658 000a 04       		.byte	0x4
  659 000b 01       		.uleb128 0x1
- 660 000c 3E030000 		.4byte	.LASF40
+ 660 000c 26030000 		.4byte	.LASF40
  661 0010 0C       		.byte	0xc
  662 0011 C2010000 		.4byte	.LASF41
- 663 0015 EE010000 		.4byte	.LASF42
+ 663 0015 8A020000 		.4byte	.LASF42
  664 0019 00000000 		.4byte	.Ldebug_ranges0+0
  665 001d 00000000 		.4byte	0
  666 0021 00000000 		.4byte	.Ldebug_line0
@@ -1310,7 +1310,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  679 003a 02       		.uleb128 0x2
  680 003b 02       		.byte	0x2
  681 003c 07       		.byte	0x7
- 682 003d 5E020000 		.4byte	.LASF3
+ 682 003d EE010000 		.4byte	.LASF3
  683 0041 02       		.uleb128 0x2
  684 0042 04       		.byte	0x4
  685 0043 05       		.byte	0x5
@@ -1318,10 +1318,10 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  687 0048 02       		.uleb128 0x2
  688 0049 04       		.byte	0x4
  689 004a 07       		.byte	0x7
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 23
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 23
 
 
- 690 004b BE020000 		.4byte	.LASF5
+ 690 004b 4E020000 		.4byte	.LASF5
  691 004f 02       		.uleb128 0x2
  692 0050 08       		.byte	0x8
  693 0051 05       		.byte	0x5
@@ -1355,13 +1355,13 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  721 008a 02       		.uleb128 0x2
  722 008b 08       		.byte	0x8
  723 008c 04       		.byte	0x4
- 724 008d D0020000 		.4byte	.LASF12
+ 724 008d 60020000 		.4byte	.LASF12
  725 0091 02       		.uleb128 0x2
  726 0092 01       		.byte	0x1
  727 0093 08       		.byte	0x8
- 728 0094 97020000 		.4byte	.LASF13
+ 728 0094 27020000 		.4byte	.LASF13
  729 0098 04       		.uleb128 0x4
- 730 0099 B9020000 		.4byte	.LASF14
+ 730 0099 49020000 		.4byte	.LASF14
  731 009d 02       		.byte	0x2
  732 009e 9202     		.2byte	0x292
  733 00a0 A4000000 		.4byte	0xa4
@@ -1375,10 +1375,10 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  741 00b5 05       		.uleb128 0x5
  742 00b6 77000000 		.4byte	0x77
  743 00ba 06       		.uleb128 0x6
- 744 00bb 02030000 		.4byte	.LASF16
+ 744 00bb EA020000 		.4byte	.LASF16
  745 00bf 01       		.byte	0x1
  746 00c0 2D       		.byte	0x2d
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 24
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 24
 
 
  747 00c1 00000000 		.4byte	.LFB0
@@ -1406,7 +1406,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  769 00f2 0A000000 		.4byte	.LBB2
  770 00f6 62000000 		.4byte	.LBE2-.LBB2
  771 00fa 09       		.uleb128 0x9
- 772 00fb AE020000 		.4byte	.LASF30
+ 772 00fb 3E020000 		.4byte	.LASF30
  773 00ff 01       		.byte	0x1
  774 0100 69       		.byte	0x69
  775 0101 77000000 		.4byte	0x77
@@ -1431,19 +1431,19 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  794 012c 50       		.byte	0x50
  795 012d 00       		.byte	0
  796 012e 0B       		.uleb128 0xb
- 797 012f 71020000 		.4byte	.LASF24
+ 797 012f 01020000 		.4byte	.LASF24
  798 0133 01       		.byte	0x1
  799 0134 2901     		.2byte	0x129
  800 0136 77000000 		.4byte	0x77
  801 013a 00000000 		.4byte	.LFB5
  802 013e 0C000000 		.4byte	.LFE5-.LFB5
  803 0142 01       		.uleb128 0x1
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 25
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 25
 
 
  804 0143 9C       		.byte	0x9c
  805 0144 0C       		.uleb128 0xc
- 806 0145 D7020000 		.4byte	.LASF20
+ 806 0145 67020000 		.4byte	.LASF20
  807 0149 01       		.byte	0x1
  808 014a 4C01     		.2byte	0x14c
  809 014c 00000000 		.4byte	.LFB6
@@ -1475,7 +1475,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  835 018d 34000000 		.4byte	.LLST2
  836 0191 00       		.byte	0
  837 0192 0B       		.uleb128 0xb
- 838 0193 1B030000 		.4byte	.LASF25
+ 838 0193 03030000 		.4byte	.LASF25
  839 0197 01       		.byte	0x1
  840 0198 8401     		.2byte	0x184
  841 019a 6B000000 		.4byte	0x6b
@@ -1484,7 +1484,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  844 01a6 01       		.uleb128 0x1
  845 01a7 9C       		.byte	0x9c
  846 01a8 0B       		.uleb128 0xb
- 847 01a9 CC030000 		.4byte	.LASF26
+ 847 01a9 B4030000 		.4byte	.LASF26
  848 01ad 01       		.byte	0x1
  849 01ae D001     		.2byte	0x1d0
  850 01b0 6B000000 		.4byte	0x6b
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  858 01c4 C1       		.byte	0xc1
  859 01c5 00000000 		.4byte	.LFB4
  860 01c9 D8000000 		.4byte	.LFE4-.LFB4
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 26
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 26
 
 
  861 01cd 01       		.uleb128 0x1
@@ -1517,19 +1517,19 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  874 01e9 6B000000 		.4byte	0x6b
  875 01ed 76000000 		.4byte	.LLST4
  876 01f1 09       		.uleb128 0x9
- 877 01f2 FA020000 		.4byte	.LASF31
+ 877 01f2 E2020000 		.4byte	.LASF31
  878 01f6 01       		.byte	0x1
  879 01f7 C4       		.byte	0xc4
  880 01f8 6B000000 		.4byte	0x6b
  881 01fc 97000000 		.4byte	.LLST5
  882 0200 09       		.uleb128 0x9
- 883 0201 A6020000 		.4byte	.LASF32
+ 883 0201 36020000 		.4byte	.LASF32
  884 0205 01       		.byte	0x1
  885 0206 C6       		.byte	0xc6
  886 0207 6B000000 		.4byte	0x6b
  887 020b E5000000 		.4byte	.LLST6
  888 020f 0F       		.uleb128 0xf
- 889 0210 AE020000 		.4byte	.LASF30
+ 889 0210 3E020000 		.4byte	.LASF30
  890 0214 01       		.byte	0x1
  891 0215 C7       		.byte	0xc7
  892 0216 77000000 		.4byte	0x77
@@ -1552,13 +1552,13 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  909 0240 9C       		.byte	0x9c
  910 0241 86020000 		.4byte	0x286
  911 0245 0D       		.uleb128 0xd
- 912 0246 9C020000 		.4byte	.LASF34
+ 912 0246 2C020000 		.4byte	.LASF34
  913 024a 01       		.byte	0x1
  914 024b A301     		.2byte	0x1a3
  915 024d 6B000000 		.4byte	0x6b
  916 0251 F8000000 		.4byte	.LLST7
  917 0255 11       		.uleb128 0x11
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 27
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 27
 
 
  918 0256 B3000000 		.4byte	.LASF35
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  972 0007 03       		.uleb128 0x3
  973 0008 0E       		.uleb128 0xe
  974 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 28
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 28
 
 
  975 000a 0E       		.uleb128 0xe
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1029 0040 3F       		.uleb128 0x3f
  1030 0041 19       		.uleb128 0x19
  1031 0042 03       		.uleb128 0x3
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 29
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 29
 
 
  1032 0043 0E       		.uleb128 0xe
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1086 007b 03       		.uleb128 0x3
  1087 007c 0E       		.uleb128 0xe
  1088 007d 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 30
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 30
 
 
  1089 007e 0B       		.uleb128 0xb
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1143 00b5 03       		.uleb128 0x3
  1144 00b6 0E       		.uleb128 0xe
  1145 00b7 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 31
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 31
 
 
  1146 00b8 0B       		.uleb128 0xb
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1200 00ef 3B       		.uleb128 0x3b
  1201 00f0 0B       		.uleb128 0xb
  1202 00f1 49       		.uleb128 0x49
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 32
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 32
 
 
  1203 00f2 13       		.uleb128 0x13
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1257              	.LLST1:
  1258 0013 00000000 		.4byte	.LVL3
  1259 0017 08000000 		.4byte	.LVL4
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 33
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 33
 
 
  1260 001b 0100     		.2byte	0x1
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1314 0097 1C000000 		.4byte	.LVL11
  1315 009b 2A000000 		.4byte	.LVL12
  1316 009f 0100     		.2byte	0x1
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 34
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 34
 
 
  1317 00a1 52       		.byte	0x52
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1371 0128 00000000 		.4byte	0
  1372              	.LLST9:
  1373 012c 00000000 		.4byte	.LVL30
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 35
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 35
 
 
  1374 0130 04000000 		.4byte	.LVL31
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1428 0010 00000000 		.4byte	.LFB2
  1429 0014 6C000000 		.4byte	.LFE2
  1430 0018 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 36
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 36
 
 
  1431 001c 20000000 		.4byte	.LFE3
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1464      3600
  1465              	.LASF2:
  1466 0085 73686F72 		.ascii	"short int\000"
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 37
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 37
 
 
  1466      7420696E 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1493              	.LASF38:
  1494 014a 636C6B50 		.ascii	"clkPhase\000"
  1494      68617365 
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 38
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 38
 
 
  1494      00
@@ -2258,107 +2258,102 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 1
  1508      645F536F 
  1508      75726365 
  1508      5C50536F 
- 1509              	.LASF42:
- 1510 01ee 433A5C55 		.ascii	"C:\\Users\\Windows\\Desktop\\Magistrale\\II_primo_s"
- 1510      73657273 
- 1510      5C57696E 
- 1510      646F7773 
- 1510      5C446573 
- 1511 021c 656D6573 		.ascii	"emestre\\Project  Lab Sens\\AY2223_I_Project-3\\PSO"
- 1511      7472655C 
- 1511      50726F6A 
- 1511      65637420 
- 1511      204C6162 
- 1512 024c 435C5072 		.ascii	"C\\Project3!.cydsn\000"
- 1512      6F6A6563 
- 1512      7433212E 
- 1512      63796473 
- 1512      6E00
- 1513              	.LASF3:
- 1514 025e 73686F72 		.ascii	"short unsigned int\000"
- 1514      7420756E 
- 1514      7369676E 
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 39
+ 1509              	.LASF3:
+ 1510 01ee 73686F72 		.ascii	"short unsigned int\000"
+ 1510      7420756E 
+ 1510      7369676E 
+ 1510      65642069 
+ 1510      6E7400
+ 1511              	.LASF24:
+ 1512 0201 4144435F 		.ascii	"ADC_DelSig_theACLK_GetDividerRegister\000"
+ 1512      44656C53 
+ 1512      69675F74 
+ 1512      68654143 
+ 1512      4C4B5F47 
+ 1513              	.LASF13:
+ 1514 0227 63686172 		.ascii	"char\000"
+ 1514      00
+ 1515              	.LASF34:
+ 1516 022c 636C6B53 		.ascii	"clkSource\000"
+ 1516      6F757263 
+ 1516      6500
+ 1517              	.LASF32:
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 39
 
 
- 1514      65642069 
- 1514      6E7400
- 1515              	.LASF24:
- 1516 0271 4144435F 		.ascii	"ADC_DelSig_theACLK_GetDividerRegister\000"
- 1516      44656C53 
- 1516      69675F74 
- 1516      68654143 
- 1516      4C4B5F47 
- 1517              	.LASF13:
- 1518 0297 63686172 		.ascii	"char\000"
- 1518      00
- 1519              	.LASF34:
- 1520 029c 636C6B53 		.ascii	"clkSource\000"
- 1520      6F757263 
- 1520      6500
- 1521              	.LASF32:
- 1522 02a6 63757272 		.ascii	"currSrc\000"
- 1522      53726300 
- 1523              	.LASF30:
- 1524 02ae 6F6C6444 		.ascii	"oldDivider\000"
- 1524      69766964 
- 1524      657200
- 1525              	.LASF14:
- 1526 02b9 72656738 		.ascii	"reg8\000"
- 1526      00
- 1527              	.LASF5:
- 1528 02be 6C6F6E67 		.ascii	"long unsigned int\000"
- 1528      20756E73 
- 1528      69676E65 
- 1528      6420696E 
- 1528      7400
- 1529              	.LASF12:
- 1530 02d0 646F7562 		.ascii	"double\000"
- 1530      6C6500
- 1531              	.LASF20:
- 1532 02d7 4144435F 		.ascii	"ADC_DelSig_theACLK_SetModeRegister\000"
- 1532      44656C53 
- 1532      69675F74 
- 1532      68654143 
- 1532      4C4B5F53 
- 1533              	.LASF31:
- 1534 02fa 656E6162 		.ascii	"enabled\000"
- 1534      6C656400 
- 1535              	.LASF16:
- 1536 0302 4144435F 		.ascii	"ADC_DelSig_theACLK_Start\000"
- 1536      44656C53 
- 1536      69675F74 
- 1536      68654143 
- 1536      4C4B5F53 
- 1537              	.LASF25:
- 1538 031b 4144435F 		.ascii	"ADC_DelSig_theACLK_GetModeRegister\000"
- 1538      44656C53 
- 1538      69675F74 
- 1538      68654143 
- 1538      4C4B5F47 
- 1539              	.LASF40:
- 1540 033e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\cchg9WfK.s 			page 40
+ 1518 0236 63757272 		.ascii	"currSrc\000"
+ 1518      53726300 
+ 1519              	.LASF30:
+ 1520 023e 6F6C6444 		.ascii	"oldDivider\000"
+ 1520      69766964 
+ 1520      657200
+ 1521              	.LASF14:
+ 1522 0249 72656738 		.ascii	"reg8\000"
+ 1522      00
+ 1523              	.LASF5:
+ 1524 024e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1524      20756E73 
+ 1524      69676E65 
+ 1524      6420696E 
+ 1524      7400
+ 1525              	.LASF12:
+ 1526 0260 646F7562 		.ascii	"double\000"
+ 1526      6C6500
+ 1527              	.LASF20:
+ 1528 0267 4144435F 		.ascii	"ADC_DelSig_theACLK_SetModeRegister\000"
+ 1528      44656C53 
+ 1528      69675F74 
+ 1528      68654143 
+ 1528      4C4B5F53 
+ 1529              	.LASF42:
+ 1530 028a 433A5C55 		.ascii	"C:\\Users\\feder\\Desktop\\Poli\\Anno V\\PROGETTO L"
+ 1530      73657273 
+ 1530      5C666564 
+ 1530      65725C44 
+ 1530      65736B74 
+ 1531 02b7 41425C41 		.ascii	"AB\\AY2223_I_Project-3\\PSOC\\Project3!.cydsn\000"
+ 1531      59323232 
+ 1531      335F495F 
+ 1531      50726F6A 
+ 1531      6563742D 
+ 1532              	.LASF31:
+ 1533 02e2 656E6162 		.ascii	"enabled\000"
+ 1533      6C656400 
+ 1534              	.LASF16:
+ 1535 02ea 4144435F 		.ascii	"ADC_DelSig_theACLK_Start\000"
+ 1535      44656C53 
+ 1535      69675F74 
+ 1535      68654143 
+ 1535      4C4B5F53 
+ 1536              	.LASF25:
+ 1537 0303 4144435F 		.ascii	"ADC_DelSig_theACLK_GetModeRegister\000"
+ 1537      44656C53 
+ 1537      69675F74 
+ 1537      68654143 
+ 1537      4C4B5F47 
+ 1538              	.LASF40:
+ 1539 0326 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1539      43313120 
+ 1539      352E342E 
+ 1539      31203230 
+ 1539      31363036 
+ 1540 0359 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\feder\AppData\Local\Temp\ccASdU87.s 			page 40
 
 
- 1540      43313120 
- 1540      352E342E 
- 1540      31203230 
- 1540      31363036 
- 1541 0371 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1541      20726576 
- 1541      6973696F 
- 1541      6E203233 
- 1541      37373135 
- 1542 03a4 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1542      66756E63 
- 1542      74696F6E 
- 1542      2D736563 
- 1542      74696F6E 
- 1543              	.LASF26:
- 1544 03cc 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
- 1544      44656C53 
- 1544      69675F74 
- 1544      68654143 
- 1544      4C4B5F47 
- 1545              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1540      20726576 
+ 1540      6973696F 
+ 1540      6E203233 
+ 1540      37373135 
+ 1541 038c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1541      66756E63 
+ 1541      74696F6E 
+ 1541      2D736563 
+ 1541      74696F6E 
+ 1542              	.LASF26:
+ 1543 03b4 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
+ 1543      44656C53 
+ 1543      69675F74 
+ 1543      68654143 
+ 1543      4C4B5F47 
+ 1544              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

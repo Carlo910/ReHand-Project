@@ -51,7 +51,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM4'
+        self.port_name = 'COM6'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -126,12 +126,14 @@ class MainWindow(QMainWindow):
 
         # create thread handler
         self.threadpool = QThreadPool()
+        #self.threadpool1 = QThreadPool()
 
         self.connected = CONN_STATUS
         self.createButton()
         self.initUI()
         self.flag1=0
         self.flag2=0
+        self.flaggioco=0
 
     def initUI(self):
         
@@ -237,6 +239,7 @@ class MainWindow(QMainWindow):
         )
 
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        #self.threadpool1.start(self.serial_worker)
         #self.ricevi_btn.clicked.connect(self.ricevuto)
         #self.finestra3_btn.clicked.connect(self.aprifinestra3)
     '''
@@ -245,15 +248,17 @@ class MainWindow(QMainWindow):
             self.serial_worker.signals.packet.connect(self.handle_packet)
             self.threadpool.start(self.serial_worker)
     '''      
-    def handle_packet_option(self, packet):
-        print("voglio andare dal calabrese")  
+    def handle_packet_option(self, packet): 
         if (packet[0]>5000 and packet[1]<7000 and packet[2]>5000 and packet[3]>5000 and self.flag1==0):
-            #self.createButton3()
+            #self.createButton()
             self.initUI3()
             self.flag1=1
             self.flag2=0
+            self.flaggioco=True
+            #self.serial_worker.signals.packet.connect(self.handle_packet_giocoarco)
+
         
-        elif(packet[0]>5000 and packet[1]<5000 and packet[2]<5000 and packet[3]>5000 and self.flag2==0):
+        elif(packet[0]>5000 and packet[1]<5000 and packet[2]<5000 and packet[3]>5000 and self.flag2==0 and self.flaggioco==False):
             self.immagine.show()
             self.flag2=1
             self.flag1=0
@@ -262,7 +267,9 @@ class MainWindow(QMainWindow):
             self.flag1=0
             self.flag2=0
             self.immagine.hide()
-            self.immagine2.hide()
+            self.createButton2()
+            self.initUI2()
+            self.flaggioco=0
         else:
             pass
     
@@ -270,20 +277,17 @@ class MainWindow(QMainWindow):
         
         
         self.titolo3=QLabel("GIOCO ARCO")
-        #self.layout3=Q
-        #self.layout3.addWidget(self.titolo3)
-        
+        self.layout3=QHBoxLayout()
+        self.layout3.addWidget(self.titolo3)
+        self.titolo3.setGeometry(100,100,0,0)
 
         
         #Layout
         #Vlay.addLayout(led_hlay)
         self.widget3 = QWidget()
-        self.widget3.setLayout(self.titolo3)
-        self.titolo3.setAlignment(QtCore.Qt.Alignment)
+        self.widget3.setLayout(self.layout3)
         self.setCentralWidget(self.widget3)
         
-    
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
