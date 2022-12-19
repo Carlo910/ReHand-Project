@@ -1,5 +1,5 @@
 -- Project:   Project3!
--- Generated: 12/06/2022 10:06:06
+-- Generated: 12/19/2022 16:56:50
 -- PSoC Creator  4.4
 
 ENTITY \Project3!\ IS
@@ -188,9 +188,9 @@ ARCHITECTURE __DEFAULT__ OF \Project3!\ IS
     ATTRIBUTE lib_model OF R_Pin_3(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF R_Pin_3(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P3[1]";
+    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF Tx_2(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Tx_2(0) : LABEL IS "P3[0]";
+    ATTRIBUTE Location OF Tx_2(0) : LABEL IS "P3[5]";
     ATTRIBUTE lib_model OF Net_9 : LABEL IS "macrocell1";
     ATTRIBUTE Location OF Net_9 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell2";

@@ -53,11 +53,11 @@
 #define Rx_1__SLW CYREG_PRT12_SLW
 
 /* Rx_2 */
-#define Rx_2__0__INTTYPE CYREG_PICU3_INTTYPE1
-#define Rx_2__0__MASK 0x02u
-#define Rx_2__0__PC CYREG_PRT3_PC1
+#define Rx_2__0__INTTYPE CYREG_PICU3_INTTYPE6
+#define Rx_2__0__MASK 0x40u
+#define Rx_2__0__PC CYREG_PRT3_PC6
 #define Rx_2__0__PORT 3u
-#define Rx_2__0__SHIFT 1u
+#define Rx_2__0__SHIFT 6u
 #define Rx_2__AG CYREG_PRT3_AG
 #define Rx_2__AMUX CYREG_PRT3_AMUX
 #define Rx_2__BIE CYREG_PRT3_BIE
@@ -72,7 +72,7 @@
 #define Rx_2__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU3_BASE
 #define Rx_2__LCD_COM_SEG CYREG_PRT3_LCD_COM_SEG
 #define Rx_2__LCD_EN CYREG_PRT3_LCD_EN
-#define Rx_2__MASK 0x02u
+#define Rx_2__MASK 0x40u
 #define Rx_2__PORT 3u
 #define Rx_2__PRT CYREG_PRT3_PRT
 #define Rx_2__PRTDSI__CAPS_SEL CYREG_PRT3_CAPS_SEL
@@ -83,7 +83,7 @@
 #define Rx_2__PRTDSI__OUT_SEL1 CYREG_PRT3_OUT_SEL1
 #define Rx_2__PRTDSI__SYNC_OUT CYREG_PRT3_SYNC_OUT
 #define Rx_2__PS CYREG_PRT3_PS
-#define Rx_2__SHIFT 1u
+#define Rx_2__SHIFT 6u
 #define Rx_2__SLW CYREG_PRT3_SLW
 
 /* Tx_1 */
@@ -120,11 +120,11 @@
 #define Tx_1__SLW CYREG_PRT12_SLW
 
 /* Tx_2 */
-#define Tx_2__0__INTTYPE CYREG_PICU3_INTTYPE0
-#define Tx_2__0__MASK 0x01u
-#define Tx_2__0__PC CYREG_PRT3_PC0
+#define Tx_2__0__INTTYPE CYREG_PICU3_INTTYPE5
+#define Tx_2__0__MASK 0x20u
+#define Tx_2__0__PC CYREG_PRT3_PC5
 #define Tx_2__0__PORT 3u
-#define Tx_2__0__SHIFT 0u
+#define Tx_2__0__SHIFT 5u
 #define Tx_2__AG CYREG_PRT3_AG
 #define Tx_2__AMUX CYREG_PRT3_AMUX
 #define Tx_2__BIE CYREG_PRT3_BIE
@@ -139,7 +139,7 @@
 #define Tx_2__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU3_BASE
 #define Tx_2__LCD_COM_SEG CYREG_PRT3_LCD_COM_SEG
 #define Tx_2__LCD_EN CYREG_PRT3_LCD_EN
-#define Tx_2__MASK 0x01u
+#define Tx_2__MASK 0x20u
 #define Tx_2__PORT 3u
 #define Tx_2__PRT CYREG_PRT3_PRT
 #define Tx_2__PRTDSI__CAPS_SEL CYREG_PRT3_CAPS_SEL
@@ -150,7 +150,7 @@
 #define Tx_2__PRTDSI__OUT_SEL1 CYREG_PRT3_OUT_SEL1
 #define Tx_2__PRTDSI__SYNC_OUT CYREG_PRT3_SYNC_OUT
 #define Tx_2__PS CYREG_PRT3_PS
-#define Tx_2__SHIFT 0u
+#define Tx_2__SHIFT 5u
 #define Tx_2__SLW CYREG_PRT3_SLW
 
 /* UART */

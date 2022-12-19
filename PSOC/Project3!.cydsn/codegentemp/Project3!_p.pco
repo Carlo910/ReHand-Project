@@ -44,12 +44,12 @@ set_location "\UART:BUART:tx_state_2\" macrocell 3 1 0 0
 set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 3 0 2 
 set_location "\UART_BT:BUART:sRX:RxShifter:u0\" datapathcell 2 1 2 
 set_location "\UART_BT:BUART:rx_status_3\" macrocell 2 0 1 2
-set_io "Tx_2(0)" iocell 3 0
+set_io "Tx_2(0)" iocell 3 5
 # Note: port 12 is the logical name for port 7
 set_io "Rx_1(0)" iocell 12 6
 set_location "\ADC_DelSig:DSM\" dsmodcell -1 -1 0
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_io "Rx_2(0)" iocell 3 1
+set_io "Rx_2(0)" iocell 3 6
 # Note: port 12 is the logical name for port 7
 set_io "Tx_1(0)" iocell 12 7
 set_location "\ADC_DelSig:IRQ\" interrupt -1 -1 29

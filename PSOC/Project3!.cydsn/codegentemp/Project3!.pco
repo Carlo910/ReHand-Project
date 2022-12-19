@@ -1,5 +1,5 @@
 # Project3!
-# 2022-12-06 09:06:06Z
+# 2022-12-19 15:56:50Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -14,8 +14,8 @@ set_io "R_Pin(0)" iocell 2 2
 set_io "R_Pin_1(0)" iocell 2 5
 set_io "R_Pin_2(0)" iocell 2 7
 set_io "R_Pin_3(0)" iocell 1 2
-set_io "Rx_2(0)" iocell 3 1
-set_io "Tx_2(0)" iocell 3 0
+set_io "Rx_2(0)" iocell 3 6
+set_io "Tx_2(0)" iocell 3 5
 set_location "Net_9" 2 1 1 2
 set_location "\UART:BUART:counter_load_not\" 3 0 1 1
 set_location "\UART:BUART:tx_status_0\" 3 0 1 2
