@@ -1288,10 +1288,10 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  657 0006 00000000 		.4byte	.Ldebug_abbrev0
  658 000a 04       		.byte	0x4
  659 000b 01       		.uleb128 0x1
- 660 000c 3E030000 		.4byte	.LASF40
+ 660 000c 26030000 		.4byte	.LASF40
  661 0010 0C       		.byte	0xc
  662 0011 C2010000 		.4byte	.LASF41
- 663 0015 EE010000 		.4byte	.LASF42
+ 663 0015 8A020000 		.4byte	.LASF42
  664 0019 00000000 		.4byte	.Ldebug_ranges0+0
  665 001d 00000000 		.4byte	0
  666 0021 00000000 		.4byte	.Ldebug_line0
@@ -1310,7 +1310,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  679 003a 02       		.uleb128 0x2
  680 003b 02       		.byte	0x2
  681 003c 07       		.byte	0x7
- 682 003d 5E020000 		.4byte	.LASF3
+ 682 003d EE010000 		.4byte	.LASF3
  683 0041 02       		.uleb128 0x2
  684 0042 04       		.byte	0x4
  685 0043 05       		.byte	0x5
@@ -1321,7 +1321,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
 ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 23
 
 
- 690 004b BE020000 		.4byte	.LASF5
+ 690 004b 4E020000 		.4byte	.LASF5
  691 004f 02       		.uleb128 0x2
  692 0050 08       		.byte	0x8
  693 0051 05       		.byte	0x5
@@ -1355,13 +1355,13 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  721 008a 02       		.uleb128 0x2
  722 008b 08       		.byte	0x8
  723 008c 04       		.byte	0x4
- 724 008d D0020000 		.4byte	.LASF12
+ 724 008d 60020000 		.4byte	.LASF12
  725 0091 02       		.uleb128 0x2
  726 0092 01       		.byte	0x1
  727 0093 08       		.byte	0x8
- 728 0094 97020000 		.4byte	.LASF13
+ 728 0094 27020000 		.4byte	.LASF13
  729 0098 04       		.uleb128 0x4
- 730 0099 B9020000 		.4byte	.LASF14
+ 730 0099 49020000 		.4byte	.LASF14
  731 009d 02       		.byte	0x2
  732 009e 9202     		.2byte	0x292
  733 00a0 A4000000 		.4byte	0xa4
@@ -1375,7 +1375,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  741 00b5 05       		.uleb128 0x5
  742 00b6 77000000 		.4byte	0x77
  743 00ba 06       		.uleb128 0x6
- 744 00bb 02030000 		.4byte	.LASF16
+ 744 00bb EA020000 		.4byte	.LASF16
  745 00bf 01       		.byte	0x1
  746 00c0 2D       		.byte	0x2d
 ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 24
@@ -1406,7 +1406,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  769 00f2 0A000000 		.4byte	.LBB2
  770 00f6 62000000 		.4byte	.LBE2-.LBB2
  771 00fa 09       		.uleb128 0x9
- 772 00fb AE020000 		.4byte	.LASF30
+ 772 00fb 3E020000 		.4byte	.LASF30
  773 00ff 01       		.byte	0x1
  774 0100 69       		.byte	0x69
  775 0101 77000000 		.4byte	0x77
@@ -1431,7 +1431,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  794 012c 50       		.byte	0x50
  795 012d 00       		.byte	0
  796 012e 0B       		.uleb128 0xb
- 797 012f 71020000 		.4byte	.LASF24
+ 797 012f 01020000 		.4byte	.LASF24
  798 0133 01       		.byte	0x1
  799 0134 2901     		.2byte	0x129
  800 0136 77000000 		.4byte	0x77
@@ -1443,7 +1443,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
 
  804 0143 9C       		.byte	0x9c
  805 0144 0C       		.uleb128 0xc
- 806 0145 D7020000 		.4byte	.LASF20
+ 806 0145 67020000 		.4byte	.LASF20
  807 0149 01       		.byte	0x1
  808 014a 4C01     		.2byte	0x14c
  809 014c 00000000 		.4byte	.LFB6
@@ -1475,7 +1475,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  835 018d 34000000 		.4byte	.LLST2
  836 0191 00       		.byte	0
  837 0192 0B       		.uleb128 0xb
- 838 0193 1B030000 		.4byte	.LASF25
+ 838 0193 03030000 		.4byte	.LASF25
  839 0197 01       		.byte	0x1
  840 0198 8401     		.2byte	0x184
  841 019a 6B000000 		.4byte	0x6b
@@ -1484,7 +1484,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  844 01a6 01       		.uleb128 0x1
  845 01a7 9C       		.byte	0x9c
  846 01a8 0B       		.uleb128 0xb
- 847 01a9 CC030000 		.4byte	.LASF26
+ 847 01a9 B4030000 		.4byte	.LASF26
  848 01ad 01       		.byte	0x1
  849 01ae D001     		.2byte	0x1d0
  850 01b0 6B000000 		.4byte	0x6b
@@ -1517,19 +1517,19 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  874 01e9 6B000000 		.4byte	0x6b
  875 01ed 76000000 		.4byte	.LLST4
  876 01f1 09       		.uleb128 0x9
- 877 01f2 FA020000 		.4byte	.LASF31
+ 877 01f2 E2020000 		.4byte	.LASF31
  878 01f6 01       		.byte	0x1
  879 01f7 C4       		.byte	0xc4
  880 01f8 6B000000 		.4byte	0x6b
  881 01fc 97000000 		.4byte	.LLST5
  882 0200 09       		.uleb128 0x9
- 883 0201 A6020000 		.4byte	.LASF32
+ 883 0201 36020000 		.4byte	.LASF32
  884 0205 01       		.byte	0x1
  885 0206 C6       		.byte	0xc6
  886 0207 6B000000 		.4byte	0x6b
  887 020b E5000000 		.4byte	.LLST6
  888 020f 0F       		.uleb128 0xf
- 889 0210 AE020000 		.4byte	.LASF30
+ 889 0210 3E020000 		.4byte	.LASF30
  890 0214 01       		.byte	0x1
  891 0215 C7       		.byte	0xc7
  892 0216 77000000 		.4byte	0x77
@@ -1552,7 +1552,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
  909 0240 9C       		.byte	0x9c
  910 0241 86020000 		.4byte	0x286
  911 0245 0D       		.uleb128 0xd
- 912 0246 9C020000 		.4byte	.LASF34
+ 912 0246 2C020000 		.4byte	.LASF34
  913 024a 01       		.byte	0x1
  914 024b A301     		.2byte	0x1a3
  915 024d 6B000000 		.4byte	0x6b
@@ -2341,24 +2341,19 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 1
 ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccXSls00.s 			page 40
 
 
- 1540      43313120 
- 1540      352E342E 
- 1540      31203230 
- 1540      31363036 
- 1541 0371 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1541      20726576 
- 1541      6973696F 
- 1541      6E203233 
- 1541      37373135 
- 1542 03a4 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1542      66756E63 
- 1542      74696F6E 
- 1542      2D736563 
- 1542      74696F6E 
- 1543              	.LASF26:
- 1544 03cc 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
- 1544      44656C53 
- 1544      69675F74 
- 1544      68654143 
- 1544      4C4B5F47 
- 1545              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1540      20726576 
+ 1540      6973696F 
+ 1540      6E203233 
+ 1540      37373135 
+ 1541 038c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1541      66756E63 
+ 1541      74696F6E 
+ 1541      2D736563 
+ 1541      74696F6E 
+ 1542              	.LASF26:
+ 1543 03b4 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
+ 1543      44656C53 
+ 1543      69675F74 
+ 1543      68654143 
+ 1543      4C4B5F47 
+ 1544              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

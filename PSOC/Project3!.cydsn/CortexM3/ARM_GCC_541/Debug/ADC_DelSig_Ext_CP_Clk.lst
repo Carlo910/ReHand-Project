@@ -1180,10 +1180,10 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  604 0006 00000000 		.4byte	.Ldebug_abbrev0
  605 000a 04       		.byte	0x4
  606 000b 01       		.uleb128 0x1
- 607 000c 36030000 		.4byte	.LASF36
+ 607 000c 1E030000 		.4byte	.LASF36
  608 0010 0C       		.byte	0xc
- 609 0011 99020000 		.4byte	.LASF37
- 610 0015 16020000 		.4byte	.LASF38
+ 609 0011 29020000 		.4byte	.LASF37
+ 610 0015 BE020000 		.4byte	.LASF38
  611 0019 00000000 		.4byte	.Ldebug_ranges0+0
  612 001d 00000000 		.4byte	0
  613 0021 00000000 		.4byte	.Ldebug_line0
@@ -1205,7 +1205,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  626 003a 02       		.uleb128 0x2
  627 003b 02       		.byte	0x2
  628 003c 07       		.byte	0x7
- 629 003d 86020000 		.4byte	.LASF3
+ 629 003d 16020000 		.4byte	.LASF3
  630 0041 02       		.uleb128 0x2
  631 0042 04       		.byte	0x4
  632 0043 05       		.byte	0x5
@@ -1213,7 +1213,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  634 0048 02       		.uleb128 0x2
  635 0049 04       		.byte	0x4
  636 004a 07       		.byte	0x7
- 637 004b 15030000 		.4byte	.LASF5
+ 637 004b A5020000 		.4byte	.LASF5
  638 004f 02       		.uleb128 0x2
  639 0050 08       		.byte	0x8
  640 0051 05       		.byte	0x5
@@ -1247,13 +1247,13 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  668 008a 02       		.uleb128 0x2
  669 008b 08       		.byte	0x8
  670 008c 04       		.byte	0x4
- 671 008d 27030000 		.4byte	.LASF12
+ 671 008d B7020000 		.4byte	.LASF12
  672 0091 02       		.uleb128 0x2
  673 0092 01       		.byte	0x1
  674 0093 08       		.byte	0x8
- 675 0094 C8020000 		.4byte	.LASF13
+ 675 0094 58020000 		.4byte	.LASF13
  676 0098 04       		.uleb128 0x4
- 677 0099 10030000 		.4byte	.LASF14
+ 677 0099 A0020000 		.4byte	.LASF14
  678 009d 02       		.byte	0x2
  679 009e 9202     		.2byte	0x292
  680 00a0 A4000000 		.4byte	0xa4
@@ -1298,7 +1298,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  716 00f2 0A000000 		.4byte	.LBB2
  717 00f6 62000000 		.4byte	.LBE2-.LBB2
  718 00fa 09       		.uleb128 0x9
- 719 00fb DF020000 		.4byte	.LASF30
+ 719 00fb 6F020000 		.4byte	.LASF30
  720 00ff 01       		.byte	0x1
  721 0100 69       		.byte	0x69
  722 0101 77000000 		.4byte	0x77
@@ -1367,7 +1367,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  782 018d 34000000 		.4byte	.LLST2
  783 0191 00       		.byte	0
  784 0192 0B       		.uleb128 0xb
- 785 0193 EA020000 		.4byte	.LASF25
+ 785 0193 7A020000 		.4byte	.LASF25
  786 0197 01       		.byte	0x1
  787 0198 8401     		.2byte	0x184
  788 019a 6B000000 		.4byte	0x6b
@@ -1409,19 +1409,19 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  821 01e9 6B000000 		.4byte	0x6b
  822 01ed 76000000 		.4byte	.LLST4
  823 01f1 09       		.uleb128 0x9
- 824 01f2 2E030000 		.4byte	.LASF31
+ 824 01f2 16030000 		.4byte	.LASF31
  825 01f6 01       		.byte	0x1
  826 01f7 C4       		.byte	0xc4
  827 01f8 6B000000 		.4byte	0x6b
  828 01fc 97000000 		.4byte	.LLST5
  829 0200 09       		.uleb128 0x9
- 830 0201 D7020000 		.4byte	.LASF32
+ 830 0201 67020000 		.4byte	.LASF32
  831 0205 01       		.byte	0x1
  832 0206 C6       		.byte	0xc6
  833 0207 6B000000 		.4byte	0x6b
  834 020b E5000000 		.4byte	.LLST6
  835 020f 0F       		.uleb128 0xf
- 836 0210 DF020000 		.4byte	.LASF30
+ 836 0210 6F020000 		.4byte	.LASF30
  837 0214 01       		.byte	0x1
  838 0215 C7       		.byte	0xc7
  839 0216 77000000 		.4byte	0x77
@@ -1446,7 +1446,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
  855 023f 01       		.uleb128 0x1
  856 0240 9C       		.byte	0x9c
  857 0241 0D       		.uleb128 0xd
- 858 0242 CD020000 		.4byte	.LASF33
+ 858 0242 5D020000 		.4byte	.LASF33
  859 0246 01       		.byte	0x1
  860 0247 A301     		.2byte	0x1a3
  861 0249 6B000000 		.4byte	0x6b
@@ -2161,52 +2161,47 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 1
 ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc9E9umL.s 			page 37
 
 
- 1441              	.LASF33:
- 1442 02cd 636C6B53 		.ascii	"clkSource\000"
- 1442      6F757263 
- 1442      6500
- 1443              	.LASF32:
- 1444 02d7 63757272 		.ascii	"currSrc\000"
- 1444      53726300 
- 1445              	.LASF30:
- 1446 02df 6F6C6444 		.ascii	"oldDivider\000"
- 1446      69766964 
- 1446      657200
- 1447              	.LASF25:
- 1448 02ea 4144435F 		.ascii	"ADC_DelSig_Ext_CP_Clk_GetModeRegister\000"
- 1448      44656C53 
- 1448      69675F45 
- 1448      78745F43 
- 1448      505F436C 
- 1449              	.LASF14:
- 1450 0310 72656738 		.ascii	"reg8\000"
- 1450      00
- 1451              	.LASF5:
- 1452 0315 6C6F6E67 		.ascii	"long unsigned int\000"
- 1452      20756E73 
- 1452      69676E65 
- 1452      6420696E 
- 1452      7400
- 1453              	.LASF12:
- 1454 0327 646F7562 		.ascii	"double\000"
- 1454      6C6500
- 1455              	.LASF31:
- 1456 032e 656E6162 		.ascii	"enabled\000"
- 1456      6C656400 
- 1457              	.LASF36:
- 1458 0336 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1458      43313120 
- 1458      352E342E 
- 1458      31203230 
- 1458      31363036 
- 1459 0369 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1459      20726576 
- 1459      6973696F 
- 1459      6E203233 
- 1459      37373135 
- 1460 039c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1460      66756E63 
- 1460      74696F6E 
- 1460      2D736563 
- 1460      74696F6E 
- 1461              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1444      505F436C 
+ 1445              	.LASF14:
+ 1446 02a0 72656738 		.ascii	"reg8\000"
+ 1446      00
+ 1447              	.LASF5:
+ 1448 02a5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1448      20756E73 
+ 1448      69676E65 
+ 1448      6420696E 
+ 1448      7400
+ 1449              	.LASF12:
+ 1450 02b7 646F7562 		.ascii	"double\000"
+ 1450      6C6500
+ 1451              	.LASF38:
+ 1452 02be 433A5C55 		.ascii	"C:\\Users\\feder\\Desktop\\Poli\\Anno V\\PROGETTO L"
+ 1452      73657273 
+ 1452      5C666564 
+ 1452      65725C44 
+ 1452      65736B74 
+ 1453 02eb 41425C41 		.ascii	"AB\\AY2223_I_Project-3\\PSOC\\Project3!.cydsn\000"
+ 1453      59323232 
+ 1453      335F495F 
+ 1453      50726F6A 
+ 1453      6563742D 
+ 1454              	.LASF31:
+ 1455 0316 656E6162 		.ascii	"enabled\000"
+ 1455      6C656400 
+ 1456              	.LASF36:
+ 1457 031e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1457      43313120 
+ 1457      352E342E 
+ 1457      31203230 
+ 1457      31363036 
+ 1458 0351 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1458      20726576 
+ 1458      6973696F 
+ 1458      6E203233 
+ 1458      37373135 
+ 1459 0384 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1459      66756E63 
+ 1459      74696F6E 
+ 1459      2D736563 
+ 1459      74696F6E 
+ 1460              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

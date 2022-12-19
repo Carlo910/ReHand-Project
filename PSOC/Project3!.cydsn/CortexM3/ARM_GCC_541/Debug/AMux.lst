@@ -292,7 +292,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 1
  164 000c 1C000000 		.4byte	.LASF20
  165 0010 0C       		.byte	0xc
  166 0011 52010000 		.4byte	.LASF21
- 167 0015 A1010000 		.4byte	.LASF22
+ 167 0015 79010000 		.4byte	.LASF22
  168 0019 00000000 		.4byte	.Ldebug_ranges0+0
  169 001d 00000000 		.4byte	0
  170 0021 00000000 		.4byte	.Ldebug_line0
@@ -302,7 +302,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 1
 
 
  173 0027 06       		.byte	0x6
- 174 0028 79010000 		.4byte	.LASF0
+ 174 0028 D1010000 		.4byte	.LASF0
  175 002c 02       		.uleb128 0x2
  176 002d 01       		.byte	0x1
  177 002e 08       		.byte	0x8
@@ -447,7 +447,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 1
  310 013b 00       		.byte	0
  311 013c 00       		.byte	0
  312 013d 0B       		.uleb128 0xb
- 313 013e 90010000 		.4byte	.LASF17
+ 313 013e E8010000 		.4byte	.LASF17
  314 0142 01       		.byte	0x1
  315 0143 14       		.byte	0x14
  316 0144 6B000000 		.4byte	0x6b
@@ -455,8 +455,8 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 1
  318 0149 03       		.byte	0x3
  319 014a 00000000 		.4byte	AMux_lastChannel
  320 014e 0C       		.uleb128 0xc
- 321 014f 85010000 		.4byte	.LASF18
- 322 0153 85010000 		.4byte	.LASF18
+ 321 014f DD010000 		.4byte	.LASF18
+ 322 0153 DD010000 		.4byte	.LASF18
  323 0157 02       		.byte	0x2
  324 0158 1B       		.byte	0x1b
  325 0159 0C       		.uleb128 0xc
@@ -841,27 +841,22 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 1
 ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccy62wB9.s 			page 15
 
 
- 622      657400
- 623              	.LASF17:
- 624 0190 414D7578 		.ascii	"AMux_lastChannel\000"
- 624      5F6C6173 
- 624      74436861 
- 624      6E6E656C 
- 624      00
- 625              	.LASF22:
- 626 01a1 433A5C55 		.ascii	"C:\\Users\\Windows\\Desktop\\Magistrale\\II_primo_s"
- 626      73657273 
- 626      5C57696E 
- 626      646F7773 
- 626      5C446573 
- 627 01cf 656D6573 		.ascii	"emestre\\Project  Lab Sens\\AY2223_I_Project-3\\PSO"
- 627      7472655C 
- 627      50726F6A 
- 627      65637420 
- 627      204C6162 
- 628 01ff 435C5072 		.ascii	"C\\Project3!.cydsn\000"
- 628      6F6A6563 
- 628      7433212E 
- 628      63796473 
- 628      6E00
- 629              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 621      59323232 
+ 621      335F495F 
+ 621      50726F6A 
+ 621      6563742D 
+ 622              	.LASF0:
+ 623 01d1 7369676E 		.ascii	"signed char\000"
+ 623      65642063 
+ 623      68617200 
+ 624              	.LASF18:
+ 625 01dd 414D7578 		.ascii	"AMux_Unset\000"
+ 625      5F556E73 
+ 625      657400
+ 626              	.LASF17:
+ 627 01e8 414D7578 		.ascii	"AMux_lastChannel\000"
+ 627      5F6C6173 
+ 627      74436861 
+ 627      6E6E656C 
+ 627      00
+ 628              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
