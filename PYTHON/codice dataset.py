@@ -6,7 +6,7 @@ def main():
     sample=0
     ser = serial.Serial()
     ser.baudrate = 9600
-    ser.port = 'COM7'
+    ser.port = 'COM9'
 
     #da usare la prima volta
     '''
@@ -23,7 +23,7 @@ def main():
         except:
             print("Didn't connect, trying again")
             
-    while(ser.is_open and sample<500):
+    while(ser.is_open and sample<1000):
         dato = ser.read(10)
         print(dato, type(dato))
         sample += 1
@@ -38,8 +38,8 @@ def main():
             print(final)
             print(sample)
 
-            final.append(2)
-            with open('dataset_test.csv', mode='a', newline='') as f_object: 
+            final.append(0)
+            with open('dataset_training.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             
