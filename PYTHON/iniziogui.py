@@ -121,8 +121,8 @@ class MainWindow(QMainWindow):
         self.w = None
         # title and geometry
         self.setWindowTitle("Progetto 3")
-        width = 600
-        height = 420
+        width = 800
+        height = 620
         self.setMinimumSize(width, height)
 
         # create thread handler
@@ -139,15 +139,16 @@ class MainWindow(QMainWindow):
         
         
         self.start_btn = QPushButton(
-            text = "Start",
+            text = "START",
             checkable = True
         )
         # layout
+        self.start_btn.setFont(QtGui.QFont('Arial', 30))
         self.button_hlay = QHBoxLayout()
         self.button_hlay.addWidget(self.start_btn)
        
         #button_hlay.addWidget(self.win_btn)
-        self.start_btn.setFixedSize(200, 200)
+        self.start_btn.setFixedSize(300, 300)
         self.vlay = QVBoxLayout()
         self.vlay.addLayout(self.button_hlay)
         self.widget = QWidget()
@@ -203,18 +204,24 @@ class MainWindow(QMainWindow):
             text= "Alza l'indice",
             checkable=True
         )
+        self.opzione1_btn.setFont(QtGui.QFont('Arial', 30))
 
 
         self.opzione2_btn=QPushButton(
             text= "Alza indice e medio",
             checkable=True
         )
+
+        self.opzione2_btn.setFont(QtGui.QFont('Arial', 30))
+
          # layout
-        button_hlay2 = QHBoxLayout()
+        button_hlay2 = QVBoxLayout()
         button_hlay2.addWidget(self.opzione1_btn)
         button_hlay2.addWidget(self.opzione2_btn)
+        self.opzione1_btn.setFixedSize(600, 200)
+        self.opzione2_btn.setFixedSize(600, 200)
         #self.opzione1_btn.setFixedSize(200, 200)
-        vlay2 = QVBoxLayout()
+        vlay2 = QHBoxLayout()
         vlay2.addLayout(button_hlay2)
       # vlay.addLayout(led_hlay)
         self.widget2 = QWidget()
@@ -233,21 +240,19 @@ class MainWindow(QMainWindow):
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
      
     def handle_packet_option(self, packet): 
-        if (packet[0]>5000 and packet[1]<7000 and packet[2]>5000 and packet[3]>5000 and self.flag1==0):
+        if (packet[0]>4000 and packet[1]<7000 and packet[2]>5000 and packet[3]>2000 and self.flag1==0):
             #self.createButton()
             self.initUI3()
             self.flag1=1
             self.flag2=0
             self.flaggioco=True
          
-
-        
-        elif(packet[0]>5000 and packet[1]<5000 and packet[2]<5000 and packet[3]>5000 and self.flag2==0 and self.flaggioco==False):
+        elif(packet[0]>4000 and packet[1]<5000 and packet[2]<5000 and packet[3]>2000 and self.flag2==0 and self.flaggioco==False):
             self.initUI4()
             self.flag2=1
             self.flag1=0
 
-        elif(packet[0]>6000 and packet[1]>6000 and packet[2]>6000 and packet[3]>6000 and (self.flag1==1 or self.flag2==1)):
+        elif(packet[0]>4000 and packet[1]>6000 and packet[2]>6000 and packet[3]>2000 and (self.flag1==1 or self.flag2==1)):
             self.flag1=0
             self.flag2=0
             self.immagine.hide()
@@ -259,10 +264,11 @@ class MainWindow(QMainWindow):
     def initUI3(self):
         
         
-        self.titolo3=QLabel("                                               GIOCO ARCO")
+        self.titolo3=QLabel("            GIOCO ARCO")
         #self.titolo3.setAlignment(Qt)
         self.layout3=QHBoxLayout()
         self.layout3.addWidget(self.titolo3)
+        self.titolo3.setFont(QtGui.QFont('Arial', 30))
        
         #Layout
        
@@ -270,14 +276,14 @@ class MainWindow(QMainWindow):
         self.widget3.setLayout(self.layout3)
         self.setCentralWidget(self.widget3)
         
-    def initUI3(self):
-        
-        
-        self.titolo4=QLabel("                                                STATISTICHE")
+    def initUI4(self):
+
+        self.titolo4=QLabel("          STATISTICHE")
         #self.titolo3.setAlignment(Qt)
         self.layout4=QHBoxLayout()
         self.layout4.addWidget(self.titolo4)
-       
+        self.titolo4.setFont(QtGui.QFont('Arial', 30))
+
         #Layout
        
         self.widget4 = QWidget()
