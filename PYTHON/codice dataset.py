@@ -38,8 +38,8 @@ def main():
             print(final)
             print(sample)
 
-            final.append(2)
-            with open('dataset_test.csv', mode='a', newline='') as f_object: 
+            final.append(0)
+            with open('dataset_training.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             

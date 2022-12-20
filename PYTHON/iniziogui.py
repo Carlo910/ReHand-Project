@@ -8,6 +8,7 @@ import csv
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import (
+    Qt,
     QObject,
     QThreadPool, 
     QRunnable, 
@@ -51,7 +52,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM6'
+        self.port_name = 'COM7'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -129,7 +130,6 @@ class MainWindow(QMainWindow):
         #self.threadpool1 = QThreadPool()
 
         self.connected = CONN_STATUS
-        self.createButton()
         self.initUI()
         self.flag1=0
         self.flag2=0
@@ -137,34 +137,30 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
         
-        # layout
-        self.button_hlay = QHBoxLayout()
-        self.button_hlay.addWidget(self.start_btn)
-        #button_hlay.addWidget(self.win_btn)
-        self.start_btn.setFixedSize(200, 200)
-        #self.win_btn.setFixedSize(200, 200)
-        self.vlay = QVBoxLayout()
-        self.vlay.addLayout(self.button_hlay)
-      # vlay.addLayout(led_hlay)
-        self.widget = QWidget()
-        self.widget.setLayout(self.vlay)
-        self.setCentralWidget(self.widget)
-
-
-    def createButton(self):
-
+        
         self.start_btn = QPushButton(
             text = "Start",
             checkable = True
         )
+        # layout
+        self.button_hlay = QHBoxLayout()
+        self.button_hlay.addWidget(self.start_btn)
+       
+        #button_hlay.addWidget(self.win_btn)
+        self.start_btn.setFixedSize(200, 200)
+        self.vlay = QVBoxLayout()
+        self.vlay.addLayout(self.button_hlay)
+        self.widget = QWidget()
+        self.widget.setLayout(self.vlay)
+        self.setCentralWidget(self.widget)
 
         self.start_btn.clicked.connect(self.on_click)
+        
 
     def on_click(self,checked):
         if checked:
             self.serial_worker.signals.device_port.connect(self.connected_device)
             self.serial_worker.signals.status.connect(self.check_serialport_status)
-            self.createButton2()
             self.initUI2()
             # execute the worker
             self.threadpool.start(self.serial_worker)
@@ -202,10 +198,22 @@ class MainWindow(QMainWindow):
     ##INIZIO FINESTRA SCELTA GIOCO##
 
     def initUI2(self):
+
+        self.opzione1_btn=QPushButton(
+            text= "Alza l'indice",
+            checkable=True
+        )
+
+
+        self.opzione2_btn=QPushButton(
+            text= "Alza indice e medio",
+            checkable=True
+        )
          # layout
         button_hlay2 = QHBoxLayout()
         button_hlay2.addWidget(self.opzione1_btn)
         button_hlay2.addWidget(self.opzione2_btn)
+        #self.opzione1_btn.setFixedSize(200, 200)
         vlay2 = QVBoxLayout()
         vlay2.addLayout(button_hlay2)
       # vlay.addLayout(led_hlay)
@@ -213,41 +221,17 @@ class MainWindow(QMainWindow):
         self.widget2.setLayout(vlay2)
         self.setCentralWidget(self.widget2)
 
+        
         #load immagine
         self.immagine=QLabel("Immagine")
-        pixmap=QtGui.QPixmap('ossa-della-mano.jpg')
+        pixmap=QtGui.QPixmap("ossa-della-mano.png")
         self.immagine.setPixmap(pixmap)
-        self.immagine.setScaledContents(True)
+        #self.immagine.setScaledContents(True)
         self.immagine.resize(pixmap.width(),pixmap.height())
-
-        self.immagine2=QLabel("Immagine 2")
-        pixmap2=QtGui.QPixmap('ciao.jpg')
-        self.immagine2.setPixmap(pixmap2)
-        self.immagine2.setScaledContents(True)
-        self.immagine2.resize(pixmap2.width(),pixmap2.height())
-
         
-    def createButton2(self):        
-        self.opzione1_btn = QPushButton(
-            text = "1",
-            
-        )
-
-        self.opzione2_btn=QPushButton(
-            text= "2",
-            checkable=True
-        )
-
+         
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
-        #self.threadpool1.start(self.serial_worker)
-        #self.ricevi_btn.clicked.connect(self.ricevuto)
-        #self.finestra3_btn.clicked.connect(self.aprifinestra3)
-    '''
-    def ricevuto(self):
-            print("tutto bene sono qui")
-            self.serial_worker.signals.packet.connect(self.handle_packet)
-            self.threadpool.start(self.serial_worker)
-    '''      
+     
     def handle_packet_option(self, packet): 
         if (packet[0]>5000 and packet[1]<7000 and packet[2]>5000 and packet[3]>5000 and self.flag1==0):
             #self.createButton()
@@ -255,11 +239,11 @@ class MainWindow(QMainWindow):
             self.flag1=1
             self.flag2=0
             self.flaggioco=True
-            #self.serial_worker.signals.packet.connect(self.handle_packet_giocoarco)
+         
 
         
         elif(packet[0]>5000 and packet[1]<5000 and packet[2]<5000 and packet[3]>5000 and self.flag2==0 and self.flaggioco==False):
-            self.immagine.show()
+            self.initUI4()
             self.flag2=1
             self.flag1=0
 
@@ -267,7 +251,6 @@ class MainWindow(QMainWindow):
             self.flag1=0
             self.flag2=0
             self.immagine.hide()
-            self.createButton2()
             self.initUI2()
             self.flaggioco=0
         else:
@@ -276,18 +259,32 @@ class MainWindow(QMainWindow):
     def initUI3(self):
         
         
-        self.titolo3=QLabel("GIOCO ARCO")
+        self.titolo3=QLabel("                                               GIOCO ARCO")
+        #self.titolo3.setAlignment(Qt)
         self.layout3=QHBoxLayout()
         self.layout3.addWidget(self.titolo3)
-        self.titolo3.setGeometry(100,100,0,0)
-
-        
+       
         #Layout
-        #Vlay.addLayout(led_hlay)
+       
         self.widget3 = QWidget()
         self.widget3.setLayout(self.layout3)
         self.setCentralWidget(self.widget3)
         
+    def initUI3(self):
+        
+        
+        self.titolo4=QLabel("                                                STATISTICHE")
+        #self.titolo3.setAlignment(Qt)
+        self.layout4=QHBoxLayout()
+        self.layout4.addWidget(self.titolo4)
+       
+        #Layout
+       
+        self.widget4 = QWidget()
+        self.widget4.setLayout(self.layout4)
+        self.setCentralWidget(self.widget4)
+        
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
