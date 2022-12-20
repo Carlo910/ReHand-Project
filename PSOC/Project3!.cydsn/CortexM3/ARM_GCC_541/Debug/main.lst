@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
   37              		.syntax unified
   38              	@ 18 "main.c" 1
   39 0002 62B6     		CPSIE   i
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 2
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 2
 
 
   40              	@ 0 "" 2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
   36:main.c        ****     
   37:main.c        ****     for(;;)
   38:main.c        ****     {
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 3
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 3
 
 
   39:main.c        ****         /* Place your application code here. */
@@ -136,11 +136,13 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
   41:main.c        ****         //Send data
   42:main.c        ****         for(int8 i=0; i<2; i++){
   43:main.c        ****              //comunicazione con BT
-  44:main.c        ****              UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
-  87              		.loc 1 44 0 discriminator 3
+  44:main.c        ****              //UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+  45:main.c        ****              //comunicazione UART
+  46:main.c        ****              UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+  87              		.loc 1 46 0 discriminator 3
   88 003e 0A21     		movs	r1, #10
   89 0040 0848     		ldr	r0, .L8+8
-  90 0042 FFF7FEFF 		bl	UART_BT_PutArray
+  90 0042 FFF7FEFF 		bl	UART_PutArray
   91              	.LVL8:
   42:main.c        ****              //comunicazione con BT
   92              		.loc 1 42 0 discriminator 3
@@ -161,8 +163,6 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  106 004e 012C     		cmp	r4, #1
  107 0050 F5DD     		ble	.L4
  108              	.LBE3:
-  45:main.c        ****              //comunicazione UART
-  46:main.c        ****             // UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
   47:main.c        ****         }
   48:main.c        ****         PacketReadyFlag=0;
  109              		.loc 1 48 0 is_stmt 1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  119 0064 00000000 		.word	DataBuffer
  120              		.cfi_endproc
  121              	.LFE64:
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 4
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 4
 
 
  122              		.size	main, .-main
@@ -191,9 +191,9 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  129              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
  130              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
  131              		.file 6 "Interrupt_Routines.h"
- 132              		.file 7 "Generated_Source\\PSoC5/UART_BT.h"
+ 132              		.file 7 "Generated_Source\\PSoC5/UART.h"
  133              		.file 8 "Generated_Source\\PSoC5/ADC_DelSig.h"
- 134              		.file 9 "Generated_Source\\PSoC5/UART.h"
+ 134              		.file 9 "Generated_Source\\PSoC5/UART_BT.h"
  135              		.file 10 "Generated_Source\\PSoC5/Timer.h"
  136              		.file 11 "Generated_Source\\PSoC5/isr_ADC.h"
  137              		.file 12 "Generated_Source\\PSoC5/AMux.h"
@@ -204,25 +204,25 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  142 0006 00000000 		.4byte	.Ldebug_abbrev0
  143 000a 04       		.byte	0x4
  144 000b 01       		.uleb128 0x1
- 145 000c 38000000 		.4byte	.LASF29
+ 145 000c 31000000 		.4byte	.LASF29
  146 0010 0C       		.byte	0xc
- 147 0011 8B010000 		.4byte	.LASF30
- 148 0015 04020000 		.4byte	.LASF31
+ 147 0011 F7010000 		.4byte	.LASF30
+ 148 0015 03010000 		.4byte	.LASF31
  149 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
  150 001d 00000000 		.4byte	0
  151 0021 00000000 		.4byte	.Ldebug_line0
  152 0025 02       		.uleb128 0x2
  153 0026 01       		.byte	0x1
  154 0027 06       		.byte	0x6
- 155 0028 E8010000 		.4byte	.LASF0
+ 155 0028 54020000 		.4byte	.LASF0
  156 002c 02       		.uleb128 0x2
  157 002d 01       		.byte	0x1
  158 002e 08       		.byte	0x8
- 159 002f 2A000000 		.4byte	.LASF1
+ 159 002f 23000000 		.4byte	.LASF1
  160 0033 02       		.uleb128 0x2
  161 0034 02       		.byte	0x2
  162 0035 05       		.byte	0x5
- 163 0036 97010000 		.4byte	.LASF2
+ 163 0036 03020000 		.4byte	.LASF2
  164 003a 02       		.uleb128 0x2
  165 003b 02       		.byte	0x2
  166 003c 07       		.byte	0x7
@@ -235,22 +235,22 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  173 004c 02       		.uleb128 0x2
  174 004d 04       		.byte	0x4
  175 004e 05       		.byte	0x5
- 176 004f C8010000 		.4byte	.LASF4
+ 176 004f 34020000 		.4byte	.LASF4
  177 0053 02       		.uleb128 0x2
  178 0054 04       		.byte	0x4
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 5
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 5
 
 
  179 0055 07       		.byte	0x7
- 180 0056 D1000000 		.4byte	.LASF5
+ 180 0056 CA000000 		.4byte	.LASF5
  181 005a 02       		.uleb128 0x2
  182 005b 08       		.byte	0x8
  183 005c 05       		.byte	0x5
- 184 005d 7D010000 		.4byte	.LASF6
+ 184 005d E9010000 		.4byte	.LASF6
  185 0061 02       		.uleb128 0x2
  186 0062 08       		.byte	0x8
  187 0063 07       		.byte	0x7
- 188 0064 3D010000 		.4byte	.LASF7
+ 188 0064 A9010000 		.4byte	.LASF7
  189 0068 04       		.uleb128 0x4
  190 0069 04       		.byte	0x4
  191 006a 05       		.byte	0x5
@@ -258,47 +258,47 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  193 006f 02       		.uleb128 0x2
  194 0070 04       		.byte	0x4
  195 0071 07       		.byte	0x7
- 196 0072 30010000 		.4byte	.LASF8
+ 196 0072 9C010000 		.4byte	.LASF8
  197 0076 03       		.uleb128 0x3
- 198 0077 6C010000 		.4byte	.LASF10
+ 198 0077 D8010000 		.4byte	.LASF10
  199 007b 03       		.byte	0x3
  200 007c 2C       		.byte	0x2c
  201 007d 41000000 		.4byte	0x41
  202 0081 05       		.uleb128 0x5
- 203 0082 B1010000 		.4byte	.LASF11
+ 203 0082 1D020000 		.4byte	.LASF11
  204 0086 04       		.byte	0x4
  205 0087 E801     		.2byte	0x1e8
  206 0089 2C000000 		.4byte	0x2c
  207 008d 05       		.uleb128 0x5
- 208 008e 1F010000 		.4byte	.LASF12
+ 208 008e 8B010000 		.4byte	.LASF12
  209 0092 04       		.byte	0x4
  210 0093 EB01     		.2byte	0x1eb
  211 0095 25000000 		.4byte	0x25
  212 0099 02       		.uleb128 0x2
  213 009a 04       		.byte	0x4
  214 009b 04       		.byte	0x4
- 215 009c 24000000 		.4byte	.LASF13
+ 215 009c 1D000000 		.4byte	.LASF13
  216 00a0 02       		.uleb128 0x2
  217 00a1 08       		.byte	0x8
  218 00a2 04       		.byte	0x4
- 219 00a3 1D000000 		.4byte	.LASF14
+ 219 00a3 7F010000 		.4byte	.LASF14
  220 00a7 02       		.uleb128 0x2
  221 00a8 01       		.byte	0x1
  222 00a9 08       		.byte	0x8
- 223 00aa 92010000 		.4byte	.LASF15
+ 223 00aa FE010000 		.4byte	.LASF15
  224 00ae 06       		.uleb128 0x6
  225 00af 81000000 		.4byte	0x81
  226 00b3 02       		.uleb128 0x2
  227 00b4 08       		.byte	0x8
  228 00b5 04       		.byte	0x4
- 229 00b6 DC010000 		.4byte	.LASF16
+ 229 00b6 48020000 		.4byte	.LASF16
  230 00ba 02       		.uleb128 0x2
  231 00bb 04       		.byte	0x4
  232 00bc 07       		.byte	0x7
- 233 00bd 74010000 		.4byte	.LASF17
+ 233 00bd E0010000 		.4byte	.LASF17
  234 00c1 07       		.uleb128 0x7
- 235 00c2 1A010000 		.4byte	.LASF32
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 6
+ 235 00c2 86010000 		.4byte	.LASF32
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 6
 
 
  236 00c6 01       		.byte	0x1
@@ -357,8 +357,8 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  289 0144 D9010000 		.4byte	0x1d9
  290 0148 00       		.byte	0
  291 0149 0D       		.uleb128 0xd
- 292 014a FC000000 		.4byte	.LASF18
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 7
+ 292 014a 72010000 		.4byte	.LASF18
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 7
 
 
  293 014e 05       		.byte	0x5
@@ -374,7 +374,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  303 0168 09       		.byte	0x9
  304 0169 00       		.byte	0
  305 016a 10       		.uleb128 0x10
- 306 016b D1010000 		.4byte	.LASF19
+ 306 016b 3D020000 		.4byte	.LASF19
  307 016f 06       		.byte	0x6
  308 0170 17       		.byte	0x17
  309 0171 5A010000 		.4byte	0x15a
@@ -382,7 +382,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  311 0176 03       		.byte	0x3
  312 0177 00000000 		.4byte	DataBuffer
  313 017b 10       		.uleb128 0x10
- 314 017c A1010000 		.4byte	.LASF20
+ 314 017c 0D020000 		.4byte	.LASF20
  315 0180 06       		.byte	0x6
  316 0181 19       		.byte	0x19
  317 0182 AE000000 		.4byte	0xae
@@ -390,46 +390,46 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  319 0187 03       		.byte	0x3
  320 0188 00000000 		.4byte	PacketReadyFlag
  321 018c 11       		.uleb128 0x11
- 322 018d 09010000 		.4byte	.LASF21
- 323 0191 09010000 		.4byte	.LASF21
+ 322 018d F5000000 		.4byte	.LASF21
+ 323 0191 F5000000 		.4byte	.LASF21
  324 0195 07       		.byte	0x7
  325 0196 8C       		.byte	0x8c
  326 0197 11       		.uleb128 0x11
- 327 0198 B7010000 		.4byte	.LASF22
- 328 019c B7010000 		.4byte	.LASF22
+ 327 0198 23020000 		.4byte	.LASF22
+ 328 019c 23020000 		.4byte	.LASF22
  329 01a0 08       		.byte	0x8
  330 01a1 3A       		.byte	0x3a
  331 01a2 11       		.uleb128 0x11
- 332 01a3 F1000000 		.4byte	.LASF23
- 333 01a7 F1000000 		.4byte	.LASF23
- 334 01ab 09       		.byte	0x9
+ 332 01a3 EA000000 		.4byte	.LASF23
+ 333 01a7 EA000000 		.4byte	.LASF23
+ 334 01ab 07       		.byte	0x7
  335 01ac 54       		.byte	0x54
  336 01ad 11       		.uleb128 0x11
- 337 01ae E3000000 		.4byte	.LASF24
- 338 01b2 E3000000 		.4byte	.LASF24
- 339 01b6 07       		.byte	0x7
+ 337 01ae DC000000 		.4byte	.LASF24
+ 338 01b2 DC000000 		.4byte	.LASF24
+ 339 01b6 09       		.byte	0x9
  340 01b7 54       		.byte	0x54
  341 01b8 11       		.uleb128 0x11
- 342 01b9 24010000 		.4byte	.LASF25
- 343 01bd 24010000 		.4byte	.LASF25
+ 342 01b9 90010000 		.4byte	.LASF25
+ 343 01bd 90010000 		.4byte	.LASF25
  344 01c1 0A       		.byte	0xa
  345 01c2 5A       		.byte	0x5a
  346 01c3 11       		.uleb128 0x11
- 347 01c4 F4010000 		.4byte	.LASF26
- 348 01c8 F4010000 		.4byte	.LASF26
+ 347 01c4 60020000 		.4byte	.LASF26
+ 348 01c8 60020000 		.4byte	.LASF26
  349 01cc 0B       		.byte	0xb
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 8
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 8
 
 
  350 01cd 18       		.byte	0x18
  351 01ce 11       		.uleb128 0x11
- 352 01cf 54010000 		.4byte	.LASF27
- 353 01d3 54010000 		.4byte	.LASF27
+ 352 01cf C0010000 		.4byte	.LASF27
+ 353 01d3 C0010000 		.4byte	.LASF27
  354 01d7 08       		.byte	0x8
  355 01d8 3D       		.byte	0x3d
  356 01d9 11       		.uleb128 0x11
- 357 01da C6000000 		.4byte	.LASF28
- 358 01de C6000000 		.4byte	.LASF28
+ 357 01da BF000000 		.4byte	.LASF28
+ 358 01de BF000000 		.4byte	.LASF28
  359 01e2 0C       		.byte	0xc
  360 01e3 25       		.byte	0x25
  361 01e4 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  404 0028 13       		.uleb128 0x13
  405 0029 00       		.byte	0
  406 002a 00       		.byte	0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 9
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 9
 
 
  407 002b 04       		.uleb128 0x4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  461 0062 9742     		.uleb128 0x2117
  462 0064 19       		.uleb128 0x19
  463 0065 01       		.uleb128 0x1
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 10
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 10
 
 
  464 0066 13       		.uleb128 0x13
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  518 00a3 0D       		.uleb128 0xd
  519 00a4 34       		.uleb128 0x34
  520 00a5 00       		.byte	0
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 11
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 11
 
 
  521 00a6 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  575 00dc 3C       		.uleb128 0x3c
  576 00dd 19       		.uleb128 0x19
  577 00de 6E       		.uleb128 0x6e
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 12
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 12
 
 
  578 00df 0E       		.uleb128 0xe
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  631      0200AD01 
  631      00000201 
  631      FB0E0D00 
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 13
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 13
 
 
  631      01010101 
@@ -732,167 +732,166 @@ ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 1
  635      7369676E 
  635      65642069 
  635      6E7400
- 636              	.LASF14:
- 637 001d 646F7562 		.ascii	"double\000"
- 637      6C6500
- 638              	.LASF13:
- 639 0024 666C6F61 		.ascii	"float\000"
- 639      7400
- 640              	.LASF1:
- 641 002a 756E7369 		.ascii	"unsigned char\000"
- 641      676E6564 
- 641      20636861 
- 641      7200
- 642              	.LASF29:
- 643 0038 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 643      43313120 
- 643      352E342E 
- 643      31203230 
- 643      31363036 
- 644 006b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 644      20726576 
- 644      6973696F 
- 644      6E203233 
- 644      37373135 
- 645 009e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 645      66756E63 
- 645      74696F6E 
- 645      2D736563 
- 645      74696F6E 
- 646              	.LASF28:
- 647 00c6 414D7578 		.ascii	"AMux_Start\000"
- 647      5F537461 
- 647      727400
- 648              	.LASF5:
- 649 00d1 6C6F6E67 		.ascii	"long unsigned int\000"
- 649      20756E73 
- 649      69676E65 
- 649      6420696E 
+ 636              	.LASF13:
+ 637 001d 666C6F61 		.ascii	"float\000"
+ 637      7400
+ 638              	.LASF1:
+ 639 0023 756E7369 		.ascii	"unsigned char\000"
+ 639      676E6564 
+ 639      20636861 
+ 639      7200
+ 640              	.LASF29:
+ 641 0031 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 641      43313120 
+ 641      352E342E 
+ 641      31203230 
+ 641      31363036 
+ 642 0064 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 642      20726576 
+ 642      6973696F 
+ 642      6E203233 
+ 642      37373135 
+ 643 0097 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 643      66756E63 
+ 643      74696F6E 
+ 643      2D736563 
+ 643      74696F6E 
+ 644              	.LASF28:
+ 645 00bf 414D7578 		.ascii	"AMux_Start\000"
+ 645      5F537461 
+ 645      727400
+ 646              	.LASF5:
+ 647 00ca 6C6F6E67 		.ascii	"long unsigned int\000"
+ 647      20756E73 
+ 647      69676E65 
+ 647      6420696E 
+ 647      7400
+ 648              	.LASF24:
+ 649 00dc 55415254 		.ascii	"UART_BT_Start\000"
+ 649      5F42545F 
+ 649      53746172 
  649      7400
- 650              	.LASF24:
- 651 00e3 55415254 		.ascii	"UART_BT_Start\000"
- 651      5F42545F 
- 651      53746172 
- 651      7400
- 652              	.LASF23:
- 653 00f1 55415254 		.ascii	"UART_Start\000"
- 653      5F537461 
- 653      727400
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 14
+ 650              	.LASF23:
+ 651 00ea 55415254 		.ascii	"UART_Start\000"
+ 651      5F537461 
+ 651      727400
+ 652              	.LASF21:
+ 653 00f5 55415254 		.ascii	"UART_PutArray\000"
+ 653      5F507574 
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 14
 
 
- 654              	.LASF18:
- 655 00fc 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 655      52784275 
- 655      66666572 
- 655      00
- 656              	.LASF21:
- 657 0109 55415254 		.ascii	"UART_BT_PutArray\000"
- 657      5F42545F 
- 657      50757441 
- 657      72726179 
- 657      00
- 658              	.LASF32:
- 659 011a 6D61696E 		.ascii	"main\000"
+ 653      41727261 
+ 653      7900
+ 654              	.LASF31:
+ 655 0103 433A5C55 		.ascii	"C:\\Users\\madda\\Desktop\\Maddalena\\POLITECNICO\\"
+ 655      73657273 
+ 655      5C6D6164 
+ 655      64615C44 
+ 655      65736B74 
+ 656 0130 5345434F 		.ascii	"SECONDO ANNO\\LAB\\PROGETTO\\AY2223_I_Project-3\\PS"
+ 656      4E444F20 
+ 656      414E4E4F 
+ 656      5C4C4142 
+ 656      5C50524F 
+ 657 015f 4F435C50 		.ascii	"OC\\Project3!.cydsn\000"
+ 657      726F6A65 
+ 657      63743321 
+ 657      2E637964 
+ 657      736E00
+ 658              	.LASF18:
+ 659 0172 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 659      52784275 
+ 659      66666572 
  659      00
- 660              	.LASF12:
- 661 011f 696E7438 		.ascii	"int8\000"
- 661      00
- 662              	.LASF25:
- 663 0124 54696D65 		.ascii	"Timer_Start\000"
- 663      725F5374 
- 663      61727400 
- 664              	.LASF8:
- 665 0130 756E7369 		.ascii	"unsigned int\000"
- 665      676E6564 
- 665      20696E74 
+ 660              	.LASF14:
+ 661 017f 646F7562 		.ascii	"double\000"
+ 661      6C6500
+ 662              	.LASF32:
+ 663 0186 6D61696E 		.ascii	"main\000"
+ 663      00
+ 664              	.LASF12:
+ 665 018b 696E7438 		.ascii	"int8\000"
  665      00
- 666              	.LASF7:
- 667 013d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 667      206C6F6E 
- 667      6720756E 
- 667      7369676E 
- 667      65642069 
- 668              	.LASF27:
- 669 0154 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
- 669      44656C53 
- 669      69675F53 
- 669      74617274 
- 669      436F6E76 
- 670              	.LASF10:
- 671 016c 696E7433 		.ascii	"int32_t\000"
- 671      325F7400 
- 672              	.LASF17:
- 673 0174 73697A65 		.ascii	"sizetype\000"
- 673      74797065 
- 673      00
- 674              	.LASF6:
- 675 017d 6C6F6E67 		.ascii	"long long int\000"
- 675      206C6F6E 
- 675      6720696E 
- 675      7400
- 676              	.LASF30:
- 677 018b 6D61696E 		.ascii	"main.c\000"
- 677      2E6300
- 678              	.LASF15:
- 679 0192 63686172 		.ascii	"char\000"
- 679      00
- 680              	.LASF2:
-ARM GAS  C:\Users\Windows\AppData\Local\Temp\ccsVs3g7.s 			page 15
+ 666              	.LASF25:
+ 667 0190 54696D65 		.ascii	"Timer_Start\000"
+ 667      725F5374 
+ 667      61727400 
+ 668              	.LASF8:
+ 669 019c 756E7369 		.ascii	"unsigned int\000"
+ 669      676E6564 
+ 669      20696E74 
+ 669      00
+ 670              	.LASF7:
+ 671 01a9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 671      206C6F6E 
+ 671      6720756E 
+ 671      7369676E 
+ 671      65642069 
+ 672              	.LASF27:
+ 673 01c0 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
+ 673      44656C53 
+ 673      69675F53 
+ 673      74617274 
+ 673      436F6E76 
+ 674              	.LASF10:
+ 675 01d8 696E7433 		.ascii	"int32_t\000"
+ 675      325F7400 
+ 676              	.LASF17:
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccEnDxmi.s 			page 15
 
 
- 681 0197 73686F72 		.ascii	"short int\000"
- 681      7420696E 
- 681      7400
- 682              	.LASF20:
- 683 01a1 5061636B 		.ascii	"PacketReadyFlag\000"
- 683      65745265 
- 683      61647946 
- 683      6C616700 
- 684              	.LASF11:
- 685 01b1 75696E74 		.ascii	"uint8\000"
- 685      3800
- 686              	.LASF22:
- 687 01b7 4144435F 		.ascii	"ADC_DelSig_Start\000"
- 687      44656C53 
- 687      69675F53 
- 687      74617274 
- 687      00
- 688              	.LASF4:
- 689 01c8 6C6F6E67 		.ascii	"long int\000"
- 689      20696E74 
- 689      00
- 690              	.LASF19:
- 691 01d1 44617461 		.ascii	"DataBuffer\000"
- 691      42756666 
- 691      657200
- 692              	.LASF16:
- 693 01dc 6C6F6E67 		.ascii	"long double\000"
- 693      20646F75 
- 693      626C6500 
- 694              	.LASF0:
- 695 01e8 7369676E 		.ascii	"signed char\000"
- 695      65642063 
- 695      68617200 
- 696              	.LASF26:
- 697 01f4 6973725F 		.ascii	"isr_ADC_StartEx\000"
- 697      4144435F 
- 697      53746172 
- 697      74457800 
- 698              	.LASF31:
- 699 0204 433A5C55 		.ascii	"C:\\Users\\Windows\\Desktop\\Magistrale\\II_primo_s"
- 699      73657273 
- 699      5C57696E 
- 699      646F7773 
- 699      5C446573 
- 700 0232 656D6573 		.ascii	"emestre\\Project  Lab Sens\\AY2223_I_Project-3\\PSO"
- 700      7472655C 
- 700      50726F6A 
- 700      65637420 
- 700      204C6162 
- 701 0262 435C5072 		.ascii	"C\\Project3!.cydsn\000"
- 701      6F6A6563 
- 701      7433212E 
- 701      63796473 
- 701      6E00
+ 677 01e0 73697A65 		.ascii	"sizetype\000"
+ 677      74797065 
+ 677      00
+ 678              	.LASF6:
+ 679 01e9 6C6F6E67 		.ascii	"long long int\000"
+ 679      206C6F6E 
+ 679      6720696E 
+ 679      7400
+ 680              	.LASF30:
+ 681 01f7 6D61696E 		.ascii	"main.c\000"
+ 681      2E6300
+ 682              	.LASF15:
+ 683 01fe 63686172 		.ascii	"char\000"
+ 683      00
+ 684              	.LASF2:
+ 685 0203 73686F72 		.ascii	"short int\000"
+ 685      7420696E 
+ 685      7400
+ 686              	.LASF20:
+ 687 020d 5061636B 		.ascii	"PacketReadyFlag\000"
+ 687      65745265 
+ 687      61647946 
+ 687      6C616700 
+ 688              	.LASF11:
+ 689 021d 75696E74 		.ascii	"uint8\000"
+ 689      3800
+ 690              	.LASF22:
+ 691 0223 4144435F 		.ascii	"ADC_DelSig_Start\000"
+ 691      44656C53 
+ 691      69675F53 
+ 691      74617274 
+ 691      00
+ 692              	.LASF4:
+ 693 0234 6C6F6E67 		.ascii	"long int\000"
+ 693      20696E74 
+ 693      00
+ 694              	.LASF19:
+ 695 023d 44617461 		.ascii	"DataBuffer\000"
+ 695      42756666 
+ 695      657200
+ 696              	.LASF16:
+ 697 0248 6C6F6E67 		.ascii	"long double\000"
+ 697      20646F75 
+ 697      626C6500 
+ 698              	.LASF0:
+ 699 0254 7369676E 		.ascii	"signed char\000"
+ 699      65642063 
+ 699      68617200 
+ 700              	.LASF26:
+ 701 0260 6973725F 		.ascii	"isr_ADC_StartEx\000"
+ 701      4144435F 
+ 701      53746172 
+ 701      74457800 
  702              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

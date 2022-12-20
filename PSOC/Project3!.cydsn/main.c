@@ -41,9 +41,9 @@ int main(void)
         //Send data
         for(int8 i=0; i<2; i++){
              //comunicazione con BT
-             UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+             //UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
              //comunicazione UART
-            // UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
+             UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
         }
         PacketReadyFlag=0;
       }
