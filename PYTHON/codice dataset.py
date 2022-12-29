@@ -6,15 +6,16 @@ def main():
     sample=0
     ser = serial.Serial()
     ser.baudrate = 9600
-    ser.port = 'COM9'
+    ser.port = 'COM7'
 
     #da usare la prima volta
     '''
-    with open('dataset_test.csv', mode='w',newline='') as csv_file:
+    with open('dataset_training_new.csv', mode='w',newline='') as csv_file:
         nomecolonne=['dito1', 'dito2', 'dito3','dito4','target']
         writer = csv.DictWriter(csv_file,fieldnames=nomecolonne)
         writer.writeheader()
     '''
+    
     
 
     while(not ser.is_open):
@@ -38,8 +39,8 @@ def main():
             print(final)
             print(sample)
 
-            final.append(0)
-            with open('dataset_training.csv', mode='a', newline='') as f_object: 
+            final.append(2)
+            with open('dataset_training_new.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             

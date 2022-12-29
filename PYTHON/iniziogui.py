@@ -289,6 +289,8 @@ class MainWindow(QMainWindow):
         self.widget4 = QWidget()
         self.widget4.setLayout(self.layout4)
         self.setCentralWidget(self.widget4)
+
+    
         
 
 
