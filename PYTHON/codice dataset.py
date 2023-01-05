@@ -24,7 +24,7 @@ def main():
         except:
             print("Didn't connect, trying again")
             
-    while(ser.is_open and sample<500):
+    while(ser.is_open and sample<1000):
         dato = ser.read(10)
         print(dato, type(dato))
         sample += 1
@@ -40,7 +40,7 @@ def main():
             print(sample)
 
             final.append(2)
-            with open('dataset_test_new.csv', mode='a', newline='') as f_object: 
+            with open('dataset_training_new.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             
