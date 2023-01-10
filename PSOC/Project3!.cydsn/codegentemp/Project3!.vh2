@@ -2,7 +2,7 @@
 --	Conversion of Project3!.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Jan 05 15:17:31 2023
+--	Tue Jan 10 19:41:49 2023
 --
 
 USE cypress.cypress.all;
@@ -1283,7 +1283,7 @@ Clock_Timer_ADC:cy_clock_v1_0
 		id=>"c0fb34bd-1044-4931-9788-16b01ce89812",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"1000000000000",
+		period=>"10000000000000",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_80,
