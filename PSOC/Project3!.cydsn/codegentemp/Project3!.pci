@@ -1,5 +1,5 @@
 # Project3!
-# 2023-01-10 18:41:50Z
+# 2023-01-11 14:46:36Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -15,4 +15,5 @@ set_io "R_Pin_2(0)" iocell 2 7
 set_io "R_Pin_3(0)" iocell 1 2
 set_io "Rx_2(0)" iocell 3 6
 set_io "Tx_2(0)" iocell 3 5
+set_io "Pin_LED(0)" iocell 1 7
 set_location "\ADC_DelSig:DSM\" dsmodcell -1 -1 0

@@ -2,7 +2,7 @@
 --	Conversion of Project3!.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Jan 10 19:41:49 2023
+--	Wed Jan 11 15:46:36 2023
 --
 
 USE cypress.cypress.all;
@@ -132,65 +132,65 @@ SIGNAL tmpFB_0__Tx_1_net_0 : bit;
 SIGNAL tmpIO_0__Tx_1_net_0 : bit;
 TERMINAL tmpSIOVREF__Tx_1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Tx_1_net_0 : bit;
-TERMINAL Net_303 : bit;
-TERMINAL Net_304 : bit;
-TERMINAL Net_305 : bit;
-TERMINAL Net_306 : bit;
-TERMINAL Net_307 : bit;
-TERMINAL Net_308 : bit;
-TERMINAL Net_309 : bit;
-TERMINAL Net_310 : bit;
-TERMINAL Net_311 : bit;
-TERMINAL Net_312 : bit;
-TERMINAL Net_313 : bit;
-TERMINAL Net_314 : bit;
-TERMINAL Net_315 : bit;
-TERMINAL Net_316 : bit;
-TERMINAL Net_317 : bit;
-TERMINAL Net_318 : bit;
-TERMINAL Net_319 : bit;
+TERMINAL Net_538 : bit;
+TERMINAL Net_539 : bit;
+TERMINAL Net_540 : bit;
+TERMINAL Net_541 : bit;
+TERMINAL Net_542 : bit;
+TERMINAL Net_543 : bit;
+TERMINAL Net_544 : bit;
+TERMINAL Net_545 : bit;
+TERMINAL Net_546 : bit;
+TERMINAL Net_547 : bit;
+TERMINAL Net_548 : bit;
+TERMINAL Net_549 : bit;
+TERMINAL Net_550 : bit;
+TERMINAL Net_551 : bit;
+TERMINAL Net_552 : bit;
+TERMINAL Net_553 : bit;
+TERMINAL Net_554 : bit;
 TERMINAL Net_54 : bit;
 TERMINAL Net_55 : bit;
-TERMINAL Net_320 : bit;
-TERMINAL Net_321 : bit;
-TERMINAL Net_322 : bit;
-TERMINAL Net_323 : bit;
-TERMINAL Net_324 : bit;
-TERMINAL Net_325 : bit;
-TERMINAL Net_326 : bit;
-TERMINAL Net_327 : bit;
-TERMINAL Net_328 : bit;
-TERMINAL Net_329 : bit;
-TERMINAL Net_330 : bit;
-TERMINAL Net_331 : bit;
-TERMINAL Net_332 : bit;
-TERMINAL Net_333 : bit;
+TERMINAL Net_555 : bit;
+TERMINAL Net_556 : bit;
+TERMINAL Net_537 : bit;
+TERMINAL Net_557 : bit;
+TERMINAL Net_558 : bit;
+TERMINAL Net_559 : bit;
+TERMINAL Net_560 : bit;
+TERMINAL Net_561 : bit;
+TERMINAL Net_562 : bit;
+TERMINAL Net_563 : bit;
+TERMINAL Net_564 : bit;
+TERMINAL Net_565 : bit;
+TERMINAL Net_566 : bit;
+TERMINAL Net_567 : bit;
 TERMINAL Net_168 : bit;
 TERMINAL Net_293 : bit;
 TERMINAL Net_154 : bit;
 TERMINAL Net_166 : bit;
-TERMINAL Net_334 : bit;
-TERMINAL Net_335 : bit;
-TERMINAL Net_336 : bit;
-TERMINAL Net_337 : bit;
-TERMINAL Net_338 : bit;
-TERMINAL Net_339 : bit;
-TERMINAL Net_340 : bit;
-TERMINAL Net_341 : bit;
-TERMINAL Net_342 : bit;
-TERMINAL Net_343 : bit;
-TERMINAL Net_344 : bit;
-TERMINAL Net_345 : bit;
-TERMINAL Net_346 : bit;
-TERMINAL Net_347 : bit;
+TERMINAL Net_568 : bit;
+TERMINAL Net_569 : bit;
+TERMINAL Net_570 : bit;
+TERMINAL Net_571 : bit;
+TERMINAL Net_572 : bit;
+TERMINAL Net_573 : bit;
+TERMINAL Net_574 : bit;
+TERMINAL Net_575 : bit;
+TERMINAL Net_576 : bit;
+TERMINAL Net_577 : bit;
+TERMINAL Net_578 : bit;
+TERMINAL Net_579 : bit;
+TERMINAL Net_580 : bit;
+TERMINAL Net_581 : bit;
 TERMINAL Net_302 : bit;
-TERMINAL Net_348 : bit;
-TERMINAL Net_349 : bit;
-TERMINAL Net_350 : bit;
+TERMINAL Net_582 : bit;
+TERMINAL Net_583 : bit;
+TERMINAL Net_584 : bit;
 TERMINAL Net_301 : bit;
-TERMINAL Net_351 : bit;
-TERMINAL Net_352_1 : bit;
-TERMINAL Net_352_0 : bit;
+TERMINAL Net_585 : bit;
+TERMINAL Net_586_1 : bit;
+TERMINAL Net_586_0 : bit;
 TERMINAL \ADC_DelSig:Net_244\ : bit;
 TERMINAL \ADC_DelSig:Net_690\ : bit;
 TERMINAL \ADC_DelSig:Net_35\ : bit;
@@ -615,6 +615,12 @@ SIGNAL tmpFB_0__Tx_2_net_0 : bit;
 SIGNAL tmpIO_0__Tx_2_net_0 : bit;
 TERMINAL tmpSIOVREF__Tx_2_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Tx_2_net_0 : bit;
+SIGNAL tmpOE__Pin_LED_net_0 : bit;
+SIGNAL tmpFB_0__Pin_LED_net_0 : bit;
+SIGNAL tmpIO_0__Pin_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__Pin_LED_net_0 : bit;
+TERMINAL Net_592 : bit;
+SIGNAL tmpINTERRUPT_0__Pin_LED_net_0 : bit;
 SIGNAL \UART:BUART:reset_reg\\D\ : bit;
 SIGNAL \UART:BUART:txn\\D\ : bit;
 SIGNAL \UART:BUART:tx_state_1\\D\ : bit;
@@ -1158,21 +1164,21 @@ KIT_059_1:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"KIT_059_v1_0",
 		port_names=>"P_00, P_01, P_02, P_03, P_04, P_05, P_06, P_07, P_10, P_11, P_12, P_120, P_121, P_122, P_123, P_124, P_125, P_126, P_127, P_13, P_14, P_15, P_150, P_151, P_152, P_153, P_154, P_155, P_16, P_17, P_20, P_21, P_22, P_23, P_24, P_25, P_26, P_27, P_30, P_31, P_32, P_33, P_34, P_35, P_36, P_37, P_59, P_60, P_61, P_62, P_63, P_GND_0, P_GND_1, P_GND_3, P_RST_0, P_VDD_0, P_VDDIO, USB_1_1, USB_1_0",
 		width=>59)
-	PORT MAP(connect=>(Net_303, Net_304, Net_305, Net_306,
-			Net_307, Net_308, Net_309, Net_310,
-			Net_311, Net_312, Net_313, Net_314,
-			Net_315, Net_316, Net_317, Net_318,
-			Net_319, Net_54, Net_55, Net_320,
-			Net_321, Net_322, Net_323, Net_324,
-			Net_325, Net_326, Net_327, Net_328,
-			Net_329, Net_330, Net_331, Net_332,
-			Net_333, Net_168, Net_293, Net_154,
-			Net_166, Net_334, Net_335, Net_336,
-			Net_337, Net_338, Net_339, Net_340,
-			Net_341, Net_342, Net_343, Net_344,
-			Net_345, Net_346, Net_347, Net_302,
-			Net_348, Net_349, Net_350, Net_301,
-			Net_351, Net_352_1, Net_352_0));
+	PORT MAP(connect=>(Net_538, Net_539, Net_540, Net_541,
+			Net_542, Net_543, Net_544, Net_545,
+			Net_546, Net_547, Net_548, Net_549,
+			Net_550, Net_551, Net_552, Net_553,
+			Net_554, Net_54, Net_55, Net_555,
+			Net_556, Net_537, Net_557, Net_558,
+			Net_559, Net_560, Net_561, Net_562,
+			Net_563, Net_564, Net_565, Net_566,
+			Net_567, Net_168, Net_293, Net_154,
+			Net_166, Net_568, Net_569, Net_570,
+			Net_571, Net_572, Net_573, Net_574,
+			Net_575, Net_576, Net_577, Net_578,
+			Net_579, Net_580, Net_581, Net_302,
+			Net_582, Net_583, Net_584, Net_301,
+			Net_585, Net_586_1, Net_586_0));
 \ADC_DelSig:vRef_2\:cy_vref_v1_0
 	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
 		name=>"Vssa (GND)",
@@ -2123,6 +2129,76 @@ Tx_2:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__Tx_2_net_0);
+Pin_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(tmpFB_0__Pin_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Pin_LED_net_0),
+		siovref=>(tmpSIOVREF__Pin_LED_net_0),
+		annotation=>Net_592,
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Pin_LED_net_0);
 \UART:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\UART:BUART:clock_op\,

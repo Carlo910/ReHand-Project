@@ -62,7 +62,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM7'
+        self.port_name = 'COM10'
         self.baudrate = 9600 # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -70,6 +70,7 @@ class SerialWorker(QRunnable):
     def run(self):
        
         global CONN_STATUS
+        char = 'Y'
 
         if not CONN_STATUS:
             try:
@@ -81,6 +82,8 @@ class SerialWorker(QRunnable):
                     time.sleep(0.01)
                     self.sample = 0
                     while(CONN_STATUS == True):
+                        self.port.write(char.encode('utf-8'))
+                        print("writing")
                         self.read_packet() 
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
@@ -107,15 +110,16 @@ class SerialWorker(QRunnable):
                 i += 2
             print(self.final)
             self.signals.packet.emit(self.final)
+        
 
     @pyqtSlot()
     def killed(self):
-        
+        #char= 'N'
         global CONN_STATUS
         if self.is_killed and CONN_STATUS:
             CONN_STATUS = False
             self.signals.device_port.emit(self.port_name)
-
+           
         logging.info("Killing the process")
 
 

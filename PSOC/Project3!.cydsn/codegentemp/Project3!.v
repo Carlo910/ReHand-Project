@@ -1,6 +1,6 @@
 // ======================================================================
 // Project3!.v generated from TopDesign.cysch
-// 01/10/2023 at 19:41
+// 01/11/2023 at 15:46
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -710,6 +710,7 @@ endmodule
 // top
 module top ;
 
+    electrical  Net_592;
           wire  Net_365;
           wire  Net_364;
           wire  Net_363;
@@ -745,56 +746,56 @@ module top ;
           wire  Net_79;
           wire  Net_76;
           wire  Net_77;
-    electrical [1:0] Net_352;
-    electrical  Net_351;
-    electrical  Net_350;
-    electrical  Net_349;
-    electrical  Net_348;
-    electrical  Net_347;
-    electrical  Net_346;
-    electrical  Net_345;
-    electrical  Net_344;
-    electrical  Net_343;
-    electrical  Net_342;
-    electrical  Net_341;
-    electrical  Net_340;
-    electrical  Net_339;
-    electrical  Net_338;
-    electrical  Net_337;
-    electrical  Net_336;
-    electrical  Net_335;
-    electrical  Net_334;
-    electrical  Net_333;
-    electrical  Net_332;
-    electrical  Net_331;
-    electrical  Net_330;
-    electrical  Net_329;
-    electrical  Net_328;
-    electrical  Net_327;
-    electrical  Net_326;
-    electrical  Net_325;
-    electrical  Net_324;
-    electrical  Net_323;
-    electrical  Net_322;
-    electrical  Net_321;
-    electrical  Net_320;
-    electrical  Net_319;
-    electrical  Net_318;
-    electrical  Net_317;
-    electrical  Net_316;
-    electrical  Net_315;
-    electrical  Net_314;
-    electrical  Net_313;
-    electrical  Net_312;
-    electrical  Net_311;
-    electrical  Net_310;
-    electrical  Net_309;
-    electrical  Net_308;
-    electrical  Net_307;
-    electrical  Net_306;
-    electrical  Net_305;
-    electrical  Net_304;
-    electrical  Net_303;
+    electrical [1:0] Net_586;
+    electrical  Net_585;
+    electrical  Net_584;
+    electrical  Net_583;
+    electrical  Net_582;
+    electrical  Net_581;
+    electrical  Net_580;
+    electrical  Net_579;
+    electrical  Net_578;
+    electrical  Net_577;
+    electrical  Net_576;
+    electrical  Net_575;
+    electrical  Net_574;
+    electrical  Net_573;
+    electrical  Net_572;
+    electrical  Net_571;
+    electrical  Net_570;
+    electrical  Net_569;
+    electrical  Net_568;
+    electrical  Net_567;
+    electrical  Net_566;
+    electrical  Net_565;
+    electrical  Net_564;
+    electrical  Net_563;
+    electrical  Net_562;
+    electrical  Net_561;
+    electrical  Net_560;
+    electrical  Net_559;
+    electrical  Net_558;
+    electrical  Net_557;
+    electrical  Net_537;
+    electrical  Net_556;
+    electrical  Net_555;
+    electrical  Net_554;
+    electrical  Net_553;
+    electrical  Net_552;
+    electrical  Net_551;
+    electrical  Net_550;
+    electrical  Net_549;
+    electrical  Net_548;
+    electrical  Net_547;
+    electrical  Net_546;
+    electrical  Net_545;
+    electrical  Net_544;
+    electrical  Net_543;
+    electrical  Net_542;
+    electrical  Net_541;
+    electrical  Net_540;
+    electrical  Net_539;
+    electrical  Net_538;
           wire  Net_13;
           wire  Net_12;
           wire  Net_11;
@@ -807,11 +808,11 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+    electrical  Net_54;
+    electrical  Net_55;
     electrical  Net_302;
     electrical  Net_301;
     electrical  Net_168;
-    electrical  Net_54;
-    electrical  Net_55;
     electrical  Net_293;
     electrical  Net_166;
     electrical  Net_154;
@@ -999,64 +1000,64 @@ module top ;
 
     cy_annotation_universal_v1_0 KIT_059_1 (
         .connect({
-            Net_303,
-            Net_304,
-            Net_305,
-            Net_306,
-            Net_307,
-            Net_308,
-            Net_309,
-            Net_310,
-            Net_311,
-            Net_312,
-            Net_313,
-            Net_314,
-            Net_315,
-            Net_316,
-            Net_317,
-            Net_318,
-            Net_319,
+            Net_538,
+            Net_539,
+            Net_540,
+            Net_541,
+            Net_542,
+            Net_543,
+            Net_544,
+            Net_545,
+            Net_546,
+            Net_547,
+            Net_548,
+            Net_549,
+            Net_550,
+            Net_551,
+            Net_552,
+            Net_553,
+            Net_554,
             Net_54,
             Net_55,
-            Net_320,
-            Net_321,
-            Net_322,
-            Net_323,
-            Net_324,
-            Net_325,
-            Net_326,
-            Net_327,
-            Net_328,
-            Net_329,
-            Net_330,
-            Net_331,
-            Net_332,
-            Net_333,
+            Net_555,
+            Net_556,
+            Net_537,
+            Net_557,
+            Net_558,
+            Net_559,
+            Net_560,
+            Net_561,
+            Net_562,
+            Net_563,
+            Net_564,
+            Net_565,
+            Net_566,
+            Net_567,
             Net_168,
             Net_293,
             Net_154,
             Net_166,
-            Net_334,
-            Net_335,
-            Net_336,
-            Net_337,
-            Net_338,
-            Net_339,
-            Net_340,
-            Net_341,
-            Net_342,
-            Net_343,
-            Net_344,
-            Net_345,
-            Net_346,
-            Net_347,
+            Net_568,
+            Net_569,
+            Net_570,
+            Net_571,
+            Net_572,
+            Net_573,
+            Net_574,
+            Net_575,
+            Net_576,
+            Net_577,
+            Net_578,
+            Net_579,
+            Net_580,
+            Net_581,
             Net_302,
-            Net_348,
-            Net_349,
-            Net_350,
+            Net_582,
+            Net_583,
+            Net_584,
             Net_301,
-            Net_351,
-            Net_352[1:0]
+            Net_585,
+            Net_586[1:0]
         })
     );
     defparam KIT_059_1.comp_name = "KIT_059_v1_0";
@@ -1776,6 +1777,82 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__Tx_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__Pin_LED_net;
+	wire [0:0] tmpFB_0__Pin_LED_net;
+	wire [0:0] tmpIO_0__Pin_LED_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_LED_net;
+	electrical [0:0] tmpSIOVREF__Pin_LED_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("e851a3b9-efb8-48be-bbb8-b303b216c393"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b1),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Pin_LED
+		 (.oe(tmpOE__Pin_LED_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__Pin_LED_net[0:0]}),
+		  .io({tmpIO_0__Pin_LED_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_LED_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_LED_net[0:0]}),
+		  .annotation({Net_592}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Pin_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 

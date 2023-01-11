@@ -13,6 +13,11 @@
 #include "stdio.h"
 #include "Interrupt_Routines.h"
 
+#define LED_ON 1
+#define LED_OFF 0
+
+char Received = 'N';
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -37,9 +42,20 @@ int main(void)
     for(;;)
     {
         /* Place your application code here. */
-       if ( PacketReadyFlag==1){
-        //Send data
-        for(int8 i=0; i<2; i++){
+        Received = UART_BT_GetChar();
+       
+        if(Received!='Y'){
+            Pin_LED_Write( ~Pin_LED_Read() );
+            CyDelay(500);
+        }
+        
+        
+      
+       if(Received=='Y'){
+       Pin_LED_Write(LED_ON);
+        if ( PacketReadyFlag==1){
+         //Send data
+            for(int8 i=0; i<2; i++){
              //comunicazione con BT
              UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
              //comunicazione UART
@@ -47,6 +63,9 @@ int main(void)
         }
         PacketReadyFlag=0;
       }
+    }
+
+    
     }
 }
 
