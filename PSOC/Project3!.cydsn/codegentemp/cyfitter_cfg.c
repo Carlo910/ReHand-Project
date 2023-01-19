@@ -240,8 +240,8 @@ static void ClockSetup(void)
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0 + 0x2u), 0x18u);
 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x0138u);
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0 + 0x2u), 0x18u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG3_CFG0), 0x752Fu);
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG3_CFG0 + 0x2u), 0x19u);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG3_CFG0), 0xBB7Fu);
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG3_CFG0 + 0x2u), 0x18u);
 
 	/* Configure Analog Clocks based on settings from Clock DWR */
 	CYCONFIGCPY((void CYFAR *)(CYREG_CLKDIST_ACFG0_CFG0), (const void CYFAR *)(BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL), 4u);
@@ -310,6 +310,7 @@ static void AnalogSetDefault(void)
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
 	CY_SET_XTND_REG8((void CYFAR *)CYREG_DSM0_SW0, 0x04u);
+	CY_SET_XTND_REG8((void CYFAR *)CYREG_BUS_SW0, 0x40u);
 	CY_SET_XTND_REG8((void CYFAR *)CYREG_PUMP_CR0, 0x66u);
 }
 
@@ -349,20 +350,22 @@ void SetAnalogRoutingPumps(uint8 enabled)
 #define CY_AMUX_UNUSED CYREG_BOOST_SR
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
-uint8 CYXDATA * const CYCODE AMux__addrTable[8] = {
+uint8 CYXDATA * const CYCODE AMux__addrTable[10] = {
 	(uint8 CYXDATA *)CYREG_PRT2_AG, (uint8 CYXDATA *)CY_AMUX_UNUSED, 
 	(uint8 CYXDATA *)CYREG_PRT2_AG, (uint8 CYXDATA *)CYREG_DSM0_SW0, 
 	(uint8 CYXDATA *)CYREG_PRT2_AG, (uint8 CYXDATA *)CYREG_DSM0_SW0, 
 	(uint8 CYXDATA *)CYREG_PRT1_AG, (uint8 CYXDATA *)CYREG_BUS_SW0, 
+	(uint8 CYXDATA *)CYREG_PRT3_AG, (uint8 CYXDATA *)CYREG_DSM0_SW0, 
 };
 
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
-const uint8 CYCODE AMux__maskTable[8] = {
+const uint8 CYCODE AMux__maskTable[10] = {
 	0x04u, 0x00u, 
 	0x20u, 0x02u, 
 	0x80u, 0x08u, 
 	0x04u, 0x04u, 
+	0x04u, 0x40u, 
 };
 
 /*******************************************************************************
@@ -380,7 +383,7 @@ const uint8 CYCODE AMux__maskTable[8] = {
 *******************************************************************************/
 void AMux_Set(uint8 channel)
 {
-	if (channel < 4)
+	if (channel < 5)
 	{
 		channel += channel;
 		*AMux__addrTable[channel] |= AMux__maskTable[channel];
@@ -405,7 +408,7 @@ void AMux_Set(uint8 channel)
 *******************************************************************************/
 void AMux_Unset(uint8 channel)
 {
-	if (channel < 4)
+	if (channel < 5)
 	{
 		channel += channel;
 		*AMux__addrTable[channel] &= (uint8)~AMux__maskTable[channel];

@@ -36,6 +36,8 @@
 #include "UART_BT.h"
 #include "Pin_LED_aliases.h"
 #include "Pin_LED.h"
+#include "Pin_BATT_aliases.h"
+#include "Pin_BATT.h"
 #include "UART_IntClock.h"
 #include "ADC_DelSig_AMux.h"
 #include "ADC_DelSig_Ext_CP_Clk.h"

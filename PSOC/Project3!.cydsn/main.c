@@ -30,6 +30,7 @@ int main(void)
     isr_ADC_StartEx(Custom_ISR_ADC);
     //Initialize send flag
     PacketReadyFlag = 0;
+    PacketReadyFlag1 = 0;
     //Start the ADC conversion
     ADC_DelSig_StartConvert();
     
@@ -38,6 +39,8 @@ int main(void)
     
     DataBuffer[0] = 0xA0;
     DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0;
+    DataBuffer1[0] = 0xAA;
+    DataBuffer1[TRANSMIT_BUFFER_SIZE-1] = 0xFF;
     
     for(;;)
     {
@@ -60,13 +63,19 @@ int main(void)
              UART_BT_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
              //comunicazione UART
              //UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
-        }
+            }
         PacketReadyFlag=0;
-      }
-    }
+        } if(PacketReadyFlag1==1){
+            //comunicazione con BT
+             UART_BT_PutArray(DataBuffer1, TRANSMIT_BUFFER_SIZE);
+             //comunicazione UART
+             //UART_PutArray(DataBuffer1, TRANSMIT_BUFFER_SIZE1 );
+            PacketReadyFlag1=0;
+        }
 
     
     }
+}
 }
 
 /* [] END OF FILE */

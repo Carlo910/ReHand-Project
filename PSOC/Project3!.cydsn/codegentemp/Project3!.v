@@ -1,6 +1,6 @@
 // ======================================================================
 // Project3!.v generated from TopDesign.cysch
-// 01/11/2023 at 15:46
+// 01/15/2023 at 23:32
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -710,6 +710,7 @@ endmodule
 // top
 module top ;
 
+    electrical  Net_623;
     electrical  Net_592;
           wire  Net_365;
           wire  Net_364;
@@ -727,10 +728,8 @@ module top ;
     electrical  Net_299;
     electrical  Net_167;
     electrical  Net_182;
-    electrical  Net_165;
-    electrical  Net_163;
-    electrical  Net_161;
-    electrical  Net_162;
+    electrical  Net_619;
+    electrical  Net_618;
     electrical  Net_139;
     electrical  Net_90;
           wire  Net_88;
@@ -808,14 +807,19 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+    electrical  Net_617;
+    electrical  Net_616;
+    electrical  Net_625;
+    electrical  Net_620;
+    electrical  Net_624;
     electrical  Net_54;
     electrical  Net_55;
     electrical  Net_302;
     electrical  Net_301;
-    electrical  Net_168;
+    electrical  Net_154;
+    electrical  Net_640;
     electrical  Net_293;
     electrical  Net_166;
-    electrical  Net_154;
     electrical  Net_159;
           wire  Net_80;
           wire  Net_87;
@@ -1033,7 +1037,7 @@ module top ;
             Net_565,
             Net_566,
             Net_567,
-            Net_168,
+            Net_640,
             Net_293,
             Net_154,
             Net_166,
@@ -1078,7 +1082,7 @@ module top ;
 		#(.id("c0fb34bd-1044-4931-9788-16b01ce89812"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("10000000000000"),
+		  .period("2000000000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_Timer_ADC
@@ -1196,7 +1200,7 @@ module top ;
 		 (.oe(tmpOE__R_Pin_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__R_Pin_net[0:0]}),
-		  .analog({Net_162}),
+		  .analog({Net_616}),
 		  .io({tmpIO_0__R_Pin_net[0:0]}),
 		  .siovref(tmpSIOVREF__R_Pin_net),
 		  .interrupt({tmpINTERRUPT_0__R_Pin_net[0:0]}),
@@ -1232,16 +1236,17 @@ module top ;
     
     cy_psoc3_amux_v1_0 AMux(
         .muxin({
-            Net_165,
-            Net_163,
-            Net_161,
-            Net_162
+            Net_620,
+            Net_619,
+            Net_618,
+            Net_617,
+            Net_616
             }),
         .vout(Net_159)
         );
     
-    defparam AMux.muxin_width = 4;
-    defparam AMux.init_mux_sel = 4'h0;
+    defparam AMux.muxin_width = 5;
+    defparam AMux.init_mux_sel = 5'h0;
     defparam AMux.one_active = 0;
     defparam AMux.connect_mode = 1;
     
@@ -1348,7 +1353,7 @@ module top ;
 		 (.oe(tmpOE__R_Pin_1_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__R_Pin_1_net[0:0]}),
-		  .analog({Net_161}),
+		  .analog({Net_617}),
 		  .io({tmpIO_0__R_Pin_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__R_Pin_1_net),
 		  .interrupt({tmpINTERRUPT_0__R_Pin_1_net[0:0]}),
@@ -1402,7 +1407,7 @@ module top ;
 
     cy_annotation_universal_v1_0 PWR_4 (
         .connect({
-            Net_168
+            Net_640
         })
     );
     defparam PWR_4.comp_name = "Power_v1_0";
@@ -1421,7 +1426,7 @@ module top ;
     cy_annotation_universal_v1_0 R_7 (
         .connect({
             Net_299,
-            Net_168
+            Net_640
         })
     );
     defparam R_7.comp_name = "Resistor_sm1_v1_0";
@@ -1430,8 +1435,8 @@ module top ;
 
     cy_annotation_universal_v1_0 R_8 (
         .connect({
-            Net_168,
-            Net_168
+            Net_640,
+            Net_640
         })
     );
     defparam R_8.comp_name = "TrimPot_sm1_v1_0";
@@ -1501,11 +1506,11 @@ module top ;
 		 (.oe(tmpOE__R_Pin_2_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__R_Pin_2_net[0:0]}),
-		  .analog({Net_163}),
+		  .analog({Net_618}),
 		  .io({tmpIO_0__R_Pin_2_net[0:0]}),
 		  .siovref(tmpSIOVREF__R_Pin_2_net),
 		  .interrupt({tmpINTERRUPT_0__R_Pin_2_net[0:0]}),
-		  .annotation({Net_168}),
+		  .annotation({Net_640}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -1578,7 +1583,7 @@ module top ;
 		 (.oe(tmpOE__R_Pin_3_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__R_Pin_3_net[0:0]}),
-		  .analog({Net_165}),
+		  .analog({Net_619}),
 		  .io({tmpIO_0__R_Pin_3_net[0:0]}),
 		  .siovref(tmpSIOVREF__R_Pin_3_net),
 		  .interrupt({tmpINTERRUPT_0__R_Pin_3_net[0:0]}),
@@ -1853,6 +1858,121 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__Pin_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__Pin_BATT_net;
+	wire [0:0] tmpFB_0__Pin_BATT_net;
+	wire [0:0] tmpIO_0__Pin_BATT_net;
+	wire [0:0] tmpINTERRUPT_0__Pin_BATT_net;
+	electrical [0:0] tmpSIOVREF__Pin_BATT_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("cdf8f356-4048-4b50-8dfa-e22d58af1000"),
+		  .drive_mode(3'b000),
+		  .ibuf_enabled(1'b0),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("A"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b1),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Pin_BATT
+		 (.oe(tmpOE__Pin_BATT_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__Pin_BATT_net[0:0]}),
+		  .analog({Net_620}),
+		  .io({tmpIO_0__Pin_BATT_net[0:0]}),
+		  .siovref(tmpSIOVREF__Pin_BATT_net),
+		  .interrupt({tmpINTERRUPT_0__Pin_BATT_net[0:0]}),
+		  .annotation({Net_625}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Pin_BATT_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    cy_annotation_universal_v1_0 R_9 (
+        .connect({
+            Net_625,
+            Net_623
+        })
+    );
+    defparam R_9.comp_name = "Resistor_sm1_v1_0";
+    defparam R_9.port_names = "T1, T2";
+    defparam R_9.width = 2;
+
+    cy_annotation_universal_v1_0 R_10 (
+        .connect({
+            Net_624,
+            Net_625
+        })
+    );
+    defparam R_10.comp_name = "Resistor_sm1_v1_0";
+    defparam R_10.port_names = "T1, T2";
+    defparam R_10.width = 2;
+
+    cy_annotation_universal_v1_0 GND_5 (
+        .connect({
+            Net_624
+        })
+    );
+    defparam GND_5.comp_name = "Gnd_sm1_v1_0";
+    defparam GND_5.port_names = "T1";
+    defparam GND_5.width = 1;
+
+    cy_annotation_universal_v1_0 PWR_5 (
+        .connect({
+            Net_623
+        })
+    );
+    defparam PWR_5.comp_name = "Power_v1_0";
+    defparam PWR_5.port_names = "T1";
+    defparam PWR_5.width = 1;
 
 
 

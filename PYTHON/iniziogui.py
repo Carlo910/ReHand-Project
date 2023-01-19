@@ -4,24 +4,24 @@ import time
 
 import logging
 import numpy as np
-import csv 
+import csv
 
- 
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-#from PyQt5.QtGui import *
+# from PyQt5.QtGui import *
 import sys
- 
+
 '''
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
 '''
 from PyQt5.QtCore import (
-    
+
     QObject,
-    QThreadPool, 
-    QRunnable, 
-    pyqtSignal, 
+    QThreadPool,
+    QRunnable,
+    pyqtSignal,
     pyqtSlot
 )
 
@@ -45,46 +45,49 @@ import serial.tools.list_ports
 
 logging.basicConfig(format="%(message)s", level=logging.INFO)
 
-CONN_STATUS=False
+CONN_STATUS = False
 
-##Set port##
+## Set port##
+
+
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
     packet = pyqtSignal(list)
+    batt = pyqtSignal(int)
     status = pyqtSignal(str, int)
-    
+
 
 class SerialWorker(QRunnable):
-    
-    def __init__(self,serial_port_name):
-      
+
+    def __init__(self, serial_port_name):
+
         self.is_killed = False
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
         self.port_name = 'COM10'
-        self.baudrate = 9600 # hard coded but can be a global variable, or an input param
+        self.baudrate = 9600  # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
     @pyqtSlot()
     def run(self):
-       
+
         global CONN_STATUS
         char = 'Y'
 
         if not CONN_STATUS:
             try:
                 self.port = serial.Serial(port=self.port_name, baudrate=self.baudrate,
-                                        write_timeout=0, timeout=2)                
+                                        write_timeout=0, timeout=2)
                 if self.port.is_open:
                     CONN_STATUS = True
                     self.signals.status.emit(self.port_name, 1)
                     time.sleep(0.01)
                     self.sample = 0
-                    while(CONN_STATUS == True):
+                    while (CONN_STATUS == True):
                         self.port.write(char.encode('utf-8'))
                         print("writing")
-                        self.read_packet() 
+                        self.read_packet()
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
@@ -93,43 +96,48 @@ class SerialWorker(QRunnable):
     @pyqtSlot()
     def read_packet(self):
 
-        try: 
+        try:
             pacchetto = self.port.read(10)
             print(pacchetto, type(pacchetto))
-            logging.info("Reading {} on port {}.".format(pacchetto , self.port_name))
+            logging.info("Reading {} on port {}.".format(
+                pacchetto, self.port_name))
         except:
-            logging.info("Could not read {} on port {}.".format( pacchetto, self.port_name))
+            logging.info("Could not read {} on port {}.".format(
+                pacchetto, self.port_name))
 
         valore = list(pacchetto)
-        if(pacchetto[0]==160 and pacchetto[9]==192):
-            valore=list(pacchetto[1:9])
+        if (pacchetto[0] == 160 and pacchetto[9] == 192):
+            valore = list(pacchetto[1:9])
             self.final = []
             i = 0
-            while(i < len(valore) - 1):
+            while (i < len(valore) - 1):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
             print(self.final)
             self.signals.packet.emit(self.final)
-        
+
+        elif (pacchetto[0] == 170 and pacchetto[9] == 255):
+            self.valore_batt = []
+            self.valore_batt.append((pacchetto[1] << 8) + pacchetto[2])
+            print(self.valore_batt)
+            self.signals.batt.emit(self.valore_batt)
 
     @pyqtSlot()
     def killed(self):
-        #char= 'N'
+        # char= 'N'
         global CONN_STATUS
         if self.is_killed and CONN_STATUS:
             CONN_STATUS = False
             self.signals.device_port.emit(self.port_name)
-           
+
         logging.info("Killing the process")
-
-
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        
+
         # define worker
-        self.serial_worker= SerialWorker(None)
+        self.serial_worker = SerialWorker(None)
 
         super(MainWindow, self).__init__()
         self.w = None
@@ -141,28 +149,26 @@ class MainWindow(QMainWindow):
 
         # create thread handler
         self.threadpool = QThreadPool()
-        #self.threadpool1 = QThreadPool()
+        # self.threadpool1 = QThreadPool()
 
         self.connected = CONN_STATUS
         self.initUI()
-        self.flag1=0
-        self.flag2=0
+        self.flag1 = 0
+        self.flag2 = 0
         self.count = 0
-      
 
     def initUI(self):
-        
-        
+
         self.start_btn = QPushButton(
-            text = "START",
-            checkable = True
+            text="START",
+            checkable=True
         )
         # layout
         self.start_btn.setFont(QtGui.QFont('Arial', 30))
         self.button_hlay = QHBoxLayout()
         self.button_hlay.addWidget(self.start_btn)
-       
-        #button_hlay.addWidget(self.win_btn)
+
+        # button_hlay.addWidget(self.win_btn)
         self.start_btn.setFixedSize(300, 300)
         self.vlay = QVBoxLayout()
         self.vlay.addLayout(self.button_hlay)
@@ -171,35 +177,34 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.widget)
 
         self.start_btn.clicked.connect(self.on_click)
-        
 
-    def on_click(self,checked):
+    def on_click(self, checked):
         if checked:
-            self.serial_worker.signals.device_port.connect(self.connected_device)
-            self.serial_worker.signals.status.connect(self.check_serialport_status)
+            self.serial_worker.signals.device_port.connect(
+                self.connected_device)
+            self.serial_worker.signals.status.connect(
+                self.check_serialport_status)
             self.initUI2()
             # execute the worker
             self.threadpool.start(self.serial_worker)
         else:
-            #kill thread
+            # kill thread
             self.serial_worker.is_killed = True
             self.serial_worker.killed()
-            
+
     def check_serialport_status(self, port_name, status):
         if status == 0:
             self.start_btn.setChecked(False)
         elif status == 1:
             # enable all the widgets on the interface
-          
+
             logging.info("Connected to port {}".format(port_name))
-    
 
     def connected_device(self, port_name):
         """!
         @brief Checks on the termination of the serial worker.
         """
-        logging.info("Port {} closed.".format(port_name))        
-
+        logging.info("Port {} closed.".format(port_name))
 
     def ExitHandler(self):
         """!
@@ -207,81 +212,81 @@ class MainWindow(QMainWindow):
         """
         self.serial_worker.is_killed = True
         self.serial_worker.killed()
-    
 
-    ##FINE FINESTRA HOME ##
-    
-    ##INIZIO FINESTRA SCELTA GIOCO##
+    ## FINE FINESTRA HOME ##
+
+    ## INIZIO FINESTRA SCELTA GIOCO##
 
     def initUI2(self):
 
-        self.opzione1_btn=QLabel("Gioco Arco")
+        self.opzione1_btn = QLabel("Gioco Arco")
         self.opzione1_btn.setFont(QtGui.QFont('Arial', 30))
-        #self.opzione1_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        # self.opzione1_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-
-        self.opzione2_btn=QLabel("Statistiche")
+        self.opzione2_btn = QLabel("Statistiche")
         self.opzione2_btn.setFont(QtGui.QFont('Arial', 30))
-        #self.opzione2_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        # self.opzione2_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
          # layout
         self.button1_hlay2 = QHBoxLayout()
-        self.icona_indice=QLabel("")
-        pixmap=QtGui.QPixmap("indice.png")
+        self.icona_indice = QLabel("")
+        pixmap = QtGui.QPixmap("indice.png")
         self.icona_indice.setPixmap(pixmap)
-        self.icona_indice.resize(pixmap.width(),pixmap.height())
+        self.icona_indice.resize(pixmap.width(), pixmap.height())
         self.icona_indice.setAlignment(Qt.AlignmentFlag.AlignTrailing)
         self.button1_hlay2.addWidget(self.icona_indice)
         self.button1_hlay2.addWidget(self.opzione1_btn)
         self.opzione1_btn.setFixedSize(500, 100)
         self.button2_hlay2 = QHBoxLayout()
-        self.icona_indice_medio=QLabel("")
-        pixmap=QtGui.QPixmap("indice_medio.png")
+        self.icona_indice_medio = QLabel("")
+        pixmap = QtGui.QPixmap("indice_medio.png")
         self.icona_indice_medio.setPixmap(pixmap)
-        self.icona_indice_medio.resize(pixmap.width(),pixmap.height())
+        self.icona_indice_medio.resize(pixmap.width(), pixmap.height())
         self.icona_indice_medio.setAlignment(Qt.AlignmentFlag.AlignTrailing)
         self.button2_hlay2.addWidget(self.icona_indice_medio)
         self.button2_hlay2.addWidget(self.opzione2_btn)
-        self.opzione2_btn.setFixedSize(500,100)
-        
+        self.opzione2_btn.setFixedSize(500, 100)
+
         self.vlay2 = QVBoxLayout()
         self.vlay2.addLayout(self.button1_hlay2)
         self.vlay2.addLayout(self.button2_hlay2)
-        
-       
+
         self.widget2 = QWidget()
         self.widget2.setLayout(self.vlay2)
         self.setCentralWidget(self.widget2)
 
-        
-         
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
-        
-     
-    def handle_packet_option(self, packet):
-        
-        if (packet[0]>5500 and packet[1]<6000 and packet[2]>5800 and packet[3]>6500 and self.flag1==0 and self.flag2==0):
-            #self.createButton()
-            self.initUI3()
-            self.flag1=1
-            self.flag2=0
-        
-         
-        elif(packet[0]>5500 and packet[1]<6000 and packet[2]<4000 and packet[3]>6500 and self.flag2==0 and self.flag1==0):
-            self.initUI4()
-            self.flag2=1
-            self.flag1=0
 
-        elif(packet[0]>5500 and packet[1]>8000 and packet[2]>7000 and packet[3]>7000 and (self.flag1==1 or self.flag2==1)):
-            self.flag1=0
-            self.flag2=0
-            #self.arco1.hide()
+        self.serial_worker.signals.batt.connect(self.handle_batt_status)
+
+    def handle_packet_option(self, packet):
+
+        if (packet[0] > 5500 and packet[1] < 6000 and packet[2] > 5800 and packet[3] > 6500 and self.flag1 == 0 and self.flag2 == 0):
+            # self.createButton()
+            self.initUI3()
+            self.flag1 = 1
+            self.flag2 = 0
+
+        elif (packet[0] > 5500 and packet[1] < 6000 and packet[2] < 4000 and packet[3] > 6500 and self.flag2 == 0 and self.flag1 == 0):
+            self.initUI4()
+            self.flag2 = 1
+            self.flag1 = 0
+
+        elif (packet[0] > 5500 and packet[1] > 8000 and packet[2] > 7000 and packet[3] > 7000 and (self.flag1 == 1 or self.flag2 == 1)):
+            self.flag1 = 0
+            self.flag2 = 0
+            # self.arco1.hide()
             self.initUI2()
             self.count = 0
             self.mano_semi.setParent(None)
             self.arco2.setParent(None)
         else:
             pass
+
+    def handle_batt_status(self, batt): 
+        self.perc_batt = (batt*100)/65535
+        print("valore perc batt", self.perc_batt)
+
     
     def initUI3(self):
         

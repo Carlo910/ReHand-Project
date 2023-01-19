@@ -58,6 +58,7 @@ set_io "R_Pin_1(0)" iocell 2 5
 set_io "R_Pin_2(0)" iocell 2 7
 set_io "R_Pin_3(0)" iocell 1 2
 set_io "Pin_LED(0)" iocell 1 7
+set_io "Pin_BATT(0)" iocell 3 2
 set_location "isr_ADC" interrupt -1 -1 0
 set_location "\ADC_DelSig:DEC\" decimatorcell -1 -1 0
 set_location "\Timer:TimerHW\" timercell -1 -1 0
