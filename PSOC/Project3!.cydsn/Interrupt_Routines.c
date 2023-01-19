@@ -21,6 +21,7 @@ int32 value_read[4];
 int32 threshold[4] = {7000, 100, 6000, 7000};
 int8 codifica[4];
 int32 count=0;
+int16 value_mv=0;
 /*
 int32 value_mv[2];
 int32 valuekR[2];
@@ -56,6 +57,8 @@ CY_ISR(Custom_ISR_ADC)
         value_digit1 = ADC_DelSig_Read32();
         if (value_digit1 < 0)  value_digit1 = 0;
         if (value_digit1 > 65535) value_digit1 = 65535;
+        
+         value_mv = ADC_DelSig_CountsTo_mVolts(value_digit1);
         
         //value_read1 = (float)(value_digit1*100)/65535;
         value_read1=value_digit1;

@@ -124,10 +124,11 @@ class SerialWorker(QRunnable):
 
     @pyqtSlot()
     def killed(self):
-        # char= 'N'
+        char= 'N'
         global CONN_STATUS
         if self.is_killed and CONN_STATUS:
             CONN_STATUS = False
+            self.port.write(char.encode('utf-8'))
             self.signals.device_port.emit(self.port_name)
 
         logging.info("Killing the process")
@@ -261,18 +262,18 @@ class MainWindow(QMainWindow):
 
     def handle_packet_option(self, packet):
 
-        if (packet[0] > 5500 and packet[1] < 6000 and packet[2] > 5800 and packet[3] > 6500 and self.flag1 == 0 and self.flag2 == 0):
+        if (packet[0] > 2000 and packet[1] < 6000 and packet[2] > 5800 and packet[3] > 6500 and self.flag1 == 0 and self.flag2 == 0):
             # self.createButton()
             self.initUI3()
             self.flag1 = 1
             self.flag2 = 0
 
-        elif (packet[0] > 5500 and packet[1] < 6000 and packet[2] < 4000 and packet[3] > 6500 and self.flag2 == 0 and self.flag1 == 0):
+        elif (packet[0] > 2000 and packet[1] < 6000 and packet[2] < 4000 and packet[3] > 6500 and self.flag2 == 0 and self.flag1 == 0):
             self.initUI4()
             self.flag2 = 1
             self.flag1 = 0
 
-        elif (packet[0] > 5500 and packet[1] > 8000 and packet[2] > 7000 and packet[3] > 7000 and (self.flag1 == 1 or self.flag2 == 1)):
+        elif (packet[0] > 2000 and packet[1] > 8000 and packet[2] > 7000 and packet[3] > 7000 and (self.flag1 == 1 or self.flag2 == 1)):
             self.flag1 = 0
             self.flag2 = 0
             # self.arco1.hide()

@@ -41,13 +41,14 @@ int main(void)
     DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0;
     DataBuffer1[0] = 0xAA;
     DataBuffer1[TRANSMIT_BUFFER_SIZE-1] = 0xFF;
+    Pin_LED_Write(LED_OFF);
     
     for(;;)
     {
         /* Place your application code here. */
         Received = UART_BT_GetChar();
-       
-        if(Received!='Y'){
+        
+        if(Received!='Y'){ 
             Pin_LED_Write( ~Pin_LED_Read() );
             CyDelay(500);
         }
@@ -56,7 +57,7 @@ int main(void)
       
        if(Received=='Y'){
        Pin_LED_Write(LED_ON);
-        if ( PacketReadyFlag==1){
+       if ( PacketReadyFlag==1){
          //Send data
             for(int8 i=0; i<2; i++){
              //comunicazione con BT
