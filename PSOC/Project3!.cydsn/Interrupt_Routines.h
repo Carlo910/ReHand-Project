@@ -17,6 +17,8 @@
     #define  BYTE_TO_SEND 8
     #define  BYTE_BATT 8        
     #define  TRANSMIT_BUFFER_SIZE 1+BYTE_TO_SEND+1
+    #define LED_ON 1
+    #define LED_OFF 0
     
     CY_ISR_PROTO(Custom_ISR_ADC);
 
@@ -24,6 +26,7 @@
     uint8 DataBuffer1[TRANSMIT_BUFFER_SIZE];
     volatile uint8 PacketReadyFlag; //flag per monitorare quando sono pronto ad inviare il dato con la UART
     volatile uint8 PacketReadyFlag1;
+    volatile uint8_t led_status;
     
 #endif
 

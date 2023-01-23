@@ -16,6 +16,7 @@
 #define LED_ON 1
 #define LED_OFF 0
 
+
 char Received = 'N';
 
 int main(void)
@@ -41,22 +42,26 @@ int main(void)
     DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0;
     DataBuffer1[0] = 0xAA;
     DataBuffer1[TRANSMIT_BUFFER_SIZE-1] = 0xFF;
-    Pin_LED_Write(LED_OFF);
+    led_status = LED_OFF;
     
     for(;;)
     {
         /* Place your application code here. */
-        Received = UART_BT_GetChar();
-        
-        if(Received!='Y'){ 
-            Pin_LED_Write( ~Pin_LED_Read() );
+        if(led_status == LED_OFF)
+        {
+            Pin_LED_Write(LED_ON);
+            CyDelay(500);
+            Pin_LED_Write(LED_OFF);
             CyDelay(500);
         }
-        
-        
+        else
+        {
+            Pin_LED_Write(LED_ON);
+        }
+    
       
-       if(Received=='Y'){
-       Pin_LED_Write(LED_ON);
+       if(led_status == LED_ON){
+        
        if ( PacketReadyFlag==1){
          //Send data
             for(int8 i=0; i<2; i++){

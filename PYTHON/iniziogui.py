@@ -73,7 +73,7 @@ class SerialWorker(QRunnable):
     def run(self):
 
         global CONN_STATUS
-        char = 'Y'
+        
 
         if not CONN_STATUS:
             try:
@@ -85,13 +85,14 @@ class SerialWorker(QRunnable):
                     time.sleep(0.01)
                     self.sample = 0
                     while (CONN_STATUS == True):
+                        char = 'Y'
                         self.port.write(char.encode('utf-8'))
-                        print("writing")
                         self.read_packet()
             except serial.SerialException:
                 logging.info("Error with port {}.".format(self.port_name))
                 self.signals.status.emit(self.port_name, 0)
                 time.sleep(0.01)
+               
 
     @pyqtSlot()
     def read_packet(self):
@@ -117,20 +118,19 @@ class SerialWorker(QRunnable):
             self.signals.packet.emit(self.final)
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
-            self.valore_batt = []
-            self.valore_batt.append((pacchetto[1] << 8) + pacchetto[2])
+            self.valore_batt=((pacchetto[1] << 8) + pacchetto[2])
             print(self.valore_batt)
+            print("Sto stampando batteria")
             self.signals.batt.emit(self.valore_batt)
 
     @pyqtSlot()
     def killed(self):
-        char= 'N'
         global CONN_STATUS
         if self.is_killed and CONN_STATUS:
             CONN_STATUS = False
-            self.port.write(char.encode('utf-8'))
             self.signals.device_port.emit(self.port_name)
-
+            char = 'N'
+            self.port.write(char.encode('utf-8'))
         logging.info("Killing the process")
 
 
@@ -185,7 +185,8 @@ class MainWindow(QMainWindow):
                 self.connected_device)
             self.serial_worker.signals.status.connect(
                 self.check_serialport_status)
-            self.initUI2()
+
+            
             # execute the worker
             self.threadpool.start(self.serial_worker)
         else:
@@ -198,7 +199,7 @@ class MainWindow(QMainWindow):
             self.start_btn.setChecked(False)
         elif status == 1:
             # enable all the widgets on the interface
-
+            self.initUI2()
             logging.info("Connected to port {}".format(port_name))
 
     def connected_device(self, port_name):
@@ -259,12 +260,18 @@ class MainWindow(QMainWindow):
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
 
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
+    
+    def handle_batt_status(self, batt):
+        print(batt)
+        self.perc_batt = (batt*7.4)/65535
+        print("valore perc batt", self.perc_batt)
+
 
     def handle_packet_option(self, packet):
 
         if (packet[0] > 2000 and packet[1] < 6000 and packet[2] > 5800 and packet[3] > 6500 and self.flag1 == 0 and self.flag2 == 0):
             # self.createButton()
-            self.initUI3()
+            self.initUIGioco()
             self.flag1 = 1
             self.flag2 = 0
 
@@ -284,12 +291,9 @@ class MainWindow(QMainWindow):
         else:
             pass
 
-    def handle_batt_status(self, batt): 
-        self.perc_batt = (batt*100)/65535
-        print("valore perc batt", self.perc_batt)
 
     
-    def initUI3(self):
+    def initUIGioco(self):
         
         
         self.titolo3=QLabel("GIOCO ARCO")
