@@ -6,7 +6,7 @@ def main():
     sample=0
     ser = serial.Serial()
     ser.baudrate = 9600
-    ser.port = 'COM7'
+    ser.port = 'COM10'
 
     #da usare la prima volta
     '''

@@ -5,7 +5,9 @@ import time
 import logging
 import numpy as np
 import csv
-
+import pickle
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
@@ -116,6 +118,15 @@ class SerialWorker(QRunnable):
                 i += 2
             print(self.final)
             self.signals.packet.emit(self.final)
+
+            #load
+            with open('rf_model.pkl', 'rb') as f:
+                modello=pickle.load(f)
+
+            self.final = np.array(self.final)
+            self.predizione = modello.predict(self.final.reshape(1,-1))
+            print(self.predizione)
+
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
             self.valore_batt=((pacchetto[1] << 8) + pacchetto[2])
