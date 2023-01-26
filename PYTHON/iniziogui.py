@@ -6,8 +6,8 @@ import logging
 import numpy as np
 import csv
 import pickle
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+#import pandas as pd
+#from sklearn.ensemble import RandomForestClassifier
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
@@ -120,12 +120,13 @@ class SerialWorker(QRunnable):
             self.signals.packet.emit(self.final)
 
             #load
-            with open('rf_model.pkl', 'rb') as f:
-                modello=pickle.load(f)
-
+            #with open('rf_model.pkl', 'rb') as f:
+             #   modello=pickle.load(f)
+            """
             self.final = np.array(self.final)
             self.predizione = modello.predict(self.final.reshape(1,-1))
             print(self.predizione)
+            """
 
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
@@ -155,8 +156,8 @@ class MainWindow(QMainWindow):
         self.w = None
         # title and geometry
         self.setWindowTitle("Progetto 3")
-        width = 800
-        height = 620
+        width = 1920
+        height = 1080
         self.setMinimumSize(width, height)
 
         # create thread handler
@@ -165,8 +166,8 @@ class MainWindow(QMainWindow):
 
         self.connected = CONN_STATUS
         self.initUI()
-        self.flag1 = 0
-        self.flag2 = 0
+        self.flag_gioco= 0
+        self.flag_statistiche = 0
         self.count = 0
 
     def initUI(self):
@@ -179,6 +180,7 @@ class MainWindow(QMainWindow):
         self.start_btn.setFont(QtGui.QFont('Arial', 30))
         self.button_hlay = QHBoxLayout()
         self.button_hlay.addWidget(self.start_btn)
+        self.button_hlay.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         # button_hlay.addWidget(self.win_btn)
         self.start_btn.setFixedSize(300, 300)
@@ -232,13 +234,17 @@ class MainWindow(QMainWindow):
 
     def initUI2(self):
 
+        self.titolo2 = QLabel("Seleziona l'opzione eseguendo il gesto in figura")
+        self.titolo2.setFont(QtGui.QFont('Arial', 30))
+        self.titolo2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         self.opzione1_btn = QLabel("Gioco Arco")
-        self.opzione1_btn.setFont(QtGui.QFont('Arial', 30))
-        # self.opzione1_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.opzione1_btn.setFont(QtGui.QFont('Arial', 70))
+        self.opzione1_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.opzione2_btn = QLabel("Statistiche")
-        self.opzione2_btn.setFont(QtGui.QFont('Arial', 30))
-        # self.opzione2_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.opzione2_btn.setFont(QtGui.QFont('Arial', 70))
+        self.opzione2_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
          # layout
         self.button1_hlay2 = QHBoxLayout()
@@ -249,7 +255,10 @@ class MainWindow(QMainWindow):
         self.icona_indice.setAlignment(Qt.AlignmentFlag.AlignTrailing)
         self.button1_hlay2.addWidget(self.icona_indice)
         self.button1_hlay2.addWidget(self.opzione1_btn)
-        self.opzione1_btn.setFixedSize(500, 100)
+        
+        #self.icona_indice.setAlignment(Qt.AlignmentFlag.AlignTrailing)
+        
+        #self.opzione1_btn.setFixedSize()
         self.button2_hlay2 = QHBoxLayout()
         self.icona_indice_medio = QLabel("")
         pixmap = QtGui.QPixmap("indice_medio.png")
@@ -258,9 +267,12 @@ class MainWindow(QMainWindow):
         self.icona_indice_medio.setAlignment(Qt.AlignmentFlag.AlignTrailing)
         self.button2_hlay2.addWidget(self.icona_indice_medio)
         self.button2_hlay2.addWidget(self.opzione2_btn)
-        self.opzione2_btn.setFixedSize(500, 100)
+       
+        
+        #self.opzione2_btn.setFixedSize(500, 100)
 
         self.vlay2 = QVBoxLayout()
+        self.vlay2.addWidget(self.titolo2)
         self.vlay2.addLayout(self.button1_hlay2)
         self.vlay2.addLayout(self.button2_hlay2)
 
@@ -280,25 +292,23 @@ class MainWindow(QMainWindow):
 
     def handle_packet_option(self, packet):
 
-        if (packet[0] > 2000 and packet[1] < 6000 and packet[2] > 5800 and packet[3] > 6500 and self.flag1 == 0 and self.flag2 == 0):
+        if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 4000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
             # self.createButton()
             self.initUIGioco()
-            self.flag1 = 1
-            self.flag2 = 0
+            self.flag_gioco= 1
+            self.flag_statistiche = 0
 
-        elif (packet[0] > 2000 and packet[1] < 6000 and packet[2] < 4000 and packet[3] > 6500 and self.flag2 == 0 and self.flag1 == 0):
+        elif (packet[0] > 7000 and packet[1] < 5500 and packet[2] < 4000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUI4()
-            self.flag2 = 1
-            self.flag1 = 0
+            self.flag_statistiche = 1
+            self.flag_gioco= 0
 
-        elif (packet[0] > 2000 and packet[1] > 8000 and packet[2] > 7000 and packet[3] > 7000 and (self.flag1 == 1 or self.flag2 == 1)):
-            self.flag1 = 0
-            self.flag2 = 0
-            # self.arco1.hide()
+        elif (packet[0] > 6000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
+            self.flag_gioco= 0
+            self.flag_statistiche = 0
             self.initUI2()
             self.count = 0
-            self.mano_semi.setParent(None)
-            self.arco2.setParent(None)
+           
         else:
             pass
 
@@ -308,11 +318,14 @@ class MainWindow(QMainWindow):
         
         
         self.titolo3=QLabel("GIOCO ARCO")
-        #self.titolo3.setAlignment(Qt)
+        self.sottotitolo3=QLabel("Riproduci il gesto mostrato in figura")
         self.layout3=QVBoxLayout()
         self.layout3.addWidget(self.titolo3)
+        self.layout3.addWidget(self.sottotitolo3)
         self.titolo3.setFont(QtGui.QFont('Arial', 30))
         self.titolo3.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.sottotitolo3.setFont(QtGui.QFont('Arial', 16))
+        self.sottotitolo3.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         
        
        
@@ -321,15 +334,21 @@ class MainWindow(QMainWindow):
         self.widget3 = QWidget()
         self.widget3.setLayout(self.layout3)
         self.setCentralWidget(self.widget3)
-        self.layout_immagine = QHBoxLayout()
-        self.layout3.addLayout(self.layout_immagine)
+
+        self.layout_immagine1 = QHBoxLayout()
+        self.layout_immagine2 = QHBoxLayout()
+        self.layout_immagine3 = QHBoxLayout()
+        self.layout3.addLayout(self.layout_immagine1)
+        self.layout3.addLayout(self.layout_immagine2)
+        self.layout3.addLayout(self.layout_immagine3)
+
         #inizializzazione immagine 
         self.mano_aperta=QLabel("")
         pixmap=QtGui.QPixmap("mano1.png")
         self.mano_aperta.setPixmap(pixmap)
         self.mano_aperta.resize(pixmap.width(),pixmap.height())
         self.mano_aperta.setAlignment(Qt.AlignmentFlag.AlignLeft)
-      
+
         
         self.mano_semi=QLabel("")
         pixmap=QtGui.QPixmap("mano2.png")
@@ -338,13 +357,13 @@ class MainWindow(QMainWindow):
         self.mano_semi.setAlignment(Qt.AlignmentFlag.AlignLeft)
        
 
-        '''
         self.mano_chiusa=QLabel("")
         pixmap=QtGui.QPixmap("mano3.png")
         self.mano_chiusa.setPixmap(pixmap)
         self.mano_chiusa.resize(pixmap.width(),pixmap.height())
-        self.layout_immagine.addWidget(self.mano_chiusa)
-        '''
+        self.mano_chiusa.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+    
         self.arco1=QLabel("")
         pixmap=QtGui.QPixmap("arco1.png")
         self.arco1.setPixmap(pixmap)
@@ -357,38 +376,39 @@ class MainWindow(QMainWindow):
         self.arco2.resize(pixmap.width(),pixmap.height())
         self.arco2.setAlignment(Qt.AlignmentFlag.AlignRight)
         
-        
-        '''
         self.arco3=QLabel("")
-        pixmap=QtGui.QPixmap("arco1.png")
+        pixmap=QtGui.QPixmap("arco3.png")
         self.arco3.setPixmap(pixmap)
         self.arco3.resize(pixmap.width(),pixmap.height())
-        self.layout_immagine.addWidget(self.arco3)
-        '''
+        self.arco3.setAlignment(Qt.AlignmentFlag.AlignRight)
 
 
         #ricezione segnale
         self.serial_worker.signals.packet.connect(self.gioco)
 
     def gioco(self, packet):
-        if(self.flag1==1 and self.count==0):
-            self.layout_immagine.addWidget(self.mano_aperta)
+        if(self.flag_gioco==1 and self.count==0):
+            self.layout_immagine1.addWidget(self.mano_aperta)
             self.count = 1
-        elif(self.flag1==1 and self.count==1):
-            if(packet[0]<5000 and packet[1]<6000 and packet[2]<4500 and packet[3]<5500):         
-                self.layout_immagine.addWidget(self.arco1)
+        elif(self.flag_gioco==1 and self.count==1):
+            if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]<3000):         
+                self.layout_immagine1.addWidget(self.arco1)
                 self.count = 2
-        elif(self.flag1==1 and self.count==2):
-            time.sleep(2)
-            self.arco1.setParent(None)
-            self.mano_aperta.setParent(None)
-            self.layout_immagine.addWidget(self.mano_semi)
+        elif(self.flag_gioco==1 and self.count==2):
+            time.sleep(0.05)
+            self.layout_immagine2.addWidget(self.mano_semi)
             self.count = 3
-        elif(self.flag1 == 1 and self.count == 3):
-            if(packet[0]<5000 and packet[1]<6000 and packet[2]<4500 and packet[3]>6500):
-                self.layout_immagine.addWidget(self.arco2)
+        elif(self.flag_gioco== 1 and self.count == 3):
+            if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]>3000):
+                self.layout_immagine2.addWidget(self.arco2)
                 self.count = 4
-       
+        elif(self.flag_gioco== 1 and self.count == 4):
+            time.sleep(0.05)
+            self.layout_immagine3.addWidget(self.mano_chiusa)
+            self.count=5
+        elif(self.flag_gioco== 1 and self.count == 5):
+            if(packet[0] < 5000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000):
+                self.layout_immagine3.addWidget(self.arco3)
 
         
     def initUI4(self):
