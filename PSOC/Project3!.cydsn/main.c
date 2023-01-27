@@ -75,7 +75,7 @@ int main(void)
             //comunicazione con BT
              UART_BT_PutArray(DataBuffer1, TRANSMIT_BUFFER_SIZE);
              //comunicazione UART
-             //UART_PutArray(DataBuffer1, TRANSMIT_BUFFER_SIZE1 );
+             //UART_PutArray(DataBuffer1, TRANSMIT_BUFFER_SIZE );
             PacketReadyFlag1=0;
         }
 

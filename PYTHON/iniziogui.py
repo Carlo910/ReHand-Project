@@ -55,6 +55,7 @@ CONN_STATUS = False
 class SerialWorkerSignals(QObject):
     device_port = pyqtSignal(str)
     packet = pyqtSignal(list)
+    prediction = pyqtSignal(list)
     batt = pyqtSignal(int)
     status = pyqtSignal(str, int)
 
@@ -120,14 +121,14 @@ class SerialWorker(QRunnable):
             self.signals.packet.emit(self.final)
 
             #load
-            #with open('rf_model.pkl', 'rb') as f:
-             #   modello=pickle.load(f)
-            """
+            with open('rf_model.pkl', 'rb') as f:
+               modello=pickle.load(f)
+
             self.final = np.array(self.final)
             self.predizione = modello.predict(self.final.reshape(1,-1))
+            self.predizione = list(self.predizione)
             print(self.predizione)
-            """
-
+            self.signals.prediction.emit(self.predizione)
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
             self.valore_batt=((pacchetto[1] << 8) + pacchetto[2])
@@ -384,14 +385,17 @@ class MainWindow(QMainWindow):
 
 
         #ricezione segnale
-        self.serial_worker.signals.packet.connect(self.gioco)
+        #self.serial_worker.signals.packet.connect(self.gioco)
+        self.serial_worker.signals.prediction.connect(self.gioco)
 
-    def gioco(self, packet):
+    def gioco(self, prediction):
+        print('sono qui', prediction)
         if(self.flag_gioco==1 and self.count==0):
             self.layout_immagine1.addWidget(self.mano_aperta)
             self.count = 1
         elif(self.flag_gioco==1 and self.count==1):
-            if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]<3000):         
+            if(prediction[0] == 0):
+            #if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]<3000):         
                 self.layout_immagine1.addWidget(self.arco1)
                 self.count = 2
         elif(self.flag_gioco==1 and self.count==2):
@@ -399,7 +403,8 @@ class MainWindow(QMainWindow):
             self.layout_immagine2.addWidget(self.mano_semi)
             self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
-            if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]>3000):
+            if(prediction[0]==1):
+            #if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]>3000):
                 self.layout_immagine2.addWidget(self.arco2)
                 self.count = 4
         elif(self.flag_gioco== 1 and self.count == 4):
@@ -407,7 +412,8 @@ class MainWindow(QMainWindow):
             self.layout_immagine3.addWidget(self.mano_chiusa)
             self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
-            if(packet[0] < 5000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000):
+            if(prediction[0] == 2):
+            #if(packet[0] < 5000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000):
                 self.layout_immagine3.addWidget(self.arco3)
 
         
