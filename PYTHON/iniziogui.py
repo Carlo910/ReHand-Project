@@ -281,8 +281,8 @@ class MainWindow(QMainWindow):
         self.widget2.setLayout(self.vlay2)
         self.setCentralWidget(self.widget2)
 
-        self.serial_worker.signals.packet.connect(self.handle_packet_option)
-
+        #self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        self.serial_worker.signals.prediction.connect(self.handle_packet_option)
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
     
     def handle_batt_status(self, batt):
@@ -291,20 +291,23 @@ class MainWindow(QMainWindow):
         print("valore perc batt", self.perc_batt)
 
 
-    def handle_packet_option(self, packet):
-
-        if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 4000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+    def handle_packet_option(self, prediction):
+        print('sono qui 11', prediction)
+        if(prediction[0] == 3 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        #if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 4000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
             # self.createButton()
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
 
-        elif (packet[0] > 7000 and packet[1] < 5500 and packet[2] < 4000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        elif(prediction[0] == 4 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        #elif (packet[0] > 7000 and packet[1] < 5500 and packet[2] < 4000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUI4()
             self.flag_statistiche = 1
             self.flag_gioco= 0
 
-        elif (packet[0] > 6000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
+        elif(prediction==2 and self.flag_gioco == 1 and self.flag_statistiche == 1):
+        #elif (packet[0] > 6000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
             self.flag_gioco= 0
             self.flag_statistiche = 0
             self.initUI2()
