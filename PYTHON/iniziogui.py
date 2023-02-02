@@ -68,7 +68,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM10'
+        self.port_name = 'COM9'
         self.baudrate = 9600  # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -163,8 +163,7 @@ class MainWindow(QMainWindow):
 
         # create thread handler
         self.threadpool = QThreadPool()
-        # self.threadpool1 = QThreadPool()
-
+       
         self.connected = CONN_STATUS
         self.initUI()
         self.flag_gioco= 0
@@ -177,28 +176,27 @@ class MainWindow(QMainWindow):
             text="START",
             checkable=True
         )
+
         # layout
         self.start_btn.setFont(QtGui.QFont('Arial', 30))
-        self.button_hlay = QHBoxLayout()
-        self.button_hlay.addWidget(self.start_btn)
-        self.button_hlay.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.Hlayout_start = QHBoxLayout()
+        self.Hlayout_start.addWidget(self.start_btn)
+        self.Hlayout_start.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        # button_hlay.addWidget(self.win_btn)
+        # Hlayout_start.addWidget(self.win_btn)
         self.start_btn.setFixedSize(300, 300)
-        self.vlay = QVBoxLayout()
-        self.vlay.addLayout(self.button_hlay)
+        self.Vlayout_start = QVBoxLayout()
+        self.Vlayout_start.addLayout(self.Hlayout_start)
         self.widget = QWidget()
-        self.widget.setLayout(self.vlay)
+        self.widget.setLayout(self.Vlayout_start)
         self.setCentralWidget(self.widget)
 
         self.start_btn.clicked.connect(self.on_click)
 
     def on_click(self, checked):
         if checked:
-            self.serial_worker.signals.device_port.connect(
-                self.connected_device)
-            self.serial_worker.signals.status.connect(
-                self.check_serialport_status)
+            self.serial_worker.signals.device_port.connect(self.connected_device)
+            self.serial_worker.signals.status.connect(self.check_serialport_status)
 
             
             # execute the worker
@@ -235,53 +233,50 @@ class MainWindow(QMainWindow):
 
     def initUI2(self):
 
-        self.titolo2 = QLabel("Seleziona l'opzione eseguendo il gesto in figura")
-        self.titolo2.setFont(QtGui.QFont('Arial', 30))
-        self.titolo2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.layout_scelta = QVBoxLayout()
 
-        self.opzione1_btn = QLabel("Gioco Arco")
-        self.opzione1_btn.setFont(QtGui.QFont('Arial', 70))
-        self.opzione1_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.opzione2_btn = QLabel("Statistiche")
-        self.opzione2_btn.setFont(QtGui.QFont('Arial', 70))
-        self.opzione2_btn.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-         # layout
-        self.button1_hlay2 = QHBoxLayout()
-        self.icona_indice = QLabel("")
-        pixmap = QtGui.QPixmap("indice.png")
-        self.icona_indice.setPixmap(pixmap)
-        self.icona_indice.resize(pixmap.width(), pixmap.height())
-        self.icona_indice.setAlignment(Qt.AlignmentFlag.AlignTrailing)
-        self.button1_hlay2.addWidget(self.icona_indice)
-        self.button1_hlay2.addWidget(self.opzione1_btn)
+        self.titolo1= QLabel("Seleziona l'opzione desidarata, svolgendo il gesto rappresentato")
+        self.titolo1.setFont(QtGui.QFont('Arial', 30))
         
-        #self.icona_indice.setAlignment(Qt.AlignmentFlag.AlignTrailing)
+
+        self.layout_scelta.addWidget(self.titolo1)
+        self.layout_scelta.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.layout_scelta.setSpacing(100)
         
-        #self.opzione1_btn.setFixedSize()
-        self.button2_hlay2 = QHBoxLayout()
-        self.icona_indice_medio = QLabel("")
-        pixmap = QtGui.QPixmap("indice_medio.png")
-        self.icona_indice_medio.setPixmap(pixmap)
-        self.icona_indice_medio.resize(pixmap.width(), pixmap.height())
-        self.icona_indice_medio.setAlignment(Qt.AlignmentFlag.AlignTrailing)
-        self.button2_hlay2.addWidget(self.icona_indice_medio)
-        self.button2_hlay2.addWidget(self.opzione2_btn)
+
+        self.grid_scelta = QGridLayout()
+        self.setLayout(self.grid_scelta)
+        self.grid_scelta.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        #inizializzazione immagine 
+        self.indice=QLabel("")
+        pixmap=QtGui.QPixmap("indice.png")
+        self.indice.setPixmap(pixmap)
+        self.indice.resize(pixmap.width(),pixmap.height())
+     
+        self.indice_medio=QLabel("")
+        pixmap=QtGui.QPixmap("indice_medio.png")
+        self.indice_medio.setPixmap(pixmap)
+        self.indice_medio.resize(pixmap.width(),pixmap.height())
+        
+        self.opzione1_btn=QLabel("Gioco Arco")
+        self.opzione1_btn.setFont(QtGui.QFont('Arial', 30))
+        self.opzione2_btn=QLabel("Statistiche")
+        self.opzione2_btn.setFont(QtGui.QFont('Arial', 30))
+
+
+        self.grid_scelta.addWidget(self.indice,1,1)
+        self.grid_scelta.addWidget(self.opzione1_btn,1,2)
+        self.grid_scelta.setVerticalSpacing(100)
+        self.grid_scelta.addWidget(self.indice_medio, 2,1)
+        self.grid_scelta.addWidget(self.opzione2_btn,2,2)
        
-        
-        #self.opzione2_btn.setFixedSize(500, 100)
-
-        self.vlay2 = QVBoxLayout()
-        self.vlay2.addWidget(self.titolo2)
-        self.vlay2.addLayout(self.button1_hlay2)
-        self.vlay2.addLayout(self.button2_hlay2)
-
-        self.widget2 = QWidget()
-        self.widget2.setLayout(self.vlay2)
-        self.setCentralWidget(self.widget2)
-
-        #self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        self.layout_scelta.addLayout(self.grid_scelta)
+        self.widget = QWidget()
+        self.widget.setLayout(self.layout_scelta)
+        self.setCentralWidget(self.widget)
+    
+        self.serial_worker.signals.packet.connect(self.handle_packet_option)
         self.serial_worker.signals.prediction.connect(self.handle_packet_option)
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
     
@@ -291,23 +286,23 @@ class MainWindow(QMainWindow):
         print("valore perc batt", self.perc_batt)
 
 
-    def handle_packet_option(self, prediction):
-        print('sono qui 11', prediction)
-        if(prediction[0] == 3 and self.flag_gioco == 0 and self.flag_statistiche == 0):
-        #if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 4000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
-            # self.createButton()
+    def handle_packet_option(self, packet):
+        #print('sono qui 11', prediction)
+        #if(prediction[0] == 3 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 4000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+          
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
 
-        elif(prediction[0] == 4 and self.flag_gioco == 0 and self.flag_statistiche == 0):
-        #elif (packet[0] > 7000 and packet[1] < 5500 and packet[2] < 4000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        #elif(prediction[0] == 4 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        elif(packet[0] > 7000 and packet[1] < 5500 and packet[2] < 4000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUI4()
             self.flag_statistiche = 1
             self.flag_gioco= 0
 
-        elif(prediction==2 and self.flag_gioco == 1 and self.flag_statistiche == 1):
-        #elif (packet[0] > 6000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
+        #elif(prediction==2 and self.flag_gioco == 1 and self.flag_statistiche == 1):
+        elif(packet[0] > 6000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
             self.flag_gioco= 0
             self.flag_statistiche = 0
             self.initUI2()
@@ -320,71 +315,57 @@ class MainWindow(QMainWindow):
     
     def initUIGioco(self):
         
+    
+        self.layout_gioco = QVBoxLayout()
         
-        self.titolo3=QLabel("GIOCO ARCO")
-        self.sottotitolo3=QLabel("Riproduci il gesto mostrato in figura")
-        self.layout3=QVBoxLayout()
-        self.layout3.addWidget(self.titolo3)
-        self.layout3.addWidget(self.sottotitolo3)
-        self.titolo3.setFont(QtGui.QFont('Arial', 30))
-        self.titolo3.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.sottotitolo3.setFont(QtGui.QFont('Arial', 16))
-        self.sottotitolo3.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.titolo1 = QLabel("Riproduci il gesto mostrato in figura")
+        self.titolo1.setFont(QtGui.QFont('Arial', 30))
         
-       
-       
-        #Layout
-       
-        self.widget3 = QWidget()
-        self.widget3.setLayout(self.layout3)
-        self.setCentralWidget(self.widget3)
 
-        self.layout_immagine1 = QHBoxLayout()
-        self.layout_immagine2 = QHBoxLayout()
-        self.layout_immagine3 = QHBoxLayout()
-        self.layout3.addLayout(self.layout_immagine1)
-        self.layout3.addLayout(self.layout_immagine2)
-        self.layout3.addLayout(self.layout_immagine3)
+        self.layout_gioco.addWidget(self.titolo1)
+        self.layout_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.layout_gioco.setSpacing(150)
+        
+        self.grid_gioco = QGridLayout()
+        #self.setLayout(self._gioco)
+        self.grid_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        #inizializzazione immagine 
+       
         self.mano_aperta=QLabel("")
         pixmap=QtGui.QPixmap("mano1.png")
         self.mano_aperta.setPixmap(pixmap)
         self.mano_aperta.resize(pixmap.width(),pixmap.height())
-        self.mano_aperta.setAlignment(Qt.AlignmentFlag.AlignLeft)
-
-        
+     
         self.mano_semi=QLabel("")
         pixmap=QtGui.QPixmap("mano2.png")
         self.mano_semi.setPixmap(pixmap)
         self.mano_semi.resize(pixmap.width(),pixmap.height())
-        self.mano_semi.setAlignment(Qt.AlignmentFlag.AlignLeft)
-       
-
+        
         self.mano_chiusa=QLabel("")
         pixmap=QtGui.QPixmap("mano3.png")
         self.mano_chiusa.setPixmap(pixmap)
         self.mano_chiusa.resize(pixmap.width(),pixmap.height())
-        self.mano_chiusa.setAlignment(Qt.AlignmentFlag.AlignLeft)
-
-    
+      
+        
         self.arco1=QLabel("")
         pixmap=QtGui.QPixmap("arco1.png")
         self.arco1.setPixmap(pixmap)
         self.arco1.resize(pixmap.width(),pixmap.height())
-        self.arco1.setAlignment(Qt.AlignmentFlag.AlignRight)
-
+        
         self.arco2=QLabel("")
         pixmap=QtGui.QPixmap("arco2.png")
         self.arco2.setPixmap(pixmap)
         self.arco2.resize(pixmap.width(),pixmap.height())
-        self.arco2.setAlignment(Qt.AlignmentFlag.AlignRight)
         
         self.arco3=QLabel("")
         pixmap=QtGui.QPixmap("arco3.png")
         self.arco3.setPixmap(pixmap)
         self.arco3.resize(pixmap.width(),pixmap.height())
-        self.arco3.setAlignment(Qt.AlignmentFlag.AlignRight)
+
+        self.layout_gioco.addLayout(self.grid)
+        self.widget = QWidget()
+        self.widget.setLayout(self.layout_gioco)
+        self.setCentralWidget(self.widget)
 
 
         #ricezione segnale
@@ -394,30 +375,33 @@ class MainWindow(QMainWindow):
     def gioco(self, prediction):
         print('sono qui', prediction)
         if(self.flag_gioco==1 and self.count==0):
-            self.layout_immagine1.addWidget(self.mano_aperta)
+            self.grid_gioco.addWidget(self.mano_aperta,1,1)
+            self.grid_gioco.setHorizontalSpacing(200)
             self.count = 1
         elif(self.flag_gioco==1 and self.count==1):
             if(prediction[0] == 0):
             #if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]<3000):         
-                self.layout_immagine1.addWidget(self.arco1)
+                self.grid_gioco.addWidget(self.arco1, 1,3)
                 self.count = 2
         elif(self.flag_gioco==1 and self.count==2):
             time.sleep(0.05)
-            self.layout_immagine2.addWidget(self.mano_semi)
+            self.grid_gioco.addWidget(self.mano_semi,2,1)
+            self.grid_gioco.setHorizontalSpacing(200)
             self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
             if(prediction[0]==1):
             #if(packet[0]<5000 and packet[1]<5000 and packet[2]<6500 and packet[3]>3000):
-                self.layout_immagine2.addWidget(self.arco2)
+                self.grid_gioco.addWidget(self.arco2,2,3)
                 self.count = 4
         elif(self.flag_gioco== 1 and self.count == 4):
             time.sleep(0.05)
-            self.layout_immagine3.addWidget(self.mano_chiusa)
+            self.grid_gioco.addWidget(self.mano_chiusa,3,1)
+            self.grid_gioco.setHorizontalSpacing(200)
             self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
             if(prediction[0] == 2):
             #if(packet[0] < 5000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000):
-                self.layout_immagine3.addWidget(self.arco3)
+                  self.grid_gioco.addWidget(self.arco3,3,3)
 
         
     def initUI4(self):
