@@ -162,6 +162,8 @@ class MainWindow(QMainWindow):
         self.flag_statistiche = 0
         self.count = 0
         self.count_timer =0
+        self.timernuovo=0
+        self.flag_gioco_terminato=0
 
     def initUI(self):
 
@@ -227,7 +229,9 @@ class MainWindow(QMainWindow):
     def initUI2(self):
         
         self.layoutV_scelta = QVBoxLayout()
+        self.layoutH_batteria=QHBoxLayout()
         self.layoutH_scelta = QHBoxLayout()
+
 
         self.titolo_scelta= QLabel("Seleziona l'opzione desidarata, svolgendo il gesto rappresentato")
         self.titolo_scelta.setFont(QtGui.QFont('Arial', 30))
@@ -244,6 +248,14 @@ class MainWindow(QMainWindow):
         self.grid_scelta.setContentsMargins(50,50,50,150)
 
         #inizializzazione immagine 
+        self.icona_batteria=QLabel("")
+        pixmap=QtGui.QPixmap("Immagini/100.png")
+        self.icona_batteria.setPixmap(pixmap)
+        self.icona_batteria.resize(pixmap.width(),pixmap.height())
+        self.icona_batteria.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.layoutH_batteria.addWidget(self.icona_batteria)
+        self.icona_batteria.setMargin(50)
+
         self.indice=QLabel("")
         pixmap=QtGui.QPixmap("indice.png")
         self.indice.setPixmap(pixmap)
@@ -265,7 +277,8 @@ class MainWindow(QMainWindow):
         self.grid_scelta.setVerticalSpacing(100)
         self.grid_scelta.addWidget(self.indice_medio, 2,1)
         self.grid_scelta.addWidget(self.opzione2_btn,2,2)
-       
+
+        self.layoutV_scelta.addLayout(self.layoutH_batteria)
         self.layoutV_scelta.addLayout(self.layoutH_scelta)
         self.layoutV_scelta.addLayout(self.grid_scelta)
         self.widget_scelta = QWidget()
@@ -275,32 +288,52 @@ class MainWindow(QMainWindow):
         self.serial_worker.signals.packet.connect(self.handle_packet_option)
 
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
+
+        self.timerprova = QTimer()
+        self.timerprova.timeout.connect(self.count_timeprova)
+        self.timerprova.start(1000)
+    
+    def count_timeprova(self):
+        self.timernuovo=self.timernuovo+1
+
     
     def handle_batt_status(self, batt):
         print(batt)
+        print(self.timernuovo)
         self.perc_batt = (batt*7.4)/65535
         print("valore perc batt", self.perc_batt)
+        if(self.timernuovo>0 and self.timernuovo<300):
+            self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/100.png"))
+        elif(self.timernuovo>300 and self.timernuovo<600):
+            self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/75.png"))
+        elif(self.timernuovo>600 and self.timernuovo<900):
+            self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/50.png"))
+        elif(self.timernuovo==9):
+            self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/25.png"))
+        elif(self.timernuovo==11):
+            self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/0.png"))
+
 
 
     def handle_packet_option(self, packet):
-        if (packet[0] > 8000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5500 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        if (packet[0] > 8000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
           
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
 
-        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] < 5000 and packet[3] > 5500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] < 5000 and packet[3] > 5000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUI4()
             self.flag_statistiche = 1
             self.flag_gioco= 0
 
-        elif(packet[0] < 8000 and packet[1] <5500 and packet[2] <5000 and packet[3] > 5500 and (self.flag_statistiche == 1 or  self.flag_gioco== 1)):
-        #elif(prediction==2 and self.flag_gioco == 1 and self.flag_statistiche == 1):
-        ##elif(packet[0] < 7000 and packet[1] > 5500 and packet[2] > 4000 and packet[3] > 5500 and (self.flag_gioco== 1 or self.flag_statistiche == 1)):
+        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and (self.flag_statistiche == 1 or (self.flag_gioco== 1 and self.flag_gioco_terminato==1))):
             self.flag_gioco= 0
             self.flag_statistiche = 0
             self.initUI2()
             self.count = 0
+            self.flag_gioco_terminato=0
+            self.count_timer=0
            
         else:
             pass
@@ -310,6 +343,7 @@ class MainWindow(QMainWindow):
     def initUIGioco(self):
         
         self.layoutV_gioco = QVBoxLayout()
+        self.layoutH_batteria_gioco=QHBoxLayout()
         self.layoutH_gioco = QHBoxLayout()
         self.grid_gioco = QGridLayout()
         self.layoutH_fine_gioco = QHBoxLayout()
@@ -317,7 +351,14 @@ class MainWindow(QMainWindow):
         self.grid_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layout_uscita_gioco.setAlignment(Qt.AlignmentFlag.AlignBottom)
        
-        
+        self.icona_batteria=QLabel("")
+        pixmap=QtGui.QPixmap("Immagini/100.png")
+        self.icona_batteria.setPixmap(pixmap)
+        self.icona_batteria.resize(pixmap.width(),pixmap.height())
+        self.icona_batteria.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.layoutH_batteria_gioco.addWidget(self.icona_batteria)
+        self.icona_batteria.setMargin(50)
+
         self.titolo_gioco = QLabel("Riproduci il gesto mostrato in figura")
         self.titolo_gioco.setFont(QtGui.QFont('Arial', 30))
         self.titolo_gioco.setMaximumSize(1920,70)
@@ -328,7 +369,7 @@ class MainWindow(QMainWindow):
         self.termine_gioco.setFont(QtGui.QFont('Arial', 30))
         self.termine_gioco.setMaximumSize(1920,100)
         self.termine_gioco.setMinimumSize(1920,100)
-        self.termine_gioco.setMargin(500)
+        self.termine_gioco.setMargin(620)
 
         self.uscita_gioco = QLabel("Esci")
         self.uscita_gioco.setFont(QtGui.QFont('Arial', 10))
@@ -341,7 +382,7 @@ class MainWindow(QMainWindow):
         pixmap=QtGui.QPixmap("mano1.png")
         self.mano_aperta.setPixmap(pixmap)
         self.mano_aperta.resize(pixmap.width(),pixmap.height())
-     
+        '''
         self.mano_semi=QLabel("")
         pixmap=QtGui.QPixmap("mano2.png")
         self.mano_semi.setPixmap(pixmap)
@@ -352,12 +393,12 @@ class MainWindow(QMainWindow):
         self.mano_chiusa.setPixmap(pixmap)
         self.mano_chiusa.resize(pixmap.width(),pixmap.height())
       
-        
+        '''
         self.arco1=QLabel("")
         pixmap=QtGui.QPixmap("arco1.png")
         self.arco1.setPixmap(pixmap)
         self.arco1.resize(pixmap.width(),pixmap.height())
-        
+        '''
         self.arco2=QLabel("")
         pixmap=QtGui.QPixmap("arco2.png")
         self.arco2.setPixmap(pixmap)
@@ -367,18 +408,16 @@ class MainWindow(QMainWindow):
         pixmap=QtGui.QPixmap("arco3.png")
         self.arco3.setPixmap(pixmap)
         self.arco3.resize(pixmap.width(),pixmap.height())
-
+        '''
         self.pollicesu=QLabel("")
         pixmap=QtGui.QPixmap("pollicesu.png")
         self.pollicesu.setPixmap(pixmap)
         self.pollicesu.resize(pixmap.width(),pixmap.height())
-
+       
         self.layoutH_gioco.addWidget(self.titolo_gioco)
-        #self.layoutH_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.layoutH_gioco.setSpacing(10)
         
         self.grid_gioco = QGridLayout()
-        #self.setLayout(self._gioco)
         self.grid_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         
@@ -386,7 +425,7 @@ class MainWindow(QMainWindow):
         self.layout_uscita_gioco.addWidget(self.uscita_gioco,1,2)
         
         
-
+        self.layoutV_gioco.addLayout(self.layoutH_batteria_gioco)
         self.layoutV_gioco.addLayout(self.layoutH_gioco)
         self.layoutV_gioco.addLayout(self.grid_gioco)
         self.layoutV_gioco.addLayout(self.layoutH_fine_gioco)
@@ -408,38 +447,43 @@ class MainWindow(QMainWindow):
             self.grid_gioco.addWidget(self.mano_aperta,1,1)
             self.grid_gioco.setHorizontalSpacing(100)
             self.count = 1
-            
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.count_time)
+            self.timer.start(1000)
         elif(self.flag_gioco==1 and self.count==1):
             if(prediction[0] == 0):
-                self.timer = QTimer()
-               
-                self.timer.timeout.connect(self.count_time)
-                self.timer.start(1000)
-                self.grid_gioco.addWidget(self.arco1, 2,1)
+                self.grid_gioco.addWidget(self.arco1, 1,2)
                 self.count = 2
         elif(self.flag_gioco==1 and self.count==2):
             time.sleep(1)
-            self.grid_gioco.addWidget(self.mano_semi,1,2)
-            self.grid_gioco.setHorizontalSpacing(100)
+            #self.grid_gioco.addWidget(self.mano_semi,1,2)
+            #self.grid_gioco.setHorizontalSpacing(100)
+            self.mano_aperta.setPixmap(QtGui.QPixmap("mano2.png"))
             self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
             if(prediction[0]==1):
-                self.grid_gioco.addWidget(self.arco2,2,2)
+                #self.grid_gioco.addWidget(self.arco2,2,2)
+                self.arco1.setPixmap(QtGui.QPixmap("arco2.png"))
                 self.count = 4
         elif(self.flag_gioco== 1 and self.count == 4):
             time.sleep(1)
-            self.grid_gioco.addWidget(self.mano_chiusa,1,3)
-            self.grid_gioco.setHorizontalSpacing(100)
+            #self.grid_gioco.addWidget(self.mano_chiusa,1,3)
+            #self.grid_gioco.setHorizontalSpacing(100)
+            self.mano_aperta.setPixmap(QtGui.QPixmap("mano3.png"))
             self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
             if(prediction[0] == 2):
-            #if(packet[0] < 5000 and packet[1] > 8000 and packet[2] > 8000 and packet[3] > 7000):
-                self.grid_gioco.addWidget(self.arco3,2,3)
+                #self.grid_gioco.addWidget(self.arco3,2,3)
+                self.arco1.setPixmap(QtGui.QPixmap("arco3.png"))
                 time.sleep(0.05)
-                self.layoutH_fine_gioco.addWidget(self.termine_gioco)
                 self.timer.stop()
+                self.termine_gioco.setText("Hai completato il gioco in {} s".format(self.count_timer))
+                self.layoutH_fine_gioco.addWidget(self.termine_gioco)
+                self.flag_gioco_terminato=1
+                
         
         if(self.count_timer>30):
+            self.flag_gioco_terminato=1
             self.termine_gioco.setText("Esci dal gioco! Riprova!")
             self.layoutH_fine_gioco.addWidget(self.termine_gioco)
         else:
