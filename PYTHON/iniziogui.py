@@ -10,6 +10,16 @@ import pickle
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QTimer
 
+import sys
+from PyQt5 import QtWidgets
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+import numpy as np
+
+
+from pyqtgraph import PlotWidget, plot
+import pyqtgraph as pg
+
 from PyQt5.QtCore import (
 
     QObject,
@@ -19,7 +29,8 @@ from PyQt5.QtCore import (
     pyqtSlot
 )
 
-from PyQt5 import QtGui
+from PyQt5 import QtGui, QtCore
+
 
 from PyQt5.QtGui import QPixmap
 
@@ -60,7 +71,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM10'
+        self.port_name = 'COM13'
         self.baudrate = 9600  # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -166,6 +177,8 @@ class MainWindow(QMainWindow):
         self.flag_gioco_terminato=0
 
     def initUI(self):
+
+        self.size(300,300)
 
         self.start_btn = QPushButton(
             text="START",
@@ -322,7 +335,7 @@ class MainWindow(QMainWindow):
             self.flag_gioco= 1
             self.flag_statistiche = 0
 
-        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] < 5000 and packet[3] > 5000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] < 7000 and packet[3] > 3000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUI4()
             self.flag_statistiche = 1
             self.flag_gioco= 0
@@ -511,8 +524,49 @@ class MainWindow(QMainWindow):
         self.widget4.setLayout(self.layout4)
         self.setCentralWidget(self.widget4)
 
-    
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
         
+        m = PlotCanvas(self, width=5, height=4)
+        m.move(0,0)
+        
+        self.show()
+
+        '''
+        self.graphWidget = pg.PlotWidget()
+        self.setCentralWidget(self.graphWidget)
+
+        tentativi = [1,2,3,4,5]
+        tempo = [1,2,3,4,5]
+
+        self.graphWidget.setBackground('w')
+        pen = pg.mkPen(color=(255,0,0),width=5, style=QtCore.Qt.DashLine)
+
+        self.graphWidget.plot(tempo,tentativi,pen=pen,symbol='+',symbolSize=20, symbolBrush=('b'))
+
+        self.graphWidget.setTitle("Miglioramenti",color="b",size="30pt")
+        styles = {'color' : 'r', 'font-size':'20px'}
+        self.graphWidget.setLabel('left', 'Numero di tentativi []', **styles)
+        self.graphWidget.setLabel('bottom', 'Tempo impiegato [sec]', **styles)
+        '''
+class PlotCanvas(FigureCanvas):
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+                fig = Figure(figsize=(width, height), dpi=dpi)
+                self.axes = fig.add_subplot(111)
+                FigureCanvas.__init__(self, fig)
+                self.setParent(parent)
+                FigureCanvas.setSizePolicy(self,
+                    QtWidgets.QSizePolicy.Expanding,
+                    QtWidgets.QSizePolicy.Expanding)
+                FigureCanvas.updateGeometry(self)
+                self.plot()
+        
+    def plot(self):
+                 data = np.random.normal(150, 20, 1000)
+                 n, bins, patches = self.axes.hist(data, bins=50, density=True, alpha=0.75)
+                 self.axes.set_xlabel('Value')
+                 self.axes.set_ylabel('Frequency')
+                 self.axes.set_title('Histogram of Random Values')
 
 
 if __name__ == '__main__':
