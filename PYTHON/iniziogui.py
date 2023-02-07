@@ -8,14 +8,14 @@ import csv
 import pickle
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtCore import Qt, QTimer, QDateTime
 
 import sys
 from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
-import numpy as np
-
+import pandas as pd
+import matplotlib.pyplot as plt
 
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
@@ -71,7 +71,7 @@ class SerialWorker(QRunnable):
         super().__init__()
         # init port, params and signals
         self.port = serial.Serial()
-        self.port_name = 'COM13'
+        self.port_name = 'COM10'
         self.baudrate = 9600  # hard coded but can be a global variable, or an input param
         self.signals = SerialWorkerSignals()
 
@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.w = None
         # title and geometry
-        self.setWindowTitle("Progetto 3")
+        self.setWindowTitle("RE-HAND")
         width = 1920
         height = 1000
         self.setMinimumSize(width, height)
@@ -168,6 +168,7 @@ class MainWindow(QMainWindow):
         self.threadpool = QThreadPool()
        
         self.connected = CONN_STATUS
+
         self.initUI()
         self.flag_gioco= 0
         self.flag_statistiche = 0
@@ -175,10 +176,12 @@ class MainWindow(QMainWindow):
         self.count_timer =0
         self.timernuovo=0
         self.flag_gioco_terminato=0
+        self.today=QDateTime.currentDateTime()
+        self.date_str = self.today.toString()
 
     def initUI(self):
 
-        self.size(300,300)
+    
 
         self.start_btn = QPushButton(
             text="START",
@@ -237,7 +240,7 @@ class MainWindow(QMainWindow):
 
     ## FINE FINESTRA HOME ##
 
-    ## INIZIO FINESTRA SCELTA GIOCO##
+    ## INIZIO FINESTRA OPZIONI##
 
     def initUI2(self):
         
@@ -270,12 +273,12 @@ class MainWindow(QMainWindow):
         self.icona_batteria.setMargin(50)
 
         self.indice=QLabel("")
-        pixmap=QtGui.QPixmap("indice.png")
+        pixmap=QtGui.QPixmap("Immagini/indice.png")
         self.indice.setPixmap(pixmap)
         self.indice.resize(pixmap.width(),pixmap.height())
      
         self.indice_medio=QLabel("")
-        pixmap=QtGui.QPixmap("indice_medio.png")
+        pixmap=QtGui.QPixmap("Immagini/indice_medio.png")
         self.indice_medio.setPixmap(pixmap)
         self.indice_medio.resize(pixmap.width(),pixmap.height())
         
@@ -329,18 +332,19 @@ class MainWindow(QMainWindow):
 
 
     def handle_packet_option(self, packet):
-        if (packet[0] > 8000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
           
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
+            self.checkpoint=0
 
-        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] < 7000 and packet[3] > 3000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
-            self.initUI4()
+        elif(packet[0] > 7000 and packet[1] < 5500 and packet[2] < 7000 and packet[3] > 2500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+            self.initUIStatistiche()
             self.flag_statistiche = 1
             self.flag_gioco= 0
 
-        elif(packet[0] > 8000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and (self.flag_statistiche == 1 or (self.flag_gioco== 1 and self.flag_gioco_terminato==1))):
+        elif(packet[0] > 7000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and (self.flag_statistiche == 1 or (self.flag_gioco== 1 and self.flag_gioco_terminato==1))):
             self.flag_gioco= 0
             self.flag_statistiche = 0
             self.initUI2()
@@ -392,38 +396,17 @@ class MainWindow(QMainWindow):
     
        
         self.mano_aperta=QLabel("")
-        pixmap=QtGui.QPixmap("mano1.png")
+        pixmap=QtGui.QPixmap("Immagini/mano1.png")
         self.mano_aperta.setPixmap(pixmap)
         self.mano_aperta.resize(pixmap.width(),pixmap.height())
-        '''
-        self.mano_semi=QLabel("")
-        pixmap=QtGui.QPixmap("mano2.png")
-        self.mano_semi.setPixmap(pixmap)
-        self.mano_semi.resize(pixmap.width(),pixmap.height())
-        
-        self.mano_chiusa=QLabel("")
-        pixmap=QtGui.QPixmap("mano3.png")
-        self.mano_chiusa.setPixmap(pixmap)
-        self.mano_chiusa.resize(pixmap.width(),pixmap.height())
-      
-        '''
+
         self.arco1=QLabel("")
-        pixmap=QtGui.QPixmap("arco1.png")
+        pixmap=QtGui.QPixmap("Immagini/arco1.png")
         self.arco1.setPixmap(pixmap)
         self.arco1.resize(pixmap.width(),pixmap.height())
-        '''
-        self.arco2=QLabel("")
-        pixmap=QtGui.QPixmap("arco2.png")
-        self.arco2.setPixmap(pixmap)
-        self.arco2.resize(pixmap.width(),pixmap.height())
         
-        self.arco3=QLabel("")
-        pixmap=QtGui.QPixmap("arco3.png")
-        self.arco3.setPixmap(pixmap)
-        self.arco3.resize(pixmap.width(),pixmap.height())
-        '''
         self.pollicesu=QLabel("")
-        pixmap=QtGui.QPixmap("pollicesu.png")
+        pixmap=QtGui.QPixmap("Immagini/pollicesu.png")
         self.pollicesu.setPixmap(pixmap)
         self.pollicesu.resize(pixmap.width(),pixmap.height())
        
@@ -433,7 +416,6 @@ class MainWindow(QMainWindow):
         self.grid_gioco = QGridLayout()
         self.grid_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        
         self.layout_uscita_gioco.addWidget(self.pollicesu,1,1)
         self.layout_uscita_gioco.addWidget(self.uscita_gioco,1,2)
         
@@ -451,7 +433,6 @@ class MainWindow(QMainWindow):
 
 
         #ricezione segnale
-        #self.serial_worker.signals.packet.connect(self.gioco)
         self.serial_worker.signals.prediction.connect(self.gioco)
 
     def gioco(self, prediction):
@@ -471,28 +452,40 @@ class MainWindow(QMainWindow):
             time.sleep(1)
             #self.grid_gioco.addWidget(self.mano_semi,1,2)
             #self.grid_gioco.setHorizontalSpacing(100)
-            self.mano_aperta.setPixmap(QtGui.QPixmap("mano2.png"))
+            self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano2.png"))
             self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
             if(prediction[0]==1):
                 #self.grid_gioco.addWidget(self.arco2,2,2)
-                self.arco1.setPixmap(QtGui.QPixmap("arco2.png"))
+                self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco2.png"))
                 self.count = 4
         elif(self.flag_gioco== 1 and self.count == 4):
             time.sleep(1)
             #self.grid_gioco.addWidget(self.mano_chiusa,1,3)
             #self.grid_gioco.setHorizontalSpacing(100)
-            self.mano_aperta.setPixmap(QtGui.QPixmap("mano3.png"))
+            self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano3.png"))
             self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
             if(prediction[0] == 2):
                 #self.grid_gioco.addWidget(self.arco3,2,3)
-                self.arco1.setPixmap(QtGui.QPixmap("arco3.png"))
+                self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco3.png"))
                 time.sleep(0.05)
                 self.timer.stop()
+                self.today=QDateTime.currentDateTime()
+                self.date_str = self.today.toString("yyyy-MM-dd hh:mm:ss.ssss")
+                row=[self.date_str,self.count_timer]
+                print("Stostampando")
+                print(row)
+                if (self.checkpoint==0):
+                    with open('data_register.csv', mode='a', newline='') as f_object: 
+                        writer = csv.writer(f_object)
+                        writer.writerow(row)
+                        self.checkpoint=1
                 self.termine_gioco.setText("Hai completato il gioco in {} s".format(self.count_timer))
                 self.layoutH_fine_gioco.addWidget(self.termine_gioco)
                 self.flag_gioco_terminato=1
+                
+                
                 
         
         if(self.count_timer>30):
@@ -510,63 +503,62 @@ class MainWindow(QMainWindow):
         print("stampo il valore del timer")
         print(self.count_timer)
         
-    def initUI4(self):
-
-        self.titolo4=QLabel("          STATISTICHE")
-        #self.titolo3.setAlignment(Qt)
-        self.layout4=QHBoxLayout()
-        self.layout4.addWidget(self.titolo4)
-        self.titolo4.setFont(QtGui.QFont('Arial', 30))
-
-        #Layout
-       
-        self.widget4 = QWidget()
-        self.widget4.setLayout(self.layout4)
-        self.setCentralWidget(self.widget4)
-
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
+    def initUIStatistiche(self):
         
-        m = PlotCanvas(self, width=5, height=4)
-        m.move(0,0)
+        self.layoutV_statitiche=QVBoxLayout()
+        self.layoutH_titolo_statistiche=QHBoxLayout()
+        self.layout_grafico=QHBoxLayout()
+
+        self.titolo_statistihe=QLabel("STATISTICHE")
+        self.titolo_statistihe.setFont(QtGui.QFont('Arial', 30))
+        self.titolo_statistihe.setMaximumSize(1920,70)
+        self.titolo_statistihe.setMinimumSize(1920,70)
+        self.titolo_statistihe.setMargin(550)
         
-        self.show()
+        self.layoutH_titolo_statistiche.addWidget(self.titolo_statistihe)
+        
+        self.plot()
+        #self.m = PlotCanvas(self, width=5, height=4)
+        self.layout_grafico.addWidget(self.fig.canvas)
+        #self.m.move(0,0)
 
-        '''
-        self.graphWidget = pg.PlotWidget()
-        self.setCentralWidget(self.graphWidget)
+        self.layoutV_statitiche.addLayout(self.layoutH_titolo_statistiche)
+        self.layoutV_statitiche.addLayout(self.layout_grafico)
+        self.widget_statistiche=QWidget()
+        self.widget_statistiche.setLayout(self.layoutV_statitiche)
+        self.setCentralWidget(self.widget_statistiche)
 
-        tentativi = [1,2,3,4,5]
-        tempo = [1,2,3,4,5]
-
-        self.graphWidget.setBackground('w')
-        pen = pg.mkPen(color=(255,0,0),width=5, style=QtCore.Qt.DashLine)
-
-        self.graphWidget.plot(tempo,tentativi,pen=pen,symbol='+',symbolSize=20, symbolBrush=('b'))
-
-        self.graphWidget.setTitle("Miglioramenti",color="b",size="30pt")
-        styles = {'color' : 'r', 'font-size':'20px'}
-        self.graphWidget.setLabel('left', 'Numero di tentativi []', **styles)
-        self.graphWidget.setLabel('bottom', 'Tempo impiegato [sec]', **styles)
-        '''
-class PlotCanvas(FigureCanvas):
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
-                fig = Figure(figsize=(width, height), dpi=dpi)
-                self.axes = fig.add_subplot(111)
-                FigureCanvas.__init__(self, fig)
-                self.setParent(parent)
-                FigureCanvas.setSizePolicy(self,
-                    QtWidgets.QSizePolicy.Expanding,
-                    QtWidgets.QSizePolicy.Expanding)
-                FigureCanvas.updateGeometry(self)
-                self.plot()
         
     def plot(self):
-                 data = np.random.normal(150, 20, 1000)
-                 n, bins, patches = self.axes.hist(data, bins=50, density=True, alpha=0.75)
-                 self.axes.set_xlabel('Value')
-                 self.axes.set_ylabel('Frequency')
-                 self.axes.set_title('Histogram of Random Values')
+                df=pd.read_csv('data_register.csv', header=0, parse_dates=['data'], infer_datetime_format=True)
+                date = df.drop(['time'], axis = 1).values
+                time= df['time'].values
+
+                self.end = self.today.toPyDateTime()
+                self.start7 = self.today.addDays(-7)
+                self.start7 = self.start7.toPyDateTime()
+
+                print("data cazz0", self.start7)
+
+
+                selected_rows = df[(df['data']>=self.start7) & (df['data'] <= self.end)]
+
+                print(type(date))
+
+                date_str= np.array2string(date)
+
+                #date = pd.date_range(start=self.today-10, end= self.today, freq='D')
+                
+                # Create a bar plot
+                #plt.bar(date_str, time)
+                self.fig, ax = plt.subplots()
+                ax.bar(selected_rows['data'], selected_rows['time'])
+                
+                
+                # Show the plot
+                plt.xlabel('Data e ora')
+                plt.ylabel('Tempo impiegato')
+                plt.title('Bar Chart Ultimi 10 tentativi')
 
 
 if __name__ == '__main__':
