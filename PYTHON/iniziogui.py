@@ -16,7 +16,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import matplotlib.dates as mdates
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 
@@ -531,8 +531,6 @@ class MainWindow(QMainWindow):
         
     def plot(self):
                 df=pd.read_csv('data_register.csv', header=0, parse_dates=['data'], infer_datetime_format=True)
-                date = df.drop(['time'], axis = 1).values
-                time= df['time'].values
 
                 self.end = self.today.toPyDateTime()
                 self.start7 = self.today.addDays(-7)
@@ -543,17 +541,19 @@ class MainWindow(QMainWindow):
 
                 selected_rows = df[(df['data']>=self.start7) & (df['data'] <= self.end)]
 
-                print(type(date))
-
-                date_str= np.array2string(date)
-
-                #date = pd.date_range(start=self.today-10, end= self.today, freq='D')
-                
+                date = selected_rows['data'].iloc[-5:, :]
+                tempi = selected_rows['time'].iloc[-5:, :]
                 # Create a bar plot
                 #plt.bar(date_str, time)
                 self.fig, ax = plt.subplots()
-                ax.bar(selected_rows['data'], selected_rows['time'])
+                ax.plot(date, tempi, marker = 'o')   #,width = 1,  edgecolor='white', linewidth = 0.7)
+                #ax.set(xlim = (0,10), xticks= np.arange(1,10))
                 
+                xfmt = mdates.DateFormatter('%Y-%m-%d')
+                ax.xaxis.set_major_formatter(xfmt)
+                plt.gcf().autofmt_xdate()
+                print("timeeee")
+                print(selected_rows['time'])
                 
                 # Show the plot
                 plt.xlabel('Data e ora')
