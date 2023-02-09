@@ -12,13 +12,14 @@ from PyQt5.QtCore import Qt, QTimer, QDateTime
 
 import sys
 from PyQt5 import QtWidgets
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import pandas as pd
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
+import datetime as dt
 
 from PyQt5.QtCore import (
 
@@ -43,6 +44,7 @@ from PyQt5.QtWidgets import (
     QHBoxLayout,
     QVBoxLayout,
     QWidget,
+    QSizePolicy,
 )
 
 import serial
@@ -124,7 +126,7 @@ class SerialWorker(QRunnable):
             self.signals.packet.emit(self.final)
 
             #load
-            with open('rf_model.pkl', 'rb') as f:
+            with open('rf_model_pollice.pkl', 'rb') as f:
                modello=pickle.load(f)
 
             self.final = np.array(self.final)
@@ -332,19 +334,25 @@ class MainWindow(QMainWindow):
 
 
     def handle_packet_option(self, packet):
-        if (packet[0] > 7000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        with open('rf_model_pollice.pkl', 'rb') as f:
+               modello=pickle.load(f)
+
+        pacchetto = np.array(packet)
+        self.predizione = modello.predict(pacchetto.reshape(1,-1))
+        self.predizione = list(self.predizione)
+        if (packet[0] > 8500 and packet[1] < 5500 and packet[2] > 7000 and packet[3] > 6000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
           
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
             self.checkpoint=0
 
-        elif(packet[0] > 7000 and packet[1] < 5500 and packet[2] < 7000 and packet[3] > 2500 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        elif(packet[0] > 8500 and packet[1] < 5500 and packet[2] < 7000 and packet[3] < 4000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUIStatistiche()
             self.flag_statistiche = 1
             self.flag_gioco= 0
 
-        elif(packet[0] > 7000 and packet[1] < 5500 and packet[2] > 5000 and packet[3] > 5000 and (self.flag_statistiche == 1 or (self.flag_gioco== 1 and self.flag_gioco_terminato==1))):
+        elif(self.predizione[0] ==3 and (self.flag_statistiche == 1 or (self.flag_gioco== 1 and self.flag_gioco_terminato==1))):
             self.flag_gioco= 0
             self.flag_statistiche = 0
             self.initUI2()
@@ -514,52 +522,53 @@ class MainWindow(QMainWindow):
         self.titolo_statistihe.setMaximumSize(1920,70)
         self.titolo_statistihe.setMinimumSize(1920,70)
         self.titolo_statistihe.setMargin(550)
-        
+
         self.layoutH_titolo_statistiche.addWidget(self.titolo_statistihe)
-        
+
+
+
+        self.plot_widget = pg.PlotWidget()
+        self.layout_grafico.addWidget(self.plot_widget)
         self.plot()
-        #self.m = PlotCanvas(self, width=5, height=4)
-        self.layout_grafico.addWidget(self.fig.canvas)
-        #self.m.move(0,0)
+        
 
         self.layoutV_statitiche.addLayout(self.layoutH_titolo_statistiche)
         self.layoutV_statitiche.addLayout(self.layout_grafico)
         self.widget_statistiche=QWidget()
         self.widget_statistiche.setLayout(self.layoutV_statitiche)
         self.setCentralWidget(self.widget_statistiche)
-
-        
+  
     def plot(self):
-                df=pd.read_csv('data_register.csv', header=0, parse_dates=['data'], infer_datetime_format=True)
+        df=pd.read_csv('data_register.csv', header=0, parse_dates=['data'], infer_datetime_format=True)
 
-                self.end = self.today.toPyDateTime()
-                self.start7 = self.today.addDays(-7)
-                self.start7 = self.start7.toPyDateTime()
+        self.end = self.today.toPyDateTime()
+        self.start7 = self.today.addDays(-7)
+        self.start7 = self.start7.toPyDateTime()
 
-                print("data cazz0", self.start7)
+        print("data cazz0", self.start7)
 
 
-                selected_rows = df[(df['data']>=self.start7) & (df['data'] <= self.end)]
+        selected_rows = df[(df['data']>=self.start7) & (df['data'] <= self.end)]
 
-                date = selected_rows['data'].iloc[-5:, :]
-                tempi = selected_rows['time'].iloc[-5:, :]
-                # Create a bar plot
-                #plt.bar(date_str, time)
-                self.fig, ax = plt.subplots()
-                ax.plot(date, tempi, marker = 'o')   #,width = 1,  edgecolor='white', linewidth = 0.7)
-                #ax.set(xlim = (0,10), xticks= np.arange(1,10))
-                
-                xfmt = mdates.DateFormatter('%Y-%m-%d')
-                ax.xaxis.set_major_formatter(xfmt)
-                plt.gcf().autofmt_xdate()
-                print("timeeee")
-                print(selected_rows['time'])
-                
-                # Show the plot
-                plt.xlabel('Data e ora')
-                plt.ylabel('Tempo impiegato')
-                plt.title('Bar Chart Ultimi 10 tentativi')
-
+        date = selected_rows['data'].iloc[-5:, :]
+        date= [dt.datetime.strptime(d,'%m/%d/%Y').date() for d in date]
+        tempi = selected_rows['time'].iloc[-5:, :]
+        # Create a bar plot
+        #plt.bar(date_str, time)
+        self.fig, ax = plt.subplots()
+        ax.plot(date, tempi, marker = 'o')   #,width = 1,  edgecolor='white', linewidth = 0.7)
+        #ax.set(xlim = (0,10), xticks= np.arange(1,10))
+        
+        #xfmt = mdates.DateFormatter('%Y-%m-%d')
+        #ax.xaxis.set_major_formatter(xfmt)
+        #plt.gcf().autofmt_xdate()
+        print("timeeee")
+        print(selected_rows['time'])
+        
+        # Show the plot
+        plt.xlabel('Data e ora')
+        plt.ylabel('Tempo impiegato')
+        plt.title('Bar Chart Ultimi 10 tentativi')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
