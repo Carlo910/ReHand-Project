@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
   32 0000 10B5     		push	{r4, lr}
   33              		.cfi_def_cfa_offset 8
   34              		.cfi_offset 4, -8
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 2
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 2
 
 
   35              		.cfi_offset 14, -4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
   41:main.c        ****     DataBuffer[0] = 0xA0;
   72              		.loc 1 41 0
   73 002c 264B     		ldr	r3, .L12+12
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 3
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 3
 
 
   74 002e A022     		movs	r2, #160
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
   57:main.c        ****         else
   58:main.c        ****         {
   59:main.c        ****             Pin_LED_Write(LED_ON);
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 4
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 4
 
 
  113              		.loc 1 59 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  155              	.LBE3:
   70:main.c        ****              //comunicazione UART
   71:main.c        ****              //UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE );
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 5
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 5
 
 
   72:main.c        ****             }
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  202              	.Letext0:
  203              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
  204              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 6
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 6
 
 
  205              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
@@ -319,17 +319,17 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  220 0006 00000000 		.4byte	.Ldebug_abbrev0
  221 000a 04       		.byte	0x4
  222 000b 01       		.uleb128 0x1
- 223 000c EB000000 		.4byte	.LASF37
+ 223 000c 61000000 		.4byte	.LASF37
  224 0010 0C       		.byte	0xc
- 225 0011 66020000 		.4byte	.LASF38
- 226 0015 0A000000 		.4byte	.LASF39
+ 225 0011 4B020000 		.4byte	.LASF38
+ 226 0015 26010000 		.4byte	.LASF39
  227 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
  228 001d 00000000 		.4byte	0
  229 0021 00000000 		.4byte	.Ldebug_line0
  230 0025 02       		.uleb128 0x2
  231 0026 01       		.byte	0x1
  232 0027 06       		.byte	0x6
- 233 0028 C3020000 		.4byte	.LASF0
+ 233 0028 A8020000 		.4byte	.LASF0
  234 002c 03       		.uleb128 0x3
  235 002d 00000000 		.4byte	.LASF4
  236 0031 02       		.byte	0x2
@@ -338,39 +338,39 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  239 0037 02       		.uleb128 0x2
  240 0038 01       		.byte	0x1
  241 0039 08       		.byte	0x8
- 242 003a DD000000 		.4byte	.LASF1
+ 242 003a 53000000 		.4byte	.LASF1
  243 003e 02       		.uleb128 0x2
  244 003f 02       		.byte	0x2
  245 0040 05       		.byte	0x5
- 246 0041 72020000 		.4byte	.LASF2
+ 246 0041 57020000 		.4byte	.LASF2
  247 0045 02       		.uleb128 0x2
  248 0046 02       		.byte	0x2
  249 0047 07       		.byte	0x7
- 250 0048 BD000000 		.4byte	.LASF3
+ 250 0048 33000000 		.4byte	.LASF3
  251 004c 03       		.uleb128 0x3
- 252 004d A8000000 		.4byte	.LASF5
+ 252 004d 1E000000 		.4byte	.LASF5
  253 0051 02       		.byte	0x2
  254 0052 3F       		.byte	0x3f
  255 0053 57000000 		.4byte	0x57
  256 0057 02       		.uleb128 0x2
  257 0058 04       		.byte	0x4
  258 0059 05       		.byte	0x5
- 259 005a A3020000 		.4byte	.LASF6
+ 259 005a 88020000 		.4byte	.LASF6
  260 005e 02       		.uleb128 0x2
  261 005f 04       		.byte	0x4
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 7
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 7
 
 
  262 0060 07       		.byte	0x7
- 263 0061 85010000 		.4byte	.LASF7
+ 263 0061 FB000000 		.4byte	.LASF7
  264 0065 02       		.uleb128 0x2
  265 0066 08       		.byte	0x8
  266 0067 05       		.byte	0x5
- 267 0068 58020000 		.4byte	.LASF8
+ 267 0068 3D020000 		.4byte	.LASF8
  268 006c 02       		.uleb128 0x2
  269 006d 08       		.byte	0x8
  270 006e 07       		.byte	0x7
- 271 006f FF010000 		.4byte	.LASF9
+ 271 006f E4010000 		.4byte	.LASF9
  272 0073 04       		.uleb128 0x4
  273 0074 04       		.byte	0x4
  274 0075 05       		.byte	0x5
@@ -378,56 +378,56 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  276 007a 02       		.uleb128 0x2
  277 007b 04       		.byte	0x4
  278 007c 07       		.byte	0x7
- 279 007d E4010000 		.4byte	.LASF10
+ 279 007d C9010000 		.4byte	.LASF10
  280 0081 03       		.uleb128 0x3
- 281 0082 16020000 		.4byte	.LASF11
+ 281 0082 FB010000 		.4byte	.LASF11
  282 0086 03       		.byte	0x3
  283 0087 18       		.byte	0x18
  284 0088 2C000000 		.4byte	0x2c
  285 008c 03       		.uleb128 0x3
- 286 008d 36020000 		.4byte	.LASF12
+ 286 008d 1B020000 		.4byte	.LASF12
  287 0091 03       		.byte	0x3
  288 0092 2C       		.byte	0x2c
  289 0093 4C000000 		.4byte	0x4c
  290 0097 05       		.uleb128 0x5
- 291 0098 8C020000 		.4byte	.LASF13
+ 291 0098 71020000 		.4byte	.LASF13
  292 009c 04       		.byte	0x4
  293 009d E801     		.2byte	0x1e8
  294 009f 37000000 		.4byte	0x37
  295 00a3 05       		.uleb128 0x5
- 296 00a4 D3010000 		.4byte	.LASF14
+ 296 00a4 B8010000 		.4byte	.LASF14
  297 00a8 04       		.byte	0x4
  298 00a9 EB01     		.2byte	0x1eb
  299 00ab 25000000 		.4byte	0x25
  300 00af 02       		.uleb128 0x2
  301 00b0 04       		.byte	0x4
  302 00b1 04       		.byte	0x4
- 303 00b2 D7000000 		.4byte	.LASF15
+ 303 00b2 4D000000 		.4byte	.LASF15
  304 00b6 02       		.uleb128 0x2
  305 00b7 08       		.byte	0x8
  306 00b8 04       		.byte	0x4
- 307 00b9 D0000000 		.4byte	.LASF16
+ 307 00b9 46000000 		.4byte	.LASF16
  308 00bd 02       		.uleb128 0x2
  309 00be 01       		.byte	0x1
  310 00bf 08       		.byte	0x8
- 311 00c0 6D020000 		.4byte	.LASF17
+ 311 00c0 52020000 		.4byte	.LASF17
  312 00c4 06       		.uleb128 0x6
  313 00c5 97000000 		.4byte	0x97
  314 00c9 02       		.uleb128 0x2
  315 00ca 08       		.byte	0x8
  316 00cb 04       		.byte	0x4
- 317 00cc B7020000 		.4byte	.LASF18
+ 317 00cc 9C020000 		.4byte	.LASF18
  318 00d0 02       		.uleb128 0x2
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 8
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 8
 
 
  319 00d1 04       		.byte	0x4
  320 00d2 07       		.byte	0x7
- 321 00d3 3E020000 		.4byte	.LASF19
+ 321 00d3 23020000 		.4byte	.LASF19
  322 00d7 06       		.uleb128 0x6
  323 00d8 81000000 		.4byte	0x81
  324 00dc 07       		.uleb128 0x7
- 325 00dd CE010000 		.4byte	.LASF40
+ 325 00dd B3010000 		.4byte	.LASF40
  326 00e1 01       		.byte	0x1
  327 00e2 16       		.byte	0x16
  328 00e3 73000000 		.4byte	0x73
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  373 014d 9D020000 		.4byte	0x29d
  374 0151 0C       		.uleb128 0xc
  375 0152 28000000 		.4byte	.LVL5
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 9
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 9
 
 
  376 0156 A8020000 		.4byte	0x2a8
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  430 01c4 31       		.byte	0x31
  431 01c5 00       		.byte	0
  432 01c6 0A       		.uleb128 0xa
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 10
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 10
 
 
  433 01c7 B4000000 		.4byte	.LVL19
@@ -557,7 +557,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  446 01dd 00       		.byte	0
  447 01de 00       		.byte	0
  448 01df 0E       		.uleb128 0xe
- 449 01e0 B0010000 		.4byte	.LASF20
+ 449 01e0 95010000 		.4byte	.LASF20
  450 01e4 05       		.byte	0x5
  451 01e5 1207     		.2byte	0x712
  452 01e7 EB010000 		.4byte	0x1eb
@@ -571,7 +571,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  460 01fe 09       		.byte	0x9
  461 01ff 00       		.byte	0
  462 0200 11       		.uleb128 0x11
- 463 0201 AC020000 		.4byte	.LASF21
+ 463 0201 91020000 		.4byte	.LASF21
  464 0205 06       		.byte	0x6
  465 0206 19       		.byte	0x19
  466 0207 F0010000 		.4byte	0x1f0
@@ -579,7 +579,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  468 020c 03       		.byte	0x3
  469 020d 00000000 		.4byte	DataBuffer
  470 0211 11       		.uleb128 0x11
- 471 0212 79010000 		.4byte	.LASF22
+ 471 0212 EF000000 		.4byte	.LASF22
  472 0216 06       		.byte	0x6
  473 0217 1A       		.byte	0x1a
  474 0218 F0010000 		.4byte	0x1f0
@@ -587,7 +587,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  476 021d 03       		.byte	0x3
  477 021e 00000000 		.4byte	DataBuffer1
  478 0222 11       		.uleb128 0x11
- 479 0223 7C020000 		.4byte	.LASF23
+ 479 0223 61020000 		.4byte	.LASF23
  480 0227 06       		.byte	0x6
  481 0228 1B       		.byte	0x1b
  482 0229 C4000000 		.4byte	0xc4
@@ -595,10 +595,10 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  484 022e 03       		.byte	0x3
  485 022f 00000000 		.4byte	PacketReadyFlag
  486 0233 11       		.uleb128 0x11
- 487 0234 47020000 		.4byte	.LASF24
+ 487 0234 2C020000 		.4byte	.LASF24
  488 0238 06       		.byte	0x6
  489 0239 1C       		.byte	0x1c
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 11
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 11
 
 
  490 023a C4000000 		.4byte	0xc4
@@ -606,7 +606,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  492 023f 03       		.byte	0x3
  493 0240 00000000 		.4byte	PacketReadyFlag1
  494 0244 11       		.uleb128 0x11
- 495 0245 B2000000 		.4byte	.LASF25
+ 495 0245 28000000 		.4byte	.LASF25
  496 0249 06       		.byte	0x6
  497 024a 1D       		.byte	0x1d
  498 024b D7000000 		.4byte	0xd7
@@ -614,7 +614,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  500 0250 03       		.byte	0x3
  501 0251 00000000 		.4byte	led_status
  502 0255 11       		.uleb128 0x11
- 503 0256 94000000 		.4byte	.LASF26
+ 503 0256 0A000000 		.4byte	.LASF26
  504 025a 01       		.byte	0x1
  505 025b 14       		.byte	0x14
  506 025c BD000000 		.4byte	0xbd
@@ -622,56 +622,56 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  508 0261 03       		.byte	0x3
  509 0262 00000000 		.4byte	Received
  510 0266 12       		.uleb128 0x12
- 511 0267 BD010000 		.4byte	.LASF27
- 512 026b BD010000 		.4byte	.LASF27
+ 511 0267 A2010000 		.4byte	.LASF27
+ 512 026b A2010000 		.4byte	.LASF27
  513 026f 07       		.byte	0x7
  514 0270 8C       		.byte	0x8c
  515 0271 12       		.uleb128 0x12
- 516 0272 92020000 		.4byte	.LASF28
- 517 0276 92020000 		.4byte	.LASF28
+ 516 0272 77020000 		.4byte	.LASF28
+ 517 0276 77020000 		.4byte	.LASF28
  518 027a 08       		.byte	0x8
  519 027b 3A       		.byte	0x3a
  520 027c 12       		.uleb128 0x12
- 521 027d A5010000 		.4byte	.LASF29
- 522 0281 A5010000 		.4byte	.LASF29
+ 521 027d 1B010000 		.4byte	.LASF29
+ 522 0281 1B010000 		.4byte	.LASF29
  523 0285 09       		.byte	0x9
  524 0286 54       		.byte	0x54
  525 0287 12       		.uleb128 0x12
- 526 0288 97010000 		.4byte	.LASF30
- 527 028c 97010000 		.4byte	.LASF30
+ 526 0288 0D010000 		.4byte	.LASF30
+ 527 028c 0D010000 		.4byte	.LASF30
  528 0290 07       		.byte	0x7
  529 0291 54       		.byte	0x54
  530 0292 12       		.uleb128 0x12
- 531 0293 D8010000 		.4byte	.LASF31
- 532 0297 D8010000 		.4byte	.LASF31
+ 531 0293 BD010000 		.4byte	.LASF31
+ 532 0297 BD010000 		.4byte	.LASF31
  533 029b 0A       		.byte	0xa
  534 029c 5A       		.byte	0x5a
  535 029d 12       		.uleb128 0x12
- 536 029e CF020000 		.4byte	.LASF32
- 537 02a2 CF020000 		.4byte	.LASF32
+ 536 029e B4020000 		.4byte	.LASF32
+ 537 02a2 B4020000 		.4byte	.LASF32
  538 02a6 0B       		.byte	0xb
  539 02a7 18       		.byte	0x18
  540 02a8 12       		.uleb128 0x12
- 541 02a9 1E020000 		.4byte	.LASF33
- 542 02ad 1E020000 		.4byte	.LASF33
+ 541 02a9 03020000 		.4byte	.LASF33
+ 542 02ad 03020000 		.4byte	.LASF33
  543 02b1 08       		.byte	0x8
  544 02b2 3D       		.byte	0x3d
  545 02b3 12       		.uleb128 0x12
- 546 02b4 9D000000 		.4byte	.LASF34
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 12
+ 546 02b4 13000000 		.4byte	.LASF34
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 12
 
 
- 547 02b8 9D000000 		.4byte	.LASF34
+ 547 02b8 13000000 		.4byte	.LASF34
  548 02bc 0C       		.byte	0xc
  549 02bd 25       		.byte	0x25
  550 02be 12       		.uleb128 0x12
- 551 02bf F1010000 		.4byte	.LASF35
- 552 02c3 F1010000 		.4byte	.LASF35
+ 551 02bf D6010000 		.4byte	.LASF35
+ 552 02c3 D6010000 		.4byte	.LASF35
  553 02c7 0D       		.byte	0xd
  554 02c8 26       		.byte	0x26
  555 02c9 12       		.uleb128 0x12
- 556 02ca DF020000 		.4byte	.LASF36
- 557 02ce DF020000 		.4byte	.LASF36
+ 556 02ca C4020000 		.4byte	.LASF36
+ 557 02ce C4020000 		.4byte	.LASF36
  558 02d2 0E       		.byte	0xe
  559 02d3 76       		.byte	0x76
  560 02d4 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  601 0026 0B       		.uleb128 0xb
  602 0027 49       		.uleb128 0x49
  603 0028 13       		.uleb128 0x13
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 13
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 13
 
 
  604 0029 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  658 0060 40       		.uleb128 0x40
  659 0061 18       		.uleb128 0x18
  660 0062 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 14
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 14
 
 
  661 0064 19       		.uleb128 0x19
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  715 00a1 00       		.byte	0
  716 00a2 00       		.byte	0
  717 00a3 0D       		.uleb128 0xd
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 15
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 15
 
 
  718 00a4 898201   		.uleb128 0x4109
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  772 00dc 49       		.uleb128 0x49
  773 00dd 13       		.uleb128 0x13
  774 00de 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 16
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 16
 
 
  775 00df 19       		.uleb128 0x19
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  829 0000 88000000 		.4byte	.LBB2
  830 0004 96000000 		.4byte	.LBE2
  831 0008 98000000 		.4byte	.LBB3
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 17
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 17
 
 
  832 000c 9C000000 		.4byte	.LBE3
@@ -979,209 +979,209 @@ ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 1
  843 0000 5F5F7569 		.ascii	"__uint8_t\000"
  843      6E74385F 
  843      7400
- 844              	.LASF39:
- 845 000a 433A5C55 		.ascii	"C:\\Users\\Virginia\\Desktop\\UNI\\LABORATORIO DI T"
- 845      73657273 
- 845      5C566972 
- 845      67696E69 
- 845      615C4465 
- 846 0038 45434E4F 		.ascii	"ECNOLOGIE ELETTRONICHE E BIOSENSORI\\PROGETTO\\CODI"
- 846      4C4F4749 
- 846      4520454C 
- 846      45545452 
- 846      4F4E4943 
- 847 0069 43455C41 		.ascii	"CE\\AY2223_I_Project-3\\PSOC\\Project3!.cydsn\000"
- 847      59323232 
- 847      335F495F 
- 847      50726F6A 
- 847      6563742D 
- 848              	.LASF26:
- 849 0094 52656365 		.ascii	"Received\000"
- 849      69766564 
- 849      00
- 850              	.LASF34:
- 851 009d 414D7578 		.ascii	"AMux_Start\000"
- 851      5F537461 
- 851      727400
- 852              	.LASF5:
- 853 00a8 5F5F696E 		.ascii	"__int32_t\000"
- 853      7433325F 
- 853      7400
- 854              	.LASF25:
- 855 00b2 6C65645F 		.ascii	"led_status\000"
- 855      73746174 
- 855      757300
- 856              	.LASF3:
- 857 00bd 73686F72 		.ascii	"short unsigned int\000"
- 857      7420756E 
- 857      7369676E 
- 857      65642069 
- 857      6E7400
- 858              	.LASF16:
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 18
+ 844              	.LASF26:
+ 845 000a 52656365 		.ascii	"Received\000"
+ 845      69766564 
+ 845      00
+ 846              	.LASF34:
+ 847 0013 414D7578 		.ascii	"AMux_Start\000"
+ 847      5F537461 
+ 847      727400
+ 848              	.LASF5:
+ 849 001e 5F5F696E 		.ascii	"__int32_t\000"
+ 849      7433325F 
+ 849      7400
+ 850              	.LASF25:
+ 851 0028 6C65645F 		.ascii	"led_status\000"
+ 851      73746174 
+ 851      757300
+ 852              	.LASF3:
+ 853 0033 73686F72 		.ascii	"short unsigned int\000"
+ 853      7420756E 
+ 853      7369676E 
+ 853      65642069 
+ 853      6E7400
+ 854              	.LASF16:
+ 855 0046 646F7562 		.ascii	"double\000"
+ 855      6C6500
+ 856              	.LASF15:
+ 857 004d 666C6F61 		.ascii	"float\000"
+ 857      7400
+ 858              	.LASF1:
+ 859 0053 756E7369 		.ascii	"unsigned char\000"
+ 859      676E6564 
+ 859      20636861 
+ 859      7200
+ 860              	.LASF37:
+ 861 0061 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 861      43313120 
+ 861      352E342E 
+ 861      31203230 
+ 861      31363036 
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 18
 
 
- 859 00d0 646F7562 		.ascii	"double\000"
- 859      6C6500
- 860              	.LASF15:
- 861 00d7 666C6F61 		.ascii	"float\000"
- 861      7400
- 862              	.LASF1:
- 863 00dd 756E7369 		.ascii	"unsigned char\000"
- 863      676E6564 
- 863      20636861 
- 863      7200
- 864              	.LASF37:
- 865 00eb 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 865      43313120 
- 865      352E342E 
- 865      31203230 
- 865      31363036 
- 866 011e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 866      20726576 
- 866      6973696F 
- 866      6E203233 
- 866      37373135 
- 867 0151 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 867      66756E63 
- 867      74696F6E 
- 867      2D736563 
- 867      74696F6E 
- 868              	.LASF22:
- 869 0179 44617461 		.ascii	"DataBuffer1\000"
- 869      42756666 
- 869      65723100 
- 870              	.LASF7:
- 871 0185 6C6F6E67 		.ascii	"long unsigned int\000"
- 871      20756E73 
- 871      69676E65 
- 871      6420696E 
- 871      7400
- 872              	.LASF30:
- 873 0197 55415254 		.ascii	"UART_BT_Start\000"
- 873      5F42545F 
- 873      53746172 
- 873      7400
- 874              	.LASF29:
- 875 01a5 55415254 		.ascii	"UART_Start\000"
- 875      5F537461 
- 875      727400
+ 862 0094 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 862      20726576 
+ 862      6973696F 
+ 862      6E203233 
+ 862      37373135 
+ 863 00c7 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 863      66756E63 
+ 863      74696F6E 
+ 863      2D736563 
+ 863      74696F6E 
+ 864              	.LASF22:
+ 865 00ef 44617461 		.ascii	"DataBuffer1\000"
+ 865      42756666 
+ 865      65723100 
+ 866              	.LASF7:
+ 867 00fb 6C6F6E67 		.ascii	"long unsigned int\000"
+ 867      20756E73 
+ 867      69676E65 
+ 867      6420696E 
+ 867      7400
+ 868              	.LASF30:
+ 869 010d 55415254 		.ascii	"UART_BT_Start\000"
+ 869      5F42545F 
+ 869      53746172 
+ 869      7400
+ 870              	.LASF29:
+ 871 011b 55415254 		.ascii	"UART_Start\000"
+ 871      5F537461 
+ 871      727400
+ 872              	.LASF39:
+ 873 0126 433A5C55 		.ascii	"C:\\Users\\madda\\Desktop\\Maddalena\\POLITECNICO\\"
+ 873      73657273 
+ 873      5C6D6164 
+ 873      64615C44 
+ 873      65736B74 
+ 874 0153 5345434F 		.ascii	"SECONDO ANNO\\LAB\\PROGETTO\\AY2223_I_Project-3\\PS"
+ 874      4E444F20 
+ 874      414E4E4F 
+ 874      5C4C4142 
+ 874      5C50524F 
+ 875 0182 4F435C50 		.ascii	"OC\\Project3!.cydsn\000"
+ 875      726F6A65 
+ 875      63743321 
+ 875      2E637964 
+ 875      736E00
  876              	.LASF20:
- 877 01b0 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 877 0195 49544D5F 		.ascii	"ITM_RxBuffer\000"
  877      52784275 
  877      66666572 
  877      00
  878              	.LASF27:
- 879 01bd 55415254 		.ascii	"UART_BT_PutArray\000"
+ 879 01a2 55415254 		.ascii	"UART_BT_PutArray\000"
  879      5F42545F 
  879      50757441 
  879      72726179 
  879      00
  880              	.LASF40:
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 19
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 19
 
 
- 881 01ce 6D61696E 		.ascii	"main\000"
+ 881 01b3 6D61696E 		.ascii	"main\000"
  881      00
  882              	.LASF14:
- 883 01d3 696E7438 		.ascii	"int8\000"
+ 883 01b8 696E7438 		.ascii	"int8\000"
  883      00
  884              	.LASF31:
- 885 01d8 54696D65 		.ascii	"Timer_Start\000"
+ 885 01bd 54696D65 		.ascii	"Timer_Start\000"
  885      725F5374 
  885      61727400 
  886              	.LASF10:
- 887 01e4 756E7369 		.ascii	"unsigned int\000"
+ 887 01c9 756E7369 		.ascii	"unsigned int\000"
  887      676E6564 
  887      20696E74 
  887      00
  888              	.LASF35:
- 889 01f1 50696E5F 		.ascii	"Pin_LED_Write\000"
+ 889 01d6 50696E5F 		.ascii	"Pin_LED_Write\000"
  889      4C45445F 
  889      57726974 
  889      6500
  890              	.LASF9:
- 891 01ff 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 891 01e4 6C6F6E67 		.ascii	"long long unsigned int\000"
  891      206C6F6E 
  891      6720756E 
  891      7369676E 
  891      65642069 
  892              	.LASF11:
- 893 0216 75696E74 		.ascii	"uint8_t\000"
+ 893 01fb 75696E74 		.ascii	"uint8_t\000"
  893      385F7400 
  894              	.LASF33:
- 895 021e 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
+ 895 0203 4144435F 		.ascii	"ADC_DelSig_StartConvert\000"
  895      44656C53 
  895      69675F53 
  895      74617274 
  895      436F6E76 
  896              	.LASF12:
- 897 0236 696E7433 		.ascii	"int32_t\000"
+ 897 021b 696E7433 		.ascii	"int32_t\000"
  897      325F7400 
  898              	.LASF19:
- 899 023e 73697A65 		.ascii	"sizetype\000"
+ 899 0223 73697A65 		.ascii	"sizetype\000"
  899      74797065 
  899      00
  900              	.LASF24:
- 901 0247 5061636B 		.ascii	"PacketReadyFlag1\000"
+ 901 022c 5061636B 		.ascii	"PacketReadyFlag1\000"
  901      65745265 
  901      61647946 
  901      6C616731 
  901      00
  902              	.LASF8:
- 903 0258 6C6F6E67 		.ascii	"long long int\000"
+ 903 023d 6C6F6E67 		.ascii	"long long int\000"
  903      206C6F6E 
  903      6720696E 
  903      7400
  904              	.LASF38:
- 905 0266 6D61696E 		.ascii	"main.c\000"
+ 905 024b 6D61696E 		.ascii	"main.c\000"
  905      2E6300
  906              	.LASF17:
- 907 026d 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\Virginia\AppData\Local\Temp\cc0JpCvd.s 			page 20
+ 907 0252 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\madda\AppData\Local\Temp\ccVNljpU.s 			page 20
 
 
  907      00
  908              	.LASF2:
- 909 0272 73686F72 		.ascii	"short int\000"
+ 909 0257 73686F72 		.ascii	"short int\000"
  909      7420696E 
  909      7400
  910              	.LASF23:
- 911 027c 5061636B 		.ascii	"PacketReadyFlag\000"
+ 911 0261 5061636B 		.ascii	"PacketReadyFlag\000"
  911      65745265 
  911      61647946 
  911      6C616700 
  912              	.LASF13:
- 913 028c 75696E74 		.ascii	"uint8\000"
+ 913 0271 75696E74 		.ascii	"uint8\000"
  913      3800
  914              	.LASF28:
- 915 0292 4144435F 		.ascii	"ADC_DelSig_Start\000"
+ 915 0277 4144435F 		.ascii	"ADC_DelSig_Start\000"
  915      44656C53 
  915      69675F53 
  915      74617274 
  915      00
  916              	.LASF6:
- 917 02a3 6C6F6E67 		.ascii	"long int\000"
+ 917 0288 6C6F6E67 		.ascii	"long int\000"
  917      20696E74 
  917      00
  918              	.LASF21:
- 919 02ac 44617461 		.ascii	"DataBuffer\000"
+ 919 0291 44617461 		.ascii	"DataBuffer\000"
  919      42756666 
  919      657200
  920              	.LASF18:
- 921 02b7 6C6F6E67 		.ascii	"long double\000"
+ 921 029c 6C6F6E67 		.ascii	"long double\000"
  921      20646F75 
  921      626C6500 
  922              	.LASF0:
- 923 02c3 7369676E 		.ascii	"signed char\000"
+ 923 02a8 7369676E 		.ascii	"signed char\000"
  923      65642063 
  923      68617200 
  924              	.LASF32:
- 925 02cf 6973725F 		.ascii	"isr_ADC_StartEx\000"
+ 925 02b4 6973725F 		.ascii	"isr_ADC_StartEx\000"
  925      4144435F 
  925      53746172 
  925      74457800 
  926              	.LASF36:
- 927 02df 43794465 		.ascii	"CyDelay\000"
+ 927 02c4 43794465 		.ascii	"CyDelay\000"
  927      6C617900 
  928              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

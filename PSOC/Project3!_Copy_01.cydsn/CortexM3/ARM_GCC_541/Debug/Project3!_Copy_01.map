@@ -1229,7 +1229,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x62c0
+.debug_info     0x00000000     0x62d7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x25c .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_info    0x0000025c      0x291 .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
@@ -1250,9 +1250,9 @@ END GROUP
  .debug_info    0x000043bc      0xa2a .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(cyPm.o)
  .debug_info    0x00004de6      0x60c .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT.o)
  .debug_info    0x000053f2      0x283 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT_IntClock.o)
- .debug_info    0x00005675       0xae .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyBootAsmGnu.o)
- .debug_info    0x00005723      0x64d .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyFlash.o)
- .debug_info    0x00005d70      0x550 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CySpc.o)
+ .debug_info    0x00005675       0xc5 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyBootAsmGnu.o)
+ .debug_info    0x0000573a      0x64d .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyFlash.o)
+ .debug_info    0x00005d87      0x550 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x1b74
  *(.debug_abbrev)
@@ -1332,50 +1332,50 @@ END GROUP
  .debug_frame   0x00001c34       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .debug_frame   0x00001c5c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x26f2
+.debug_str      0x00000000     0x2691
  *(.debug_str)
- .debug_str     0x00000000      0x25c .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x2bc (size before relaxing)
- .debug_str     0x0000025c       0xfc .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
-                                0x2c6 (size before relaxing)
- .debug_str     0x00000358      0x218 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x3fe (size before relaxing)
- .debug_str     0x00000570       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
-                                0x202 (size before relaxing)
- .debug_str     0x000005e5      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                                0x328 (size before relaxing)
- .debug_str     0x00000729      0x1f3 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART.o)
-                                0x3bc (size before relaxing)
- .debug_str     0x0000091c      0x47b .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig.o)
-                                0x706 (size before relaxing)
- .debug_str     0x00000d97       0x68 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_INT.o)
-                                0x201 (size before relaxing)
- .debug_str     0x00000dff      0x135 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(Timer.o)
-                                0x313 (size before relaxing)
- .debug_str     0x00000f34      0x10a .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(isr_ADC.o)
-                                0x2e0 (size before relaxing)
- .debug_str     0x0000103e       0x23 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(AMux.o)
-                                0x201 (size before relaxing)
- .debug_str     0x00001061      0x181 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_IntClock.o)
-                                0x354 (size before relaxing)
- .debug_str     0x000011e2       0x76 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_AMux.o)
-                                0x24e (size before relaxing)
- .debug_str     0x00001258      0x170 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_Ext_CP_Clk.o)
-                                0x3b4 (size before relaxing)
- .debug_str     0x000013c8      0x1a3 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_theACLK.o)
-                                0x3e1 (size before relaxing)
- .debug_str     0x0000156b      0x7df .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyLib.o)
-                                0xa65 (size before relaxing)
- .debug_str     0x00001d4a      0x365 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(cyPm.o)
-                                0x751 (size before relaxing)
- .debug_str     0x000020af      0x286 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT.o)
-                                0x4f0 (size before relaxing)
- .debug_str     0x00002335      0x156 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT_IntClock.o)
-                                0x378 (size before relaxing)
- .debug_str     0x0000248b      0x1bb .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyFlash.o)
-                                0x3de (size before relaxing)
- .debug_str     0x00002646       0xac .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CySpc.o)
-                                0x356 (size before relaxing)
+ .debug_str     0x00000000      0x25b .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x2bb (size before relaxing)
+ .debug_str     0x0000025b       0x9c .\CortexM3\ARM_GCC_541\Debug\Interrupt_Routines.o
+                                0x2dd (size before relaxing)
+ .debug_str     0x000002f7      0x218 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x415 (size before relaxing)
+ .debug_str     0x0000050f       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x219 (size before relaxing)
+ .debug_str     0x00000584      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x33f (size before relaxing)
+ .debug_str     0x000006c8      0x1f3 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART.o)
+                                0x3d3 (size before relaxing)
+ .debug_str     0x000008bb      0x47b .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig.o)
+                                0x71d (size before relaxing)
+ .debug_str     0x00000d36       0x68 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_INT.o)
+                                0x218 (size before relaxing)
+ .debug_str     0x00000d9e      0x135 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(Timer.o)
+                                0x32a (size before relaxing)
+ .debug_str     0x00000ed3      0x10a .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(isr_ADC.o)
+                                0x2f7 (size before relaxing)
+ .debug_str     0x00000fdd       0x23 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(AMux.o)
+                                0x218 (size before relaxing)
+ .debug_str     0x00001000      0x181 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_IntClock.o)
+                                0x36b (size before relaxing)
+ .debug_str     0x00001181       0x76 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_AMux.o)
+                                0x265 (size before relaxing)
+ .debug_str     0x000011f7      0x170 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_Ext_CP_Clk.o)
+                                0x3cb (size before relaxing)
+ .debug_str     0x00001367      0x1a3 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(ADC_DelSig_theACLK.o)
+                                0x3f8 (size before relaxing)
+ .debug_str     0x0000150a      0x7df .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyLib.o)
+                                0xa7c (size before relaxing)
+ .debug_str     0x00001ce9      0x365 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(cyPm.o)
+                                0x768 (size before relaxing)
+ .debug_str     0x0000204e      0x286 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT.o)
+                                0x507 (size before relaxing)
+ .debug_str     0x000022d4      0x156 .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(UART_BT_IntClock.o)
+                                0x38f (size before relaxing)
+ .debug_str     0x0000242a      0x1bb .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CyFlash.o)
+                                0x3f5 (size before relaxing)
+ .debug_str     0x000025e5       0xac .\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.a(CySpc.o)
+                                0x36d (size before relaxing)
 
 .debug_loc      0x00000000     0x2c34
  *(.debug_loc)
@@ -1544,4 +1544,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\Users\Windows\Desktop\Magistrale\II_primo_semestre\Project  Lab Sens\AY2223_I_Project-3\PSOC\Project3!_Copy_01.cydsn\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.elf elf32-littlearm)
+OUTPUT(C:\Users\madda\Desktop\Maddalena\POLITECNICO\SECONDO ANNO\LAB\PROGETTO\AY2223_I_Project-3\PSOC\Project3!_Copy_01.cydsn\CortexM3\ARM_GCC_541\Debug\Project3!_Copy_01.elf elf32-littlearm)
