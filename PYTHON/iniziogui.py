@@ -124,7 +124,7 @@ class SerialWorker(QRunnable):
                 i += 2
             print(self.final)
             self.signals.packet.emit(self.final)
-
+            '''
             #load
             with open('rf_model_pollice.pkl', 'rb') as f:
                modello=pickle.load(f)
@@ -134,6 +134,7 @@ class SerialWorker(QRunnable):
             self.predizione = list(self.predizione)
             #print(self.predizione)
             self.signals.prediction.emit(self.predizione)
+            '''
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
             self.valore_batt=((pacchetto[1] << 8) + pacchetto[2])
@@ -178,6 +179,8 @@ class MainWindow(QMainWindow):
         self.count_timer =0
         self.timernuovo=0
         self.flag_gioco_terminato=0
+        self.flag_modello_scelte = 1
+        self.flag_modello_gioco = 0
         self.today=QDateTime.currentDateTime()
         self.date_str = self.today.toString()
 
@@ -302,8 +305,10 @@ class MainWindow(QMainWindow):
         self.widget_scelta = QWidget()
         self.widget_scelta.setLayout(self.layoutV_scelta)
         self.setCentralWidget(self.widget_scelta)
-    
-        self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        if(self.flag_modello_gioco==0 and self.flag_modello_scelte==1):
+            self.serial_worker.signals.packet.connect(self.handle_packet_option)
+        else:
+            pass
 
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
 
@@ -340,14 +345,16 @@ class MainWindow(QMainWindow):
         pacchetto = np.array(packet)
         self.predizione = modello.predict(pacchetto.reshape(1,-1))
         self.predizione = list(self.predizione)
-        if (packet[0] > 8500 and packet[1] < 5500 and packet[2] > 6000 and packet[3] > 6000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
+        if (self.predizione[0]==4 and self.flag_gioco == 0 and self.flag_statistiche == 0):
             
-            self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
             self.checkpoint=0
+            self.flag_modello_scelte=0
+            self.flag_modello_gioco=1
+            self.initUIGioco()
 
-        elif(packet[0] > 8500 and packet[1] < 5500 and packet[2] < 6000 and packet[3] < 4000 and self.flag_statistiche == 0 and self.flag_gioco== 0):
+        elif(self.predizione[0]==5 and self.flag_statistiche == 0 and self.flag_gioco== 0):
             self.initUIStatistiche()
             self.flag_statistiche = 1
             self.flag_gioco= 0
@@ -439,11 +446,19 @@ class MainWindow(QMainWindow):
         self.widget_gioco.setLayout(self.layoutV_gioco)
         self.setCentralWidget(self.widget_gioco)
 
-
         #ricezione segnale
-        self.serial_worker.signals.prediction.connect(self.gioco)
+        if(self.flag_modello_gioco==1 and self.flag_modello_scelte==0):
+            self.serial_worker.signals.packet.connect(self.gioco)
+        else:
+            pass
 
-    def gioco(self, prediction):
+    def gioco(self, packet):            
+        #load
+        with open('rf_model_pollice.pkl', 'rb') as f:
+            modello=pickle.load(f)
+
+
+        pacchetto = np.array(packet)
 
         if(self.flag_gioco==1 and self.count==0):
             self.grid_gioco.addWidget(self.mano_aperta,1,1)
@@ -453,7 +468,9 @@ class MainWindow(QMainWindow):
             self.timer.timeout.connect(self.count_time)
             self.timer.start(1000)
         elif(self.flag_gioco==1 and self.count==1):
-            if(prediction[0] == 0):
+            self.predizione = modello.predict(pacchetto.reshape(1,-1))
+            self.predizione = list(self.predizione)
+            if(self.predizione[0] == 0):
                 self.grid_gioco.addWidget(self.arco1, 1,2)
                 self.count = 2
         elif(self.flag_gioco==1 and self.count==2):
@@ -463,7 +480,9 @@ class MainWindow(QMainWindow):
             self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano2.png"))
             self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
-            if(prediction[0]==1):
+            self.predizione = modello.predict(pacchetto.reshape(1,-1))
+            self.predizione = list(self.predizione)
+            if(self.predizione[0]==1):
                 #self.grid_gioco.addWidget(self.arco2,2,2)
                 self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco2.png"))
                 self.count = 4
@@ -474,7 +493,9 @@ class MainWindow(QMainWindow):
             self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano3.png"))
             self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
-            if(prediction[0] == 2):
+            self.predizione = modello.predict(pacchetto.reshape(1,-1))
+            self.predizione = list(self.predizione)
+            if(self.predizione[0] == 2):
                 #self.grid_gioco.addWidget(self.arco3,2,3)
                 self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco3.png"))
                 time.sleep(0.05)
@@ -490,6 +511,8 @@ class MainWindow(QMainWindow):
                 self.termine_gioco.setText("Hai completato il gioco in {} s".format(self.count_timer))
                 self.layoutH_fine_gioco.addWidget(self.termine_gioco)
                 self.flag_gioco_terminato=1
+                self.flag_modello_gioco=0
+                self.flag_modello_scelte=1
                 
                 
                 
@@ -498,6 +521,8 @@ class MainWindow(QMainWindow):
             self.flag_gioco_terminato=1
             self.termine_gioco.setText("Esci dal gioco! Riprova!")
             self.layoutH_fine_gioco.addWidget(self.termine_gioco)
+            self.flag_modello_gioco=0
+            self.flag_modello_scelte=1
         else:
             pass
 

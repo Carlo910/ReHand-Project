@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
   28:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
   29:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
   30:Generated_Source\PSoC5/UART_BT_IntClock.c **** /*******************************************************************************
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 2
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 2
 
 
   31:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Function Name: UART_BT_IntClock_Start
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
   54:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Function Name: UART_BT_IntClock_Stop
   55:Generated_Source\PSoC5/UART_BT_IntClock.c **** ********************************************************************************
   56:Generated_Source\PSoC5/UART_BT_IntClock.c **** *
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 3
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 3
 
 
   57:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
   80:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
   81:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
   82:Generated_Source\PSoC5/UART_BT_IntClock.c **** /*******************************************************************************
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 4
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 4
 
 
   83:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Function Name: UART_BT_IntClock_StopBlock
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  111 0018 1370     		strb	r3, [r2]
  116:Generated_Source\PSoC5/UART_BT_IntClock.c **** #endif /* UART_BT_IntClock__CFG3 */
  117:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 5
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 5
 
 
  118:Generated_Source\PSoC5/UART_BT_IntClock.c ****         /* Clear mask of bus clock. */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  136:Generated_Source\PSoC5/UART_BT_IntClock.c ****         CY_SET_REG16(UART_BT_IntClock_DIV_PTR, oldDivider);
  148              		.loc 1 136 0
  149 0056 8733     		adds	r3, r3, #135
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 6
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 6
 
 
  150 0058 1A80     		strh	r2, [r3]	@ movhi
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  160:Generated_Source\PSoC5/UART_BT_IntClock.c ****     {
  161:Generated_Source\PSoC5/UART_BT_IntClock.c ****         UART_BT_IntClock_CLKSTBY &= (uint8)(~UART_BT_IntClock_CLKSTBY_MASK);
  181              		.loc 1 161 0
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 7
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 7
 
 
  182 0002 064A     		ldr	r2, .L15
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  189:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Returns:
  190:Generated_Source\PSoC5/UART_BT_IntClock.c **** *  None
  191:Generated_Source\PSoC5/UART_BT_IntClock.c **** *
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 8
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 8
 
 
  192:Generated_Source\PSoC5/UART_BT_IntClock.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  246:Generated_Source\PSoC5/UART_BT_IntClock.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  247:Generated_Source\PSoC5/UART_BT_IntClock.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:Generated_Source\PSoC5/UART_BT_IntClock.c **** 
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 9
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 9
 
 
  249:Generated_Source\PSoC5/UART_BT_IntClock.c ****                     /* Wait for clock to be disabled */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  213              		@ link register save eliminated.
  299:Generated_Source\PSoC5/UART_BT_IntClock.c ****     return CY_GET_REG16(UART_BT_IntClock_DIV_PTR);
  214              		.loc 1 299 0
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 10
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 10
 
 
  215 0000 014B     		ldr	r3, .L18
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  235              		.loc 1 333 0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 11
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 11
 
 
  238              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  362:Generated_Source\PSoC5/UART_BT_IntClock.c **** *
  363:Generated_Source\PSoC5/UART_BT_IntClock.c **** * Returns:
  364:Generated_Source\PSoC5/UART_BT_IntClock.c **** *  None
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 12
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 12
 
 
  365:Generated_Source\PSoC5/UART_BT_IntClock.c **** *
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  388:Generated_Source\PSoC5/UART_BT_IntClock.c **** uint8 UART_BT_IntClock_GetModeRegister(void) 
  389:Generated_Source\PSoC5/UART_BT_IntClock.c **** {
  295              		.loc 1 389 0
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 13
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 13
 
 
  296              		.cfi_startproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  419:Generated_Source\PSoC5/UART_BT_IntClock.c **** void UART_BT_IntClock_SetSourceRegister(uint8 clkSource) 
  420:Generated_Source\PSoC5/UART_BT_IntClock.c **** {
  421:Generated_Source\PSoC5/UART_BT_IntClock.c ****     uint16 currDiv = UART_BT_IntClock_GetDividerRegister();
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 14
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 14
 
 
  422:Generated_Source\PSoC5/UART_BT_IntClock.c ****     uint8 oldSrc = UART_BT_IntClock_GetSourceRegister();
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  329              		.loc 1 467 0
  330 0004 00F00700 		and	r0, r0, #7
  331 0008 7047     		bx	lr
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 15
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 15
 
 
  332              	.L31:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  379              		.loc 1 205 0 is_stmt 0 discriminator 1
  380 0020 00B1     		cbz	r0, .L35
  205:Generated_Source\PSoC5/UART_BT_IntClock.c ****         {
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 16
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 16
 
 
  381              		.loc 1 205 0 discriminator 2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  425              		.loc 1 240 0
  426 0058 0C39     		subs	r1, r1, #12
  427 005a 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 17
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 17
 
 
  428 005c 03F07F03 		and	r3, r3, #127
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  472              	.LVL18:
  473 00a4 00E0     		b	.L41
  474              	.LVL19:
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 18
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 18
 
 
  475              	.L43:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  524              		@ frame_needed = 0, uses_anonymous_args = 0
  525              	.LVL23:
  526 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 19
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 19
 
 
  527              		.cfi_def_cfa_offset 16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  569 0032 094A     		ldr	r2, .L52
  570 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  438:Generated_Source\PSoC5/UART_BT_IntClock.c ****             (UART_BT_IntClock_MOD_SRC & (uint8)(~UART_BT_IntClock_SRC_SEL_MSK)) | clkSource;
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 20
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 20
 
 
  571              		.loc 1 438 0
@@ -1181,24 +1181,24 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  605 0006 00000000 		.4byte	.Ldebug_abbrev0
  606 000a 04       		.byte	0x4
  607 000b 01       		.uleb128 0x1
- 608 000c E6020000 		.4byte	.LASF36
+ 608 000c E7020000 		.4byte	.LASF36
  609 0010 0C       		.byte	0xc
- 610 0011 E4010000 		.4byte	.LASF37
- 611 0015 18000000 		.4byte	.LASF38
+ 610 0011 E5010000 		.4byte	.LASF37
+ 611 0015 FF000000 		.4byte	.LASF38
  612 0019 00000000 		.4byte	.Ldebug_ranges0+0
  613 001d 00000000 		.4byte	0
  614 0021 00000000 		.4byte	.Ldebug_line0
  615 0025 02       		.uleb128 0x2
  616 0026 01       		.byte	0x1
  617 0027 06       		.byte	0x6
- 618 0028 96010000 		.4byte	.LASF0
+ 618 0028 97010000 		.4byte	.LASF0
  619 002c 02       		.uleb128 0x2
  620 002d 01       		.byte	0x1
  621 002e 08       		.byte	0x8
- 622 002f 7C010000 		.4byte	.LASF1
+ 622 002f 7D010000 		.4byte	.LASF1
  623 0033 02       		.uleb128 0x2
  624 0034 02       		.byte	0x2
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 21
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 21
 
 
  625 0035 05       		.byte	0x5
@@ -1206,23 +1206,23 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  627 003a 02       		.uleb128 0x2
  628 003b 02       		.byte	0x2
  629 003c 07       		.byte	0x7
- 630 003d 0E020000 		.4byte	.LASF3
+ 630 003d 0F020000 		.4byte	.LASF3
  631 0041 02       		.uleb128 0x2
  632 0042 04       		.byte	0x4
  633 0043 05       		.byte	0x5
- 634 0044 6D010000 		.4byte	.LASF4
+ 634 0044 F6000000 		.4byte	.LASF4
  635 0048 02       		.uleb128 0x2
  636 0049 04       		.byte	0x4
  637 004a 07       		.byte	0x7
- 638 004b A2020000 		.4byte	.LASF5
+ 638 004b A3020000 		.4byte	.LASF5
  639 004f 02       		.uleb128 0x2
  640 0050 08       		.byte	0x8
  641 0051 05       		.byte	0x5
- 642 0052 3B010000 		.4byte	.LASF6
+ 642 0052 C4000000 		.4byte	.LASF6
  643 0056 02       		.uleb128 0x2
  644 0057 08       		.byte	0x8
  645 0058 07       		.byte	0x7
- 646 0059 A2010000 		.4byte	.LASF7
+ 646 0059 A3010000 		.4byte	.LASF7
  647 005d 03       		.uleb128 0x3
  648 005e 04       		.byte	0x4
  649 005f 05       		.byte	0x5
@@ -1230,35 +1230,35 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  651 0064 02       		.uleb128 0x2
  652 0065 04       		.byte	0x4
  653 0066 07       		.byte	0x7
- 654 0067 B9010000 		.4byte	.LASF8
+ 654 0067 BA010000 		.4byte	.LASF8
  655 006b 04       		.uleb128 0x4
- 656 006c EA000000 		.4byte	.LASF9
+ 656 006c 73000000 		.4byte	.LASF9
  657 0070 02       		.byte	0x2
  658 0071 E801     		.2byte	0x1e8
  659 0073 2C000000 		.4byte	0x2c
  660 0077 04       		.uleb128 0x4
- 661 0078 B0000000 		.4byte	.LASF10
+ 661 0078 39000000 		.4byte	.LASF10
  662 007c 02       		.byte	0x2
  663 007d E901     		.2byte	0x1e9
  664 007f 3A000000 		.4byte	0x3a
  665 0083 02       		.uleb128 0x2
  666 0084 04       		.byte	0x4
  667 0085 04       		.byte	0x4
- 668 0086 12010000 		.4byte	.LASF11
+ 668 0086 9B000000 		.4byte	.LASF11
  669 008a 02       		.uleb128 0x2
  670 008b 08       		.byte	0x8
  671 008c 04       		.byte	0x4
- 672 008d B4020000 		.4byte	.LASF12
+ 672 008d B5020000 		.4byte	.LASF12
  673 0091 02       		.uleb128 0x2
  674 0092 01       		.byte	0x1
  675 0093 08       		.byte	0x8
- 676 0094 37020000 		.4byte	.LASF13
+ 676 0094 38020000 		.4byte	.LASF13
  677 0098 04       		.uleb128 0x4
- 678 0099 9D020000 		.4byte	.LASF14
+ 678 0099 9E020000 		.4byte	.LASF14
  679 009d 02       		.byte	0x2
  680 009e 9202     		.2byte	0x292
  681 00a0 A4000000 		.4byte	0xa4
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 22
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 22
 
 
  682 00a4 05       		.uleb128 0x5
@@ -1271,7 +1271,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  689 00b5 05       		.uleb128 0x5
  690 00b6 77000000 		.4byte	0x77
  691 00ba 06       		.uleb128 0x6
- 692 00bb FB000000 		.4byte	.LASF16
+ 692 00bb 84000000 		.4byte	.LASF16
  693 00bf 01       		.byte	0x1
  694 00c0 2D       		.byte	0x2d
  695 00c1 00000000 		.4byte	.LFB0
@@ -1279,7 +1279,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  697 00c9 01       		.uleb128 0x1
  698 00ca 9C       		.byte	0x9c
  699 00cb 06       		.uleb128 0x6
- 700 00cc 21020000 		.4byte	.LASF17
+ 700 00cc 22020000 		.4byte	.LASF17
  701 00d0 01       		.byte	0x1
  702 00d1 47       		.byte	0x47
  703 00d2 00000000 		.4byte	.LFB1
@@ -1287,7 +1287,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  705 00da 01       		.uleb128 0x1
  706 00db 9C       		.byte	0x9c
  707 00dc 07       		.uleb128 0x7
- 708 00dd 74030000 		.4byte	.LASF18
+ 708 00dd 75030000 		.4byte	.LASF18
  709 00e1 01       		.byte	0x1
  710 00e2 64       		.byte	0x64
  711 00e3 00000000 		.4byte	.LFB2
@@ -1299,7 +1299,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  717 00f2 0A000000 		.4byte	.LBB2
  718 00f6 62000000 		.4byte	.LBE2-.LBB2
  719 00fa 09       		.uleb128 0x9
- 720 00fb 92020000 		.4byte	.LASF30
+ 720 00fb 93020000 		.4byte	.LASF30
  721 00ff 01       		.byte	0x1
  722 0100 69       		.byte	0x69
  723 0101 77000000 		.4byte	0x77
@@ -1307,7 +1307,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  725 0109 00       		.byte	0
  726 010a 00       		.byte	0
  727 010b 07       		.uleb128 0x7
- 728 010c C6010000 		.4byte	.LASF19
+ 728 010c C7010000 		.4byte	.LASF19
  729 0110 01       		.byte	0x1
  730 0111 9D       		.byte	0x9d
  731 0112 00000000 		.4byte	.LFB3
@@ -1316,9 +1316,9 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  734 011b 9C       		.byte	0x9c
  735 011c 2E010000 		.4byte	0x12e
  736 0120 0A       		.uleb128 0xa
- 737 0121 76010000 		.4byte	.LASF21
+ 737 0121 77010000 		.4byte	.LASF21
  738 0125 01       		.byte	0x1
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 23
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 23
 
 
  739 0126 9D       		.byte	0x9d
@@ -1327,7 +1327,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  742 012c 50       		.byte	0x50
  743 012d 00       		.byte	0
  744 012e 0B       		.uleb128 0xb
- 745 012f 49010000 		.4byte	.LASF24
+ 745 012f D2000000 		.4byte	.LASF24
  746 0133 01       		.byte	0x1
  747 0134 2901     		.2byte	0x129
  748 0136 77000000 		.4byte	0x77
@@ -1336,7 +1336,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  751 0142 01       		.uleb128 0x1
  752 0143 9C       		.byte	0x9c
  753 0144 0C       		.uleb128 0xc
- 754 0145 8F000000 		.4byte	.LASF20
+ 754 0145 18000000 		.4byte	.LASF20
  755 0149 01       		.byte	0x1
  756 014a 4C01     		.2byte	0x14c
  757 014c 00000000 		.4byte	.LFB6
@@ -1345,14 +1345,14 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  760 0155 9C       		.byte	0x9c
  761 0156 6B010000 		.4byte	0x16b
  762 015a 0D       		.uleb128 0xd
- 763 015b 8A010000 		.4byte	.LASF22
+ 763 015b 8B010000 		.4byte	.LASF22
  764 015f 01       		.byte	0x1
  765 0160 4C01     		.2byte	0x14c
  766 0162 6B000000 		.4byte	0x6b
  767 0166 13000000 		.4byte	.LLST1
  768 016a 00       		.byte	0
  769 016b 0C       		.uleb128 0xc
- 770 016c C3020000 		.4byte	.LASF23
+ 770 016c C4020000 		.4byte	.LASF23
  771 0170 01       		.byte	0x1
  772 0171 6F01     		.2byte	0x16f
  773 0173 00000000 		.4byte	.LFB7
@@ -1361,14 +1361,14 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  776 017c 9C       		.byte	0x9c
  777 017d 92010000 		.4byte	0x192
  778 0181 0D       		.uleb128 0xd
- 779 0182 8A010000 		.4byte	.LASF22
+ 779 0182 8B010000 		.4byte	.LASF22
  780 0186 01       		.byte	0x1
  781 0187 6F01     		.2byte	0x16f
  782 0189 6B000000 		.4byte	0x6b
  783 018d 34000000 		.4byte	.LLST2
  784 0191 00       		.byte	0
  785 0192 0B       		.uleb128 0xb
- 786 0193 3C020000 		.4byte	.LASF25
+ 786 0193 3D020000 		.4byte	.LASF25
  787 0197 01       		.byte	0x1
  788 0198 8401     		.2byte	0x184
  789 019a 6B000000 		.4byte	0x6b
@@ -1377,8 +1377,8 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  792 01a6 01       		.uleb128 0x1
  793 01a7 9C       		.byte	0x9c
  794 01a8 0B       		.uleb128 0xb
- 795 01a9 6F020000 		.4byte	.LASF26
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 24
+ 795 01a9 70020000 		.4byte	.LASF26
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 24
 
 
  796 01ad 01       		.byte	0x1
@@ -1389,7 +1389,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  801 01bc 01       		.uleb128 0x1
  802 01bd 9C       		.byte	0x9c
  803 01be 07       		.uleb128 0x7
- 804 01bf BF000000 		.4byte	.LASF27
+ 804 01bf 48000000 		.4byte	.LASF27
  805 01c3 01       		.byte	0x1
  806 01c4 C1       		.byte	0xc1
  807 01c5 00000000 		.4byte	.LFB4
@@ -1398,31 +1398,31 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  810 01ce 9C       		.byte	0x9c
  811 01cf 2F020000 		.4byte	0x22f
  812 01d3 0E       		.uleb128 0xe
- 813 01d4 F0000000 		.4byte	.LASF28
+ 813 01d4 79000000 		.4byte	.LASF28
  814 01d8 01       		.byte	0x1
  815 01d9 C1       		.byte	0xc1
  816 01da 77000000 		.4byte	0x77
  817 01de 55000000 		.4byte	.LLST3
  818 01e2 0E       		.uleb128 0xe
- 819 01e3 B7000000 		.4byte	.LASF29
+ 819 01e3 40000000 		.4byte	.LASF29
  820 01e7 01       		.byte	0x1
  821 01e8 C1       		.byte	0xc1
  822 01e9 6B000000 		.4byte	0x6b
  823 01ed 76000000 		.4byte	.LLST4
  824 01f1 09       		.uleb128 0x9
- 825 01f2 BB020000 		.4byte	.LASF31
+ 825 01f2 BC020000 		.4byte	.LASF31
  826 01f6 01       		.byte	0x1
  827 01f7 C4       		.byte	0xc4
  828 01f8 6B000000 		.4byte	0x6b
  829 01fc 97000000 		.4byte	.LLST5
  830 0200 09       		.uleb128 0x9
- 831 0201 67020000 		.4byte	.LASF32
+ 831 0201 68020000 		.4byte	.LASF32
  832 0205 01       		.byte	0x1
  833 0206 C6       		.byte	0xc6
  834 0207 6B000000 		.4byte	0x6b
  835 020b E1000000 		.4byte	.LLST6
  836 020f 0F       		.uleb128 0xf
- 837 0210 92020000 		.4byte	.LASF30
+ 837 0210 93020000 		.4byte	.LASF30
  838 0214 01       		.byte	0x1
  839 0215 C7       		.byte	0xc7
  840 0216 77000000 		.4byte	0x77
@@ -1436,9 +1436,9 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  848 022a 2E010000 		.4byte	0x12e
  849 022e 00       		.byte	0
  850 022f 11       		.uleb128 0x11
- 851 0230 18010000 		.4byte	.LASF39
+ 851 0230 A1000000 		.4byte	.LASF39
  852 0234 01       		.byte	0x1
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 25
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 25
 
 
  853 0235 A301     		.2byte	0x1a3
@@ -1447,7 +1447,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  856 023f 01       		.uleb128 0x1
  857 0240 9C       		.byte	0x9c
  858 0241 0D       		.uleb128 0xd
- 859 0242 5D020000 		.4byte	.LASF33
+ 859 0242 5E020000 		.4byte	.LASF33
  860 0246 01       		.byte	0x1
  861 0247 A301     		.2byte	0x1a3
  862 0249 6B000000 		.4byte	0x6b
@@ -1459,7 +1459,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  868 0259 77000000 		.4byte	0x77
  869 025d 15010000 		.4byte	.LLST8
  870 0261 13       		.uleb128 0x13
- 871 0262 E3000000 		.4byte	.LASF35
+ 871 0262 6C000000 		.4byte	.LASF35
  872 0266 01       		.byte	0x1
  873 0267 A601     		.2byte	0x1a6
  874 0269 6B000000 		.4byte	0x6b
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  907 0014 24       		.uleb128 0x24
  908 0015 00       		.byte	0
  909 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 26
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 26
 
 
  910 0017 0B       		.uleb128 0xb
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  964 004d 06       		.uleb128 0x6
  965 004e 40       		.uleb128 0x40
  966 004f 18       		.uleb128 0x18
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 27
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 27
 
 
  967 0050 9742     		.uleb128 0x2117
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1021 0088 05       		.uleb128 0x5
  1022 0089 00       		.byte	0
  1023 008a 03       		.uleb128 0x3
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 28
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 28
 
 
  1024 008b 0E       		.uleb128 0xe
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1078 00c2 18       		.uleb128 0x18
  1079 00c3 9742     		.uleb128 0x2117
  1080 00c5 19       		.uleb128 0x19
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 29
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 29
 
 
  1081 00c6 01       		.uleb128 0x1
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1135 00fe 31       		.uleb128 0x31
  1136 00ff 13       		.uleb128 0x13
  1137 0100 00       		.byte	0
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 30
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 30
 
 
  1138 0101 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1192 0138 00       		.byte	0
  1193              		.section	.debug_loc,"",%progbits
  1194              	.Ldebug_loc0:
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 31
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 31
 
 
  1195              	.LLST0:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1249 0081 09000000 		.4byte	.LVL8-1
  1250 0085 DC000000 		.4byte	.LFE4
  1251 0089 0400     		.2byte	0x4
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 32
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 32
 
 
  1252 008b F3       		.byte	0xf3
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1306              	.LLST8:
  1307 0115 0A000000 		.4byte	.LVL25
  1308 0119 56000000 		.4byte	.LVL29
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 33
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 33
 
 
  1309 011d 0100     		.2byte	0x1
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1363 0040 00000000 		.4byte	.LFB10
  1364 0044 10000000 		.4byte	.LFE10
  1365 0048 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 34
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 34
 
 
  1366 004c DC000000 		.4byte	.LFE4
@@ -2003,102 +2003,102 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1379 000e 73686F72 		.ascii	"short int\000"
  1379      7420696E 
  1379      7400
- 1380              	.LASF38:
- 1381 0018 433A5C55 		.ascii	"C:\\Users\\madda\\Desktop\\Maddalena\\POLITECNICO\\"
- 1381      73657273 
- 1381      5C6D6164 
- 1381      64615C44 
- 1381      65736B74 
- 1382 0045 5345434F 		.ascii	"SECONDO ANNO\\LAB\\PROGETTO\\AY2223_I_Project-3\\PS"
- 1382      4E444F20 
- 1382      414E4E4F 
- 1382      5C4C4142 
- 1382      5C50524F 
- 1383 0074 4F435C50 		.ascii	"OC\\Project3!_Copy_01.cydsn\000"
- 1383      726F6A65 
- 1383      63743321 
- 1383      5F436F70 
- 1383      795F3031 
- 1384              	.LASF20:
- 1385 008f 55415254 		.ascii	"UART_BT_IntClock_SetModeRegister\000"
- 1385      5F42545F 
- 1385      496E7443 
- 1385      6C6F636B 
- 1385      5F536574 
- 1386              	.LASF10:
- 1387 00b0 75696E74 		.ascii	"uint16\000"
- 1387      313600
- 1388              	.LASF29:
- 1389 00b7 72657374 		.ascii	"restart\000"
- 1389      61727400 
- 1390              	.LASF27:
- 1391 00bf 55415254 		.ascii	"UART_BT_IntClock_SetDividerRegister\000"
- 1391      5F42545F 
- 1391      496E7443 
- 1391      6C6F636B 
- 1391      5F536574 
- 1392              	.LASF35:
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 35
+ 1380              	.LASF20:
+ 1381 0018 55415254 		.ascii	"UART_BT_IntClock_SetModeRegister\000"
+ 1381      5F42545F 
+ 1381      496E7443 
+ 1381      6C6F636B 
+ 1381      5F536574 
+ 1382              	.LASF10:
+ 1383 0039 75696E74 		.ascii	"uint16\000"
+ 1383      313600
+ 1384              	.LASF29:
+ 1385 0040 72657374 		.ascii	"restart\000"
+ 1385      61727400 
+ 1386              	.LASF27:
+ 1387 0048 55415254 		.ascii	"UART_BT_IntClock_SetDividerRegister\000"
+ 1387      5F42545F 
+ 1387      496E7443 
+ 1387      6C6F636B 
+ 1387      5F536574 
+ 1388              	.LASF35:
+ 1389 006c 6F6C6453 		.ascii	"oldSrc\000"
+ 1389      726300
+ 1390              	.LASF9:
+ 1391 0073 75696E74 		.ascii	"uint8\000"
+ 1391      3800
+ 1392              	.LASF28:
+ 1393 0079 636C6B44 		.ascii	"clkDivider\000"
+ 1393      69766964 
+ 1393      657200
+ 1394              	.LASF16:
+ 1395 0084 55415254 		.ascii	"UART_BT_IntClock_Start\000"
+ 1395      5F42545F 
+ 1395      496E7443 
+ 1395      6C6F636B 
+ 1395      5F537461 
+ 1396              	.LASF11:
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 35
 
 
- 1393 00e3 6F6C6453 		.ascii	"oldSrc\000"
- 1393      726300
- 1394              	.LASF9:
- 1395 00ea 75696E74 		.ascii	"uint8\000"
- 1395      3800
- 1396              	.LASF28:
- 1397 00f0 636C6B44 		.ascii	"clkDivider\000"
- 1397      69766964 
- 1397      657200
- 1398              	.LASF16:
- 1399 00fb 55415254 		.ascii	"UART_BT_IntClock_Start\000"
+ 1397 009b 666C6F61 		.ascii	"float\000"
+ 1397      7400
+ 1398              	.LASF39:
+ 1399 00a1 55415254 		.ascii	"UART_BT_IntClock_SetSourceRegister\000"
  1399      5F42545F 
  1399      496E7443 
  1399      6C6F636B 
- 1399      5F537461 
- 1400              	.LASF11:
- 1401 0112 666C6F61 		.ascii	"float\000"
+ 1399      5F536574 
+ 1400              	.LASF6:
+ 1401 00c4 6C6F6E67 		.ascii	"long long int\000"
+ 1401      206C6F6E 
+ 1401      6720696E 
  1401      7400
- 1402              	.LASF39:
- 1403 0118 55415254 		.ascii	"UART_BT_IntClock_SetSourceRegister\000"
+ 1402              	.LASF24:
+ 1403 00d2 55415254 		.ascii	"UART_BT_IntClock_GetDividerRegister\000"
  1403      5F42545F 
  1403      496E7443 
  1403      6C6F636B 
- 1403      5F536574 
- 1404              	.LASF6:
- 1405 013b 6C6F6E67 		.ascii	"long long int\000"
- 1405      206C6F6E 
- 1405      6720696E 
- 1405      7400
- 1406              	.LASF24:
- 1407 0149 55415254 		.ascii	"UART_BT_IntClock_GetDividerRegister\000"
- 1407      5F42545F 
- 1407      496E7443 
- 1407      6C6F636B 
- 1407      5F476574 
- 1408              	.LASF4:
- 1409 016d 6C6F6E67 		.ascii	"long int\000"
- 1409      20696E74 
- 1409      00
+ 1403      5F476574 
+ 1404              	.LASF4:
+ 1405 00f6 6C6F6E67 		.ascii	"long int\000"
+ 1405      20696E74 
+ 1405      00
+ 1406              	.LASF38:
+ 1407 00ff 433A5C55 		.ascii	"C:\\Users\\Windows\\Desktop\\Magistrale\\II_primo_s"
+ 1407      73657273 
+ 1407      5C57696E 
+ 1407      646F7773 
+ 1407      5C446573 
+ 1408 012d 656D6573 		.ascii	"emestre\\Project  Lab Sens\\AY2223_I_Project-3\\PSO"
+ 1408      7472655C 
+ 1408      50726F6A 
+ 1408      65637420 
+ 1408      204C6162 
+ 1409 015d 435C5072 		.ascii	"C\\Project3!_Copy_01.cydsn\000"
+ 1409      6F6A6563 
+ 1409      7433215F 
+ 1409      436F7079 
+ 1409      5F30312E 
  1410              	.LASF21:
- 1411 0176 73746174 		.ascii	"state\000"
+ 1411 0177 73746174 		.ascii	"state\000"
  1411      6500
  1412              	.LASF1:
- 1413 017c 756E7369 		.ascii	"unsigned char\000"
+ 1413 017d 756E7369 		.ascii	"unsigned char\000"
  1413      676E6564 
  1413      20636861 
  1413      7200
  1414              	.LASF22:
- 1415 018a 6D6F6465 		.ascii	"modeBitMask\000"
+ 1415 018b 6D6F6465 		.ascii	"modeBitMask\000"
  1415      4269744D 
  1415      61736B00 
  1416              	.LASF0:
- 1417 0196 7369676E 		.ascii	"signed char\000"
+ 1417 0197 7369676E 		.ascii	"signed char\000"
  1417      65642063 
  1417      68617200 
  1418              	.LASF7:
- 1419 01a2 6C6F6E67 		.ascii	"long long unsigned int\000"
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 36
+ 1419 01a3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 36
 
 
  1419      206C6F6E 
@@ -2106,102 +2106,102 @@ ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 1
  1419      7369676E 
  1419      65642069 
  1420              	.LASF8:
- 1421 01b9 756E7369 		.ascii	"unsigned int\000"
+ 1421 01ba 756E7369 		.ascii	"unsigned int\000"
  1421      676E6564 
  1421      20696E74 
  1421      00
  1422              	.LASF19:
- 1423 01c6 55415254 		.ascii	"UART_BT_IntClock_StandbyPower\000"
+ 1423 01c7 55415254 		.ascii	"UART_BT_IntClock_StandbyPower\000"
  1423      5F42545F 
  1423      496E7443 
  1423      6C6F636B 
  1423      5F537461 
  1424              	.LASF37:
- 1425 01e4 47656E65 		.ascii	"Generated_Source\\PSoC5\\UART_BT_IntClock.c\000"
+ 1425 01e5 47656E65 		.ascii	"Generated_Source\\PSoC5\\UART_BT_IntClock.c\000"
  1425      72617465 
  1425      645F536F 
  1425      75726365 
  1425      5C50536F 
  1426              	.LASF3:
- 1427 020e 73686F72 		.ascii	"short unsigned int\000"
+ 1427 020f 73686F72 		.ascii	"short unsigned int\000"
  1427      7420756E 
  1427      7369676E 
  1427      65642069 
  1427      6E7400
  1428              	.LASF17:
- 1429 0221 55415254 		.ascii	"UART_BT_IntClock_Stop\000"
+ 1429 0222 55415254 		.ascii	"UART_BT_IntClock_Stop\000"
  1429      5F42545F 
  1429      496E7443 
  1429      6C6F636B 
  1429      5F53746F 
  1430              	.LASF13:
- 1431 0237 63686172 		.ascii	"char\000"
+ 1431 0238 63686172 		.ascii	"char\000"
  1431      00
  1432              	.LASF25:
- 1433 023c 55415254 		.ascii	"UART_BT_IntClock_GetModeRegister\000"
+ 1433 023d 55415254 		.ascii	"UART_BT_IntClock_GetModeRegister\000"
  1433      5F42545F 
  1433      496E7443 
  1433      6C6F636B 
  1433      5F476574 
  1434              	.LASF33:
- 1435 025d 636C6B53 		.ascii	"clkSource\000"
+ 1435 025e 636C6B53 		.ascii	"clkSource\000"
  1435      6F757263 
  1435      6500
  1436              	.LASF32:
- 1437 0267 63757272 		.ascii	"currSrc\000"
+ 1437 0268 63757272 		.ascii	"currSrc\000"
  1437      53726300 
  1438              	.LASF26:
- 1439 026f 55415254 		.ascii	"UART_BT_IntClock_GetSourceRegister\000"
+ 1439 0270 55415254 		.ascii	"UART_BT_IntClock_GetSourceRegister\000"
  1439      5F42545F 
  1439      496E7443 
  1439      6C6F636B 
  1439      5F476574 
  1440              	.LASF30:
- 1441 0292 6F6C6444 		.ascii	"oldDivider\000"
-ARM GAS  C:\Users\madda\AppData\Local\Temp\cc8hkkIC.s 			page 37
+ 1441 0293 6F6C6444 		.ascii	"oldDivider\000"
+ARM GAS  C:\Users\Windows\AppData\Local\Temp\cc8rRYJg.s 			page 37
 
 
  1441      69766964 
  1441      657200
  1442              	.LASF14:
- 1443 029d 72656738 		.ascii	"reg8\000"
+ 1443 029e 72656738 		.ascii	"reg8\000"
  1443      00
  1444              	.LASF5:
- 1445 02a2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1445 02a3 6C6F6E67 		.ascii	"long unsigned int\000"
  1445      20756E73 
  1445      69676E65 
  1445      6420696E 
  1445      7400
  1446              	.LASF12:
- 1447 02b4 646F7562 		.ascii	"double\000"
+ 1447 02b5 646F7562 		.ascii	"double\000"
  1447      6C6500
  1448              	.LASF31:
- 1449 02bb 656E6162 		.ascii	"enabled\000"
+ 1449 02bc 656E6162 		.ascii	"enabled\000"
  1449      6C656400 
  1450              	.LASF23:
- 1451 02c3 55415254 		.ascii	"UART_BT_IntClock_ClearModeRegister\000"
+ 1451 02c4 55415254 		.ascii	"UART_BT_IntClock_ClearModeRegister\000"
  1451      5F42545F 
  1451      496E7443 
  1451      6C6F636B 
  1451      5F436C65 
  1452              	.LASF36:
- 1453 02e6 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1453 02e7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1453      43313120 
  1453      352E342E 
  1453      31203230 
  1453      31363036 
- 1454 0319 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1454 031a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  1454      20726576 
  1454      6973696F 
  1454      6E203233 
  1454      37373135 
- 1455 034c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1455 034d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  1455      66756E63 
  1455      74696F6E 
  1455      2D736563 
  1455      74696F6E 
  1456              	.LASF18:
- 1457 0374 55415254 		.ascii	"UART_BT_IntClock_StopBlock\000"
+ 1457 0375 55415254 		.ascii	"UART_BT_IntClock_StopBlock\000"
  1457      5F42545F 
  1457      496E7443 
  1457      6C6F636B 

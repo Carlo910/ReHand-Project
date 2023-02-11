@@ -6,7 +6,7 @@ def main():
     sample=0
     ser = serial.Serial()
     ser.baudrate = 9600
-    ser.port = 'COM8'
+    ser.port = 'COM3'
 
     #da usare la prima volta
     '''
@@ -40,7 +40,7 @@ def main():
             print(sample)
 
             final.append(5)
-            with open('dataset_training_6gesti.csv', mode='a', newline='') as f_object: 
+            with open('dataset_test_6gesti.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             
