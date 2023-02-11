@@ -107,9 +107,9 @@ class SerialWorker(QRunnable):
 
         try:
             pacchetto = self.port.read(10)
-            print(pacchetto, type(pacchetto))
-            logging.info("Reading {} on port {}.".format(
-                pacchetto, self.port_name))
+            #print(pacchetto, type(pacchetto))
+            #logging.info("Reading {} on port {}.".format(
+             #   pacchetto, self.port_name))
         except:
             logging.info("Could not read {} on port {}.".format(
                 pacchetto, self.port_name))
@@ -132,7 +132,7 @@ class SerialWorker(QRunnable):
             self.final = np.array(self.final)
             self.predizione = modello.predict(self.final.reshape(1,-1))
             self.predizione = list(self.predizione)
-            print(self.predizione)
+            #print(self.predizione)
             self.signals.prediction.emit(self.predizione)
 
         elif (pacchetto[0] == 170 and pacchetto[9] == 255):
@@ -341,7 +341,7 @@ class MainWindow(QMainWindow):
         self.predizione = modello.predict(pacchetto.reshape(1,-1))
         self.predizione = list(self.predizione)
         if (packet[0] > 8500 and packet[1] < 5500 and packet[2] > 6000 and packet[3] > 6000 and self.flag_gioco == 0 and self.flag_statistiche == 0):
-          
+            
             self.initUIGioco()
             self.flag_gioco= 1
             self.flag_statistiche = 0
@@ -482,8 +482,6 @@ class MainWindow(QMainWindow):
                 self.today=QDateTime.currentDateTime()
                 self.date_str = self.today.toString("yyyy-MM-dd hh:mm:ss")
                 row=[self.date_str,self.count_timer]
-                print("Stostampando")
-                print(row)
                 if (self.checkpoint==0):
                     with open('data_register.csv', mode='a', newline='') as f_object: 
                         writer = csv.writer(f_object)
@@ -516,18 +514,30 @@ class MainWindow(QMainWindow):
         self.layoutV_statitiche=QVBoxLayout()
         self.layoutH_titolo_statistiche=QHBoxLayout()
         self.layout_grafico=QHBoxLayout()
-        
-
+        self.layoutH_risultati=QHBoxLayout()
         self.layout_uscita_statistiche = QGridLayout()
         self.layout_uscita_statistiche.setContentsMargins(0,0,0,0)
         self.layout_uscita_statistiche.setSpacing(0)
         self.layout_uscita_statistiche.setAlignment(Qt.AlignmentFlag.AlignBottom)
+
+        self.plot()
 
         self.titolo_statistihe=QLabel("STATISTICHE")
         self.titolo_statistihe.setFont(QtGui.QFont('Arial', 30))
         self.titolo_statistihe.setMaximumSize(1920,70)
         self.titolo_statistihe.setMinimumSize(1920,70)
         self.titolo_statistihe.setMargin(800)
+        
+        self.risultato_migliore=QLabel("Tempo migliore: {}".format(self.tempo_migliore))
+        self.risultato_migliore.setFont(QtGui.QFont('Arial', 30))
+        self.risultato_migliore.setMaximumSize(1920,70)
+        self.risultato_migliore.setMinimumSize(1920,70)
+        #self.titolo_statistihe.setMargin(800)
+
+        self.risultato_peggiore=QLabel("Tempo peggiore: {}".format(self.tempo_peggiore))
+        self.risultato_peggiore.setFont(QtGui.QFont('Arial', 30))
+        self.risultato_peggiore.setMaximumSize(1920,70)
+        self.risultato_peggiore.setMinimumSize(1920,70)
 
         self.uscita_statistiche = QLabel("Esci")
         self.uscita_statistiche.setFont(QtGui.QFont('Arial', 10))
@@ -541,14 +551,18 @@ class MainWindow(QMainWindow):
 
         self.layoutH_titolo_statistiche.addWidget(self.titolo_statistihe)
 
-        self.plot()
+        
+
+        self.layoutH_risultati.addWidget(self.risultato_migliore)
+        self.layoutH_risultati.addWidget(self.risultato_peggiore)
 
         self.layout_uscita_statistiche.addWidget(self.pollicesu,1,1)
         self.layout_uscita_statistiche.addWidget(self.uscita_statistiche,1,2)
 
         self.layoutV_statitiche.addLayout(self.layoutH_titolo_statistiche)
         self.layoutV_statitiche.addLayout(self.layout_grafico)
-        #self.layoutV_statitiche.addLayout(self.layout_uscita_statistiche)
+        self.layoutV_statitiche.addLayout(self.layoutH_risultati)
+        self.layoutV_statitiche.addLayout(self.layout_uscita_statistiche)
         
 
         self.widget_statistiche=QWidget()
@@ -570,8 +584,18 @@ class MainWindow(QMainWindow):
         ax.set_xticklabels(data, rotation=45, ha='right')
         ax.set_yticks(range(min(time), max(time)+1))
         figure.tight_layout()
-       
         self.layout_grafico.addWidget(figure.canvas)
+
+        idx_tempo_peggiore = df['time'].idxmax()
+        self.tempo_peggiore= df.loc[idx_tempo_peggiore, 'time']
+        self.data_tempo_peggiore = df.loc[idx_tempo_peggiore, 'data']
+
+        idx_tempo_migliore = df['time'].idxmin()
+        self.tempo_migliore= df.loc[idx_tempo_migliore, 'time']
+        self.data_tempo_peggiore = df.loc[idx_tempo_migliore, 'data']
+        
+        print("La riga con il valore minimo nella colonna 'A' è:")
+        print(df.loc[self.tempo_peggiore])
        
         
 

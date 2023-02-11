@@ -39,8 +39,8 @@ def main():
             print(final)
             print(sample)
 
-            final.append(3)
-            with open('dataset_test_pollice.csv', mode='a', newline='') as f_object: 
+            final.append(5)
+            with open('dataset_training_6gesti.csv', mode='a', newline='') as f_object: 
                 writer = csv.writer(f_object)
                 writer.writerow(final)
             
