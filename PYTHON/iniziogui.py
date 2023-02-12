@@ -122,7 +122,7 @@ class SerialWorker(QRunnable):
             while (i < len(valore) - 1):
                 self.final.append((valore[i] << 8) + valore[i+1])
                 i += 2
-            print(self.final)
+            #print(self.final)
             self.signals.packet.emit(self.final)
             '''
             #load
@@ -186,31 +186,61 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
 
-    
-
         self.start_btn = QPushButton(
             text="START",
-            checkable=True
+            checkable=True,
+            
         )
+        self.start_btn.setFont(QtGui.QFont('Helvetica', 50))
+        self.start_btn.setFixedSize(400, 250)
+        self.start_btn.setStyleSheet("QPushButton { background-color : ; color : green; }")
 
-        # layout
-        self.start_btn.setFont(QtGui.QFont('Arial', 30))
-        self.Hlayout_start = QHBoxLayout()
-        self.Hlayout_start.addWidget(self.start_btn)
-        self.Hlayout_start.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
+        self.titolo_start = QLabel("Re-Hand")
+        self.titolo_start.setFont(QtGui.QFont('Arial', 100))
        
-        self.start_btn.setFixedSize(300, 300)
+
+
+        self.Hlayout_start = QHBoxLayout()
+        self.Hlayout_titolo_start = QHBoxLayout()
+        self.Hlayout_inserisci_nome_utente=QHBoxLayout()
+        self.Hlayout_inserisci_nome_utente.setContentsMargins(725,100,0,0)
+        self.Hlayout_nome_utente=QHBoxLayout()
+
+        self.inserisci_nome=QLabel("Inserisci il tuo nome:")
+        self.inserisci_nome.setFont(QtGui.QFont('Arial', 30))
+        self.nome_utente_line=QLineEdit()
+        self.nome_utente_line.setFont(QtGui.QFont('Arial', 30))
+        self.nome_utente_line.setFixedSize(300,80)
+
+        self.Hlayout_inserisci_nome_utente.addWidget(self.inserisci_nome)
+        self.Hlayout_nome_utente.addWidget(self.nome_utente_line)
+
+
+        self.Hlayout_titolo_start.addWidget(self.titolo_start)
+        self.Hlayout_titolo_start.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.Hlayout_titolo_start.setContentsMargins(625,60,0,0)
+        self.titolo_start.setStyleSheet("QLabel { color : red; }")
+        self.Hlayout_start.addWidget(self.start_btn)
+        self.Hlayout_start.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.Hlayout_start.setContentsMargins(750,50,0,100)
+
         self.Vlayout_start = QVBoxLayout()
+        self.Vlayout_start.addLayout(self.Hlayout_titolo_start)
+        self.Vlayout_start.addLayout(self.Hlayout_inserisci_nome_utente)
+        self.Vlayout_start.addLayout(self.Hlayout_nome_utente)
         self.Vlayout_start.addLayout(self.Hlayout_start)
+
         self.widget_start = QWidget()
         self.widget_start.setLayout(self.Vlayout_start)
         self.setCentralWidget(self.widget_start)
 
         self.start_btn.clicked.connect(self.on_click)
 
+        
+
     def on_click(self, checked):
         if checked:
+            self.nome_utente=str(self.nome_utente_line.text())
             self.serial_worker.signals.device_port.connect(self.connected_device)
             self.serial_worker.signals.status.connect(self.check_serialport_status)
 
@@ -254,7 +284,7 @@ class MainWindow(QMainWindow):
         self.layoutH_scelta = QHBoxLayout()
 
 
-        self.titolo_scelta= QLabel("Seleziona l'opzione desidarata, svolgendo il gesto rappresentato")
+        self.titolo_scelta= QLabel("Ciao {}!\nSeleziona l'opzione desidarata, svolgendo il gesto rappresentato".format(self.nome_utente))
         self.titolo_scelta.setFont(QtGui.QFont('Arial', 30))
         
 
@@ -311,29 +341,19 @@ class MainWindow(QMainWindow):
             pass
 
         self.serial_worker.signals.batt.connect(self.handle_batt_status)
-
-        self.timerprova = QTimer()
-        self.timerprova.timeout.connect(self.count_timeprova)
-        self.timerprova.start(1000)
-    
-    def count_timeprova(self):
-        self.timernuovo=self.timernuovo+1
-
     
     def handle_batt_status(self, batt):
-        print(batt)
-        print(self.timernuovo)
-        self.perc_batt = (batt*7.4)/65535
-        print("valore perc batt", self.perc_batt)
-        if(self.timernuovo>0 and self.timernuovo<300):
+        self.valore_batt = (batt*7.8)/65535
+        print("valore perc batt", self.valore_batt)
+        if(self.valore_batt>0.75*self.valore_batt):
             self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/100.png"))
-        elif(self.timernuovo>300 and self.timernuovo<600):
+        elif(self.valore_batt>0.5*self.valore_batt and self.valore_batt<=0.75*self.valore_batt):
             self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/75.png"))
-        elif(self.timernuovo>600 and self.timernuovo<900):
+        elif(self.valore_batt>0.25*self.valore_batt and self.valore_batt<=0.5*self.valore_batt):
             self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/50.png"))
-        elif(self.timernuovo==9):
+        elif(self.valore_batt>0.01*self.valore_batt and self.valore_batt<=0.25*self.valore_batt):
             self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/25.png"))
-        elif(self.timernuovo==11):
+        elif(self.valore_batt<=0.01*self.valore_batt):
             self.icona_batteria.setPixmap(QtGui.QPixmap("Immagini/0.png"))
 
 
@@ -397,14 +417,14 @@ class MainWindow(QMainWindow):
         self.titolo_gioco.setMinimumSize(1920,70)
         self.titolo_gioco.setMargin(550)
 
-        self.termine_gioco = QLabel("Complimenti! Hai completato il gioco")
+        self.termine_gioco = QLabel("")
         self.termine_gioco.setFont(QtGui.QFont('Arial', 30))
         self.termine_gioco.setMaximumSize(1920,100)
         self.termine_gioco.setMinimumSize(1920,100)
-        self.termine_gioco.setMargin(620)
+        
 
         self.uscita_gioco = QLabel("Esci")
-        self.uscita_gioco.setFont(QtGui.QFont('Arial', 10))
+        self.uscita_gioco.setFont(QtGui.QFont('Arial', 15))
         self.uscita_gioco.setMaximumSize(1920,100)
         self.uscita_gioco.setMinimumSize(1920,100)
         
@@ -431,6 +451,7 @@ class MainWindow(QMainWindow):
         self.grid_gioco = QGridLayout()
         self.grid_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
+        self.layoutH_fine_gioco.addWidget(self.termine_gioco)
         self.layout_uscita_gioco.addWidget(self.pollicesu,1,1)
         self.layout_uscita_gioco.addWidget(self.uscita_gioco,1,2)
         
@@ -473,99 +494,98 @@ class MainWindow(QMainWindow):
             if(self.predizione[0] == 0):
                 self.grid_gioco.addWidget(self.arco1, 1,2)
                 self.count = 2
+                self.tentativo=0
         elif(self.flag_gioco==1 and self.count==2):
-            time.sleep(1)
-            #self.grid_gioco.addWidget(self.mano_semi,1,2)
-            #self.grid_gioco.setHorizontalSpacing(100)
-            self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano2.png"))
-            self.count = 3
+            #time.sleep(0.5)
+            if(self.tentativo>1):
+                self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano2.png"))
+                self.count = 3
         elif(self.flag_gioco== 1 and self.count == 3):
             self.predizione = modello.predict(pacchetto.reshape(1,-1))
             self.predizione = list(self.predizione)
             if(self.predizione[0]==1):
-                #self.grid_gioco.addWidget(self.arco2,2,2)
                 self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco2.png"))
                 self.count = 4
+                self.tentativo=0
         elif(self.flag_gioco== 1 and self.count == 4):
-            time.sleep(1)
-            #self.grid_gioco.addWidget(self.mano_chiusa,1,3)
-            #self.grid_gioco.setHorizontalSpacing(100)
-            self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano3.png"))
-            self.count=5
+            if(self.tentativo>1):
+                self.mano_aperta.setPixmap(QtGui.QPixmap("Immagini/mano3.png"))
+                self.count=5
         elif(self.flag_gioco== 1 and self.count == 5):
             self.predizione = modello.predict(pacchetto.reshape(1,-1))
             self.predizione = list(self.predizione)
             if(self.predizione[0] == 2):
-                #self.grid_gioco.addWidget(self.arco3,2,3)
                 self.arco1.setPixmap(QtGui.QPixmap("Immagini/arco3.png"))
                 time.sleep(0.05)
                 self.timer.stop()
                 self.today=QDateTime.currentDateTime()
                 self.date_str = self.today.toString("yyyy-MM-dd hh:mm:ss")
-                row=[self.date_str,self.count_timer]
+                row=[self.nome_utente,self.date_str,self.count_timer]
+                self.termine_gioco.setText("Complimenti {}! Hai completato il gioco in {} s".format(self.nome_utente,self.count_timer))
+                self.termine_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
+                self.flag_gioco_terminato=1
+                self.flag_modello_gioco=0
+                self.flag_modello_scelte=1
                 if (self.checkpoint==0):
                     with open('data_register.csv', mode='a', newline='') as f_object: 
                         writer = csv.writer(f_object)
                         writer.writerow(row)
                         self.checkpoint=1
-                self.termine_gioco.setText("Hai completato il gioco in {} s".format(self.count_timer))
-                self.layoutH_fine_gioco.addWidget(self.termine_gioco)
-                self.flag_gioco_terminato=1
-                self.flag_modello_gioco=0
-                self.flag_modello_scelte=1
                 
-                
-                
-        
+
         if(self.count_timer>30):
+            row=[self.nome_utente,self.date_str,0]
             self.flag_gioco_terminato=1
             self.termine_gioco.setText("Esci dal gioco! Riprova!")
-            self.layoutH_fine_gioco.addWidget(self.termine_gioco)
+            self.termine_gioco.setAlignment(Qt.AlignmentFlag.AlignCenter)
             self.flag_modello_gioco=0
             self.flag_modello_scelte=1
+            if (self.checkpoint==0):
+                    with open('data_register.csv', mode='a', newline='') as f_object: 
+                        writer = csv.writer(f_object)
+                        writer.writerow(row)
+                        self.checkpoint=1
         else:
             pass
 
-        #elif(self.flag_gioco==1 and self.count==5):
-         #   self.layoutH_fine_gioco.addWidget(self.termine_gioco)
-
     def count_time(self):
         self.count_timer = self.count_timer + 1
-        print("stampo il valore del timer")
-        print(self.count_timer)
-        
+        self.tentativo=self.tentativo +1
+    
+    def delay_func(self):
+        pass
+
     def initUIStatistiche(self):
         
-        self.layoutV_statitiche=QVBoxLayout()
+        self.layoutV_statistiche=QVBoxLayout()
+        #self.layoutV_statistiche.setContentsMargins(20,20,20,20)
+        self.layoutV_statistiche.setSpacing(0)
         self.layoutH_titolo_statistiche=QHBoxLayout()
         self.layout_grafico=QHBoxLayout()
         self.layoutH_risultati=QHBoxLayout()
         self.layout_uscita_statistiche = QGridLayout()
-        self.layout_uscita_statistiche.setContentsMargins(0,0,0,0)
-        self.layout_uscita_statistiche.setSpacing(0)
-        self.layout_uscita_statistiche.setAlignment(Qt.AlignmentFlag.AlignBottom)
+        self.layout_uscita_statistiche.setVerticalSpacing(20)
 
         self.plot()
 
-        self.titolo_statistihe=QLabel("STATISTICHE")
-        self.titolo_statistihe.setFont(QtGui.QFont('Arial', 30))
-        self.titolo_statistihe.setMaximumSize(1920,70)
-        self.titolo_statistihe.setMinimumSize(1920,70)
-        self.titolo_statistihe.setMargin(800)
+        self.titolo_statistiche=QLabel("Statistiche di {}".format(self.nome_utente))
+        self.titolo_statistiche.setFont(QtGui.QFont('Arial', 30))
+        self.titolo_statistiche.setMaximumSize(1920,70)
+        self.titolo_statistiche.setMinimumSize(1920,70)
+        self.titolo_statistiche.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        self.risultato_migliore=QLabel("Tempo migliore: {}".format(self.tempo_migliore))
+        self.risultato_migliore=QLabel("Tempo migliore in assoluto:\n {} s il {}".format(self.tempo_migliore, self.data_tempo_milgiore))
         self.risultato_migliore.setFont(QtGui.QFont('Arial', 30))
-        self.risultato_migliore.setMaximumSize(1920,70)
-        self.risultato_migliore.setMinimumSize(1920,70)
-        #self.titolo_statistihe.setMargin(800)
+        self.risultato_migliore.setMaximumSize(1920,100)
+        self.risultato_migliore.setMinimumSize(1920,100)
 
-        self.risultato_peggiore=QLabel("Tempo peggiore: {}".format(self.tempo_peggiore))
+        self.risultato_peggiore=QLabel("Tempo peggiore in assoluto:\n {} s il {}".format(self.tempo_peggiore, self.data_tempo_peggiore))
         self.risultato_peggiore.setFont(QtGui.QFont('Arial', 30))
-        self.risultato_peggiore.setMaximumSize(1920,70)
-        self.risultato_peggiore.setMinimumSize(1920,70)
+        self.risultato_peggiore.setMaximumSize(1920,100)
+        self.risultato_peggiore.setMinimumSize(1920,100)
 
         self.uscita_statistiche = QLabel("Esci")
-        self.uscita_statistiche.setFont(QtGui.QFont('Arial', 10))
+        self.uscita_statistiche.setFont(QtGui.QFont('Arial', 15))
         self.uscita_statistiche.setMaximumSize(1920,100)
         self.uscita_statistiche.setMinimumSize(1920,100)
 
@@ -574,31 +594,31 @@ class MainWindow(QMainWindow):
         self.pollicesu.setPixmap(pixmap)
         self.pollicesu.resize(pixmap.width(),pixmap.height())
 
-        self.layoutH_titolo_statistiche.addWidget(self.titolo_statistihe)
-
-        
+        self.layoutH_titolo_statistiche.addWidget(self.titolo_statistiche)
 
         self.layoutH_risultati.addWidget(self.risultato_migliore)
         self.layoutH_risultati.addWidget(self.risultato_peggiore)
 
         self.layout_uscita_statistiche.addWidget(self.pollicesu,1,1)
+        self.layout_uscita_statistiche.setHorizontalSpacing(10)
         self.layout_uscita_statistiche.addWidget(self.uscita_statistiche,1,2)
 
-        self.layoutV_statitiche.addLayout(self.layoutH_titolo_statistiche)
-        self.layoutV_statitiche.addLayout(self.layout_grafico)
-        self.layoutV_statitiche.addLayout(self.layoutH_risultati)
-        self.layoutV_statitiche.addLayout(self.layout_uscita_statistiche)
+        self.layoutV_statistiche.addLayout(self.layoutH_titolo_statistiche)
+        self.layoutV_statistiche.addLayout(self.layout_grafico)
+        self.layoutV_statistiche.addLayout(self.layoutH_risultati)
+        self.layoutV_statistiche.addLayout(self.layout_uscita_statistiche)
         
 
         self.widget_statistiche=QWidget()
-        self.widget_statistiche.setLayout(self.layoutV_statitiche)
+        self.widget_statistiche.setLayout(self.layoutV_statistiche)
         self.setCentralWidget(self.widget_statistiche)
 
     def plot(self):
         
-        df=pd.read_csv('data_register.csv', header=0) 
+        dftot=pd.read_csv('data_register.csv', header=0)
+        df=dftot[dftot['nome'] == self.nome_utente].reset_index(drop=True)
         data= df['data'].tail(10)
-        time= df['time'].tail(10)
+        time= df['durata'].tail(10)
         figure=plt.figure(figsize=(10,6))
         figure=plt.figure()
         ax=figure.add_subplot(111)
@@ -610,17 +630,17 @@ class MainWindow(QMainWindow):
         ax.set_yticks(range(min(time), max(time)+1))
         figure.tight_layout()
         self.layout_grafico.addWidget(figure.canvas)
-
-        idx_tempo_peggiore = df['time'].idxmax()
-        self.tempo_peggiore= df.loc[idx_tempo_peggiore, 'time']
+        
+        idx_tempo_peggiore = df['durata'].idxmax()
+        self.tempo_peggiore= df.loc[idx_tempo_peggiore, 'durata']
         self.data_tempo_peggiore = df.loc[idx_tempo_peggiore, 'data']
 
-        idx_tempo_migliore = df['time'].idxmin()
-        self.tempo_migliore= df.loc[idx_tempo_migliore, 'time']
-        self.data_tempo_peggiore = df.loc[idx_tempo_migliore, 'data']
-        
-        print("La riga con il valore minimo nella colonna 'A' è:")
-        print(df.loc[self.tempo_peggiore])
+        idx_tempo_migliore = df['durata'].idxmin()
+        self.tempo_migliore= df.loc[idx_tempo_migliore, 'durata']
+        self.data_tempo_milgiore = df.loc[idx_tempo_migliore, 'data']
+
+        #print("La riga con il valore minimo nella colonna 'A' è:")
+        #print(df.loc[self.tempo_peggiore])
        
         
 
