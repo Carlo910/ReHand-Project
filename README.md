@@ -53,7 +53,7 @@ dispositivo che riceve i dati.
 Python
 
 Per utilizzare Re-Hand è necessaria la versione 3.9 con varie librerie da installare sul prorpio virtual enviroment.
-Vedere nella cartella 'Additional files' il file 'requirements.txt' e eseguirlo nel prorpio virual
+Vedere nella cartella il file 'requirements.txt' e eseguirlo nel prorpio virtual
 environment per installare tutte le librerie necessarie con le rispettive versioni.
  
 Lanciando il codice GUI.py appare a schermo il nome del progetto Re-Hand e verrà chiesto all'utente di inserire il proprio 
