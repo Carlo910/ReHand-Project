@@ -1,6 +1,6 @@
 // ======================================================================
 // Project3.v generated from TopDesign.cysch
-// 02/12/2023 at 18:22
+// 02/13/2023 at 17:27
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -745,56 +745,55 @@ module top ;
           wire  Net_79;
           wire  Net_76;
           wire  Net_77;
-    electrical [1:0] Net_586;
-    electrical  Net_585;
-    electrical  Net_584;
-    electrical  Net_583;
-    electrical  Net_582;
-    electrical  Net_581;
-    electrical  Net_580;
-    electrical  Net_579;
-    electrical  Net_578;
-    electrical  Net_577;
-    electrical  Net_576;
-    electrical  Net_575;
-    electrical  Net_574;
-    electrical  Net_573;
-    electrical  Net_572;
-    electrical  Net_571;
-    electrical  Net_570;
-    electrical  Net_569;
-    electrical  Net_568;
-    electrical  Net_567;
-    electrical  Net_566;
-    electrical  Net_565;
-    electrical  Net_564;
-    electrical  Net_563;
-    electrical  Net_562;
-    electrical  Net_561;
-    electrical  Net_560;
-    electrical  Net_559;
-    electrical  Net_558;
-    electrical  Net_557;
-    electrical  Net_537;
-    electrical  Net_556;
-    electrical  Net_555;
-    electrical  Net_554;
-    electrical  Net_553;
-    electrical  Net_552;
-    electrical  Net_551;
-    electrical  Net_550;
-    electrical  Net_549;
-    electrical  Net_548;
-    electrical  Net_547;
-    electrical  Net_546;
-    electrical  Net_545;
-    electrical  Net_544;
-    electrical  Net_543;
-    electrical  Net_542;
-    electrical  Net_541;
-    electrical  Net_540;
-    electrical  Net_539;
-    electrical  Net_538;
+    electrical [1:0] Net_703;
+    electrical  Net_702;
+    electrical  Net_701;
+    electrical  Net_700;
+    electrical  Net_699;
+    electrical  Net_698;
+    electrical  Net_697;
+    electrical  Net_696;
+    electrical  Net_695;
+    electrical  Net_694;
+    electrical  Net_693;
+    electrical  Net_692;
+    electrical  Net_691;
+    electrical  Net_690;
+    electrical  Net_689;
+    electrical  Net_688;
+    electrical  Net_687;
+    electrical  Net_686;
+    electrical  Net_685;
+    electrical  Net_684;
+    electrical  Net_683;
+    electrical  Net_682;
+    electrical  Net_681;
+    electrical  Net_680;
+    electrical  Net_679;
+    electrical  Net_678;
+    electrical  Net_677;
+    electrical  Net_676;
+    electrical  Net_675;
+    electrical  Net_674;
+    electrical  Net_673;
+    electrical  Net_672;
+    electrical  Net_671;
+    electrical  Net_670;
+    electrical  Net_669;
+    electrical  Net_668;
+    electrical  Net_667;
+    electrical  Net_666;
+    electrical  Net_665;
+    electrical  Net_664;
+    electrical  Net_663;
+    electrical  Net_661;
+    electrical  Net_660;
+    electrical  Net_659;
+    electrical  Net_658;
+    electrical  Net_657;
+    electrical  Net_656;
+    electrical  Net_655;
+    electrical  Net_654;
           wire  Net_13;
           wire  Net_12;
           wire  Net_11;
@@ -807,6 +806,7 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+    electrical  Net_705;
     electrical  Net_617;
     electrical  Net_616;
     electrical  Net_625;
@@ -1004,64 +1004,64 @@ module top ;
 
     cy_annotation_universal_v1_0 KIT_059_1 (
         .connect({
-            Net_538,
-            Net_539,
-            Net_540,
-            Net_541,
-            Net_542,
-            Net_543,
-            Net_544,
-            Net_545,
-            Net_546,
-            Net_547,
-            Net_548,
-            Net_549,
-            Net_550,
-            Net_551,
-            Net_552,
-            Net_553,
-            Net_554,
+            Net_654,
+            Net_655,
+            Net_656,
+            Net_657,
+            Net_658,
+            Net_659,
+            Net_660,
+            Net_661,
+            Net_705,
+            Net_663,
+            Net_664,
+            Net_665,
+            Net_666,
+            Net_667,
+            Net_668,
+            Net_669,
+            Net_670,
             Net_54,
             Net_55,
-            Net_555,
-            Net_556,
-            Net_537,
-            Net_557,
-            Net_558,
-            Net_559,
-            Net_560,
-            Net_561,
-            Net_562,
-            Net_563,
-            Net_564,
-            Net_565,
-            Net_566,
-            Net_567,
+            Net_671,
+            Net_672,
+            Net_673,
+            Net_674,
+            Net_675,
+            Net_676,
+            Net_677,
+            Net_678,
+            Net_679,
+            Net_680,
+            Net_681,
+            Net_682,
+            Net_683,
+            Net_684,
             Net_640,
             Net_293,
             Net_154,
             Net_166,
-            Net_568,
-            Net_569,
-            Net_570,
-            Net_571,
-            Net_572,
-            Net_573,
-            Net_574,
-            Net_575,
-            Net_576,
-            Net_577,
-            Net_578,
-            Net_579,
-            Net_580,
-            Net_581,
+            Net_685,
+            Net_686,
+            Net_687,
+            Net_688,
+            Net_689,
+            Net_690,
+            Net_691,
+            Net_692,
+            Net_693,
+            Net_694,
+            Net_695,
+            Net_696,
+            Net_697,
+            Net_698,
             Net_302,
-            Net_582,
-            Net_583,
-            Net_584,
+            Net_699,
+            Net_700,
+            Net_701,
             Net_301,
-            Net_585,
-            Net_586[1:0]
+            Net_702,
+            Net_703[1:0]
         })
     );
     defparam KIT_059_1.comp_name = "KIT_059_v1_0";

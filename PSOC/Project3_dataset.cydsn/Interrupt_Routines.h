@@ -23,10 +23,7 @@
     CY_ISR_PROTO(Custom_ISR_ADC);
 
     uint8 DataBuffer[TRANSMIT_BUFFER_SIZE]; //creo una stringa dove salvare il dato da comunicare
-    uint8 DataBuffer1[TRANSMIT_BUFFER_SIZE];
     volatile uint8 PacketReadyFlag; //flag per monitorare quando sono pronto ad inviare il dato con la UART
-    volatile uint8 PacketReadyFlag1;
-    volatile uint8_t led_status;
     
 #endif
 

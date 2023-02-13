@@ -2,7 +2,7 @@
 --	Conversion of Project3.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Feb 12 18:22:10 2023
+--	Mon Feb 13 17:27:45 2023
 --
 
 USE cypress.cypress.all;
@@ -132,65 +132,65 @@ SIGNAL tmpFB_0__Tx_1_net_0 : bit;
 SIGNAL tmpIO_0__Tx_1_net_0 : bit;
 TERMINAL tmpSIOVREF__Tx_1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Tx_1_net_0 : bit;
-TERMINAL Net_538 : bit;
-TERMINAL Net_539 : bit;
-TERMINAL Net_540 : bit;
-TERMINAL Net_541 : bit;
-TERMINAL Net_542 : bit;
-TERMINAL Net_543 : bit;
-TERMINAL Net_544 : bit;
-TERMINAL Net_545 : bit;
-TERMINAL Net_546 : bit;
-TERMINAL Net_547 : bit;
-TERMINAL Net_548 : bit;
-TERMINAL Net_549 : bit;
-TERMINAL Net_550 : bit;
-TERMINAL Net_551 : bit;
-TERMINAL Net_552 : bit;
-TERMINAL Net_553 : bit;
-TERMINAL Net_554 : bit;
+TERMINAL Net_654 : bit;
+TERMINAL Net_655 : bit;
+TERMINAL Net_656 : bit;
+TERMINAL Net_657 : bit;
+TERMINAL Net_658 : bit;
+TERMINAL Net_659 : bit;
+TERMINAL Net_660 : bit;
+TERMINAL Net_661 : bit;
+TERMINAL Net_705 : bit;
+TERMINAL Net_663 : bit;
+TERMINAL Net_664 : bit;
+TERMINAL Net_665 : bit;
+TERMINAL Net_666 : bit;
+TERMINAL Net_667 : bit;
+TERMINAL Net_668 : bit;
+TERMINAL Net_669 : bit;
+TERMINAL Net_670 : bit;
 TERMINAL Net_54 : bit;
 TERMINAL Net_55 : bit;
-TERMINAL Net_555 : bit;
-TERMINAL Net_556 : bit;
-TERMINAL Net_537 : bit;
-TERMINAL Net_557 : bit;
-TERMINAL Net_558 : bit;
-TERMINAL Net_559 : bit;
-TERMINAL Net_560 : bit;
-TERMINAL Net_561 : bit;
-TERMINAL Net_562 : bit;
-TERMINAL Net_563 : bit;
-TERMINAL Net_564 : bit;
-TERMINAL Net_565 : bit;
-TERMINAL Net_566 : bit;
-TERMINAL Net_567 : bit;
+TERMINAL Net_671 : bit;
+TERMINAL Net_672 : bit;
+TERMINAL Net_673 : bit;
+TERMINAL Net_674 : bit;
+TERMINAL Net_675 : bit;
+TERMINAL Net_676 : bit;
+TERMINAL Net_677 : bit;
+TERMINAL Net_678 : bit;
+TERMINAL Net_679 : bit;
+TERMINAL Net_680 : bit;
+TERMINAL Net_681 : bit;
+TERMINAL Net_682 : bit;
+TERMINAL Net_683 : bit;
+TERMINAL Net_684 : bit;
 TERMINAL Net_640 : bit;
 TERMINAL Net_293 : bit;
 TERMINAL Net_154 : bit;
 TERMINAL Net_166 : bit;
-TERMINAL Net_568 : bit;
-TERMINAL Net_569 : bit;
-TERMINAL Net_570 : bit;
-TERMINAL Net_571 : bit;
-TERMINAL Net_572 : bit;
-TERMINAL Net_573 : bit;
-TERMINAL Net_574 : bit;
-TERMINAL Net_575 : bit;
-TERMINAL Net_576 : bit;
-TERMINAL Net_577 : bit;
-TERMINAL Net_578 : bit;
-TERMINAL Net_579 : bit;
-TERMINAL Net_580 : bit;
-TERMINAL Net_581 : bit;
+TERMINAL Net_685 : bit;
+TERMINAL Net_686 : bit;
+TERMINAL Net_687 : bit;
+TERMINAL Net_688 : bit;
+TERMINAL Net_689 : bit;
+TERMINAL Net_690 : bit;
+TERMINAL Net_691 : bit;
+TERMINAL Net_692 : bit;
+TERMINAL Net_693 : bit;
+TERMINAL Net_694 : bit;
+TERMINAL Net_695 : bit;
+TERMINAL Net_696 : bit;
+TERMINAL Net_697 : bit;
+TERMINAL Net_698 : bit;
 TERMINAL Net_302 : bit;
-TERMINAL Net_582 : bit;
-TERMINAL Net_583 : bit;
-TERMINAL Net_584 : bit;
+TERMINAL Net_699 : bit;
+TERMINAL Net_700 : bit;
+TERMINAL Net_701 : bit;
 TERMINAL Net_301 : bit;
-TERMINAL Net_585 : bit;
-TERMINAL Net_586_1 : bit;
-TERMINAL Net_586_0 : bit;
+TERMINAL Net_702 : bit;
+TERMINAL Net_703_1 : bit;
+TERMINAL Net_703_0 : bit;
 TERMINAL \ADC_DelSig:Net_244\ : bit;
 TERMINAL \ADC_DelSig:Net_690\ : bit;
 TERMINAL \ADC_DelSig:Net_35\ : bit;
@@ -1173,21 +1173,21 @@ KIT_059_1:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"KIT_059_v1_0",
 		port_names=>"P_00, P_01, P_02, P_03, P_04, P_05, P_06, P_07, P_10, P_11, P_12, P_120, P_121, P_122, P_123, P_124, P_125, P_126, P_127, P_13, P_14, P_15, P_150, P_151, P_152, P_153, P_154, P_155, P_16, P_17, P_20, P_21, P_22, P_23, P_24, P_25, P_26, P_27, P_30, P_31, P_32, P_33, P_34, P_35, P_36, P_37, P_59, P_60, P_61, P_62, P_63, P_GND_0, P_GND_1, P_GND_3, P_RST_0, P_VDD_0, P_VDDIO, USB_1_1, USB_1_0",
 		width=>59)
-	PORT MAP(connect=>(Net_538, Net_539, Net_540, Net_541,
-			Net_542, Net_543, Net_544, Net_545,
-			Net_546, Net_547, Net_548, Net_549,
-			Net_550, Net_551, Net_552, Net_553,
-			Net_554, Net_54, Net_55, Net_555,
-			Net_556, Net_537, Net_557, Net_558,
-			Net_559, Net_560, Net_561, Net_562,
-			Net_563, Net_564, Net_565, Net_566,
-			Net_567, Net_640, Net_293, Net_154,
-			Net_166, Net_568, Net_569, Net_570,
-			Net_571, Net_572, Net_573, Net_574,
-			Net_575, Net_576, Net_577, Net_578,
-			Net_579, Net_580, Net_581, Net_302,
-			Net_582, Net_583, Net_584, Net_301,
-			Net_585, Net_586_1, Net_586_0));
+	PORT MAP(connect=>(Net_654, Net_655, Net_656, Net_657,
+			Net_658, Net_659, Net_660, Net_661,
+			Net_705, Net_663, Net_664, Net_665,
+			Net_666, Net_667, Net_668, Net_669,
+			Net_670, Net_54, Net_55, Net_671,
+			Net_672, Net_673, Net_674, Net_675,
+			Net_676, Net_677, Net_678, Net_679,
+			Net_680, Net_681, Net_682, Net_683,
+			Net_684, Net_640, Net_293, Net_154,
+			Net_166, Net_685, Net_686, Net_687,
+			Net_688, Net_689, Net_690, Net_691,
+			Net_692, Net_693, Net_694, Net_695,
+			Net_696, Net_697, Net_698, Net_302,
+			Net_699, Net_700, Net_701, Net_301,
+			Net_702, Net_703_1, Net_703_0));
 \ADC_DelSig:vRef_2\:cy_vref_v1_0
 	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
 		name=>"Vssa (GND)",
