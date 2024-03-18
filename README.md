@@ -3,8 +3,12 @@
 Re-Hand Versione 1.0 13/02/2023
 
 ***
+Short Description:
+
+Re-Hand is a device that uses 4 flex sensors, mounted on a glove, to recognize gestures. It is designed to be used in rehabilitation, to train subjects who experience problems in perfoming the "grasping" movement. Rehabilitation is done through repetition of the "grasping" gesture by playing a game by carrying out precise instructions given on the screen.
 Breve descrizione:
 
+Itlian version: 
 Re-Hand è un dispositivo che utilizza 4 flex sensors, montati su di un guanto, per riconoscere dei gesti. 
 E' stato pensato per essere utilizzato in ambito riabilitativo, per allenare soggetti che riscontrano problemi nel perfomare il
 movimento del "grasping". 
@@ -14,6 +18,40 @@ La riabilitazione viene effettuata tramite la ripetizione del gesto del "graspin
 
 Hardware:
 
+A glove is used on which four flex sensors, from thumb to ring finger, are sewn onto the top of the fingers. To read the value measured by the sensors, four voltage dividers (one for each sensor) were made with four 2 kOhm resistors. A PSoC 5LP Dev Kit CY8CKIT-059 was used as the microcontroller. The device was designed as a wearable, so it is equipped with a bluetooth module for sensor data communication and a 3.7 V lipo battery for power supply, with an attached charging circuit.  A 3.3 V linear stabilizer was added to provide the microcontroller with a stabilized voltage, while the Bluetooth gets an unstabilized voltage since the minimum voltage required to power it is 3.6 V.
+To check the battery charge level, two identical 1 kOhm resistors were added to read the drop voltage across them.
+After prototyping the device, a PCB was made into which all components were soldered. See the 'Eagle' folder to view the model made for printing the PCB.  A case was made thanks to a 3D printer to contain all the hardware components (apart from the sensors and glove). In the 'SolidWorks' folder you can find the model made for printing. It is possible to conveniently turn the device on and off by pressing a switch on the top side of the case. To monitor the bluetooth connection, the user can refer to a red LED located on the side of the case, which flashes at a frequency of 0.2 Hz during bluetooth connection and turns solid once the connection is successfully occurred.
+
+***
+PsoC Creator 
+The Psoc Creator IDE (Integrated Design Environment) was used to develop the project from the firmware side. 
+Within the 'PSOC' folder can be found the 'Project3' workspace which contains the 'Project3' project where the code used to sample the data, average it and finally send it via Bluetooth to the connected device. 
+For data sampling, the frequency of the interrupt timer was set to 10 Hz. Once a piece of data is received, it waits to have 10 samples in order to average them and then send them. In addition, every minute the
+the battery charge value and then sent. Also managed within the code is the Bluetooth connection and its Led to display whether it has taken place (Led on) or not (Led flashes at 0.2 Hz). In addition, there is the project 'Project3_dataset' which was used to build the datasets for the development of the classifier. A different code is used to make data collection easier by simplifying the connection with the  device that receives the data.
+
+***
+
+Python
+
+To use Re-Hand you need version 3.9 with various libraries to install on your virtual enviroment.
+See the file 'requirements.txt' in the folder and run it in your virtual  
+environment to install all the required libraries with their respective versions.
+ 
+Upon launching the GUI.py code, the name of the Re-Hand project appears on the screen and the user will be asked to enter their name, thanks to which it will be possible to save performance data from different users. Next, the user can click  a start button, which allows the start of sampling the values of the four variable resistors. In case the user has not entered the name, he/she will not be able to access the second screen and an error message will be displayed on asscreen. Once the start button is pressed, a new screen is opened where the user can choose whether to play the game, or display on the screen some statistical data on the improvement in playing it. 
+
+Thanks to a classifier, specifically a Random Forest, the device can recognize six gestures in total, three used to move through the different GUI windows and three for the rehabilitation task. In the file 'classification_6gestures.ipynb' it is possible to see how the model used for the classification of the gestures. The files 'dataset_training_6gesti.csv' and 'dataset_test_6gesti.csv' contain all the data used to
+train and test the model which were collected using the code 'code_dataset.py'. In the file 'rf_model_6gesti.pkl' is saved the model trained on the datasets mentioned above and used to perform real-time prediction for gesture recognition while using the application.
+
+By raising only the index finger (target 4), one enters the game window. At this point the user can start performing the gesture
+of grasping, starting with the hand fully open (target 0), then trying to close it halfway (target 1) and finally closing the fist completely (target 2). While performing these gestures, the user will be able to see on the screen an image of a bow being drawn, progressively as the hand closes, until an arrow is fired. Once the game is finished, the time it took the user to complete the gesture is printed on the screen. In the event that the exercise is not performed correctly (time taken longer than 30 seconds) a message will be displayed on the screen a message inviting the user to exit the game and try again. By raising only the thumb while keeping the hand closed (target 3), you will exit the game screen and return to the main Home screen. 
+
+At this point, by raising both index and average (target 5) you can enter the statistics screen, where a graph can be displayed on the screen showing the times in seconds in which the user has done the last ten exercises, if any, with the respective date so that any improvements can be visualized. The display of statistics is allowed only if the user has completed the game at least twice, otherwise an error message appears on the screen. The following graph also shows failed attempts by reporting a time of 30 seconds (the maximum attainable value), highlighted on the graph by a red line. The user's best result, absolute worst result (in case of success) and the number of failed attempts are also displayed. By raising only the thumb while keeping the hand closed (target 3), you exit the game screen to return to the main Home screen. 
+
+***
+
+Italian version:
+
+Hardware:
 Si utilizza un guanto su cui sono cuciti quattro flex sensors, dal pollice all'anulare, sulla parte superiore delle dita. Per leggere
 il valore misurato dai sensori sono stati realizzati 4 partitori di tensione (uno per ogni sensore) con 4 resistenze da 2 kOhm.
 Come microcontrollore è stato usato un PSoC 5LP Dev Kit CY8CKIT‐059.  
